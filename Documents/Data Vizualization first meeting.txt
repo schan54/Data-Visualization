@@ -1,0 +1,58 @@
+﻿Data Visualization: Climate Change?
+Project Owner: Morgan
+Scrum Master 1: David
+Dev Team: Eric, Steve
+Topic: Probably Climate Change?
+
+
+Technology:
+Language: 
+If D3.js
+* HTML
+* Javascript
+* Document object Model’s (DOM)
+* CSS Selectors & Styles
+* Scalar Vector Graphics
+* Heroku??
+
+
+TA meeting time: Tuesday 8am 
+Professor meeting: Friday 5:00pm E2 247B
+
+
+Monday: 10:30am-11am(Voice Chat)
+Wednesday: 6:00pm-6:30pm (In person)
+Saturday: 2pm-2:30pm (in person)
+
+
+Topic: Climate Change
+* Ocean wave/tides
+* Sea Level 
+* Carbon Dioxide 
+* Global Temperature
+* Arctic minimum 
+* Ice sheets
+* Weather changes
+* Rainfall changes
+* Compare current rate of renewable energy conversion to expected/needed
+* oil /energy //Natural resources()
+
+
+Data viz ideas: (links/pics)
+
+
+
+
+Questions for Julig:
+* What should be our end of quarter goal
+* Real time updates
+   * Probably need to work w/ heroku
+* Should these visualizations be interactive
+   * Filters, drag a timeline, click ‘bubble’ for more information
+* Specialized or general
+   * Multiple genres of climate change or just one
+* Certain subjects too popular
+   * Rising sea levels, temp change → too popular
+* Database resource recommendations?
+* Provide examples of failed data visualizations
+*
