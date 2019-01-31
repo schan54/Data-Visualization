@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js" >
+     </script>
+    </head>
+    <body>
+     <div id="data_example3"></div>
+     <script type="text/javascript">
+     circleData = [[10, "rgb(246, 239, 247)"], [15, "rgb(189,201,225)"],
+      [20, "rgb(103,169,207)"], [25, "rgb(28,144,153)"],
+      [30, "rgb(1,108,89)"]];
+
+     var selectDiv = d3.select("#data_example3")
+      .append("svg:svg")
+      .attr("width", circleData.length * 100)
+      .attr("height", 100);
+
+     selectDiv.selectAll("circle")
+      .data(circleData)
+      .enter()
+      .append("circle")
+      .attr("cx", function(d){return d[0]*14})
+      .attr("cy", 50)
+      .attr("r", function(d){return d[0]})
+      .style("fill", function(d){return d[1]});
+
+     </script>
+    </body>
+  </html>
