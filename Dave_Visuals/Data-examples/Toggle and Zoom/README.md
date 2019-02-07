@@ -1,0 +1,1 @@
+An example zooming behavior for two-level choropleth maps. Click on a region to zoom in and navigate between regions. Inspired by http://bl.ocks.org/mbostock/2206590
