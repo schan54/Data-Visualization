@@ -21,6 +21,18 @@ svg.selectAll('.circles').data(circs)
     .attr('cx',function(d,i){
         return 40+ 80 *i
 })
+    .transition()
+    .style('fill-opacity', '.3')
+    .attr('cx', '0')
+    .duration(2000)
+    .transition()
+    .attr('cx', function(d,i){
+        return  40+80 * i
+})
+    .style('fill', 'green')
+    .ease('elastic')
+
+    .duration(3000)
 
 
 svg.selectAll('text')
@@ -59,6 +71,17 @@ svg2.selectAll('.circles').data(circs2)
     .attr('cx',function(d,i){
         return 40+ 80 *i
 })
+    .transition()
+    .style('fill', 'red')
+    .attr('cy', '40')
+    .duration(3000)
+    .transition()
+    .attr('cy', '80')
+    .style('fill', 'blue')
+    .ease('elastic')
+
+    .duration(5000)
+
 
 
 svg2.selectAll('text')
