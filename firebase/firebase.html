@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Firebase</title>
+<script src = "https://d3js.org/d3.v5.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script> -->
+<!-- MUST INCLUDE FIREBASE AT VERY BEGINNING -->
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-storage.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-messaging.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script> -->
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAdulZqhzuyQ274Hssvo4duvmp_arpHKA0",
+    authDomain: "dataviz-adf9c.firebaseapp.com",
+    databaseURL: "https://dataviz-adf9c.firebaseio.com",
+    projectId: "dataviz-adf9c",
+    storageBucket: "dataviz-adf9c.appspot.com",
+    messagingSenderId: "180690652523"
+  };
+  firebase.initializeApp(config);
+</script>
+
+</head>
+
+<body>
+  <progress value = "0" max = "100" id = "uploader">0%</progress>
+  <input type = "file" value = "upload" id = "fileButton"/>
+  <script src = "storage.js"></script>
+
+</body>
+</html>
