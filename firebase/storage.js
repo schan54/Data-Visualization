@@ -23,6 +23,10 @@ fileButton.addEventListener('change', function(e) {
     )
 
 });
+// Install gsutil @ https://cloud.google.com/storage/docs/gsutil_install
+// run gsutil cors set cors.json gs://dataviz-adf9c.appspot.com on cmd prompt in folder
+
+// ref('folderName/fileName') format
 var storageRef = storage.ref('data/test.csv');
 var download = storageRef.getDownloadURL().then(function(url) {
     d3.csv(url, function(d){console.log(d);})
