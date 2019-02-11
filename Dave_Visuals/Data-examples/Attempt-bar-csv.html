@@ -49,13 +49,15 @@
 			var w = 600;
 			var h = 250;
 
-			d3.csv("data.csv", function(error,data) {
-				data.forEach(function(d) {
-					d.year = d.year
-					d.value = +d.change;
-				}
-			);
+			d3.csv("data.csv", function(d) {
+				return {
+					year : +d.year,
+					value : +d.change
+				};
+			});
 
+			var dataset = change;
+			
 			var xScale = d3.scaleBand()
 							.domain(d3.range([1880, 2013]))
 							.rangeRound([0, w])
@@ -137,7 +139,7 @@
 				   });
 
 			};
-		});
+
 		</script>
 	</body>
 </html>
