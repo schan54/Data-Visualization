@@ -25,13 +25,15 @@
 body {
   background-color: #808080;
   text-align: center;
+  margin: 0px;
 }
 
 body svg {
+  background-color: var(--quarternary-color-tint-2);
   border-style: solid;
   border-width: thin;
   border-radius: 20px;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .names {
@@ -110,6 +112,9 @@ body svg {
 .menubar {
   background-color: var(--primary-color);
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  border-bottom: solid;
 }
 
 .menubar a {
