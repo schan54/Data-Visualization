@@ -22,6 +22,18 @@
   --quarternary-color-shade-2: #554000;
 }
 
+body {
+  background-color: #808080;
+  text-align: center;
+}
+
+body svg {
+  border-style: solid;
+  border-width: thin;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
 .names {
   fill: none;
   stroke: #fff;
@@ -107,7 +119,9 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .menubar a:hover {
