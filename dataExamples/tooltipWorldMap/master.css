@@ -1,6 +1,25 @@
+/* global variables for colors */
 :root {
   --primary-color: #29506D;
-  
+  --primary-color-tint-1: #718EA4;
+  --primary-color-tint-2: #496D89;
+  --primary-color-shade-1: #123652;
+  --primary-color-shade-2: #042037;
+  --secondary-color: #AA7939;
+  --secondary-color-tint-1: #FFDBAA;
+  --secondary-color-tint-2: #D4A76A;
+  --secondary-color-shade-1: #805215;
+  --secondary-color-shade-2: #553100;
+  --tertiary-color: #343477;
+  --tertiary-color-tint-1: #8080B3;
+  --tertiary-color-tint-2: #565695;
+  --tertiary-color-shade-1: #1A1A59;
+  --tertiary-color-shade-2: #09093B;
+  --quarternary-color: #AA8E39;
+  --quarternary-color-tint-1: #FFEAAA;
+  --quarternary-color-tint-2: #D4BA6A;
+  --quarternary-color-shade-1: #806515;
+  --quarternary-color-shade-2: #554000;
 }
 
 .names {
@@ -84,7 +103,7 @@
 .menubar a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -92,12 +111,12 @@
 }
 
 .menubar a:hover {
-  background-color: #ddd;
+  background-color: var(--secondary-color);
   color: white;
 }
 
 .selected {
-  background-color: #4CAF50;
+  background-color: var(--secondary-color-tint-2);
   color: white;
 }
 
