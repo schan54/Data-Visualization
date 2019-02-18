@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
+  <title>Data Viz</title>
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="http://d3js.org/queue.v1.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
   <!-- <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script> -->
 
@@ -30,28 +36,32 @@
   <link rel="stylesheet" type="text/css" href="master.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script type="text/javascript" src="master.js"></script>
-
-</head>
-<body>
-
   <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  
+</head>
+<body>  
 
-  <div class="menubar" id="mymenu">
-    <a href="index.html" class="selected">HOME</a>
-    <a href="mapsPage.html">MAPS</a>
-    <a href="otherVisuals.html">OTHER VISUALS</a>
-    <a href="about.html">ABOUT</a>
-    <a href="javascript:void(0);" class="icon" onclick="hamFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
 
-  <script src="http://d3js.org/d3.v4.min.js"></script>
-  <script src="http://d3js.org/queue.v1.min.js"></script>
-  <script src="http://d3js.org/topojson.v1.min.js"></script>
+ <div id="nav-placeholder"></div>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("navigation.html");
+    });
+  </script>
   <script src="d3-tip.js"></script>
   <script type="text/javascript" src="map.js"></script>
+
+  <form action = "">
+    <select name = "climateCategory">
+      <option value = "temperature"> Global Temperature</option>
+      <option value = "co2"> CO2</option>
+      <option value = "energy"> Global Energy Usage</option>
+      <option value = "rainfall"> Rainfall</option>
+    </select>
+    <input type="submit" value="Visualize!"/>
+  </form>
 
   <progress value = "0" max = "100" id = "uploader">0%</progress>
   <input type = "file" value = "upload" id = "fileButton"/>
