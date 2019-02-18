@@ -20,10 +20,11 @@
   --quarternary-color-tint-2: #D4BA6A;
   --quarternary-color-shade-1: #806515;
   --quarternary-color-shade-2: #554000;
+  --light-grey: #EDEDED;
 }
 
 body {
-  background-color: #808080;
+  background-color: var(--light-grey);
   text-align: center;
   margin: 0px;
 }
@@ -115,6 +116,8 @@ body svg {
   position: fixed;
   width: 100%;
   border-bottom: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: var(--primary-color-shade-2)
 }
 
 .menubar a {
@@ -126,7 +129,8 @@ body svg {
   text-decoration: none;
   font-size: 15px;
   font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
+  font-weight: thin;
+  letter-spacing: 2px;
 }
 
 .menubar a:hover {
@@ -145,7 +149,7 @@ body svg {
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the menubar (.icon) */
 @media screen and (max-width: 600px) {
-  .menubar a:not(:first-child) {display: none;}
+  .menubar a:not(.selected) {display: none;}
   .menubar a.icon {
     float: right;
     display: block;
