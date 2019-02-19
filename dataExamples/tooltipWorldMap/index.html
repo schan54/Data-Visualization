@@ -44,15 +44,17 @@
 <body>  
 
 
- <div id="nav-placeholder"></div>
+  <div id="nav-placeholder"></div>
   <script>
     $(function(){
-      $("#nav-placeholder").load("navigation.html");
+      $("#nav-placeholder").load("navigation.html", function() {
+        $("a[href= 'index.html']").addClass("selected");
+      });
     });
   </script>
+
   <script src="d3-tip.js"></script>
   <script type="text/javascript" src="map.js"></script>
-
   <form action = "">
     <select name = "climateCategory">
       <option value = "temperature"> Global Temperature</option>

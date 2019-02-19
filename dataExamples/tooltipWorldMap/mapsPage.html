@@ -16,7 +16,9 @@
   <div id="nav-placeholder"></div>
   <script>
     $(function(){
-      $("#nav-placeholder").load("navigation.html");
+      $("#nav-placeholder").load("navigation.html", function() {
+        $("a[href= 'mapsPage.html']").addClass("selected");
+      });
     });
   </script>
 
