@@ -21,7 +21,7 @@ def createBaseFile():
     baseFile.close()
 
 
-def main():
+def createSingleYear():
 
     #Prompts user for date and created file names
     inputYear = input("Enter year to create column for .csv:\n\n")
@@ -74,32 +74,72 @@ def main():
     shutil.copy2(fileString, '../world_population.tsv')
 
 
-
-#Calls the needed functions
-createBaseFile()
-main()
-
-
-
-
-
-
-"""
-    #Was working on getting ALL data onto sheet but hit a wall for maybe an hour
-    #So i just simplified it for a single year right now to get data on maps
-
-        with open('tempFile.tsv', 'w+') as tp:
-            for tempLine in tp:
-                print("%s" % tempLine)
-
-
-
+def createDataAsList():
+    print('\n')
+    #Iterate through your data file and map data
+    with open('co2.csv','r') as fp:
+        lists = []
+        for line in fp:
             try:
-                if country in worldLine:
-                    print("mapping %s to %s"% (country, worldLine))
-                    #lineString = worldLine.rstrip('\n') + '\t' + yearAndValue + '\n'
-                    #print("%s"% lineString)
-                    #outFile.write(lineString)
+                country, year, value, cont = line.split(",")
+                yearAndValue = year + "," + value
+                info = [country, yearAndValue]
+                #print("Info is %s" %info)
+
+                foundCountryFlag = 0
+                for tuples in lists:
+
+                    if country in tuples[0]:
+                        foundCountryFlag = 1
+                        #Grab string and update with additional year,value data
+                        updateString = tuples[1]
+                        updateString = updateString.rstrip('\n') + '\t' + yearAndValue + '\n'
+                        tuples[1] = updateString
+
+                #Country not in list, add it to list
+                if foundCountryFlag == 0:
+                    lists.append(info)
+
             except:
-                #pass
-                print("Failed to create new string") """
+                print("Failed to parse line: %s" % line.rstrip('\n'))
+
+    addFullDataToBase(lists)
+
+def addFullDataToBase(lists):
+    print("\n")
+    fileString = "worldco2AllData.tsv"
+    outFile = open(fileString, 'w+')
+    headerString = "id\tname\tpopulation\n"
+    outFile.write(headerString)
+    with open('base-worldco2.tsv', 'r') as tp:
+
+        for worldLine in tp:
+            countryFound = 0
+            #If the country found between list and world_pop matches
+            for tuples in lists:
+                if tuples[0] in worldLine:
+                    #print("Matched %s to %s" % (tuples[0], worldLine))
+                    countryFound = 1
+                    #lineString = worldLine.rstrip('\n') + '\t' + yearAndValue + '\n'
+                    lineString = worldLine.rstrip('\n') + '\t' + tuples[1] + '\n'
+                    #print("%s" % lineString)
+                    outFile.write(lineString)
+
+            if countryFound == 0:
+                print("Failed to find match:\t%s"% worldLine.rstrip('\n'))
+    print("\nSuccess\t%s" % fileString)
+    outFile.close()
+    #print("\nSuccess\t%s" % fileString)
+
+        #Keep one copy and here and move one up a directory
+        #Easy to run for you!
+        #shutil.copy2(fileString, '../world_population.tsv')
+
+#Prompt user and use calls from there
+userInput = input("\npress 1 for Single year, Anything else for All years\n\n")
+if userInput == 1:
+    createBaseFile()
+    createSingleYear()
+else:
+    createBaseFile()
+    createDataAsList()
