@@ -36,7 +36,6 @@ def createSingleYear():
         for line in fp:
             try:
                 country, year, value, cont = line.split(",")
-                yearAndValue = year + "," + value
                 #print("%s"% yearAndValue)
 
                 #print(value)
@@ -54,7 +53,6 @@ def createSingleYear():
                             #If the country found between both files match
                             if country in worldLine:
                                 countryFound = 1
-                                #lineString = worldLine.rstrip('\n') + '\t' + yearAndValue + '\n'
                                 lineString = worldLine.rstrip('\n') + '\t' + str(valueNum) + '\n'
                                 #print("%s" % lineString)
                                 outFile.write(lineString)
@@ -79,11 +77,11 @@ def createDataAsList():
     #Iterate through your data file and map data
     with open('co2.csv','r') as fp:
         lists = []
+        yearList = []
         for line in fp:
             try:
                 country, year, value, cont = line.split(",")
-                yearAndValue = year + "," + value
-                info = [country, yearAndValue]
+                info = [country, value, year]
                 #print("Info is %s" %info)
 
                 foundCountryFlag = 0
@@ -93,24 +91,41 @@ def createDataAsList():
                         foundCountryFlag = 1
                         #Grab string and update with additional year,value data
                         updateString = tuples[1]
-                        updateString = updateString.rstrip('\n') + '\t' + yearAndValue + '\n'
+                        updateString = updateString.rstrip('\n') + '\t' + value + '\n'
                         tuples[1] = updateString
+                        if year not in yearList:
+                            yearList.append(year)
 
                 #Country not in list, add it to list
                 if foundCountryFlag == 0:
                     lists.append(info)
 
+
             except:
                 print("Failed to parse line: %s" % line.rstrip('\n'))
 
-    addFullDataToBase(lists)
+    addFullDataToBase(lists, yearList)
 
-def addFullDataToBase(lists):
+def createTsvHead(yearList):
+    startYear = yearList[0]
+    endYear = yearList[-1]
+    headerString = "id\tname\n"
+
+    for i in range (int(startYear),int(endYear) + 1):
+        headerString = headerString.rstrip('\n') + '\t' + str(i) + '\n'
+    #print(headerString)
+    return headerString
+
+def addFullDataToBase(lists, yearList):
     print("\n")
     fileString = "worldco2AllData.tsv"
     outFile = open(fileString, 'w+')
-    headerString = "id\tname\tpopulation\n"
+
+    #Create headerString with Years
+    headerString = createTsvHead(yearList)
+    #print(headerString)
     outFile.write(headerString)
+
     with open('base-worldco2.tsv', 'r') as tp:
 
         for worldLine in tp:
