@@ -83,6 +83,8 @@ def createDataAsList():
                 country, year, value, cont = line.split(",")
                 info = [country, value, year]
                 #print("Info is %s" %info)
+                if not value:
+                    value = "NaN"
 
                 foundCountryFlag = 0
                 for tuples in lists:
