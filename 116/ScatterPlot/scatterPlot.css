@@ -1,0 +1,28 @@
+
+#play-button {
+  background: #f08080;
+  padding-right: 26px;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  margin: 0;
+  padding: 0 12px;
+  width: 60px;
+  cursor: pointer;
+  height: 30px;
+}
+
+#play-button:hover {
+  background-color: #696969;
+}
+
+#displayYear {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 90pt;
+  letter-spacing: -17px;
+  z-index: -1;
+  opacity: 0.5;
+}
