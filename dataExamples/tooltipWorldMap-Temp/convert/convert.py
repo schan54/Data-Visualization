@@ -75,7 +75,7 @@ def createTemperatureTsv():
                     split = line.split(" ")
                     if len(split) <= 1:
                         break
-                    tempString = tempString.rstrip('\n') + '\t' + split[-1] + '\n'
+                    tempString = tempString.rstrip('\n') + '\t' + split[-1]
                     #print(split[1])
                     if split[1] == "2014":
                         with open('../base-worldtemp.tsv') as cp:
@@ -105,7 +105,7 @@ def createSingleYear():
                     id = split[0]
                     name = split[1]
                     value = split[yearIndex]
-                    valueAsInt = float(value) **
+                    valueAsInt = float(value)
                     updateString = id + '\t' + name + '\t' + str(valueAsInt) + '\n'
                     print(updateString)
                     outFile.write(updateString)

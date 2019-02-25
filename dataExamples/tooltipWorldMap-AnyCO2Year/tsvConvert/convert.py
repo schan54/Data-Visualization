@@ -39,7 +39,7 @@ def createSingleYear():
                 #print("%s"% yearAndValue)
 
                 #print(value)
-                valueNum = float(value) * 100000
+                valueNum = float(value)
                 #valueNum = valueNum * 100
                 #print(valueNum)
                 #If year of data matches input keep going
@@ -120,7 +120,7 @@ def createTsvHead(yearList):
 
 def addFullDataToBase(lists, yearList):
     print("\n")
-    fileString = "worldco2AllData.tsv"
+    fileString = "worldco2.tsv"
     outFile = open(fileString, 'w+')
 
     #Create headerString with Years
@@ -138,7 +138,7 @@ def addFullDataToBase(lists, yearList):
                     #print("Matched %s to %s" % (tuples[0], worldLine))
                     countryFound = 1
                     #lineString = worldLine.rstrip('\n') + '\t' + yearAndValue + '\n'
-                    lineString = worldLine.rstrip('\n') + '\t' + tuples[1] + '\n'
+                    lineString = worldLine.rstrip('\n') + '\t' + tuples[1]
                     #print("%s" % lineString)
                     outFile.write(lineString)
 

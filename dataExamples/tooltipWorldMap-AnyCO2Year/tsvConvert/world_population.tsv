@@ -1,243 +1,187 @@
 id	name	population
-IND	India	"1173108018"
-CHN	China	"1330141295"	
-USA	United States	"310232863"
-IDN	Indonesia	"242968342"
-BRA	Brazil	"201103330"
-PAK	Pakistan	"177276594"
-BGD	Bangladesh	"158065841"
-NGA	Nigeria	"152217341"
-RUS	Russia	"139390205"
-JPN	Japan	"126804433"
-MEX	Mexico	"112468855"
-PHL	Philippines	"99900177"
-VNM	Vietnam	"89571130"
-ETH	Ethiopia	"88013491"
-DEU	Germany	"82282988"
-EGY	Egypt	"80471869"
-TUR	Turkey	"77804122"
-COD	"Congo, Democratic Republic of the"	"70916439"
-IRN	Iran	"67037517"
-THA	Thailand	"66404688"
-FRA	France	"64057792"
-GBR	United Kingdom	"61284806"
-ITA	Italy	"58090681"
-MMR	Burma	"53414374"
-ZAF	South Africa	"49109107"
-KOR	"Korea, South"	"48636068"
-UKR	Ukraine	"45415596"
-COL	Colombia	"44205293"
-SDN	Sudan	"41980182"
-TZA	Tanzania	"41892895"
-ARG	Argentina	"41343201"
-ESP	Spain	"40548753"
-KEN	Kenya	"40046566"
-POL	Poland	"38463689"
-DZA	Algeria	"34586184"
-CAN	Canada	"33759742"
-UGA	Uganda	"33398682"
-MAR	Morocco	"31627428"
-PER	Peru	"29907003"
-IRQ	Iraq	"29671605"
-SAU	Saudi Arabia	"29207277"
-AFG	Afghanistan	"29121286"
-NPL	Nepal	"28951852"
-UZB	Uzbekistan	"27865738"
-VEN	Venezuela	"27223228"
-MYS	Malaysia	"26160256"
-GHA	Ghana	"24339838"
-YEM	Yemen	"23495361"
-TWN	Taiwan	"23024956"
-PRK	"Korea, North"	"22757275"
-SYR	Syria	"22198110"
-ROU	Romania	"22181287"
-MOZ	Mozambique	"22061451"
-AUS	Australia	"21515754"
-LKA	Sri Lanka	"21513990"
-MDG	Madagascar	"21281844"
-CIV	Cote d'Ivoire	"21058798"
-CMR	Cameroon	"19294149"
-NLD	Netherlands	"16783092"
-CHL	Chile	"16746491"
-BFA	Burkina Faso	"16241811"
-NER	Niger	"15878271"
-KAZ	Kazakhstan	"15460484"
-MWI	Malawi	"15447500"
-ECU	Ecuador	"14790608"
-KHM	Cambodia	"14753320"
-SEN	Senegal	"14086103"
-MLI	Mali	"13796354"
-GTM	Guatemala	"13550440"
-AGO	Angola	"13068161"
-ZMB	Zambia	"12056923"
-ZWE	Zimbabwe	"11651858"
-CUB	Cuba	"11477459"
-RWA	Rwanda	"11055976"
-GRC	Greece	"10749943"
-PRT	Portugal	"10735765"
-TUN	Tunisia	"10589025"
-TCD	Chad	"10543464"
-BEL	Belgium	"10423493"
-GIN	Guinea	"10324025"
-CZE	Czech Republic	"10201707"
-SOM	Somalia	"10112453"
-BOL	Bolivia	"9947418"
-HUN	Hungary	"9880059"
-BDI	Burundi	"9863117"
-DOM	Dominican Republic	"9794487"
-BLR	Belarus	"9612632"
-HTI	Haiti	"9203083"
-SWE	Sweden	"9074055"
-BEN	Benin	"9056010"
-AZE	Azerbaijan	"8303512"
-AUT	Austria	"8214160"
-HND	Honduras	"7989415"
-CHE	Switzerland	"7623438"
-TJK	Tajikistan	"7487489"
-ISR	Israel	"7353985"
-SRB	Serbia	"7344847"
-BGR	Bulgaria	"7148785"
-HKG	Hong Kong	"7089705"
-LAO	Laos	"6993767"
-LBY	Libya	"6461454"
-JOR	Jordan	"6407085"
-PRY	Paraguay	"6375830"
-TGO	Togo	"6199841"
-PNG	Papua New Guinea	"6064515"
-SLV	El Salvador	"6052064"
-NIC	Nicaragua	"5995928"
-ERI	Eritrea	"5792984"
-DNK	Denmark	"5515575"
-KGZ	Kyrgyzstan	"5508626"
-SVK	Slovakia	"5470306"
-FIN	Finland	"5255068"
-SLE	Sierra Leone	"5245695"
-ARE	United Arab Emirates	"4975593"
-TKM	Turkmenistan	"4940916"
-CAF	Central African Republic	"4844927"
-SGP	Singapore	"4701069"	not listed
-NOR	Norway	"4676305"
-BIH	Bosnia and Herzegovina	"4621598"
-GEO	Georgia	"4600825"
-CRI	Costa Rica	"4516220"
-HRV	Croatia	"4486881"
-MDA	Moldova	"4317483"
-NZL	New Zealand	"4252277"
-IRL	Ireland	"4250163"
-COG	"Congo, Republic of the"	"4125916"
-LBN	Lebanon	"4125247"
-PRI	Puerto Rico	"3977663"
-LBR	Liberia	"3685076"
-ALB	Albania	"3659616"
-LTU	Lithuania	"3545319"
-URY	Uruguay	"3510386"
-PAN	Panama	"3410676"
-MRT	Mauritania	"3205060"
-MNG	Mongolia	"3086918"
-OMN	Oman	"2967717"
-ARM	Armenia	"2966802"
-JAM	Jamaica	"2847232"
-KWT	Kuwait	"2789132"
-PSE	West Bank	"2514845"
-LVA	Latvia	"2217969"
-NAM	Namibia	"2128471"
-MKD	Macedonia	"2072086"
-BWA	Botswana	"2029307"
-SVN	Slovenia	"2003136"
-LSO	Lesotho	"1919552"
-GMB	"Gambia, The"	"1824158"
-KWT	Kosovo	"1815048"
-149	Gaza Strip	"1604238"	not listed
-GNB	Guinea-Bissau	"1565126"
-GAB	Gabon	"1545255"
-SWZ	Swaziland	"1354051"
-153	Mauritius	"1294104"	not listed
-EST	Estonia	"1291170"
-TTO	Trinidad and Tobago	"1228691"
-TLS	Timor-Leste	"1154625"
-CYP	Cyprus	"1102677"
-FJI	Fiji	"957780"
-QAT	Qatar	"840926"
-160	Comoros	"773407"	not listed
-GUY	Guyana	"748486"
-DJI	Djibouti	"740528"
-163	Bahrain	"738004"	not listed
-BTN	Bhutan	"699847"
-MNE	Montenegro	"666730"
-GNQ	Equatorial Guinea	"650702"
-SLB	Solomon Islands	"609794"
-168	Macau	"567957"	not listed
-169	Cape Verde	"508659"	not listed
-LUX	Luxembourg	"497538"
-ESH	Western Sahara	"491519"
-SUR	Suriname	"486618"
-173	Malta	"406771"	not listed
-174	Maldives	"395650"	not listed
-BRN	Brunei	"395027"
-BLZ	Belize	"314522"
-BHS	"Bahamas, The"	"310426"
-ISL	Iceland	"308910"
-179	French Polynesia	"291000"	not listed
-180	Barbados	"285653"	not listed
-181	Mayotte	"231139"	not listed
-NCL	New Caledonia	"229993"
-183	Netherlands Antilles	"228693"	not listed
-VUT	Vanuatu	"221552"
-185	Samoa	"192001"	not listed
-186	Sao Tome and Principe	"175808"	not listed
-187	Saint Lucia	"160922"	not listed
-188	Tonga	"122580"	not listed
-189	Virgin Islands	"109775"	not listed
-190	Grenada	"107818"	not listed
-191	"Micronesia, Federated States of"	"107154"	not listed
-192	Aruba	"104589"	not listed
-193	Saint Vincent and the Grenadines	"104217"	not listed
-194	Kiribati	"99482"	not listed
-195	Jersey	"91812"	not listed
-196	Seychelles	"88340"	not listed
-197	Antigua and Barbuda	"86754"	not listed
-198	Andorra	"84525"	not listed
-199	Isle of Man	"76913"	not listed
-DOM	Dominica	"72813"
-201	Bermuda	"68268"	not listed
-202	American Samoa	"66432"	not listed
-203	Marshall Islands	"65859"	not listed
-204	Guernsey	"65632"	not listed
-GRL	Greenland	"57637"
-206	Cayman Islands	"50209"	not listed
-207	Saint Kitts and Nevis	"49898"	not listed
-208	Faroe Islands	"49057"	not listed
-209	Northern Mariana Islands	"48317"	not listed
-210	Liechtenstein	"35002"	not listed
-211	San Marino	"31477"	not listed
-212	Monaco	"30586"	not listed
-213	Saint Martin	"30235"	not listed
-214	Gibraltar	"28877"	not listed
-215	British Virgin Islands	"24939"	not listed
-216	Turks and Caicos Islands	"23528"	not listed
-217	Palau	"20879"	not listed
-218	Akrotiri	"15700"	not listed
-219	Dhekelia	"15700"	not listed
-220	Wallis and Futuna	"15343"	not listed
-221	Anguilla	"14764"	not listed
-222	Nauru	"14264"	not listed
-223	Cook Islands	"11488"	not listed
-224	Tuvalu	"10472"	not listed
-225	"Saint Helena, Ascension, and Tristan da Cunha"	"7670"	not listed
-226	Saint Barthelemy	"7406"	not listed
-227	Saint Pierre and Miquelon	"6010"	not listed
-228	Montserrat	"5118"	not listed
-FLK	Falkland Islands (Islas Malvinas)	"3140"
-230	Norfolk Island	"2155"	not listed
-231	Svalbard	"2067"	not listed
-232	Christmas Island	"1402"	not listed
-233	Tokelau	"1400"	not listed
-234	Niue	"1354"	not listed
-235	Holy See (Vatican City)	829	not listed
-236	Cocos (Keeling) Islands	596	not listed
-237	Pitcairn Islands	48	not listed
-ATA	Antarctica	0
-ATF	French Southern and Antarctic Lands	0
-SDS	South Sudan	"12152321"
-ABV	Somaliland	"3500000"
-OSA	Kosovo	"1824000"
+AFG	Afghanistan	109120.0
+ALB	Albania	255010.0
+DZA	Algeria	842090.0
+AGO	Angola	155250.0
+197	Antigua and Barbuda	34808.0
+ARG	Argentina	6307270.0
+ARM	Armenia	344800.0
+192	Aruba	55394.0
+AUS	Australia	12021930.0
+AUT	Austria	3920860.0
+AZE	Azerbaijan	3329430.0
+BHS	"Bahamas, The"	109190.0
+163	Bahrain	64853.0
+BGD	Bangladesh	317630.0
+180	Barbados	26747.0
+BLR	Belarus	5174570.0
+BEL	Belgium	10509670.0
+BLZ	Belize	8060.8
+BEN	Benin	11358.0
+201	Bermuda	20152.0
+BOL	Bolivia	168880.0
+BIH	Bosnia and Herzegovina	727280.0
+BRA	Brazil	6421160.0
+215	British Virgin Islands	1099.2
+BGR	Bulgaria	4871600.0
+BFA	Burkina Faso	10259.0
+BDI	Burundi	4763.2
+KHM	Cambodia	46875.0
+CMR	Cameroon	34442.0
+CAN	Canada	25907440.0
+169	Cape Verde	2198.4
+CAF	Central African Republic	8427.2
+TCD	Chad	8427.2
+CHL	Chile	1877250.0
+CHN	China	52145890.0
+COL	Colombia	2347420.0
+160	Comoros	1832.0
+COD	"Congo, Democratic Republic of the"	30778.0
+COG	"Congo, Republic of the"	30778.0
+CRI	Costa Rica	99247.0
+HRV	Croatia	792790.0
+CUB	Cuba	1516940.0
+CYP	Cyprus	124170.0
+CZE	Czech Republic	12152140.0
+DNK	Denmark	5007840.0
+DJI	Djibouti	13923.0
+DOM	Dominican Republic	1465.6
+DOM	Dominica	1465.6
+DOM	Dominican Republic	166970.0
+ECU	Ecuador	241670.0
+EGY	Egypt	2653220.0
+SLV	El Salvador	130380.0
+GNQ	Equatorial Guinea	2564.8
+EST	Estonia	1413530.0
+ETH	Ethiopia	82398.0
+FJI	Fiji	32225.0
+FIN	Finland	2948880.0
+FRA	France	34760480.0
+179	French Polynesia	12091.0
+GAB	Gabon	38106.0
+GMB	"Gambia, The"	3297.6
+GEO	Georgia	907710.0
+DEU	Germany	95142200.0
+GHA	Ghana	144000.0
+GRC	Greece	1862060.0
+GRL	Greenland	38838.0
+190	Grenada	2931.2
+GTM	Guatemala	173960.0
+GIN	Guinea	71814.0
+PNG	Papua New Guinea	71814.0
+GNB	Guinea-Bissau	71814.0
+GNQ	Equatorial Guinea	71814.0
+GNB	Guinea-Bissau	6595.2
+GUY	Guyana	117980.0
+HTI	Haiti	30396.0
+HND	Honduras	80566.0
+HKG	Hong Kong	516160.0
+HUN	Hungary	6167290.0
+ISL	Iceland	149440.0
+IND	India	17168840.0
+IDN	Indonesia	2337500.0
+IRN	Iran	6410340.0
+IRQ	Iraq	2767610.0
+IRL	Ireland	1509490.0
+ISR	Israel	1358140.0
+ITA	Italy	21398230.0
+JAM	Jamaica	351600.0
+JPN	Japan	41924510.0
+JOR	Jordan	158130.0
+KAZ	Kazakhstan	15511590.0
+KEN	Kenya	268010.0
+194	Kiribati	1099.2
+KWT	Kuwait	3512310.0
+KGZ	Kyrgyzstan	663610.0
+LAO	Laos	23450.0
+LVA	Latvia	837200.0
+LBN	Lebanon	362290.0
+LBR	Liberia	61189.0
+LBY	Libya	262710.0
+LTU	Lithuania	1310620.0
+LUX	Luxembourg	1161040.0
+MDG	Madagascar	57870.0
+MWI	Malawi	42851.0
+MYS	Malaysia	983440.0
+MLI	Mali	19053.0
+173	Malta	41403.0
+MRT	Mauritania	17954.0
+153	Mauritius	27480.0
+MEX	Mexico	8084460.0
+MDA	Moldova	1262320.0
+MNG	Mongolia	195290.0
+MNE	Montenegro	92617.0
+228	Montserrat	732.8
+MAR	Morocco	545950.0
+MOZ	Mozambique	212420.0
+222	Nauru	3297.6
+NPL	Nepal	19053.0
+NLD	Netherlands	10355750.0
+183	Netherlands Antilles	10355750.0
+NCL	New Caledonia	150960.0
+NZL	New Zealand	1400030.0
+NIC	Nicaragua	95964.0
+NGA	Nigeria	13551.0
+NER	Niger	13551.0
+NGA	Nigeria	1289320.0
+NOR	Norway	1954010.0
+OMN	Oman	2931.2
+PAK	Pakistan	1712580.0
+PAN	Panama	165550.0
+PNG	Papua New Guinea	34075.0
+PRY	Paraguay	51284.0
+PER	Peru	1324110.0
+PHL	Philippines	1610410.0
+POL	Poland	25243100.0
+PRT	Portugal	1183510.0
+QAT	Qatar	627280.0
+ROU	Romania	8409070.0
+RWA	Rwanda	4396.8
+187	Saint Lucia	2931.2
+227	Saint Pierre and Miquelon	4396.8
+193	Saint Vincent and the Grenadines	1832.0
+185	Samoa	2564.8
+202	American Samoa	2564.8
+186	Sao Tome and Principe	1099.2
+SAU	Saudi Arabia	640730.0
+SEN	Senegal	171760.0
+SRB	Serbia	2098050.0
+196	Seychelles	732.8
+SLE	Sierra Leone	30045.0
+SGP	Singapore	67260.0
+SVK	Slovakia	3885640.0
+SVN	Slovenia	602740.0
+SLB	Solomon Islands	2564.8
+SOM	Somalia	13923.0
+ZAF	South Africa	12823490.0
+ESP	Spain	7761700.0
+LKA	Sri Lanka	265970.0
+SDN	Sudan	242120.0
+SDS	South Sudan	242120.0
+SUR	Suriname	109550.0
+SWZ	Swaziland	20152.0
+SWE	Sweden	7251740.0
+CHE	Switzerland	3148560.0
+SYR	Syria	491090.0
+TWN	Taiwan	1946160.0
+TJK	Tajikistan	432940.0
+TZA	Tanzania	137010.0
+THA	Thailand	946540.0
+TGO	Togo	17954.0
+188	Tonga	1099.2
+TTO	Trinidad and Tobago	405150.0
+TUN	Tunisia	288160.0
+TUR	Turkey	3150580.0
+TKM	Turkmenistan	1954980.0
+UGA	Uganda	73232.0
+UKR	Ukraine	37291090.0
+ARE	United Arab Emirates	2564.8
+GBR	United Kingdom	61807470.0
+URY	Uruguay	539880.0
+UZB	Uzbekistan	6616840.0
+VUT	Vanuatu	7694.4
+VEN	Venezuela	5697400.0
+VNM	Vietnam	1918110.0
+YEM	Yemen	346250.0
+ZMB	Zambia	349820.0
+ZWE	Zimbabwe	604090.0

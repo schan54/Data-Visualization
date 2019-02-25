@@ -5,7 +5,7 @@ var tip = d3.tip()
             .attr('class', 'd3-tip')
             .offset([-10, 0])
             .html(function(d) {
-              return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + ": </strong><span class='details'>" + format(d.value) +"</span>";
+              return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>1990: </strong><span class='details'>" + format(d.population) +"</span>";
             })
 
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
@@ -13,7 +13,7 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
             height = 1000 - margin.top - margin.bottom;
 
 var color = d3.scaleThreshold()
-    .domain([1,3,5,10,50,100,200,500,1000,2000])
+    .domain([10000,100000,500000,1000000,5000000,10000000,50000000,100000000,500000000,1500000000])
     .range(["rgb(247,251,255)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(8,48,107)","rgb(3,19,43)"]);
 
 var path = d3.geoPath();
@@ -38,15 +38,27 @@ queue()
     .defer(d3.tsv, "worldData.tsv")
     .await(ready);
 
-
-var userYear = "1990"
-var userYearAsInt = 1990
-
 function ready(error, data, population) {
   var populationById = {};
 
-  population.forEach(function(d) { populationById[d.id] = +d[userYear]; });
-  data.features.forEach(function(d) { d.value = populationById[d.id] });
+  population.forEach(function(d) { populationById[d.id] = +d.population; });
+  data.features.forEach(function(d) { d.Year = populationById[d.id] });
+
+
+  //console.log(population)
+  //Grabs the correct column for map
+  userYear = "1990"
+  targetYear = 1990
+  for (year in population.columns) {
+    if (userYear == population.columns[year]) {
+      targetYear = population.columns[year]
+      yearIndex = year
+      console.log(targetYear)
+      console.log(yearIndex)
+    }
+  }
+  console.log(data.features[0])
+  console.log(population[0])
 
   svg.append("g")
       .attr("class", "countries")
