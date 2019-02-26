@@ -36,7 +36,7 @@ def writeToFile(string, yearList, countryList):
         outFile.write('\t\t"name": ' + yearList[i-1] + ",\n")
         outFile.write('\t\t"children": [\n' )
         for entries in countryList:
-            outFile.write('\t\t\t{"name": ' + entries[0] + ' , "size": ' + entries[i] + '},\n')
+            outFile.write('\t\t\t{"name": "' + entries[0] + '" , "size": ' + entries[i] + '},\n')
         outFile.write('\t\t]\n')
         outFile.write('\t},\n')
     outFile.write(']\n')
