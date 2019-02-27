@@ -7,7 +7,7 @@
         {"name":"country", "size":000},
         {"name":"country", "size":000},
         {"name":"country", "size":000},
-        {"name":"country", "size":000},
+        {"name":"country", "size":000}
     ]
 },
 {
@@ -19,7 +19,7 @@
         {"name":"country", "size":000},
         {"name":"country", "size":000},
         {"name":"country", "size":000},
-        {"name":"country", "size":000},
+        {"name":"country", "size":000}
     ]
 },
 {
@@ -31,35 +31,35 @@
         {"name":"country", "size":000},
         {"name":"country", "size":000},
         {"name":"country", "size":000},
-        {"name":"country", "size":000},
+        {"name":"country", "size":000}
     ]
 },
 {
     "name": Year,
     "children":[
-        {"name":"country", "size: 123,
+        {"name":"country", "size": "I was thinking total energy consumption" ,
          "children":[
-              {"name": asdf, ""size"": 123},
-              {"name": asdf, ""size"":123},
-              {"name": asdf, ""size"":123},
+            {"name": "asdf", "size": 123},
+            {"name": "asdf", "size": 123},
+            {"name": "asdf", "size": 123}
           ]},
-        {"name":"country", ""size"": 123,
-         "children":[
-                {"name": asdf, ""size"":123},
-                {"name": asdf, ""size"":123},
-                {"name": asdf, ""size"":123},
+        {"name":"country", "size": 123 ,
+        "children":[
+            {"name": "asdf", "size": 123},
+            {"name": "asdf", "size": 123},
+            {"name": "asdf", "size": 123}
             ]},
-        {"name":"country", ""size"": 123,
-         "children":[
-                {"name": asdf, ""size"": 123},
-                {"name": asdf, ""size"":123},
-                {"name": asdf, ""size"":123},
-             ]},
-        
+        {"name":"country", "size": 123 ,
+        "children":[
+            {"name": "asdf", "size": 123},
+            {"name": "asdf", "size": 123},
+            {"name": "asdf", "size": 123}
+            ]}
+
     ]
 }]
 
 
 
-// I'm thinking of expanding the "size" by combining children from other files
-// Ex:  
+// I'm thinking of adding more children from other files. 
+//If I want to go deeper, I can keep adding children:[{name, size, children},{},{}], and so on, but thats for the future for now
