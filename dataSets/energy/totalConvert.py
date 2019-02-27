@@ -1,20 +1,19 @@
-def readFile():
-    inFile = "Enerdata_Energy_Statistical_Yearbook_2018 - Total energy production.tsv"
-    with open(inFile) as fp:
-        yearList = []
-        countryList = []
+import os
+def readFiles():
+    for filename in os.listdir(os.getcwd()):
+        with open(filename) as cp:
+            if '.tsv' not in filename:
+                break
+            fileString = filename.replace('.tsv', '.json')
+            fileString = '../' + fileString
+            outFile = open(fileString, 'w+')
+            countryList = []
 
-        for line in fp:
-            splitLine = line.split('\t')
-            if "1990\t1991" in line:
-                indexCount = 0
-                for year in splitLine:
-                    if indexCount > 27:
-                        break
-                    yearList.append(year)
-                    indexCount += 1
-                #print(yearList)
-            else:
+            headerName = filename.strip('.tsv')
+            countryList.append(headerName)
+
+            for line in cp:
+                splitLine = line.split('\t')
                 count = 0
                 tempList = []
                 for values in splitLine:
@@ -25,7 +24,15 @@ def readFile():
                     #print(values)
                     count +=1
                 countryList.append(tempList)
-        return yearList, countryList
+
+            return countryList
+
+def getYears():
+    yearList = []
+    for i in range(1990, 2018):
+        yearList.append(i)
+    print yearList
+    return yearList
 
 def writeToFile(string, yearList, countryList):
     outFile = open(string, 'w+')
@@ -38,12 +45,17 @@ def writeToFile(string, yearList, countryList):
         for entries in countryList:
             outFile.write('\t\t\t{"name": "' + entries[0] + '" , "size": ' + entries[i] + '},\n')
         outFile.write('\t\t]\n')
-        outFile.write('\t},\n')
+        if i == 28:
+            outFile.write('\t}\n')
+        else:
+            outFile.write('\t},\n')
+
     outFile.write(']\n')
 
     outFile.close()
 
+def start():
+    yearList = getYears()
+    everythingList = []
 
-yearList, countryList = readFile()
-outFileString = "totalEnergy.json"
-writeToFile(outFileString, yearList, countryList)
+getYears()
