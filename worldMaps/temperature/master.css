@@ -1,0 +1,172 @@
+/* global variables for colors */
+:root {
+  --primary-color: #29506D;
+  --primary-color-tint-1: #718EA4;
+  --primary-color-tint-2: #496D89;
+  --primary-color-shade-1: #123652;
+  --primary-color-shade-2: #042037;
+  --secondary-color: #AA7939;
+  --secondary-color-tint-1: #FFDBAA;
+  --secondary-color-tint-2: #D4A76A;
+  --secondary-color-shade-1: #805215;
+  --secondary-color-shade-2: #553100;
+  --tertiary-color: #343477;
+  --tertiary-color-tint-1: #8080B3;
+  --tertiary-color-tint-2: #565695;
+  --tertiary-color-shade-1: #1A1A59;
+  --tertiary-color-shade-2: #09093B;
+  --quarternary-color: #AA8E39;
+  --quarternary-color-tint-1: #FFEAAA;
+  --quarternary-color-tint-2: #D4BA6A;
+  --quarternary-color-shade-1: #806515;
+  --quarternary-color-shade-2: #554000;
+  --light-grey: #EDEDED;
+}
+
+body {
+  background-color: var(--light-grey);
+  text-align: center;
+  margin: 0px;
+}
+
+body svg {
+  background-color: var(--quarternary-color-tint-2);
+  border-style: solid;
+  border-width: thin;
+  border-radius: 20px;
+  margin-top: 80px;
+}
+
+.names {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  }
+
+/* Tooltip CSS */
+.d3-tip {
+  line-height: 1.5;
+  font-weight: 400;
+  font-family:"avenir next", Arial, sans-serif;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFA500;
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {      
+  box-sizing: border-box;
+  display: inline;
+  font-size: 8px;
+  width: 100%;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  pointer-events: none;
+  
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+  content: "\25BC";
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+  content: "\25C0";
+  margin: -4px 0 0 0;
+  top: 50%;
+  left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+  content: "\25B2";
+  margin: 0 0 1px 0;
+  top: -8px;
+  left: 0;
+  text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+  content: "\25B6";
+  margin: -4px 0 0 -1px;
+  top: 50%;
+  left: 100%;
+}
+
+/*    text{
+  pointer-events:none;
+}*/
+
+.details{
+  color:white;
+}
+
+.menubar {
+  background-color: var(--primary-color);
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  border-bottom: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: var(--primary-color-shade-2)
+}
+
+.menubar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: thin;
+  letter-spacing: 2px;
+}
+
+.menubar a:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.selected {
+  background-color: var(--secondary-color-tint-2);
+  color: white;
+}
+
+.menubar .icon {
+  display: none;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the menubar (.icon) */
+@media screen and (max-width: 600px) {
+  .menubar a:not(.selected) {display: none;}
+  .menubar a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the menubar with JavaScript when the user clicks on the icon. This class makes the menubar look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .menubar.responsive {position: relative;}
+  .menubar.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .menubar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
