@@ -8,7 +8,6 @@ path {
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
-<script src="https://unpkg.com/d3-simple-slider/build/d3-simple-slider.js"></script>
 <h1>Global Energy Consumption(Mtoe)</h1>
 <p>Hover over the burst to see tooltips and click on the part you're interesting in to see more info</p>
 <h2 id = "yeartxt">Year</h2>
@@ -39,24 +38,33 @@ var svg = d3.select("body").append("svg")
 
 d3.json("energyusage.json", function(error, root) {
   if (error) throw error;
-  var path = svg.selectAll("path")
-      .data(partition.nodes(root[0]))
-    .enter().append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color(d.name); })
-      .on("click", click)
-    .append("title")
-      .text(function(d) { return d.name + "\n" + formatNumber(d.size); });
+   var year = 0;
+   var path = svg.selectAll("path");
+   var data = path.data(partition.nodes(root[year]));
 
+   drawSunburst(data,root[year]);
+   
     d3.select("#yearslider").on("change", function(){
         d3.select("#yeartxt").text(this.value);
-        var year = this.value - 1990;
-        path.data(partition.nodes(root[1]))
-            .transition()
-            .duration(750);
+        year = this.value - 1990;
+       drawSunburst(path,root[year]);
     });
 });
-
+function drawSunburst(path, root){
+      path
+            .data(partition.nodes(root))
+          .enter().append("path")
+            .attr("d", arc)
+            .style("fill", function(d) { return color(d.name); })
+             .on("click", click)
+          .append("title")
+            .text(function(d) { return d.name + "\n" + formatNumber(d.size); })
+          // .append("text")
+          //   .attr("text-anchor", "middle")
+          //   .text(function(d){return d.name;})
+          .transition()
+            .duration(750);
+}
 function click(d) {
   svg.transition()
       .duration(750)
