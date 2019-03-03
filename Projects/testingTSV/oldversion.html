@@ -31,21 +31,14 @@ svg {
   text-anchor: middle;
 }
 
-.birthyear {
-  fill: #fff;
-}
 
-rect {
-  fill-opacity: .6;
-  fill: #e377c2;
-}
+
+
 
 rect:first-child {
   fill: #1f77b4;
 }
-rect:nth-child(2) {
-  fill: #a5b0b8;
-}
+
 div.tooltip {	
     position: absolute;			
     text-align: center;			
@@ -119,7 +112,7 @@ d3.tsv("test.tsv", function(error, data) {
 
   // Update the scale domains.
   x.domain([year1 - month1, year1]);
-  y.domain([0, d3.max(data, function(d) { return d.tem; })]);
+  y.domain([d3.min(data, function(d) { return d.tem; }), d3.max(data, function(d) { return d.tem; })]);
 
   
   // Produce a map from year and birthyear to [male, female].
@@ -151,7 +144,7 @@ d3.tsv("test.tsv", function(error, data) {
       .attr("x", -barWidth / 2)
       .attr("width", barWidth)
       .attr("y", y)
-      .attr("height", function(value) { return height - y(value); })       
+      .attr("height", function(value) { return height - y(value)+10; })       
        .on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		
@@ -221,7 +214,7 @@ d3.tsv("test.tsv", function(error, data) {
       .transition()
         .duration(750)
         .attr("y", y)
-        .attr("height", function(value) { return height - y(value); });
+        .attr("height", function(value) { return height - y(value)+10; });
   }
 });
 
@@ -322,7 +315,7 @@ birthyear.selectAll("rect")
     .attr("x", -barWidth / 2)
     .attr("width", barWidth)
     .attr("y", y)
-    .attr("height", function(value) { return height - y(value); })       
+    .attr("height", function(value) { return height - y(value)+10; })       
      .on("mouseover", function(d) {		
           div.transition()		
               .duration(200)		
@@ -392,7 +385,7 @@ function update() {
     .transition()
       .duration(750)
       .attr("y", y)
-      .attr("height", function(value) { return height - y(value); });
+      .attr("height", function(value) { return height - y(value) +10; });
       rect.exit().transition().attr('r',0).duration(1000).remove();
 
 }
