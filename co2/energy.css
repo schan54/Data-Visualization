@@ -1,0 +1,21 @@
+path {
+    stroke: #fff;
+}
+
+h1 {
+    position:relative;
+    top:50px;
+}
+p {
+    position:relative;
+    top:50px;
+}
+
+#yeartxt {
+    top:150px;
+}
+#yearslider{
+    width:60%;
+    position:relative;
+    top:50px;
+}

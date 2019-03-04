@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Energy</title>
+  <title>Energy</title>  
+  <!-- Code referenced from Mike Bostock -->
+  <script src="//d3js.org/d3.v3.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-	<link rel="stylesheet" type="text/css" href="master.css" />
+  <link rel="stylesheet" type="text/css" href="master.css" />
+  <link rel="stylesheet" type="text/css" href="energy.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<script type="text/javascript" src="master.js"></script>
   <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
@@ -16,79 +19,82 @@
       $("#nav-placeholder").load("navigation.html", function() {
         $("a[href= 'index.html']").addClass("selected");
       });
-    });</script>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-<h1>Global Energy Consumption(Mtoe)</h1>
-<p>Hover over the burst to see tooltips and click on the part you're interesting in to see more info</p>
-<h2 id = "yeartxt">Year</h2>
-<input id="yearslider" style = "width:60%" type="range" min="1990" max="2017" step="1" value = "1990"></input>
-<script>
-var width = 960,
-    height = 700,
-    radius = (Math.min(width, height) / 2) - 10;
-var formatNumber = d3.format(",d");
-var x = d3.scale.linear()
-    .range([0, 2 * Math.PI]);
-var y = d3.scale.sqrt()
-    .range([0, radius]);
-var color = d3.scale.category20c();
-var partition = d3.layout.partition()
-    .value(function(d) { return d.size; });
-var arc = d3.svg.arc()
-    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
-    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
-    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+    });
+  </script>
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+  <h1>Global Energy Consumption(Mtoe)</h1>
+  <p>Hover over the burst to see tooltips and click on the part you're interesting in to see more info</p>
+  <h2 id = "yeartxt">Year</h2>
+  
+  <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
 
-d3.json("energyusage.json", function(error, root) {
-  if (error) throw error;
-   var year = 0;
-   var path = svg.selectAll("path");
-   var data = path.data(partition.nodes(root[year]));
+  <script>
+    var width = 960,
+        height = 700,
+        radius = (Math.min(width, height) / 2) - 10;
+    var formatNumber = d3.format(",d");
+    var x = d3.scale.linear()
+        .range([0, 2 * Math.PI]);
+    var y = d3.scale.sqrt()
+        .range([0, radius]);
+    var color = d3.scale.category20c();
+    var partition = d3.layout.partition()
+        .value(function(d) { return d.size; });
+    var arc = d3.svg.arc()
+        .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+        .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+        .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+        .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
-   drawSunburst(data,root[year]);
-   
-    d3.select("#yearslider").on("change", function(){
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+
+    d3.json("energyusage.json", function(error, root) {
+      if (error) throw error;
+      var year = 0;
+      var path = svg.selectAll("path");
+      var data = path.data(partition.nodes(root[year]));
+
+      drawSunburst(data,root[year]);
+      
+      d3.select("#yearslider").on("change", function(){
         d3.select("#yeartxt").text(this.value);
         year = this.value - 1990;
-       drawSunburst(path,root[year]);
+        drawSunburst(path,root[year]);
+      });
     });
-});
-function drawSunburst(path, root){
+
+    function drawSunburst(path, root){
       path
-            .data(partition.nodes(root))
-          .enter().append("path")
-            .attr("d", arc)
-            .style("fill", function(d) { return color(d.name); })
-             .on("click", click)
-          .append("title")
-            .text(function(d) { return d.name + "\n" + formatNumber(d.size); })
-          // .append("text")
-          //   .attr("text-anchor", "middle")
-          //   .text(function(d){return d.name;})
-          .transition()
-            .duration(750);
-}
-function click(d) {
-  svg.transition()
-      .duration(750)
-      .tween("scale", function() {
-        var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-            yd = d3.interpolate(y.domain(), [d.y, 1]),
-            yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-        return function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); };
-      })
-    .selectAll("path")
-      .attrTween("d", function(d) { return function() { return arc(d); }; });
-}
-d3.select(self.frameElement).style("height", height + "px");
-</script>
+          .data(partition.nodes(root))
+        .enter().append("path")
+          .attr("d", arc)
+          .style("fill", function(d) { return color(d.name); })
+          .on("click", click)
+        .append("title")
+          .text(function(d) { return d.name + "\n" + formatNumber(d.size); })
+        // .append("text")
+        //   .attr("text-anchor", "middle")
+        //   .text(function(d){return d.name;})
+        .transition()
+          .duration(750);
+    }
+    function click(d) {
+      svg.transition()
+          .duration(750)
+          .tween("scale", function() {
+            var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+                yd = d3.interpolate(y.domain(), [d.y, 1]),
+                yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+            return function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); };
+          })
+        .selectAll("path")
+          .attrTween("d", function(d) { return function() { return arc(d); }; });
+    }
+    d3.select(self.frameElement).style("height", height + "px");
   </script>
 </body>
 </html>
