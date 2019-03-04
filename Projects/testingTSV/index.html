@@ -49,18 +49,20 @@ rect:nth-child(2) {
 #inds{
 	position:absolute;
 	top:10px;
-	left:10px;
+	right:10px;
 }
 divs.tooltip {	
-    text-align: left;			
-    width: 0px;					
-    height: 8px;					
+	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
     padding: 2px;				
     font: 12px sans-serif;		
-    background: transparent;	
+    background: lightsteelblue;	
     border: 0px;		
-    border-radius: 0px;			
-    pointer-events: none;			
+    border-radius: 8px;			
+    pointer-events: none;		
 }
 
 </style>
@@ -69,7 +71,7 @@ divs.tooltip {
 
 <select id="inds">
 
-        <option value="crucy.v3.23.1901.2014.Afghanistan.tmp.tsv"selected="selected">Afghanistan</option>
+        <option value="crucy.v3.23.1901.2014.Afghanistan.tmp.tsv">Afghanistan</option>
         <option value="crucy.v3.23.1901.2014.Albania.tmp.tsv">Albania</option>
         <option value="crucy.v3.23.1901.2014.Algeria.tmp.tsv">Algeria</option>
         <option value="crucy.v3.23.1901.2014.Andorra.tmp.tsv">Andorra</option>
@@ -302,7 +304,7 @@ var title = svg.append("text")
     .attr("dy", ".71em")
     .text(2014);
 
-d3.tsv("crucy.v3.23.1901.2014.Russia.tmp.tsv", function(error, data) {
+d3.tsv("crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data) {
 
   // Convert strings to numbers.
   data.forEach(function(d) {
@@ -320,7 +322,7 @@ d3.tsv("crucy.v3.23.1901.2014.Russia.tmp.tsv", function(error, data) {
 
   // Update the scale domains.
   x.domain([year1 - month1, year1]);
-  y.domain([0, d3.max(data, function(d) { return d.temp; })]);
+  y.domain([ Math.min(d3.min(data, function(d) { return d.temp})), Math.max(d3.max(data, function(d) { return d.temp; })  )]);
 
   
   // Produce a map from year and birthyear to [male, female].
@@ -347,7 +349,7 @@ d3.tsv("crucy.v3.23.1901.2014.Russia.tmp.tsv", function(error, data) {
       .attr("transform", function(birthyear) { return "translate(" + x(birthyear) + ",0)"; });
 
   birthyear.selectAll("rect")
-      .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
+      .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
     .enter().append("rect")
       .attr("x", -barWidth / 2)
       .attr("width", barWidth)
@@ -414,7 +416,7 @@ d3.tsv("crucy.v3.23.1901.2014.Russia.tmp.tsv", function(error, data) {
         .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
 
     birthyear.selectAll("rect")
-        .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
+        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
       .transition()
         .duration(750)
         .attr("y", y)
@@ -489,7 +491,8 @@ var month1 = d3.max(data, function(d) { return d.month; }),
 
 // Update the scale domains.
 x.domain([year1 - month1, year1]);
-y.domain([d3.min(data, function(d) { return d.temp}) , d3.max(data, function(d) { return d.temp; })]);
+y.domain([ Math.min(d3.min(data, function(d) { return d.temp})), Math.max(d3.max(data, function(d) { return d.temp; })  )]);
+//y.domain([d3.min(data, function(d) { return d.temp}) , d3.max(data, function(d) { return d.temp; })]);
 
 
 // Produce a map from year and birthyear to [male, female].
@@ -521,14 +524,13 @@ var birthyear = birthyears.selectAll(".birthyear")
 
 birthyear.selectAll("rect")
 
-    .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
+    .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
   .enter().append("rect")
     .attr("x", -barWidth / 2)
     .attr("width", barWidth)
     .attr("y", y)
    
-    .attr("height", function(value) { 
-        return height - y(value)  ; })       
+    .attr("height", function(value) { return height - y(value)  ; })       
      .on("mouseover", function(d) {		
           divs.transition()		
               .duration(200)		
@@ -574,7 +576,7 @@ function update() {
       .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
 
   birthyear.selectAll("rect")
-      .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
+      .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
     .transition()
       .duration(750)
       .attr("y", y)
