@@ -35,7 +35,6 @@
   </script>
   <link rel="stylesheet" type="text/css" href="master.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script type="text/javascript" src="master.js"></script>
   <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,34 +53,8 @@
     });
   </script>
 
-  <script type="text/javascript">
-    var textBox = d3.select("body").append("svg")
-      .attr('width', 1100)
-      .attr('height', 300)
-      .attr('id', "textSVG");
-
-    textBox.append("text").html("VISUALIZING CLIMATE CHANGE")
-      .attr('x', 50)
-      .attr('y', 50)
-      .style('font-family', "Montserrat, sans-serif")
-      .style('font-size', 55)
-      .style('letter-spacing', 2);
-
-    textBox.append("text").html("Mission Statement: Our goal is to provide users with unique and meaningful visualizations for understanding climate change.")
-      .attr('x', 100)
-      .attr('y', 150);
-
-    textBox.append("text").html("We believe that while one visual may provide great insight into CO2 emissions, the same visual might not be applicable or")
-      .attr('x', 100)
-      .attr('y', 180);
-
-    textBox.append("text").html("relevant for another dataset such as temperature.")
-      .attr('x', 100)
-      .attr('y', 210);
-  </script>
-
-
-  <!--
+  <script src="d3-tip.js"></script>
+  <script type="text/javascript" src="map.js"></script>
   <form action = "">
     <select name = "climateCategory">
       <option value = "temperature"> Global Temperature</option>
@@ -95,6 +68,5 @@
   <progress value = "0" max = "100" id = "uploader">0%</progress>
   <input type = "file" value = "upload" id = "fileButton"/>
   <script src="firebaseStorage.js"></script>
-  --->
 </body>
 </html>

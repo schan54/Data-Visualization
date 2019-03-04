@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
   <title>Data Viz</title>
+  <link rel="stylesheet" type="text/css" href="scatterPlot.css">
   <script src="http://d3js.org/d3.v4.min.js"></script>
   <script src="http://d3js.org/queue.v1.min.js"></script>
   <script src="http://d3js.org/topojson.v1.min.js"></script>
@@ -34,17 +35,15 @@
   firebase.initializeApp(config);
   </script>
   <link rel="stylesheet" type="text/css" href="master.css" />
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <script type="text/javascript" src="master.js"></script>
-  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+  <!-- <script type="text/javascript" src="master.js"></script> --->
+  
 
 </head>
 <body>
 
-
+  <!--
   <div id="nav-placeholder"></div>
   <script>
     $(function(){
@@ -53,35 +52,38 @@
       });
     });
   </script>
+  --->
 
-  <script type="text/javascript">
-    var textBox = d3.select("body").append("svg")
-      .attr('width', 1100)
-      .attr('height', 300)
-      .attr('id', "textSVG");
+  <h1>VISUALIZING CLIMATE CHANGE</h1>
 
-    textBox.append("text").html("VISUALIZING CLIMATE CHANGE")
-      .attr('x', 50)
-      .attr('y', 50)
-      .style('font-family', "Montserrat, sans-serif")
-      .style('font-size', 55)
-      .style('letter-spacing', 2);
+  <div id="initialText">
+    <p id="mission">Mission Statement: Our goal is to provide users with unique and meaningful visualizations for understanding climate change. We believe that while one visual may provide great insight into CO2 emissions, the same visual might not be applicable or relevant for another dataset such as temperature.</p>
+    <p id="mission">We have identified data that best displays how our planet's climate is changing. Below are visualizations on carbon dioxide emissions, temperaute change and overall energy use. Our hope is that these visuals aid in understanding the severity and long term risks of global warming.</p>
+  </div>
 
-    textBox.append("text").html("Mission Statement: Our goal is to provide users with unique and meaningful visualizations for understanding climate change.")
-      .attr('x', 100)
-      .attr('y', 150);
+  <div>
+    <a href="#bubbleArea">CO2</a>
+  </div>
 
-    textBox.append("text").html("We believe that while one visual may provide great insight into CO2 emissions, the same visual might not be applicable or")
-      .attr('x', 100)
-      .attr('y', 180);
+  <script src="d3-tip.js"></script>
+  
+  <script type="text/javascript" src="map.js"></script>
 
-    textBox.append("text").html("relevant for another dataset such as temperature.")
-      .attr('x', 100)
-      .attr('y', 210);
-  </script>
+  <div id="vis">
+    <button id="play-button">Play</button>
+    <input type="number" id="myVal" placeholder="Year">
+    <input type="submit" id="Submit" value="Enter">
+    <p id="displayYear">1960</p>
+  </div>
 
+  <div class="chart-example" id="chart">
+    <svg id="bubbleArea">
+    </svg>
+  </div>
 
-  <!--
+  <script type="text/javascript" src="bubbleChart.js"></script>
+
+  <script type="text/javascript" src="mapTemp.js"></script>
   <form action = "">
     <select name = "climateCategory">
       <option value = "temperature"> Global Temperature</option>
@@ -95,6 +97,9 @@
   <progress value = "0" max = "100" id = "uploader">0%</progress>
   <input type = "file" value = "upload" id = "fileButton"/>
   <script src="firebaseStorage.js"></script>
-  --->
+
+  <div id="endText">
+    <p id="aboutUs">About us: We are a group of 4 college students from UC Santa Cruz. Our drive to create visually powerful data brought us together.</p>
+  </div>
 </body>
 </html>

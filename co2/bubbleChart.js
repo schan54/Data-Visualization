@@ -25,8 +25,15 @@ playButton.on("click", function() {
 // Event handler for clicking enter button
 enterButton.on("click", function() {
   currentValue = document.getElementById("myVal").value;
-  d3.select("#displayYear").text(currentValue);
-  select(currentValue);
+  if (currentValue < 1960 || currentValue > 2017) {
+    console.log("if here");
+    var message = "Not a valid year";
+    d3.select('#instructions').text("Not a valid year");
+  } else {
+    d3.select('#instructions').text("Enter a year between 1960 and 2017");
+    d3.select("#displayYear").text(currentValue);
+    select(currentValue);
+  }
 })
 
 // Increase year by one and render

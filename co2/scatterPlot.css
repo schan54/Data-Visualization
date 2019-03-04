@@ -1,4 +1,4 @@
-#play-button {
+#play-button, #Submit {
   background: #f08080;
   padding-right: 26px;
   border-radius: 3px;
@@ -11,7 +11,7 @@
   height: 30px;
 }
 
-#play-button:hover {
+#play-button:hover, #Submit:hover {
   background-color: #696969;
 }
 

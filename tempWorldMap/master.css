@@ -21,7 +21,6 @@
   --quarternary-color-shade-1: #806515;
   --quarternary-color-shade-2: #554000;
   --light-grey: #EDEDED;
-  --light-smoke: #D3D3D3;
 }
 
 body {
@@ -31,10 +30,10 @@ body {
 }
 
 body svg {
-  background-color: var(--light-smoke);
+  background-color: var(--quarternary-color-tint-2);
   border-style: solid;
-  border-color: var(--primary-color-shade-1);
-  border-radius: 5px;
+  border-width: thin;
+  border-radius: 20px;
   margin-top: 80px;
 }
 
@@ -118,8 +117,7 @@ body svg {
   width: 100%;
   border-bottom: solid;
   border-bottom-width: 3px;
-  border-bottom-color: var(--primary-color-shade-2);
-  z-index: 1;
+  border-bottom-color: var(--primary-color-shade-2)
 }
 
 .menubar a {
@@ -172,30 +170,3 @@ body svg {
     text-align: left;
   }
 }
-
-h2 {
-  position: absolute;
-  left: 100px;
-  font-family: Montserrat, sans-serif;
-}
-
-#titleTop {
-  top: 90px;
-}
-
-#titleMid {
-  top: 1180px;
-}
-
-#titleBot {
-  top: 2270px;
-}
-
-#textSVG {
-  padding: 50px;
-}
-
-text {
-  font-family: Roboto, sans-serif;
-}
-
