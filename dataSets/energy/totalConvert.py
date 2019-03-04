@@ -42,9 +42,34 @@ def writeToFile(outFileString, yearList, countryList, allList):
         outFile.write('\t{\n')
         outFile.write('\t\t"name": ' + str(yearList[i-1]) + ",\n")
         outFile.write('\t\t"children": [\n' )
-
+        totalVal = 0
+        production = 0
+        consumption = 0
         for country in countryList:
-            outFile.write('\t\t\t{"name": "' + country + '" , "size": WTF YOU WANT HERE,\n')
+
+            for file in allList:
+
+                if file == None:
+                    pass
+                else:
+                    category = file[-1]
+
+                    if "energy production" in category:
+                        for lines in file:
+                            if lines[0] == country:
+                                production = lines[i]
+                                print("Category is %s\n" % category)
+                                print("Production is %s\n" % production)
+
+                    if "energy consumption" in category:
+                        for lines in file:
+                            if lines[0] == country:
+                                consumption = lines[i]
+                                print("Category is %s\n" % category)
+                                print("conumption is %s\n" % consumption)
+            totalVal = float(production) - float(consumption)
+            
+            outFile.write('\t\t\t{"name": "' + country + '" , "size": ,"' + str(totalVal) + '"\n')
             outFile.write('\t\t\t"children":[\n')
             for files in allList:
 
