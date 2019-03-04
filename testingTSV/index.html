@@ -67,7 +67,7 @@ divs.tooltip {
 
 </style>
 <body>
-<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 
 <select id="inds">
 
@@ -456,7 +456,7 @@ d3.selectAll('.selector')
 		// update function:
 function updateTest(source) {
 		d3.tsv(source, function(error,data) {
-
+                
 var x = d3.scale.linear()
     .range([barWidth / 2, width - barWidth / 2]);
 
