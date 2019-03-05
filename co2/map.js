@@ -13,7 +13,7 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
             height = 1000 - margin.top - margin.bottom;
 
 var color = d3.scaleThreshold()
-    .domain([1,3,5,10,50,100,200,500,1000,2000])
+    .domain([0,3,5,10,50,100,200,500,1000,2000])
     .range(["rgb(247,251,255)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(8,48,107)","rgb(3,19,43)"]);
 
 var path = d3.geoPath();
@@ -27,7 +27,7 @@ var svg = d3.select("body")
 
 var projection = d3.geoMercator()
                    .scale(200)
-                  .translate( [width / 2, height / 1.5]);
+                  .translate( [width, height]);
 
 var path = d3.geoPath().projection(projection);
 
@@ -83,14 +83,4 @@ function ready(error, data, population) {
        // .datum(topojson.mesh(data.features, function(a, b) { return a !== b; }))
       .attr("class", "names")
       .attr("d", path);
-}
-
-/* Toggle between adding and removing the "responsive" class to menubar when the user clicks on the icon */
-function hamFunction() {
-  var x = document.getElementById("mymenu");
-  if (x.className === "menubar") {
-    x.className += " responsive";
-  } else {
-    x.className = "menubar";
-  }
 }

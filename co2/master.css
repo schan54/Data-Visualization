@@ -200,3 +200,19 @@ text {
   font-family: Roboto, sans-serif;
 }
 
+#co2Legend, #tempLegend, #popLegend {
+  position: absolute;
+  top: 800px;
+  left: 100px;
+  width: 20%;
+}
+
+#tempLegend {
+  top: 1900px;
+  width: 15%;
+}
+
+#popLegend {
+  top: 3000px;
+}
+

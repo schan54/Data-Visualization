@@ -26,13 +26,11 @@ playButton.on("click", function() {
 enterButton.on("click", function() {
   currentValue = document.getElementById("myVal").value;
   if (currentValue < 1960 || currentValue > 2017) {
-    console.log("if here");
-    var message = "Not a valid year";
     d3.select('#instructions').text("Not a valid year");
   } else {
     d3.select('#instructions').text("Enter a year between 1960 and 2017");
-    d3.select("#displayYear").text(currentValue);
     select(currentValue);
+    d3.select("#displayYear").text(currentValue);
   }
 })
 
@@ -72,6 +70,9 @@ function select(yearValue) {
         columnForColors = "continent";
         columnForRadius = "value";
         yearTemp = yearValue;
+        max1 = 0;
+        max2 = 0;
+        max3 = 0;
 
     function chart(selection) {
       var data = selection.datum();
@@ -135,7 +136,7 @@ function select(yearValue) {
         .attr('transform', 'translate(' + [width / 2, height / 2] + ')')
         .on("mouseover", function(d) {
           if (moving == false) {
-            tooltip.html(d.country + "<br>" + d.year + "<br>" + d[columnForRadius] + " MtCO2");
+            tooltip.html(d.country + "<br>" + d[columnForRadius] + " MtCO2");
             return tooltip.style("visibility", "visible");
           }
         })
@@ -149,6 +150,55 @@ function select(yearValue) {
             return tooltip.style("visibility", "hidden");
           }
         });
+      
+      //max1 = d3.max(d3.values(data.filter(function(d) { return d.year == yearTemp})), function(d) { return d.value});
+
+      //max1 = Math.max()
+      //console.log(Math.max(d3.values(data.filter(function(d) { return d.year == yearTemp}))));
+
+      var tempArray = [];
+      var tempStringArray = [];
+      var index = 0;
+      var stringIndex = 0;
+      var sumValues = 0;
+
+      // Parse CO2 values from string to int
+      data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
+        d.value = parseInt(d.value);
+        tempArray[index] = d.value;
+        tempStringArray[index] = d.country;
+        index++;
+      })
+
+      d3.select("#topThree").selectAll("p").remove();
+
+      sumValues = d3.sum(tempArray);
+
+      var topEmissions = d3.select("#topThree").append("p");
+
+      // Find the max value in this year
+      max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
+      stringIndex = tempArray.indexOf(max1);
+      //console.log(tempArray);
+      //console.log(stringIndex);
+      //console.log("Max: " + max1 + " country: " + tempStringArray[stringIndex]);
+      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2" + "</br>");
+      //console.log(tempArray);
+      tempStringArray.splice(tempArray.indexOf(max1), 1);
+      tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary array
+      max2 = d3.max(tempArray); // Find the second max
+      stringIndex = tempArray.indexOf(max2); // Get the index
+      //console.log("Max2: " + max2 + " country: " + tempStringArray[stringIndex]);
+      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2" + "</br>");
+      //console.log(tempStringArray);
+      tempStringArray.splice(tempArray.indexOf(max2), 1);
+      tempArray.splice(tempArray.indexOf(max2), 1); // Remove second max from temporary array
+      max3 = d3.max(tempArray); // Find the third max
+      stringIndex = tempArray.indexOf(max3); // Get the index
+      //console.log("Max3: " + max3 + " country: " + tempStringArray[stringIndex]);
+      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2" + "</br>");
+      //console.log(tempStringArray);
+      topEmissions.append("text").html("</br>" + "Total Emissions: " + "</br>" + sumValues + " MtCO2");
     }
 
     // Getters and setters
