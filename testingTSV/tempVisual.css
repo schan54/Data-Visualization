@@ -9,7 +9,6 @@ svg {
   .y.axis line {
     stroke: rgb(26, 22, 22);
     stroke-opacity: 1;
-    shape-rendering: crispEdges;
   }
   
   .y.axis .zero line {
@@ -19,6 +18,11 @@ svg {
   
   .title {
     font: 300 78px Helvetica Neue;
+    fill: #666;
+  }
+  .title2 {
+    position: right;
+    font: 300 50px Helvetica Neue;
     fill: #666;
   }
   

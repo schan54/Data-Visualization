@@ -219,7 +219,7 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("right")
     .tickSize(-width)
-    .tickFormat(function(d) { return ((d / 1)) ; });
+    .tickFormat(function(d) { return Math.round((d / 1)) ; });
  var divs = d3.select("body").append("divs")	
     .attr("class", "tooltip")				
     .style("opacity", 0);
@@ -239,12 +239,6 @@ var title = svg.append("text")
     .attr("class", "title")
     .attr("dy", ".71em")
     .text(2014);
- 
-var title2 = svg.append("text")
-    .attr("class", "title2")
-    .attr("dx","10em")
-    .attr("dy", ".60em")
-    .text("Afghanistan");
 
 d3.tsv("crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data) {
 
@@ -264,7 +258,7 @@ d3.tsv("crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data) {
 
   // Update the scale domains.
   x.domain([year1 - month1, year1]);
-  y.domain([ Math.min(d3.min(data, function(d) { return d.temp-1})), Math.max(d3.max(data, function(d) { return d.temp+1; })  )]);
+  y.domain([-75, 50]);
 
   
   // Produce a map from year and birthyear to [male, female].
@@ -394,24 +388,11 @@ d3.selectAll('.selector')
 			.on('click', function(d) {
 				updateTest(this.id);
 			})@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@WAS SELECTOR FOR BUTTON. ^^^ REPLACES THIS*/                                        
-function updateTitle(source){
-    var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
-var ret2 = ret.replace(/.tmp.tsv/g,'');
-var ret3 = ret2.replace(/_/g,'');
-title2.text(ret3);
-}
+		
 		// update function:
 function updateTest(source) {
 		d3.tsv(source, function(error,data) {
-var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
-var ret2 = ret.replace(/.tmp.tsv/g,'');
-var ret3 = ret2.replace(/_/g,' ');
-
-var titSource = updateTitle(source);
-
-    
-    title2.text(ret3)
-
+                
 var x = d3.scale.linear()
     .range([barWidth / 2, width - barWidth / 2]);
 
@@ -446,7 +427,7 @@ var month1 = d3.max(data, function(d) { return d.month; }),
 
 // Update the scale domains.
 x.domain([year1 - month1, year1]);
-y.domain([ Math.min(d3.min(data, function(d) { return d.temp-1})), Math.max(d3.max(data, function(d) { return d.temp+1; })  )]);
+y.domain([ -75,50 ]);
 //y.domain([d3.min(data, function(d) { return d.temp}) , d3.max(data, function(d) { return d.temp; })]);
 
 
