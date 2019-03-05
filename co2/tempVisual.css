@@ -21,7 +21,11 @@ svg {
     font: 300 78px Helvetica Neue;
     fill: #666;
   }
-  
+  .title2 {
+    position: right;
+    font: 300 50px Helvetica Neue;
+    fill: #666;
+  }
   .birthyear,
   .month {
     text-anchor: middle;
