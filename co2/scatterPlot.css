@@ -9,6 +9,7 @@
   width: 60px;
   cursor: pointer;
   height: 30px;
+  left: 30px;
 }
 
 #play-button:hover, #Submit:hover {
@@ -16,44 +17,61 @@
 }
 
 #displayYear {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 90pt;
-  letter-spacing: -17px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 50pt;
+  letter-spacing: -5px;
   z-index: 1;
   opacity: 0.5;
   margin: 0px;
 }
 
-#displayYearDiv {
+.displayDiv  {
   position: absolute;
   top: 150px;
-  left: 1200px;
-  background-color: #EDEDED;
-  padding-left: 40px;
-  border-radius: 20px;
-  border: solid;
-  border-color: #A9A9A9;
+  left: 1130px;
   padding-left: 10px;
   padding-right: 20px;
-  height: 150px;
 }
 
 button, #myVal, #Submit, #instructions {
   position: absolute;
-  top: 300px;
-  left: 30px;
 }
 
 #myVal {
-  top: 340px;
+  top: 160px;
   width: 100px;
 }
 
 #Submit {
-  top: 370px;
+  top: 200px;
 }
 
 #instructions {
-  top: 400px;
+  top: 40px;
   width: 100px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+}
+
+#topThree {
+  top: 250px;
+  left: 1050px;
+}
+
+#userInput {
+  left: 200px;
+}
+
+h3 {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+}
+
+img {
+  width: 70%;
+}
+
+#legend {
+  top: 740px;
+  left: 80px;
 }
