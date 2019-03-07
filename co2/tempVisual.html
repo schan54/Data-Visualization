@@ -295,7 +295,7 @@
     
       // Update the scale domains.
       x.domain([year1 - month1, year1]);
-      y.domain([ Math.min(d3.min(data, function(d) { return d.temp})), Math.max(d3.max(data, function(d) { return d.temp; })  )]);
+      y.domain([ -50,50]);
     
       
       // Produce a map from year and birthyear to [male, female].
@@ -478,7 +478,7 @@
     
     // Update the scale domains.
     x.domain([year1 - month1, year1]);
-    y.domain([ Math.min(d3.min(data, function(d) { return d.temp-1})), Math.max(d3.max(data, function(d) { return d.temp+1; })  )]);
+    y.domain([ -50,50]);
     //y.domain([d3.min(data, function(d) { return d.temp}) , d3.max(data, function(d) { return d.temp; })]);
     
     
