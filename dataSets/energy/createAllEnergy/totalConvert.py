@@ -69,7 +69,7 @@ def writeToFile(outFileString, yearList, countryList, allList):
                                 print("conumption is %s\n" % consumption)
             totalVal = float(production) - float(consumption)
 
-            outFile.write('\t\t\t{"name": "' + country + '" , "size": ,"' + str(totalVal) + '"\n')
+            outFile.write('\t\t\t{"name": "' + country + '" , "size": "' + str(totalVal) + '",\n')
             outFile.write('\t\t\t"children":[\n')
             for files in allList:
 
@@ -84,7 +84,7 @@ def writeToFile(outFileString, yearList, countryList, allList):
                 outFile.write('\t\t\t]},\n')
             else:
                 outFile.write('\t\t\t]}\n')
-                
+
         outFile.write('\t\t]\n')
         if i == 28:
             outFile.write('\t}\n')
