@@ -1,11 +1,77 @@
 var format = d3.format(",");
 
+
+
+var dataset;
+
+var formatDateIntoYear = d3.timeFormat("%Y");
+var formatDate = d3.timeFormat("%Y");
+
+var startDate = new Date("1902"),
+    endDate = new Date("2015");
+
+var margin = {top:0, right:50, bottom:0, left:50},
+    width = 960 - margin.left - margin.right,
+    height = 200 - margin.top - margin.bottom;
+
+////////// slider //////////
+
+var svgSlider = d3.select("#slider")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height);
+
+var x = d3.scaleTime()
+    .domain([startDate, endDate])
+    .range([100, width-100])
+    .clamp(true);
+
+var slider = svgSlider.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(" + margin.left + "," + height / 2 + ")");
+
+slider.append("line")
+    .attr("class", "track")
+    .attr("x1", x.range()[0])
+    .attr("x2", x.range()[1])
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+        .on("start.interrupt", function() { slider.interrupt(); })
+        .on("start drag", function() { update(x.invert(d3.event.x)); }));
+
+slider.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+  .selectAll("text")
+    .data(x.ticks(10))
+    .enter()
+    .append("text")
+    .attr("x", x)
+    .attr("y", 10)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return formatDateIntoYear(d); });
+
+var handle = slider.insert("circle", ".track-overlay")
+    .attr("class", "handle")
+    .attr("r", 9);
+
+var label = slider.append("text")
+    .attr("class", "label")
+    .attr("text-anchor", "middle")
+    .text(formatDateIntoYear(startDate))
+    .attr("transform", "translate(0," + (-25) + ")")
+
+
+
 // Set tooltips
 var tip = d3.tip()
             .attr('class', 'd3-tip')
             .offset([-10, 0])
             .html(function(d) {
-              return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>"+ userYear +": </strong><span class='details'>" + format(d.year) +"</span>";
+              return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + ": </strong><span class='details'>" + format(d.value) +"</span>";
             })
 
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
@@ -38,17 +104,13 @@ queue()
     .defer(d3.tsv, "worldTemp.tsv")
     .await(ready);
 
-var userYear = "1990"
-var userYearAsInt = 1990
+var userYear = "2000"
 
 function ready(error, data, population) {
   var populationById = {};
 
   population.forEach(function(d) { populationById[d.id] = +d[userYear]; });
-  data.features.forEach(function(d) { d.year = populationById[d.id] });
-
-  console.log(population[0])
-  console.log(data)
+  data.features.forEach(function(d) { d.value = populationById[d.id] });
 
   svg.append("g")
       .attr("class", "countries")
@@ -95,4 +157,23 @@ function hamFunction() {
   } else {
     x.className = "menubar";
   }
+}
+
+function update(h) {
+  // update position and text of label according to slider scale
+  handle.attr("cx", x(h));
+  label
+    .attr("x", x(h))
+    .text(formatDateIntoYear(h));
+
+  if (userYear != (formatDateIntoYear(h))) {
+    userYear = formatDateIntoYear(h)
+    console.log(userYear)
+  }
+  // filter data set and redraw plot
+
+  queue()
+      .defer(d3.json, "world_countries.json")
+      .defer(d3.tsv, "worldTemp.tsv")
+      .await(ready);
 }
