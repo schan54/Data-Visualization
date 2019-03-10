@@ -10,9 +10,7 @@ app.use(express.static(__dirname));
 
 //routes
 
-app.get("/", function(req, res){
-    res.render("index");
-})
+
 app.get('/', function(req, res){
     res.redirect('/todo');
  });
