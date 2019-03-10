@@ -2,7 +2,7 @@ var express = require('express')
 var app = express();
 
 //set port
-var port = process.env.PORT || 8080
+var port = '8080' || process.env.PORT
 
 app.use(express.static(__dirname));
 
