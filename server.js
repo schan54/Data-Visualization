@@ -11,7 +11,9 @@ app.use(express.static(__dirname));
 //routes
 
 app.get("/", function(req, res){
-    res.render("index");
+    res.render("index")
+    res.json(json_data);
+
 })
 
 app.listen(process.env.PORT || 3000, function(){
