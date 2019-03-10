@@ -1,5 +1,6 @@
 var express = require('express')
 var app = express();
+const host = '0.0.0.0';
 
 //set port
 var port = '8080' || process.env.PORT
