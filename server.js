@@ -11,7 +11,7 @@ app.use(express.static(__dirname));
 //routes
 
 app.get("/", function(req, res){
-    res.send("co2/index");
+    res.send("/co2/index");
 })
 
 app.listen(process.env.PORT || 3000, function(){
