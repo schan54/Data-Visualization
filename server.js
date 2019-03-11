@@ -7,13 +7,13 @@ const host = '0.0.0.0';
 var port = process.env.PORT || '8080'
 
 app.use(express.static(__dirname));
+app.set('views', path.join(__dirname, 'views'));
 
 //routes
 app.engine('html', require('ejs').renderFile);
-app.set('views', path.join(__dirname, 'views'));
 
 app.get("/", function(req, res){
-    res.render("/co2/index.html");
+    res.render("co2/index.html");
 })
 
 app.listen(process.env.PORT || 3000, function(){
