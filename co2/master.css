@@ -180,24 +180,6 @@ h2 {
   font-family: Montserrat, sans-serif;
 }
 
-#navMap {
-  position:fixed;
-  top:25px;
-  right:0px;
-  background-color:#7FFFD4;
-}
-#titleTop {
-  top: 90px;
-}
-
-#titleMid {
-  top: 1180px;
-}
-
-#titleBot {
-  top: 2270px;
-}
-
 #textSVG {
   padding: 50px;
 }
@@ -208,17 +190,72 @@ text {
 
 #co2Legend, #tempLegend, #popLegend {
   position: absolute;
-  top: 800px;
+  top: 1000px;
   left: 100px;
   width: 20%;
 }
 
 #tempLegend {
-  top: 1900px;
+  top: 2100px;
   width: 15%;
 }
 
 #popLegend {
-  top: 3000px;
+  top: 3200px;
+}
+
+#play-button, #Submit, #anchorCO2, #anchorTemp, #anchorPop {
+  background: #f08080;
+  padding-right: 26px;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  margin: 0;
+  padding: 0 12px;
+  width: 60px;
+  cursor: pointer;
+  height: 30px;
+  left: 30px;
+  text-decoration: none;
+}
+
+#play-button:hover, #Submit:hover, #anchorCO2:hover, #anchorTemp:hover, #anchorPop:hover {
+  background-color: #696969;
+}
+
+#navMap {
+  background-color: var(--primary-color-shade-2);
+  opacity: 0.5;
+  padding: 20px;
+  margin-top: 100px;
+  margin-left: 60px;
+  margin-right: 60px;
+  border-radius: 5px;
+}
+
+#anchorCO2, #anchorTemp, #anchorPop {
+  padding: 4px;
+  margin-bottom: 20px;
+  background-color: var(--light-smoke);
+}
+
+#col1 {
+  float: left;
+}
+
+#col2 {
+  float: right;
+}
+
+#titleTop {
+  top: 240px;
+}
+
+#titleMid {
+  top: 1340px;
+}
+
+#titleBot {
+  top: 2420px;
 }
 
