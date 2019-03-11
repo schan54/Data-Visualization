@@ -6,7 +6,7 @@ const host = '0.0.0.0';
 //set port
 var port = process.env.PORT || '8080'
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname+ '/app/views'));
 
 //routes
 app.engine('html', require('ejs').renderFile);
