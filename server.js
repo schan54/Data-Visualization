@@ -4,7 +4,7 @@ var app = express();
 const host = '0.0.0.0';
 var path = require('path');
 //set port
-var port = process.env.PORT || '8080'
+var port = process.env.PORT || '443'
 
 app.use(express.static(__dirname));
 
