@@ -6,13 +6,13 @@ const host = '0.0.0.0';
 //set port
 var port = process.env.PORT || '8080'
 
-app.use(express.static(__dirname+ '/app/views'));
+app.use(express.static(__dirname));
 
 //routes
 app.engine('html', require('ejs').renderFile);
 
 app.get("/", function(req, res){
-    res.render("/co2/index.html");
+    res.render("/co2/index");
 })
 
 app.listen(process.env.PORT || 3000, function(){
