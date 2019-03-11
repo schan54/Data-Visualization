@@ -9,6 +9,7 @@ var port = process.env.PORT || '8080'
 app.use(express.static(__dirname));
 
 //routes
+app.engine('html', require('ejs').renderFile);
 
 app.get("/", function(req, res){
     res.render("co2/index.html");
