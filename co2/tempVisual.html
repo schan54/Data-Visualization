@@ -36,7 +36,7 @@
             Use the mouse to hover over to view the temperature.
     </p>
     <p id="instructionsMonth">
-            Months are shown in descending order where month 11 is December and month 0 is January.
+            Months are shown in descending order where month 12 is December and month 1 is January.
     </p>        
 </div>
 <select id="inds">
@@ -360,10 +360,10 @@
     
       // Add labels to show age (separate; not animated).
       svg.selectAll(".month")
-          .data(d3.range(0, month1 + 1, 1))
+          .data(d3.range(0, month1 + 2, 1))
         .enter().append("text")
           .attr("class", "month")
-          .attr("x", function(month) { return x(year - month); })
+          .attr("x", function(month) { return x(year - month+1); })
           .attr("y", height + 4)
           .attr("dy", ".71em")
     
