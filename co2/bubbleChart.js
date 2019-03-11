@@ -73,6 +73,8 @@ function select(yearValue) {
         max1 = 0;
         max2 = 0;
         max3 = 0;
+        max4 = 0;
+        max5 = 0;
 
     function chart(selection) {
       var data = selection.datum();
@@ -179,25 +181,33 @@ function select(yearValue) {
       // Find the max value in this year
       max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
       stringIndex = tempArray.indexOf(max1);
-      //console.log(tempArray);
-      //console.log(stringIndex);
-      //console.log("Max: " + max1 + " country: " + tempStringArray[stringIndex]);
       topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2" + "</br>");
-      //console.log(tempArray);
       tempStringArray.splice(tempArray.indexOf(max1), 1);
       tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary array
+      
       max2 = d3.max(tempArray); // Find the second max
       stringIndex = tempArray.indexOf(max2); // Get the index
-      //console.log("Max2: " + max2 + " country: " + tempStringArray[stringIndex]);
       topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2" + "</br>");
-      //console.log(tempStringArray);
       tempStringArray.splice(tempArray.indexOf(max2), 1);
       tempArray.splice(tempArray.indexOf(max2), 1); // Remove second max from temporary array
+      
       max3 = d3.max(tempArray); // Find the third max
       stringIndex = tempArray.indexOf(max3); // Get the index
-      //console.log("Max3: " + max3 + " country: " + tempStringArray[stringIndex]);
       topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2" + "</br>");
-      //console.log(tempStringArray);
+      tempStringArray.splice(tempArray.indexOf(max3), 1);
+      tempArray.splice(tempArray.indexOf(max3), 1);
+
+      max4 = d3.max(tempArray); // Find the fourth max
+      stringIndex = tempArray.indexOf(max4); // Get the index
+      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2" + "</br>");
+      tempStringArray.splice(tempArray.indexOf(max4), 1);
+      tempArray.splice(tempArray.indexOf(max4), 1);
+
+      max5 = d3.max(tempArray); // Find the fifth max
+      stringIndex = tempArray.indexOf(max5);
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>");
+      
+
       topEmissions.append("text").html("</br>" + "Total Emissions: " + "</br>" + sumValues + " MtCO2");
     }
 
