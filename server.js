@@ -6,7 +6,7 @@ var path = require('path');
 //set port
 var port = process.env.PORT || '443'
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname,"public"));
 
 //routes
 app.engine('html', require('ejs').renderFile);
