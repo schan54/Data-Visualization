@@ -24,9 +24,18 @@
 
   <h1>Global Energy Consumption(Mtoe)</h1>
   <p>Hover over the burst to see tooltips and click on the part you're interesting in to see more info</p>
-  <h2 id = "yeartxt">Year</h2>
+  <h2 id = "yeartxt">Year: 1990</h2>
   
   <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
+
+  <!-- <form>
+  <input type = "radio" value = "consumption" onchange="parseFile(this.value);">Global Energy Consumption</input>
+  <input type = "radio" value = "production" onchange="parseFile(this.value);">Energy Production</input>
+  <input type = "radio" value = "crudeoil" onchange="parseFile(this.value);">Crude Oil</input>
+  <input type = "radio" value = "naturalgas" onchange="parseFile(this.value);">Natural Gas</input>
+  <input type = "radio" value = "oilproducts" onchange="parseFile(this.value);">Oil Products</input>
+  <input type="submit">
+  </form> -->
 
   <script>
     var width = 960,
@@ -52,21 +61,55 @@
       .append("g")
         .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
 
-    d3.json("energyusage.json", function(error, root) {
-      if (error) throw error;
-      var year = 0;
-      var path = svg.selectAll("path");
-      var data = path.data(partition.nodes(root[year]));
+    parseFile("consumption");
 
-      drawSunburst(data,root[year]);
-      
-      d3.select("#yearslider").on("change", function(){
-        d3.select("#yeartxt").text(this.value);
-        year = this.value - 1990;
-        drawSunburst(path,root[year]);
+    function inputData(file){
+      d3.json(file, function(error, root) {
+        if (error) throw error;
+        var year = 0;
+        var path = svg.selectAll("path");
+        var data = path.data(partition.nodes(root[year]));
+
+        drawSunburst(data,root[year]);
+        d3.select("#yearslider").on("input", function(){
+          d3.select("#yeartxt").text("Year: " + this.value);
+        });
+
+        d3.select("#yearslider").on("change", function(){
+          year = this.value - 1990;
+          drawSunburst(path,root[year]);
+          
+        });
       });
-    });
-
+      }
+    function parseFile(file) {
+      switch(file){
+        case "consumption":
+          d3.select("h1").text("Global Energy Consumption(Mtoe)");
+          inputData("./energyusage.json");
+          break;
+        case "production": 
+          d3.select("h1").text("Energy Production");
+          inputData("../dataSets/energy/individualCreate/Total energy production.json");
+          break;
+        case "crudeoil": 
+          d3.select("h1").text("Crude Oil Consumption");
+          inputData("../dataSets/energy/individualCreate/Crude oil input to refineries.json");
+          break;
+        case "oilproducts": 
+          d3.select("h1").text("Oil Products Consumption");
+          inputData("../dataSets/energy/individualCreate/Oil products domestic consumpt.json");
+          break;
+        case "production": 
+          d3.select("h1").text("Natural Gas Production");
+          inputData("../dataSets/energy/individualCreate/Natural gas production.json");
+          break;
+        default:
+          d3.select("h1").text("Global Energy Consumption(Mtoe)");
+          inputData("./energyusage.json");
+          break;
+      }
+    }
     function drawSunburst(path, root){
       path
           .data(partition.nodes(root))
@@ -76,11 +119,7 @@
           .on("click", click)
         .append("title")
           .text(function(d) { return d.name + "\n" + formatNumber(d.size); })
-        // .append("text")
-        //   .attr("text-anchor", "middle")
-        //   .text(function(d){return d.name;})
-        .transition()
-          .duration(750);
+
     }
     function click(d) {
       svg.transition()

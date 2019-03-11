@@ -180,6 +180,12 @@ h2 {
   font-family: Montserrat, sans-serif;
 }
 
+#navMap {
+  position:fixed;
+  top:25px;
+  right:0px;
+  background-color:#7FFFD4;
+}
 #titleTop {
   top: 90px;
 }
