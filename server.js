@@ -10,6 +10,7 @@ app.use(express.static(__dirname));
 
 //routes
 app.engine('html', require('ejs').renderFile);
+app.set('views', path.join(__dirname, 'views'));
 
 app.get("/", function(req, res){
     res.render("/co2/index.html");
