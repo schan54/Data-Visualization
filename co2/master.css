@@ -25,7 +25,7 @@
 }
 
 body {
-  background-color: var(--light-grey);
+  background-color: var(--secondary-color-tint-2);
   text-align: center;
   margin: 0px;
 }
@@ -137,7 +137,7 @@ body svg {
 }
 
 .menubar a:hover {
-  background-color: var(--secondary-color-tint-2);
+  background-color: var(--quarternary-color);
   color: white;
 }
 
@@ -203,7 +203,7 @@ text {
 #popLegend {
   top: 3200px;
 }
-
+/*
 #play-button, #Submit, #anchorCO2, #anchorTemp, #anchorPop {
   background: #f08080;
   padding-right: 26px;
@@ -218,11 +218,7 @@ text {
   left: 30px;
   text-decoration: none;
 }
-
-#play-button:hover, #Submit:hover, #anchorCO2:hover, #anchorTemp:hover, #anchorPop:hover {
-  background-color: #696969;
-}
-
+*/
 #navMap {
   padding: 20px;
   margin-top: 100px;

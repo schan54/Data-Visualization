@@ -26,9 +26,9 @@ playButton.on("click", function() {
 enterButton.on("click", function() {
   currentValue = document.getElementById("myVal").value;
   if (currentValue < 1960 || currentValue > 2017) {
-    d3.select('#instructions').text("Not a valid year");
+    d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter a year between 1960 and 2017");
   } else {
-    d3.select('#instructions').text("Enter a year between 1960 and 2017");
+    d3.select('#instructions').html("Or" + "</br></br>" + "Enter a year between 1960 and 2017");
     select(currentValue);
     d3.select("#displayYear").text(currentValue);
   }
@@ -85,6 +85,8 @@ function select(yearValue) {
       // Tooltip for Bubble Chart
       var tooltip = selection
         .append("div")
+        .attr("id", "toolChart");
+        /*
         .style("position", "absolute")
         .style("visibility", "hidden")
         .style("color", "white")
@@ -94,7 +96,7 @@ function select(yearValue) {
         .style("text-align", "center")
         .style("font-family", "monospace")
         .style("width", "300px")
-        .text("");
+        .text("");*/
 
       // Simulate forces acting on each node
       var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
@@ -152,11 +154,6 @@ function select(yearValue) {
             return tooltip.style("visibility", "hidden");
           }
         });
-      
-      //max1 = d3.max(d3.values(data.filter(function(d) { return d.year == yearTemp})), function(d) { return d.value});
-
-      //max1 = Math.max()
-      //console.log(Math.max(d3.values(data.filter(function(d) { return d.year == yearTemp}))));
 
       var tempArray = [];
       var tempStringArray = [];
@@ -208,7 +205,8 @@ function select(yearValue) {
       topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>");
       
 
-      topEmissions.append("text").html("</br>" + "Total Emissions: " + "</br>" + sumValues + " MtCO2");
+      topEmissions.append("text").html("</br>" + "Total Emissions: " + "</br></br>" ).attr("id", "sumText");
+      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum");
     }
 
     // Getters and setters

@@ -1,19 +1,21 @@
 #displayYear {
   font-family: 'Roboto', sans-serif;
-  font-size: 50pt;
-  letter-spacing: -5px;
+  font-size: 40pt;
+  letter-spacing: -2px;
   z-index: 1;
-  opacity: 0.5;
   margin: 0px;
 }
 
 .displayDiv  {
   position: absolute;
-  top: 150px;
+  top: 80px;
   left: 1130px;
   padding: 15px;
-  background-color: #FFFFFF;
+  background-color: var(--light-smoke);
   border-radius: 2px;
+  border: solid;
+  border-color: var(--secondary-color);
+  border-radius: 5px;
 }
 
 #myVal {
@@ -25,34 +27,78 @@
   top: 200px;
 }
 
+#Submit, #play-button {
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  padding-right: 26px;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  margin: 0;
+  padding: 0 12px;
+  width: 60px;
+  cursor: pointer;
+  height: 30px;
+  background-color: var(--secondary-color);
+}
+
+#Submit:hover, #play-button:hover {
+  background-color: var(--quarternary-color);
+}
+
 #instructions {
   top: 40px;
   width: 100px;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
 }
 
 #topThree {
-  top: 250px;
-  left: 1050px;
+  top: 100px;
+  right: 5px;
 }
 
 #userInput {
-  left: 150px;
+  left: 7px;
 }
 
 h3 {
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
 }
 
 img {
-  width: 70%;
+  width: 60%;
+  height: auto;
+  margin-bottom: 5px;
 }
 
 #legend {
-  top: 720px;
-  left: 80px;
-  margin-right: 100px;
-  margin-left: 100px;
+  top: 400px;
+  left: 7px;
+  padding: 0px;
+  width: 15%;
+  padding-top: 10px;
+}
+
+#sum {
+  font-size: 25px;
+}
+
+#sumText {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#toolChart {
+  position: absolute;
+  visibility: hidden;
+  color: white;
+  padding: 8px;
+  background-color: var(--secondary-color);
+  border-radius: 3px;
+  text-align: center;
+  width: 350px;
+  font-family: 'Nunito', sans-serif;
 }

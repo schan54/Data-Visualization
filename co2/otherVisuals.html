@@ -6,7 +6,7 @@
 
 	<link rel="stylesheet" type="text/css" href="master.css" />
   <link rel="stylesheet" type="text/css" href="scatterPlot.css" />
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
   <script type="text/javascript" src="master.js"></script>  
   <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,18 +22,17 @@
     });
   </script>
 
+  <div class="displayDiv" id="userInput">
+    <button id="play-button">Play</button>
+    <p id="instructions">Or</br></br>Enter a year between 1960 and 2017</p>
+    <input type="number" id="myVal" placeholder="Year">
+    </br></br>
+    <input type="submit" id="Submit" value="Enter">
+  </div>
+
   <div id="vis">
-    <div class="displayDiv" id="userInput">
-      <button id="play-button">Play</button>
-      <p id="instructions">Or</br></br>Enter a year between 1960 and 2017</p>
-      <input type="number" id="myVal" placeholder="Year">
-      </br></br>
-      <input type="submit" id="Submit" value="Enter">
-    </div>
-    <div class="displayDiv">
-      <p id="displayYear">1960</p>
-    </div>
     <div class="displayDiv" id="topThree">
+      <h3 id="displayYear">1960</h3>
       <h3>Countries with the most</br> CO2 Emissions:</h3>
     </div>
     <div class="displayDiv" id="legend">
