@@ -56,6 +56,22 @@ svg {
       top:300px;
       left:60px;
   }
+  #educate{
+    font:14px 'Roboto';
+    position:absolute;
+
+    top:95px;
+    right:10px;
+    width: 250px;
+}
+#educate1{
+    font:30px 'Roboto';
+
+    position:absolute;
+    top:40px;
+    right:10px;
+    width: 250px;
+}
   #instructions {
     font-family: 'Roboto', sans-serif;
 
@@ -97,7 +113,6 @@ svg {
     left: -530px;
     width: 1500px;
     font: 10px sans-serif;
-
   }
   divs.tooltip {	
       
