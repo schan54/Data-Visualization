@@ -15,5 +15,4 @@ def cleanTSVs():
                 else:
                     outFile.write(line)
             outFile.close()
-
 cleanTSVs()
