@@ -90,10 +90,10 @@ function select(yearValue) {
         .style("color", "white")
         .style("padding", "8px")
         .style("background-color", "#626D71")
-        .style("border-radius", "6px")
+        .style("border-radius", "3px")
         .style("text-align", "center")
         .style("font-family", "monospace")
-        .style("width", "400px")
+        .style("width", "300px")
         .text("");
 
       // Simulate forces acting on each node

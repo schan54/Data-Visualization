@@ -11,12 +11,9 @@
   position: absolute;
   top: 150px;
   left: 1130px;
-  padding-left: 10px;
-  padding-right: 20px;
-}
-
-button, #myVal, #Submit, #instructions {
-  position: absolute;
+  padding: 15px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
 }
 
 #myVal {
@@ -41,7 +38,7 @@ button, #myVal, #Submit, #instructions {
 }
 
 #userInput {
-  left: 200px;
+  left: 150px;
 }
 
 h3 {
@@ -54,6 +51,8 @@ img {
 }
 
 #legend {
-  top: 740px;
+  top: 720px;
   left: 80px;
+  margin-right: 100px;
+  margin-left: 100px;
 }

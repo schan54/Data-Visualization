@@ -1,27 +1,27 @@
 /* global variables for colors */
 :root {
-  --primary-color: #29506D;
+  --primary-color: #116466;
   --primary-color-tint-1: #718EA4;
   --primary-color-tint-2: #496D89;
   --primary-color-shade-1: #123652;
   --primary-color-shade-2: #042037;
-  --secondary-color: #AA7939;
+  --secondary-color: #2C3531;
   --secondary-color-tint-1: #FFDBAA;
-  --secondary-color-tint-2: #D4A76A;
+  --secondary-color-tint-2: #92A29E;
   --secondary-color-shade-1: #805215;
   --secondary-color-shade-2: #553100;
-  --tertiary-color: #343477;
+  --tertiary-color: #FFCB9A;
   --tertiary-color-tint-1: #8080B3;
   --tertiary-color-tint-2: #565695;
   --tertiary-color-shade-1: #1A1A59;
   --tertiary-color-shade-2: #09093B;
-  --quarternary-color: #AA8E39;
+  --quarternary-color: #D9B08C;
   --quarternary-color-tint-1: #FFEAAA;
   --quarternary-color-tint-2: #D4BA6A;
   --quarternary-color-shade-1: #806515;
   --quarternary-color-shade-2: #554000;
-  --light-grey: #EDEDED;
-  --light-smoke: #D3D3D3;
+  --light-grey: #D1E8E2;
+  --light-smoke: #EDEDED;
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 body svg {
   background-color: var(--light-smoke);
   border-style: solid;
-  border-color: var(--primary-color-shade-1);
+  border-color: var(--secondary-color);
   border-radius: 5px;
   margin-top: 80px;
 }
@@ -119,7 +119,7 @@ body svg {
   width: 100%;
   border-bottom: solid;
   border-bottom-width: 3px;
-  border-bottom-color: var(--primary-color-shade-2);
+  border-bottom-color: var(--secondary-color);
   z-index: 1;
 }
 
@@ -137,12 +137,12 @@ body svg {
 }
 
 .menubar a:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-color-tint-2);
   color: white;
 }
 
 .selected {
-  background-color: var(--secondary-color-tint-2);
+  background-color: var(--secondary-color);
   color: white;
 }
 
@@ -224,8 +224,6 @@ text {
 }
 
 #navMap {
-  background-color: var(--primary-color-shade-2);
-  opacity: 0.5;
   padding: 20px;
   margin-top: 100px;
   margin-left: 60px;
@@ -234,9 +232,16 @@ text {
 }
 
 #anchorCO2, #anchorTemp, #anchorPop {
-  padding: 4px;
+  padding: 12px;
   margin-bottom: 20px;
-  background-color: var(--light-smoke);
+  background-color: var(--quarternary-color);
+  font-family: Roboto, sans-serif;
+  letter-spacing: 1px;
+  color: black;
+}
+
+#anchorCO2:hover, #anchorTemp:hover, #anchorPop:hover {
+  background-color: var(--tertiary-color);
 }
 
 #col1 {
