@@ -442,11 +442,15 @@
     var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
     var ret2 = ret.replace(/.tmp.tsv/g,'');
     var ret3 = ret2.replace(/_/g,' ');
+    var ret4 = ret3.replace(/data/g,' ');
+    var ret5 = ret4.replace(/\//g,' ');
+
+
 
     var titSource = updateTitle(source);
 
     
-    title2.text(ret3)
+    title2.text(ret5)
 
 
     var x = d3.scale.linear()
