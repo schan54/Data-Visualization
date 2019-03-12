@@ -23,6 +23,7 @@
       });
     });
   </script>
+  
 <div id="insns">
     <p id="instructions">
         How to use:
@@ -41,8 +42,8 @@
             Months are shown in descending order where month 12 is December and month 1 is January.
     </p>       
     <p id="sources">
-            Dataset from the Climatic Research Unit of the University of East Anglia https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_3.23/crucy.1506241137.v3.23/countries/tmp/
-    </p>   
+        Source:<a href="https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_3.23/crucy.1506241137.v3.23/countries/tmp/" target="_blank">https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_3.23/crucy.1506241137.v3.23/countries/tmp/</a><br/>
+    </p>      
 </div>
 <select id="inds">
     <option value="data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv">Afghanistan</option>
@@ -245,7 +246,6 @@
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom,
         barWidth = Math.floor(width / 19) - 1;
-    
     var x = d3.scale.linear()
         .range([barWidth / 2, width - barWidth / 2]);
     
