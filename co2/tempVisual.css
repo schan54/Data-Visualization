@@ -57,18 +57,19 @@ svg {
       left:60px;
   }
   #educate{
-    font:14px 'Roboto';
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
     position:absolute;
-
-    top:95px;
-    right:10px;
+    top: 200px;
+    right: 10px;
     width: 250px;
 }
 #educate1{
-    font:30px 'Roboto';
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
 
     position:absolute;
-    top:40px;
+    top:150px;
     right:10px;
     width: 250px;
 }
@@ -101,9 +102,8 @@ svg {
   }
   #instructionsMonth {
     font-family: 'Roboto', sans-serif;
-
     position: absolute;
-    bottom: 130px;
+    bottom: 100px;
     left: 280px;
     width: 1000px;
   }

@@ -5,10 +5,14 @@ path {
 h1 {
     position:relative;
     top:50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    letter-spacing: 1px;
 }
 p {
     position:relative;
     top:50px;
+    font-family: 'Nunito', sans-serif;
 }
 
 #yeartxt {
@@ -18,4 +22,13 @@ p {
     width:60%;
     position:relative;
     top:50px;
+}
+
+#shortDescription {
+	margin-left: 300px;
+	margin-right: 300px;
+}
+
+body {
+	margin-bottom: 10px;
 }

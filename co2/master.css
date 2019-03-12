@@ -231,7 +231,7 @@ text {
   padding: 12px;
   margin-bottom: 20px;
   background-color: var(--quarternary-color);
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   letter-spacing: 1px;
   color: black;
 }
@@ -258,5 +258,15 @@ text {
 
 #titleBot {
   top: 2420px;
+}
+
+.mission {
+  font-family: 'Merriweather', sans-serif;
+  font-style: italic;
+}
+
+.quote {
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 18px;
 }
 

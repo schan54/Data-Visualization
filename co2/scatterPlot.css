@@ -102,3 +102,16 @@ img {
   width: 350px;
   font-family: 'Nunito', sans-serif;
 }
+
+h2 {
+  position: absolute;
+  top: 80px;
+  left: 180px;
+}
+
+#description {
+  margin-left: 300px;
+  margin-right: 300px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+}

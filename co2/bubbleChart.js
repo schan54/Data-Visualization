@@ -205,7 +205,7 @@ function select(yearValue) {
       topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>");
       
 
-      topEmissions.append("text").html("</br>" + "Total Emissions: " + "</br></br>" ).attr("id", "sumText");
+      topEmissions.append("text").html("</br>" + "World's Total Emissions: " + "</br></br>" ).attr("id", "sumText");
       topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum");
     }
 
