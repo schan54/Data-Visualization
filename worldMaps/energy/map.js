@@ -87,7 +87,8 @@ var svg = d3.select("body")
             .attr("height", height)
             .append('g')
             .attr('class', 'map');
-
+var g = svg.append("g").attr("class", "countries");
+            
 var projection = d3.geoMercator()
                    .scale(200)
                   .translate( [width / 2, height / 1.5]);
@@ -109,9 +110,8 @@ function ready(error, data, population) {
   population.forEach(function(d) { populationById[d.id] = +d[userYear]; });
   data.features.forEach(function(d) { d.value = populationById[d.id] });
 
-  svg.append("g")
-      .attr("class", "countries")
-    .selectAll("path")
+  
+   g.selectAll("path")
       .data(data.features)
     .enter().append("path")
       .attr("d", path)
