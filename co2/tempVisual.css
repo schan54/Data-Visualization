@@ -1,5 +1,5 @@
 svg {
-    font: 10px sans-serif;
+    font-family: 14px 'Roboto', sans-serif;
   }
   
   .y.axis path {
@@ -18,16 +18,21 @@ svg {
   }
   
   .title {
-    font: 300 78px Helvetica Neue;
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 78px 'Roboto';
     fill: #666;
   }
   .title2 {
-    position: right;
-    font: 300 50px Helvetica Neue;
+    position:absolute;
+    font-family: 'Roboto', sans-serif;
+    font: 300 58px 'Roboto';
     fill: #666;
   }
   .birthyear,
   .month {
+    font-family: 'Roboto', sans-serif;
+
     text-anchor: middle;
   }
   
@@ -52,30 +57,47 @@ svg {
       left:60px;
   }
   #instructions {
+    font-family: 'Roboto', sans-serif;
+
     position: absolute;
     top: 320px;
     width: 270px;
   }
   #instructions2 {
+    font-family: 'Roboto', sans-serif;
+
     position: absolute;
     top: 340px;
     width: 270px;
   }
   #instructions3 {
+    font-family: 'Roboto', sans-serif;
+
     position: absolute;
     top: 380px;
     width: 270px;
   }
   #instructions4 {
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 420px;
     width: 270px;
   }
   #instructionsMonth {
+    font-family: 'Roboto', sans-serif;
+
     position: absolute;
-    bottom: 90px;
+    bottom: 130px;
     left: 280px;
     width: 1000px;
+  }
+  #sources {
+    position: absolute;
+    bottom: 0px;
+    left: -380px;
+    width: 1500px;
+    font: 10px sans-serif;
+
   }
   divs.tooltip {	
       
@@ -83,8 +105,9 @@ svg {
       text-align: center;			
       width: 60px;					
       height: 28px;					
-      padding: 2px;				
-      font: 12px sans-serif;		
+      padding: 2px;			
+      font-family:12px 'Roboto', sans-serif;
+	
       background: lightsteelblue;	
       border: 0px;		
       border-radius: 8px;			
