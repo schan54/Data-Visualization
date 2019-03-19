@@ -21,7 +21,7 @@ var svgSlider = d3.select("#slider")
 
 var x = d3.scaleTime()
     .domain([startDate, endDate])
-    .range([100, width-100])
+    .range([0, width-100])
     .clamp(true);
 
 var slider = svgSlider.append("g")
@@ -88,7 +88,7 @@ var svg = d3.select("body")
             .append('g')
             .attr('class', 'map');
 var g = svg.append("g").attr("class", "countries");
-            
+
 var projection = d3.geoMercator()
                    .scale(200)
                   .translate( [width / 2, height / 1.5]);
@@ -102,7 +102,7 @@ queue()
     .defer(d3.tsv, "energyChloro.tsv")
     .await(ready);
 
-var userYear = "2000"
+var userYear = "1991"
 
 function ready(error, data, population) {
   var populationById = {};
@@ -110,7 +110,7 @@ function ready(error, data, population) {
   population.forEach(function(d) { populationById[d.id] = +d[userYear]; });
   data.features.forEach(function(d) { d.value = populationById[d.id] });
 
-  
+
    g.selectAll("path")
       .data(data.features)
     .enter().append("path")
@@ -165,12 +165,12 @@ function update(h) {
 
   if (userYear != (formatDateIntoYear(h))) {
     userYear = formatDateIntoYear(h)
-    console.log(userYear)
+    queue()
+        .defer(d3.json, "world_countries.json")
+        .defer(d3.tsv, "energyChloro.tsv")
+        .await(ready);
   }
   // filter data set and redraw plot
 
-  queue()
-      .defer(d3.json, "world_countries.json")
-      .defer(d3.tsv, "energyChloro.tsv")
-      .await(ready);
+
 }

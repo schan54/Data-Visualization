@@ -21,7 +21,7 @@ var svgSlider = d3.select("#slider")
 
 var x = d3.scaleTime()
     .domain([startDate, endDate])
-    .range([100, width-100])
+    .range([0, width])
     .clamp(true);
 
 var slider = svgSlider.append("g")
@@ -102,8 +102,7 @@ queue()
     .await(ready);
 
 
-var userYear = "1990"
-var userYearAsInt = 1990
+var userYear = "1961"
 
 function ready(error, data, population) {
   var populationById = {};
@@ -168,11 +167,12 @@ function update(h) {
   if (userYear != (formatDateIntoYear(h))) {
     userYear = formatDateIntoYear(h)
     console.log(userYear)
-  }
-  // filter data set and redraw plot
-
-  queue()
+	queue()
       .defer(d3.json, "world_countries.json")
       .defer(d3.tsv, "worldData.tsv")
       .await(ready);
+  }
+  // filter data set and redraw plot
+
+  
 }
