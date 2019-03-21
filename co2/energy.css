@@ -23,6 +23,24 @@ p {
     position:relative;
     top:50px;
 }
+#selectFile{
+    position:absolute;
+    top:300px;
+    left:60px;
+}
+#toolTip {
+    position: absolute;			
+    text-align: center;			
+    width: 150px;					
+    height: 50px;					
+    padding: 2px;			
+    font-family:12px 'Roboto', sans-serif;
+  
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;		
+  }
 
 #shortDescription {
 	margin-left: 300px;
