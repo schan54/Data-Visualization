@@ -7,11 +7,11 @@
   <script src="http://d3js.org/d3.v4.min.js"></script>
   <script src="http://d3js.org/queue.v1.min.js"></script>
   <script src="http://d3js.org/topojson.v1.min.js"></script>
-  
-  
+
+
   <link rel="stylesheet" type="text/css" href="master.css" />
   <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
-  <script type="text/javascript" src="master.js"></script>  
+  <script type="text/javascript" src="master.js"></script>
   <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -27,9 +27,20 @@
   </script>
 
   <h2>CO2 Emissions Per Year (in Metric Tons)</h2>
+  <p id="description">Use the slider to investigate temperature change around the globe. Hover over the countries to see their corresponding values.</p>
   <div id="slider"></div>
+  <p id="description1">It can be hard to see temperature change over time when over the past 100 years, global temperature has only changed by 1 degree Celcius</p>
+  <p id="description2">The values and colors you see are the net-difference between the current selected year and the first time this dataset was logged, 1901.</p>
   <script src="d3-tip.js"></script>
   <script type="text/javascript" src="tempChloro.js"></script>
-  
+  <p id="description3">**I want a gif showing the temperature over time but couldn't get my implementation to work, so here are some pictures...</p>
+  <p id="description3">**I also want scrolling text while viewing these pages so its easy for users to navigate the map and still read</p>
+
+  <div class="displayDiv" id="legend">
+    <img src="png/chloroTempStart.png" alt="chloroTempStart missing">
+    <img src="png/chloroTempMid.png" alt="chloroTempMid missing">
+    <img src="png/chloroTempMidLate.png" alt="chloroTempMidLate missing">
+    <img src="png/chloroTempEnd.png" alt="chloroTempEnd missing">
+  </div>
 </body>
 </html>
