@@ -226,7 +226,14 @@ text {
   margin-right: 60px;
   border-radius: 5px;
 }
-
+#description{
+    position: relative;
+    top:110px;
+}
+#slider{
+    position: relative;
+    top: 20px;
+}
 #anchorCO2, #anchorTemp, #anchorPop {
   padding: 12px;
   margin-bottom: 20px;
