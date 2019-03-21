@@ -2,6 +2,10 @@
 
 Github Repo for our group, "*Data Visualization*". We are a four computer science undergraduates studying at UCSC. This repo features the our work done over the past quarter and is broken via branches as well as various directories.
 
+Here is a link to our website:
+
+https://data-vizuals.herokuapp.com/
+
 Individual branches feature initial programming works attempted at the begining of the quarter. After sprint 1, we then merged our individual work into the master branch
 
 The master branch holds the real guts of the project. The core website is located in the src folder and can be run locally.
