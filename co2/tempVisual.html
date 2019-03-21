@@ -382,7 +382,6 @@
     
           .text(function(month) { return month; });
     
-    
       // Allow the arrow keys to change the displayed year.
       window.focus();
       d3.select(window).on("keydown", function() {
@@ -422,27 +421,18 @@
                     var sect = document.getElementById("inds");
                     var section = sect.options[sect.selectedIndex].value;
                     updateTest(section);
-    
-    
-                
-                //debugger
-    
-    
+        
                 });
-    
-    /*
-    <input class="selector" type="button" value="Customers" id="test.tsv"/>
-    <input class="selector" type="button" value="Employees" id="population.tsv"/>
-    
-    d3.selectAll('.selector')
-                .on('click', function(d) {
-                    updateTest(this.id);
-                })@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@WAS SELECTOR FOR BUTTON. ^^^ REPLACES THIS*/                                        
+                                           
     function updateTitle(source){
         var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
         var ret2 = ret.replace(/.tmp.tsv/g,'');
         var ret3 = ret2.replace(/_/g,'');
-        title2.text(ret3);
+  //      title2.text(ret3);
+    var ret4 = ret3.replace(/data/g,' ');
+    var ret5 = ret4.replace(/\//g,' ');
+    
+    title2.text(ret5)
         }            
             // update function:
     function updateTest(source) {

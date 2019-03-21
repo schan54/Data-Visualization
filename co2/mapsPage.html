@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Maps</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<link rel="stylesheet" type="text/css" href="master.css" />
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script type="text/javascript" src="master.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+
+
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("navigation.html", function() {
+        $("a[href= 'mapsPage.html']").addClass("selected");
+      });
+    });
+  </script>
+
+  <div id = "navMap">
+    <div id="col1">
+      <a href = "#titleTop" id="anchorCO2">CO2 Emissions</a><br/>
+    </div>
+    <a href = "#titleMid" id="anchorTemp">Temperature</a>
+
+  </div>
+
+  <script src="d3-tip.js"></script>
+  <h2 id="titleTop">CO2 Emissions (in Metric Tons)</h2>
+  <img src="png/CO2MapLegend.png" alt="No Legend Available" id="co2Legend">
+  <script type="text/javascript" src="map.js"></script>
+  <h2 id="titleMid">Temperature</h2>
+  <img src="png/tempMapLegend.png" alt="No Legend Available" id="tempLegend">
+  <script type="text/javascript" src="mapTemp.js"></script>
+  
+</body>
+</html>
