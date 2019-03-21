@@ -27,15 +27,14 @@
   <h2 id = "yeartxt">Year: 1990</h2>
   
   <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
-
-  <!-- <form>
-  <input type = "radio" value = "consumption" onchange="parseFile(this.value);">Global Energy Consumption</input>
-  <input type = "radio" value = "production" onchange="parseFile(this.value);">Energy Production</input>
-  <input type = "radio" value = "crudeoil" onchange="parseFile(this.value);">Crude Oil</input>
-  <input type = "radio" value = "naturalgas" onchange="parseFile(this.value);">Natural Gas</input>
-  <input type = "radio" value = "oilproducts" onchange="parseFile(this.value);">Oil Products</input>
-  <input type="submit">
-  </form> -->
+<!-- 
+<select id = "selectFile" onchange="parseFile(this.value);">
+  <option value = "consumption">Global Energy Consumption</option>
+  <option value = "production">Energy Production</option>
+  <option value = "crudeoil">Crude Oil</option>
+  <option value = "naturalgas">Natural Gas</option>
+  <option value = "oilproducts">Oil Products</option>
+</select> -->
 
   <script>
     var width = 960,
@@ -60,28 +59,12 @@
         .attr("height", height)
       .append("g")
         .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
-
+    var tooltip = d3.select("body").append("div")
+        .attr("id", "toolTip")
+        .style("opacity", 0);
     parseFile("consumption");
-
-    function inputData(file){
-      d3.json(file, function(error, root) {
-        if (error) throw error;
-        var year = 0;
-        var path = svg.selectAll("path");
-        var data = path.data(partition.nodes(root[year]));
-
-        drawSunburst(data,root[year]);
-        d3.select("#yearslider").on("input", function(){
-          d3.select("#yeartxt").text("Year: " + this.value);
-        });
-
-        d3.select("#yearslider").on("change", function(){
-          year = this.value - 1990;
-          drawSunburst(path,root[year]);
-          
-        });
-      });
-      }
+    
+    // change File based on selection
     function parseFile(file) {
       switch(file){
         case "consumption":
@@ -110,16 +93,53 @@
           break;
       }
     }
+    function inputData(file){
+      d3.select("#yeartxt").text("Year: " + 1990);
+      document.getElementById("yearslider").value = "1990";
+      d3.json(file, function(error, root) {
+        
+        if (error) throw error;
+        var year = 0;
+        var path = svg.selectAll("path");
+        svg.select("g").selectAll("path").data(data).exit().remove();
+        var data = path.data(partition.nodes(root[year]));
+
+        drawSunburst(path,root[year]);
+        // Change graph based on slider
+        d3.select("#yearslider").on("input", function(){
+          d3.select("#yeartxt").text("Year: " + this.value);
+        });
+
+        d3.select("#yearslider").on("change", function(){
+          year = this.value - 1990;
+          drawSunburst(path,root[year]);
+          
+        });
+      });
+      }
+      // create the SunBurst and tooltips
     function drawSunburst(path, root){
+      
       path
           .data(partition.nodes(root))
         .enter().append("path")
           .attr("d", arc)
           .style("fill", function(d) { return color(d.name); })
           .on("click", click)
-        .append("title")
-          .text(function(d) { return d.name + "\n" + formatNumber(d.size); })
-
+        // .append("title")
+        //   .text(function(d) { return d.name + "\n" + formatNumber(d.size); })
+       
+        .on("mouseover", function(d){
+            tooltip.html(d.name + "\n" + formatNumber(d.size))
+            .style("opacity", .9)
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY) + "px");	
+          })
+        .on("mouseout", function(d){
+          tooltip.style("opacity", 0);	
+        });
+          
+    // Clicking on Sunburst transitions and zooms in
     }
     function click(d) {
       svg.transition()
