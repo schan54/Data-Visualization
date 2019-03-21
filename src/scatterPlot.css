@@ -26,7 +26,13 @@
 #Submit {
   top: 200px;
 }
-
+#sources {
+    position: absolute;
+    bottom: -285px;
+    left: -590px;
+    width: 1500px;
+    font: 10px sans-serif;
+  }
 #Submit, #play-button {
   font-family: 'Nunito', sans-serif;
   letter-spacing: 1px;
