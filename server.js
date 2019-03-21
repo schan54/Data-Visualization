@@ -6,13 +6,13 @@ var path = require('path');
 //set port
 var port = process.env.PORT || '443'
 
-app.use(express.static(__dirname+ '/co2'));
+app.use(express.static(__dirname+ '/src'));
 
 //routes
 app.engine('html', require('ejs').renderFile);
 
 app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname + '/co2/index.html'));
+    res.sendFile(path.join(__dirname + '/src/index.html'));
 })
 
 app.listen(process.env.PORT || 3000, function(){
