@@ -27,10 +27,14 @@ enterButton.on("click", function() {
   currentValue = document.getElementById("myVal").value;
   if (currentValue < 1960 || currentValue > 2017) {
     d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter a year between 1960 and 2017");
+    currentValue = 1960;
+  } else if (!Number.isInteger(Number(currentValue))) {
+    d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter an Integer year");
+    currentValue = 1960;
   } else {
     d3.select('#instructions').html("Or" + "</br></br>" + "Enter a year between 1960 and 2017");
-    select(currentValue);
-    d3.select("#displayYear").text(currentValue);
+    currentValue--;
+    step();
   }
 })
 
@@ -86,17 +90,7 @@ function select(yearValue) {
       var tooltip = selection
         .append("div")
         .attr("id", "toolChart");
-        /*
-        .style("position", "absolute")
-        .style("visibility", "hidden")
-        .style("color", "white")
-        .style("padding", "8px")
-        .style("background-color", "#626D71")
-        .style("border-radius", "3px")
-        .style("text-align", "center")
-        .style("font-family", "monospace")
-        .style("width", "300px")
-        .text("");*/
+        
 
       // Simulate forces acting on each node
       var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
@@ -140,7 +134,10 @@ function select(yearValue) {
         .attr('transform', 'translate(' + [width / 2, height / 2] + ')')
         .on("mouseover", function(d) {
           if (moving == false) {
-            tooltip.html(d.country + "<br>" + d[columnForRadius] + " MtCO2");
+            tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
+                + d.country + "</span><br>" 
+                + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
+                + d[columnForRadius] + " MtCO2</span>");
             return tooltip.style("visibility", "visible");
           }
         })

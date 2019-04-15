@@ -50,9 +50,11 @@ body svg {
   font-weight: 400;
   font-family:"avenir next", Arial, sans-serif;
   padding: 6px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #FFA500;
-  border-radius: 1px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background: rgba(44, 53, 49, 0.8);
+  color: var(--tertiary-color);
+  border-radius: 3px;
   pointer-events: none;
 }
 
@@ -66,7 +68,6 @@ body svg {
   color: rgba(0, 0, 0, 0.6);
   position: absolute;
   pointer-events: none;
-  
 }
 
 /* Northward tooltips */

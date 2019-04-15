@@ -26,6 +26,7 @@
 #Submit {
   top: 200px;
 }
+
 #sources {
     position: absolute;
     bottom: -285px;
@@ -33,6 +34,7 @@
     width: 1500px;
     font: 10px sans-serif;
   }
+
 #Submit, #play-button {
   font-family: 'Nunito', sans-serif;
   letter-spacing: 1px;
@@ -100,13 +102,14 @@ img {
 #toolChart {
   position: absolute;
   visibility: hidden;
-  color: white;
+  color: var(--tertiary-color);
   padding: 8px;
-  background-color: var(--secondary-color);
+  background-color: rgba(44, 53, 49, 0.8);
   border-radius: 3px;
   text-align: center;
   width: 350px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'avenir next', sans-serif;
+  line-height: 25px;
 }
 
 h2 {
