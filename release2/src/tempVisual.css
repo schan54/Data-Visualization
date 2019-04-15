@@ -1,0 +1,130 @@
+svg {
+    font-family: 14px 'Roboto', sans-serif;
+  }
+  
+  .y.axis path {
+    display: none;
+  }
+  
+  .y.axis line {
+    stroke: rgb(26, 22, 22);
+    stroke-opacity: 1;
+    shape-rendering: crispEdges;
+  }
+  
+  .y.axis .zero line {
+    stroke: #000;
+    stroke-opacity: 1;
+  }
+  
+  .title {
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 78px 'Roboto';
+    fill: #666;
+  }
+  .title2 {
+    position:absolute;
+    font-family: 'Roboto', sans-serif;
+    font: 300 58px 'Roboto';
+    fill: #666;
+  }
+  .birthyear,
+  .month {
+    font-family: 'Roboto', sans-serif;
+
+    text-anchor: middle;
+  }
+  
+  .birthyear {
+    fill: #fff;
+  }
+  
+  rect {
+    fill-opacity: .6;
+    fill: #1f77b4;
+  }
+  
+  rect:first-child {
+    fill: #1f77b4;
+  }
+  rect:nth-child(2) {
+    fill:transparent;
+  }
+  #inds{
+      position:absolute;
+      top:300px;
+      left:60px;
+  }
+  #educate{
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    position:absolute;
+    top: 200px;
+    right: 10px;
+    width: 250px;
+}
+#educate1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+
+    position:absolute;
+    top:150px;
+    right:10px;
+    width: 250px;
+}
+  #instructions {
+    font-family: 'Roboto', sans-serif;
+
+    position: absolute;
+    top: 320px;
+    width: 270px;
+  }
+  #instructions2 {
+    font-family: 'Roboto', sans-serif;
+
+    position: absolute;
+    top: 340px;
+    width: 270px;
+  }
+  #instructions3 {
+    font-family: 'Roboto', sans-serif;
+
+    position: absolute;
+    top: 380px;
+    width: 270px;
+  }
+  #instructions4 {
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    top: 420px;
+    width: 270px;
+  }
+  #instructionsMonth {
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    bottom: 100px;
+    left: 280px;
+    width: 1000px;
+  }
+  #sources {
+    position: absolute;
+    bottom: 0px;
+    left: -530px;
+    width: 1500px;
+    font: 10px sans-serif;
+  }
+  divs.tooltip {	
+      
+      position: absolute;			
+      text-align: center;			
+      width: 60px;					
+      height: 28px;					
+      padding: 2px;			
+      font-family:12px 'Roboto', sans-serif;
+	
+      background: lightsteelblue;	
+      border: 0px;		
+      border-radius: 8px;			
+      pointer-events: none;		
+  }

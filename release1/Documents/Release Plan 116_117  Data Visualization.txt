@@ -1,0 +1,49 @@
+﻿Data Visualization Release Plan
+Team Name:
+Website Name:
+Release Date: June 2019
+
+
+
+
+High Level Goals:
+Winter Quarter 116
+* Build a basic framework for website
+* Research a lot of data about climate change
+* Have a global map full of data
+Spring Quarter 117
+* Expand our website to be more interactive and pleasing
+* Add more data about climate change
+* Find a host for our website
+
+
+Sprint Plan and User Stories for Winter Quarter
+        10 day sprints
+
+
+Sprint 1: 1/23/19 - 2/2/19(Sat)
+        US1: As a developer, We need to research and acquire data in order for us to implement visualizations
+* Global Temperature
+* CO2 levels (contributions)
+* Rainfall
+* Energy Consumption
+        US2: As a developer, we need to learn technologies such as D3 to implement our website
+        US3: As a developer, we want to consolidate all our logistic in a repo to make project management easier
+        US4: As a user, I want to be able to the basic framework on the website.
+        US: As a developer, I want to decide on a color scheme, font, 
+
+
+Sprint 2: 2/2/19 - 2/12/19(Tues)
+        US1: As a developer, we want to master d3.js
+        US2: As a user, I want to see categories, filters, and interactions of data
+        US3: As a user, I want to see a functioning global map
+* Search bar?
+   * Name
+   * Gdp
+* 3d world
+Sprint 3: 2/12/19 - 2/23/19(Sat)
+        US1: As a user, I want to see visuals of data on the website
+Sprint 4: 2/23/19 - 3/5/19(Tues)
+        US1: As a user, I want to expand to more datasets
+        US2: As a developer, I want to have a functional website with visuals, interactions, 
+        US3: As a user, I want a bug-free and appealing website
