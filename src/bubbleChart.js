@@ -69,8 +69,8 @@ function select(yearValue) {
   });
 
   function bubbleChart() {
-    var width = 1200;
-        height = 700;
+    var width = 400;
+        height = 400;
         columnForColors = "continent";
         columnForRadius = "value";
         yearTemp = yearValue;
@@ -83,30 +83,16 @@ function select(yearValue) {
     function chart(selection) {
       var data = selection.datum();
       var div = selection,
-          svg = div.selectAll('svg');
+          svg = div.select('svg');
       svg.attr('width', width).attr('height', height);
+      var svgNA = d3.select('#northAmerica').attr('width', 400).attr('height', 350);
+      var svgEU = d3.select('#europe').attr('width', 400).attr('height', 350);
+      var svgAS = d3.select('#asia').attr('width', 400).attr('height', 350);
 
       // Tooltip for Bubble Chart
       var tooltip = selection
         .append("div")
         .attr("id", "toolChart");
-        
-
-      // Simulate forces acting on each node
-      var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
-        .force("charge", d3.forceManyBody().strength([-35]))
-        .force("x", d3.forceX())
-        .force("y", d3.forceY())
-        .on("tick", ticked);
-
-      function ticked(e) {
-        node.attr("cx", function(d) {
-          return d.x;
-        })
-        .attr("cy", function(d) {
-          return d.y;
-        });
-      }
 
       // Set up color scheme
       var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
@@ -115,8 +101,114 @@ function select(yearValue) {
         return +d[columnForRadius];
       }), d3.max(data, function(d) {
         return +d[columnForRadius];
-      })]).range([2, 80])
+      })]).range([4, 120])
+        
+      /*
+      // Simulate forces acting on each node
+      var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
+        .force("charge", d3.forceManyBody().strength([-35]))
+        .force("x", d3.forceX())
+        .force("y", d3.forceY())
+        .on("tick", ticked);
+      */
 
+        // Simulate forces acting on each node
+      var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
+        .force("charge", d3.forceManyBody().strength(1))
+        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force("collision", d3.forceCollide().radius(function(d) {
+          return scaleRadius(d.value)
+        }))
+        .on('tick', ticked);
+
+      /*
+      function ticked(e) {
+        node.attr("cx", function(d) {
+          return d.x;
+        })
+        .attr("cy", function(d) {
+          return d.y;
+        });
+        node2.attr("cx", function(d) {
+          return d.x;
+        })
+        .attr("cy", function(d) {
+          return d.y;
+        });
+      } */
+
+      function ticked() {
+        var u = d3.select('svg')
+          .selectAll('circle')
+          .data(data.filter(function(d) { return d.year == yearTemp}));
+
+        u.enter()
+          .append('circle')
+          .attr('r', function(d) {
+            //console.log("here");
+            if (isNaN(d.value)) {
+              return 2;
+              console.log("here " + yearTemp);
+            } else {
+              console.log("here " + yearTemp);
+              return scaleRadius(d.value)
+            }
+          })
+          .merge(u)
+          .style("fill", function(d) {
+            return colorCircles(d[columnForColors])
+          })
+          .attr("cx", function(d) {
+            if (isNaN(d.x)) {
+              return 1;
+            } else {
+              return d.x
+            }
+          })
+          .attr("cy", function(d) {
+            if (isNaN(d.y)) {
+              return 2;
+            } else {
+              return d.y
+            }
+          })
+          .on("mouseover", function(d) {
+            if (moving == false) {
+              tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
+                  + d.country + "</span><br>" 
+                  + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
+                  + d[columnForRadius] + " MtCO2</span>");
+              return tooltip.style("visibility", "visible");
+            }
+          })
+          .on("mousemove", function() {
+            if (moving == false) {
+              return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+            }
+          })
+          .on("mouseout", function() {
+            if (moving == false) {
+              return tooltip.style("visibility", "hidden");
+            }
+          });
+
+
+         u.transition()
+          .duration(50)
+          .attr('r', function(d) {
+            //console.log("here");
+            if (isNaN(d.value)) {
+              return 2;
+              console.log("here " + yearTemp);
+            } else {
+              console.log("here " + yearTemp);
+              return scaleRadius(d.value)
+            }
+          });
+
+        u.exit().remove();
+      }
+      /*
       // Remove all elements in chart area before entering
       d3.selectAll("svg > *").remove();
 
@@ -152,6 +244,38 @@ function select(yearValue) {
           }
         });
 
+        // Enter() data
+      var node2 = svgNA.selectAll("circle")
+        .data(data.filter(function(d) { return d.year == yearTemp && d.continent == "North America"}))
+        .enter()
+        .append("circle")
+        .attr('r', function(d) {
+            return scaleRadius(d[columnForRadius])
+        })
+        .style("fill", function(d) {
+            return colorCircles(d[columnForColors])
+        })
+        .attr('transform', 'translate(' + [400 / 2, 350 / 2] + ')')
+        .on("mouseover", function(d) {
+          if (moving == false) {
+            tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
+                + d.country + "</span><br>" 
+                + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
+                + d[columnForRadius] + " MtCO2</span>");
+            return tooltip.style("visibility", "visible");
+          }
+        })
+        .on("mousemove", function() {
+          if (moving == false) {
+            return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+          }
+        })
+        .on("mouseout", function() {
+          if (moving == false) {
+            return tooltip.style("visibility", "hidden");
+          }
+        });
+      */
       var tempArray = [];
       var tempStringArray = [];
       var index = 0;

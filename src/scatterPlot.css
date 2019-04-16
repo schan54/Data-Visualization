@@ -65,6 +65,7 @@
 #topThree {
   top: 100px;
   right: 5px;
+  width: 300px;
 }
 
 #userInput {
@@ -123,4 +124,19 @@ h2 {
   margin-right: 300px;
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
+}
+
+#northAmerica, #europe, #asia {
+  border: none;
+  margin: -3px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  text-align: left;
+}
+
+#mainChart {
+  border-bottom: none;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
