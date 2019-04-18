@@ -331,6 +331,22 @@
                 nextSibling.focus();
                 e.preventDefault();
             }
+            else if(key === 38){
+                var nextSibling = this.nextSibling;
+                while(nextSibling && nextSibling.nodeType != 1) {
+                    nextSibling = nextSibling.nextSibling
+                }
+                nextSibling.focus();
+                e.preventDefault();
+            }
+            else if(key === 40){
+                var nextSibling = this.nextSibling;
+                while(nextSibling && nextSibling.nodeType != 1) {
+                    nextSibling = nextSibling.nextSibling
+                }
+                nextSibling.focus();
+                e.preventDefault();
+            }
         })
     }
       // Update the scale domains.
