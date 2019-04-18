@@ -55,6 +55,12 @@
           animals and humans that rely on the reefs for protection.
     </p>
 </div>
+<div class="displayDiv" id="userInput">
+    <button type="button" button id = "leftButt" onclick="changeColor('left')">left</button>
+</div>
+<div class="displayDivRight" id="userInput">
+    <button type="button" button id = "rightButt" onclick="changeColor('right')">right</button>
+</div>
 <select id="inds">
     <option value="data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv">Afghanistan</option>
     <option value="data/crucy.v3.23.1901.2014.Albania.tmp.tsv">Albania</option>
@@ -251,7 +257,6 @@
 </select>
 
 <script>
-
     var margin = {top: 20, right: 40, bottom: 30, left: 20},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom,
@@ -307,7 +312,27 @@
           year0 = d3.min(data, function(d) { return d.year; }),
           year1 = d3.max(data, function(d) { return d.year; }),
           year = year1;
-    
+    var selects = document.getElementsByTagName('select');
+    for (var i = 0; i < selects.length; i++){
+        selects[i].addEventListener('keydown',function(e){    
+            var key = e.which || e.keyCode;
+            if(key == 37){
+                var previousSibling = this.previousSibling;
+                while(previousSibling && previousSibling.nodeType != 1) {
+                    previousSibling = previousSibling.previousSibling
+                }
+                previousSibling.focus();
+                e.preventDefault();
+            }else if(key === 39){
+                var nextSibling = this.nextSibling;
+                while(nextSibling && nextSibling.nodeType != 1) {
+                    nextSibling = nextSibling.nextSibling
+                }
+                nextSibling.focus();
+                e.preventDefault();
+            }
+        })
+    }
       // Update the scale domains.
       x.domain([year1 - month1, year1]);
       y.domain([ -50,50]);
@@ -347,7 +372,9 @@
                 divs.transition()		
                     .duration(200)		
                     .style("opacity", .9);		
-                    divs.html(d)
+                  //  divs.html(d)
+                  divs.html("<strong>Temperature: </strong>" + "<span class=\"details\">" 
+                  + d+ "</span><br>" )
                     .style("left", (d3.event.pageX) + "px")		
                     .style("top", (d3.event.pageY) + "px");	
                 })					
@@ -383,7 +410,20 @@
           .attr("dy", ".71em")
     
           .text(function(month) { return month; });
-    
+    var leftButt = d3.select("#leftButt");
+    var rightButt = d3.select("#rightButt");
+
+    leftButt.on("click", function() {
+      var button = d3.select(this);
+      year = Math.max(year0, year - 1);
+      update();
+    })
+
+    rightButt.on("click", function() {
+      var button = d3.select(this);
+      year = Math.max(year0, year + 1);
+      update();
+    })    
       // Allow the arrow keys to change the displayed year.
       window.focus();
       d3.select(window).on("keydown", function() {
@@ -531,7 +571,9 @@
               divs.transition()		
                   .duration(200)		
                   .style("opacity", .9);		
-                  divs.html(d)
+                // divs.html(d)
+                divs.html("<strong>Temperature: </strong>" + "<span class=\"details\">" 
+                  + d+ "</span><br>" )
                   .style("left", (d3.event.pageX) + "px")		
                   .style("top", (d3.event.pageY) + "px");	
               })					
@@ -552,7 +594,20 @@
     
         .text(function(month) { return month; });
     
-    
+        var leftButt = d3.select("#leftButt");
+    var rightButt = d3.select("#rightButt");
+
+    leftButt.on("click", function() {
+      var button = d3.select(this);
+      year = Math.max(year0, year - 1);
+      update();
+    })
+
+    rightButt.on("click", function() {
+      var button = d3.select(this);
+      year = Math.max(year0, year + 1);
+      update();
+    })    
     // Allow the arrow keys to change the displayed year.
     window.focus();
     d3.select(window).on("keydown", function() {
@@ -583,6 +638,5 @@
                         
             }
     </script>
-
 </body>
 </html>
