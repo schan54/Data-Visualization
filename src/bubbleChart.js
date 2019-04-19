@@ -17,7 +17,7 @@ playButton.on("click", function() {
     button.text("Play");
   } else {
     moving = true;
-    timer = setInterval(step, 1000);
+    timer = setInterval(step, 6000);
     button.text("Pause");
   }
 })
@@ -79,6 +79,7 @@ function select(yearValue) {
         max3 = 0;
         max4 = 0;
         max5 = 0;
+        xPosition = [100, 250, 450, 650, 850, 1100];
 
     function chart(selection) {
       var data = selection.datum();
@@ -97,11 +98,11 @@ function select(yearValue) {
       // Set up color scheme
       var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
       // Set up radius scale
-      var scaleRadius = d3.scaleLinear().domain([d3.min(data, function(d) {
+      var scaleRadius = d3.scalePow().exponent(0.5).domain([d3.min(data, function(d) {
         return +d[columnForRadius];
       }), d3.max(data, function(d) {
         return +d[columnForRadius];
-      })]).range([4, 120])
+      })]).range([2, 90])
         
       /*
       // Simulate forces acting on each node
@@ -114,8 +115,23 @@ function select(yearValue) {
 
         // Simulate forces acting on each node
       var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
-        .force("charge", d3.forceManyBody().strength(1))
-        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force("charge", d3.forceManyBody().strength(5))
+        .force('x', d3.forceX().x(function(d) { 
+          if (!d.continent.localeCompare("Africa")) {
+            return xPosition[5];
+          } else if (!d.continent.localeCompare("Asia")) {
+            return xPosition[4];
+          } else if (!d.continent.localeCompare("Oceania")) {
+            return xPosition[3];
+          } else if (!d.continent.localeCompare("Europe")) {
+            return xPosition[2];
+          } else if (!d.continent.localeCompare("South America")) {
+            return xPosition[1];
+          } else if (!d.continent.localeCompare("North America")) {
+            return xPosition[0];
+          }
+        }))
+        .force('y', d3.forceY().y(300))
         .force("collision", d3.forceCollide().radius(function(d) {
           return scaleRadius(d.value)
         }))
@@ -148,9 +164,7 @@ function select(yearValue) {
             //console.log("here");
             if (isNaN(d.value)) {
               return 2;
-              console.log("here " + yearTemp);
             } else {
-              console.log("here " + yearTemp);
               return scaleRadius(d.value)
             }
           })
@@ -199,9 +213,7 @@ function select(yearValue) {
             //console.log("here");
             if (isNaN(d.value)) {
               return 2;
-              console.log("here " + yearTemp);
             } else {
-              console.log("here " + yearTemp);
               return scaleRadius(d.value)
             }
           });

@@ -63,7 +63,7 @@
 }
 
 #topThree {
-  top: 100px;
+  top: 600px;
   right: 5px;
   width: 300px;
 }
@@ -81,14 +81,6 @@ img {
   width: 60%;
   height: auto;
   margin-bottom: 5px;
-}
-
-#legend {
-  top: 400px;
-  left: 7px;
-  padding: 0px;
-  width: 15%;
-  padding-top: 10px;
 }
 
 #sum {
