@@ -1,6 +1,10 @@
 // Global variables
 var playButton = d3.select("#play-button");
 var enterButton = d3.select("#Submit");
+var plusFiveButton = d3.select("#plusFive");
+var plusTenButton = d3.select("#plusTen");
+var minusFiveButton = d3.select("#minusFive");
+var minusTenButton = d3.select("#minusTen");
 
 var moving = false;
 
@@ -34,6 +38,50 @@ enterButton.on("click", function() {
   } else {
     d3.select('#instructions').html("Or" + "</br></br>" + "Enter a year between 1960 and 2017");
     currentValue--;
+    step();
+  }
+})
+
+// Event handler for clicking plusFive button
+plusFiveButton.on("click", function() {
+  if (currentValue > 2012) {
+    currentValue = 1959;
+    step();
+  } else {
+    currentValue = currentValue + 4;
+    step();
+  }
+})
+
+// Event handler for clicking plusFive button
+minusFiveButton.on("click", function() {
+  if (currentValue < 1965) {
+    currentValue = 1959;
+    step();
+  } else {
+    currentValue = currentValue - 6;
+    step();
+  }
+})
+
+// Event handler for clicking plusTen button
+plusTenButton.on("click", function() {
+  if (currentValue > 2007) {
+    currentValue = 1959;
+    step();
+  } else {
+    currentValue = currentValue + 9;
+    step();
+  }
+})
+
+// Event handler for clicking plusFive button
+minusTenButton.on("click", function() {
+  if (currentValue < 1970) {
+    currentValue = 1959;
+    step();
+  } else {
+    currentValue = currentValue - 11;
     step();
   }
 })

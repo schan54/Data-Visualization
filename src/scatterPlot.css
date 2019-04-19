@@ -35,7 +35,7 @@
     font: 10px sans-serif;
   }
 
-#Submit, #play-button {
+#Submit, #play-button, #plusFive, #plusTen, #minusFive, #minusTen {
   font-family: 'Nunito', sans-serif;
   letter-spacing: 1px;
   color: var(--primary-color);
