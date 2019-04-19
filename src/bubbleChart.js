@@ -128,6 +128,12 @@ function select(yearValue) {
         max4 = 0;
         max5 = 0;
         xPosition = [100, 250, 450, 650, 850, 1100];
+        colorOne = d3.interpolateYlOrBr(0.4); // "rgb(255, 255, 229)"
+        colorTwo = d3.interpolateYlOrBr(0.5); // "rgb(255, 255, 229)"
+        colorThree = d3.interpolateYlOrBr(0.6); // "rgb(120, 197, 120)"
+        colorFour = d3.interpolateYlOrBr(0.7); // "rgb(0, 69, 41)"
+        colorFive = d3.interpolateYlOrBr(0.8); // "rgb(0, 69, 41)"
+        colorSix = d3.interpolateYlOrBr(0.9); // "rgb(0, 69, 41)"
 
     function chart(selection) {
       var data = selection.datum();
@@ -218,7 +224,19 @@ function select(yearValue) {
           })
           .merge(u)
           .style("fill", function(d) {
-            return colorCircles(d[columnForColors])
+            if (!d.continent.localeCompare("Africa")) {
+              return colorOne;
+            } else if (!d.continent.localeCompare("Asia")) {
+              return colorTwo;
+            } else if (!d.continent.localeCompare("Oceania")) {
+              return colorThree;
+            } else if (!d.continent.localeCompare("Europe")) {
+              return colorFour;
+            } else if (!d.continent.localeCompare("South America")) {
+              return colorFive;
+            } else if (!d.continent.localeCompare("North America")) {
+              return colorSix;
+            }
           })
           .attr("cx", function(d) {
             if (isNaN(d.x)) {
