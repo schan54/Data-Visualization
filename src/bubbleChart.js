@@ -90,7 +90,6 @@ minusTenButton.on("click", function() {
 function step() {
   currentValue++;
   select(currentValue);
-  d3.select("#displayYear").text(currentValue);
   if (currentValue > targetValue) {
     moving = false;
     currentValue = 1960;
@@ -128,21 +127,18 @@ function select(yearValue) {
         max4 = 0;
         max5 = 0;
         xPosition = [100, 250, 450, 650, 850, 1100];
-        colorOne = d3.interpolateYlOrBr(0.4); // "rgb(255, 255, 229)"
-        colorTwo = d3.interpolateYlOrBr(0.5); // "rgb(255, 255, 229)"
-        colorThree = d3.interpolateYlOrBr(0.6); // "rgb(120, 197, 120)"
-        colorFour = d3.interpolateYlOrBr(0.7); // "rgb(0, 69, 41)"
-        colorFive = d3.interpolateYlOrBr(0.8); // "rgb(0, 69, 41)"
-        colorSix = d3.interpolateYlOrBr(0.9); // "rgb(0, 69, 41)"
+        colorOne = d3.interpolateYlOrBr(0.4);
+        colorTwo = d3.interpolateYlOrBr(0.5);
+        colorThree = d3.interpolateYlOrBr(0.6);
+        colorFour = d3.interpolateYlOrBr(0.7);
+        colorFive = d3.interpolateYlOrBr(0.8);
+        colorSix = d3.interpolateYlOrBr(0.9);
 
     function chart(selection) {
       var data = selection.datum();
       var div = selection,
           svg = div.select('svg');
       svg.attr('width', width).attr('height', height);
-      var svgNA = d3.select('#northAmerica').attr('width', 400).attr('height', 350);
-      var svgEU = d3.select('#europe').attr('width', 400).attr('height', 350);
-      var svgAS = d3.select('#asia').attr('width', 400).attr('height', 350);
 
       // Tooltip for Bubble Chart
       var tooltip = selection
@@ -368,44 +364,45 @@ function select(yearValue) {
         index++;
       })
 
-      d3.select("#topThree").selectAll("p").remove();
+      d3.select("#mainChart").selectAll("text").remove();
 
       sumValues = d3.sum(tempArray);
 
-      var topEmissions = d3.select("#topThree").append("p");
+      var topEmissions = d3.select("#mainChart");
+
+      topEmissions.append("text").html(currentValue).attr("x", 50).attr("y", 70);
 
       // Find the max value in this year
       max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
       stringIndex = tempArray.indexOf(max1);
-      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2" + "</br>");
+      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2" + "</br>").attr("x", 900).attr("y", 70);
       tempStringArray.splice(tempArray.indexOf(max1), 1);
-      tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary array
+      tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary arra
       
       max2 = d3.max(tempArray); // Find the second max
       stringIndex = tempArray.indexOf(max2); // Get the index
-      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2" + "</br>");
+      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2" + "</br>").attr("x", 900).attr("y", 90);
       tempStringArray.splice(tempArray.indexOf(max2), 1);
       tempArray.splice(tempArray.indexOf(max2), 1); // Remove second max from temporary array
       
       max3 = d3.max(tempArray); // Find the third max
       stringIndex = tempArray.indexOf(max3); // Get the index
-      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2" + "</br>");
+      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2" + "</br>").attr("x", 900).attr("y", 110);
       tempStringArray.splice(tempArray.indexOf(max3), 1);
       tempArray.splice(tempArray.indexOf(max3), 1);
 
       max4 = d3.max(tempArray); // Find the fourth max
       stringIndex = tempArray.indexOf(max4); // Get the index
-      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2" + "</br>");
+      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2" + "</br>").attr("x", 900).attr("y", 130);
       tempStringArray.splice(tempArray.indexOf(max4), 1);
       tempArray.splice(tempArray.indexOf(max4), 1);
 
       max5 = d3.max(tempArray); // Find the fifth max
       stringIndex = tempArray.indexOf(max5);
-      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>");
-      
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>").attr("x", 900).attr("y", 150);    
 
-      topEmissions.append("text").html("</br>" + "World's Total Emissions: " + "</br></br>" ).attr("id", "sumText");
-      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum");
+      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 500).attr("y", 50);
+      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 520).attr("y", 100);
     }
 
     // Getters and setters
