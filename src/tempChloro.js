@@ -79,7 +79,8 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
 
 var color = d3.scaleThreshold()
     .domain([-.2,-.1,0,.1,.2,.4,.6,.8,1, 1.2])
-    .range(["rgb(25,25,175)", "rgb(75,75,250)", "rgb(180,252,250)", "rgb(200,225,250)", "rgb(250,250,200)", "rgb(250,200,200)","rgb(250,200,150)","rgb(250,150,150)","rgb(250,100,100)","rgb(200,50,50)"]);
+    .range([d3.interpolateRdBu(0.9), d3.interpolateRdBu(0.8), d3.interpolateRdBu(0.7), d3.interpolateRdBu(0.6), d3.interpolateRdBu(0.5),
+          d3.interpolateRdBu(0.4), d3.interpolateRdBu(0.3), d3.interpolateRdBu(0.2), d3.interpolateRdBu(0.1)]);
 
 var svg = d3.select("body")
             .append("svg")

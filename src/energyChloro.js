@@ -77,7 +77,8 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
 
 var color = d3.scaleThreshold()
     .domain([-1000,-500,-100,-25,-5,5,25,100,500,1000])
-    .range(["rgb(105,0,0)", "rgb(254,50,0)", "rgb(254,100,0)", "rgb(254,230,0)", "rgb(254,254,150)", "rgb(200,230,160)","rgb(125,230,125)","rgb(100,230,100)","rgb(50,230,50)","rgb(0,254,0)"]);
+    .range([d3.interpolateSpectral(0.9), d3.interpolateSpectral(0.8), d3.interpolateSpectral(0.7), d3.interpolateSpectral(0.6), 
+            d3.interpolateSpectral(0.5), d3.interpolateSpectral(0.4), d3.interpolateSpectral(0.3), d3.interpolateSpectral(0.2), d3.interpolateSpectral(0.1)]);
 
 var path = d3.geoPath();
 
