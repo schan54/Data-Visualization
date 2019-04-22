@@ -98,7 +98,7 @@ var path = d3.geoPath().projection(projection);
 svg.call(tip);
 
 queue()
-    .defer(d3.json, "world_countries.json")
+    .defer(d3.json, "../core/world_countries.json")
     .defer(d3.tsv, "worldData.tsv")
     .await(ready);
 
@@ -152,7 +152,7 @@ function update(h) {
     userYear = formatDateIntoYear(h)
     console.log(userYear)
     queue()
-        .defer(d3.json, "world_countries.json")
+        .defer(d3.json, "../core/world_countries.json")
         .defer(d3.tsv, "worldData.tsv")
         .await(ready);
   }

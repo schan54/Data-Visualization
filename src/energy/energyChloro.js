@@ -167,7 +167,7 @@ function update(h) {
   if (userYear != (formatDateIntoYear(h))) {
     userYear = formatDateIntoYear(h)
     queue()
-        .defer(d3.json, "world_countries.json")
+        .defer(d3.json, "../core/world_countries.json")
         .defer(d3.tsv, "energyChloro.tsv")
         .await(ready);
   }
