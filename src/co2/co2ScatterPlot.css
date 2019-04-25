@@ -126,3 +126,8 @@ img {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
+
+#yearText {
+  font-size: 80px;
+  font-family: 'Roboto Slab', sans-serif;
+}

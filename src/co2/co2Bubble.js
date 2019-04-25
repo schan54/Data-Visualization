@@ -352,57 +352,118 @@ function select(yearValue) {
       */
       var tempArray = [];
       var tempStringArray = [];
+      var NAArray = [];
+      var EUArray = [];
+      var AfricaArray = [];
+      var OceaniaArray = [];
+      var SAArray = [];
+      var AsiaArray = [];
       var index = 0;
       var stringIndex = 0;
       var sumValues = 0;
+      var sumOceania = 0;
+      var sumEU = 0;
+      var sumAfrica = 0;
+      var sumNA = 0;
+      var sumAsia = 0;
+      var sumSA = 0;
 
       // Parse CO2 values from string to int
       data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
         d.value = parseInt(d.value);
         tempArray[index] = d.value;
         tempStringArray[index] = d.country;
+        if (!d.continent.localeCompare("Oceania")) {
+          OceaniaArray[index] = d.value;
+        } else if (!d.continent.localeCompare("North America")) {
+          NAArray[index] = d.value;
+        } else if (!d.continent.localeCompare("South America")) {
+          SAArray[index] = d.value;
+        } else if (!d.continent.localeCompare("Asia")) {
+          AsiaArray[index] = d.value;
+        } else if (!d.continent.localeCompare("Europe")) {
+          EUArray[index] = d.value;
+        } else if (!d.continent.localeCompare("Africa")) {
+          AfricaArray[index] = d.value;
+        }
         index++;
       })
+
+
 
       d3.select("#mainChart").selectAll("text").remove();
 
       sumValues = d3.sum(tempArray);
+      sumOceania = d3.sum(OceaniaArray);
+      sumSA = d3.sum(SAArray);
+      sumNA = d3.sum(NAArray);
+      sumEU = d3.sum(EUArray);
+      sumAsia = d3.sum(AsiaArray);
+      sumAfrica = d3.sum(AfricaArray);
 
       var topEmissions = d3.select("#mainChart");
 
-      topEmissions.append("text").html(currentValue).attr("x", 50).attr("y", 70);
+      topEmissions.append("text").html(currentValue).attr("x", 50).attr("y", 100).attr("id", "yearText");
 
       // Find the max value in this year
       max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
       stringIndex = tempArray.indexOf(max1);
-      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2" + "</br>").attr("x", 900).attr("y", 70);
+      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2" + "</br>").attr("x", 850).attr("y", 60);
       tempStringArray.splice(tempArray.indexOf(max1), 1);
       tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary arra
       
       max2 = d3.max(tempArray); // Find the second max
       stringIndex = tempArray.indexOf(max2); // Get the index
-      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2" + "</br>").attr("x", 900).attr("y", 90);
+      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2" + "</br>").attr("x", 850).attr("y", 80);
       tempStringArray.splice(tempArray.indexOf(max2), 1);
       tempArray.splice(tempArray.indexOf(max2), 1); // Remove second max from temporary array
       
       max3 = d3.max(tempArray); // Find the third max
       stringIndex = tempArray.indexOf(max3); // Get the index
-      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2" + "</br>").attr("x", 900).attr("y", 110);
+      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2" + "</br>").attr("x", 850).attr("y", 100);
       tempStringArray.splice(tempArray.indexOf(max3), 1);
       tempArray.splice(tempArray.indexOf(max3), 1);
 
       max4 = d3.max(tempArray); // Find the fourth max
       stringIndex = tempArray.indexOf(max4); // Get the index
-      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2" + "</br>").attr("x", 900).attr("y", 130);
+      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2" + "</br>").attr("x", 850).attr("y", 120);
       tempStringArray.splice(tempArray.indexOf(max4), 1);
       tempArray.splice(tempArray.indexOf(max4), 1);
 
       max5 = d3.max(tempArray); // Find the fifth max
       stringIndex = tempArray.indexOf(max5);
-      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>").attr("x", 900).attr("y", 150);    
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>").attr("x", 850).attr("y", 140);    
 
       topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 500).attr("y", 50);
       topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 520).attr("y", 100);
+
+      topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 730).attr("y2", 480).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 610).attr("y2", 560).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 800).attr("y1", 480).attr("x2", 920).attr("y2", 480).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 800).attr("y1", 480).attr("x2", 800).attr("y2", 560).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 1040).attr("y1", 480).attr("x2", 1160).attr("y2", 480).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 1040).attr("y1", 480).attr("x2", 1040).attr("y2", 560).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 410).attr("y1", 480).attr("x2", 530).attr("y2", 480).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 410).attr("y1", 480).attr("x2", 410).attr("y2", 560).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 210).attr("y1", 480).attr("x2", 330).attr("y2", 480).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 210).attr("y1", 480).attr("x2", 210).attr("y2", 560).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 70).attr("y1", 480).attr("x2", 190).attr("y2", 480).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 70).attr("y1", 480).attr("x2", 70).attr("y2", 560).attr("stroke-width", 1).attr("stroke", "black");
+
+      topEmissions.append("text").html(+ sumOceania + " MtCO2").attr("x", 620).attr("y", 550);
+      topEmissions.append("text").html(+ sumAsia + " MtCO2").attr("x", 810).attr("y", 550);
+      topEmissions.append("text").html(+ sumNA + " MtCO2").attr("x", 80).attr("y", 550);
+      topEmissions.append("text").html(+ sumSA + " MtCO2").attr("x", 220).attr("y", 550);
+      topEmissions.append("text").html(+ sumEU + " MtCO2").attr("x", 420).attr("y", 550);
+      topEmissions.append("text").html(+ sumAfrica + " MtCO2").attr("x", 1050).attr("y", 550);
+
+      topEmissions.append("text").html("Oceania").attr("x", 620).attr("y", 510);
+      topEmissions.append("text").html("Asia").attr("x", 810).attr("y", 510);
+      topEmissions.append("text").html("North America").attr("x", 80).attr("y", 510);
+      topEmissions.append("text").html("South America").attr("x", 220).attr("y", 510);
+      topEmissions.append("text").html("Europe").attr("x", 420).attr("y", 510);
+      topEmissions.append("text").html("Africa").attr("x", 1050).attr("y", 510);
+
     }
 
     // Getters and setters
