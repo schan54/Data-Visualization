@@ -1,14 +1,14 @@
-const format = d3.format(",d");
-const width = 932;
-const radius = width / 6;
+const formatNum = d3.format(",d");
+const widthBurst = 932;
+const radiusBurst = widthBurst / 6;
 
-const arc = d3.arc()
+const arcBurst = d3.arc()
         .startAngle(d => d.x0)
         .endAngle(d => d.x1)
         .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
-        .padRadius(radius * 1.5)
-        .innerRadius(d => d.y0 * radius)
-        .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1));
+        .padRadius(radiusBurst * 1.5)
+        .innerRadius(d => d.y0 * radiusBurst)
+        .outerRadius(d => Math.max(d.y0 * radiusBurst, d.y1 * radiusBurst - 1));
 
 const partition = data => {
     const root = d3.hierarchy(data)
@@ -19,22 +19,32 @@ const partition = data => {
             (root);
 }
 
-const {require} = new observablehq.Library;
+//const {require} = new observablehq.Library;
+d3.select("#yearslider").on("input", function(){
+    d3.select("#yeartxt").text("Year: " + this.value);
+  });
 
-d3.json('./energyusage.json').then(data => {
-    console.log(data[0]);
-    const root = partition(data[0]);
-    const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data[0].children.length + 1));
+//   d3.select("#yearslider").on("change", function(){
+//     year = this.value - 1990;
+//     drawSunburst(path,root[year]);
 
-    root.each(d => d.current = d);
-
+//   });
     const svg = d3.select('#partitionSVG')
             .style("width", "100%")
             .style("height", "auto")
             .style("font", "10px sans-serif");
 
-    const g = svg.append("g")
-            .attr("transform", `translate(${width / 2},${width / 2})`);
+    
+
+d3.json('./energyusage.json').then(data => {
+    
+    const root = partition(data[0]);
+    const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data[0].children.length + 1));
+
+    root.each(d => d.current = d);
+
+const g = svg.append("g")
+            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
 
     const path = g.append("g")
             .selectAll("path")
@@ -46,15 +56,28 @@ d3.json('./energyusage.json').then(data => {
                 return color(d.data.name);
             })
             .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
-            .attr("d", d => arc(d.current));
+            .attr("d", d => arcBurst(d.current));
 
+    /* hover over path to see values in the middle */
+    path.on("mouseover", function(d){
+        g.append("text")
+            .attr("id", "midText")
+            .text(formatNum(d.value))
+            .style("font-size", "50")
+    })
+        .on("mouseout", function(d){
+        g.select("#midText").remove();
+    })
+    /* clicking on each path zooms in */
     path.filter(d => d.children)
             .style("cursor", "pointer")
             .on("click", clicked);
 
+    /* hover over path for more info */
     path.append("title")
-            .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+            .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${formatNum(d.value)}`);
 
+    /* decide labels on path */
     const label = g.append("g")
             .attr("pointer-events", "none")
             .attr("text-anchor", "middle")
@@ -66,14 +89,20 @@ d3.json('./energyusage.json').then(data => {
             .attr("fill-opacity", d => +labelVisible(d.current))
             .attr("transform", d => labelTransform(d.current))
             .text(d => d.data.name);
-
+    /* white circle in middle */
     const parent = g.append("circle")
             .datum(root)
-            .attr("r", radius)
+            .attr("r", radiusBurst)
             .attr("fill", "none")
             .attr("pointer-events", "all")
             .on("click", clicked);
-
+    d3.select("#yearslider").on("change", function(){
+        year = this.value - 1990;
+        g.remove();
+        updateSunBurst("./energyusage.json", year);
+        
+    });
+    /* Zoom in Sunburst on click */
     function clicked(p) {
         parent.datum(p.parent || root);
 
@@ -98,7 +127,7 @@ d3.json('./energyusage.json').then(data => {
                     return +this.getAttribute("fill-opacity") || arcVisible(d.target);
                 })
                 .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
-                .attrTween("d", d => () => arc(d.current));
+                .attrTween("d", d => () => arcBurst(d.current));
 
         label.filter(function (d) {
             return +this.getAttribute("fill-opacity") || labelVisible(d.target);
@@ -107,17 +136,124 @@ d3.json('./energyusage.json').then(data => {
                 .attrTween("transform", d => () => labelTransform(d.current));
     }
 
+});
+
+    function updateSunBurst(file, year){
+        d3.json(file).then(data => {
+    
+            const root = partition(data[year]);
+            const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data[year].children.length + 1));
+        
+            root.each(d => d.current = d);
+            const g = svg.append("g")
+            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
+        
+        
+            const path = g.append("g")
+                    .selectAll("path")
+                    .data(root.descendants().slice(1))
+                    .join("path")
+                    .attr("fill", d => {
+                        while (d.depth > 1)
+                            d = d.parent;
+                        return color(d.data.name);
+                    })
+                    .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
+                    .attr("d", d => arcBurst(d.current));
+        
+            /* hover over path to see values in the middle */
+            path.on("mouseover", function(d){
+                g.append("text")
+                    .attr("id", "midText")
+                    .text(formatNum(d.value))
+                    .style("font-size", "50")
+            })
+                .on("mouseout", function(d){
+                g.select("#midText").remove();
+            })
+            /* clicking on each path zooms in */
+            path.filter(d => d.children)
+                    .style("cursor", "pointer")
+                    .on("click", clicked);
+        
+            /* hover over path for more info */
+            path.append("title")
+                    .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${formatNum(d.value)}`);
+        
+            /* decide labels on path */
+            const label = g.append("g")
+                    .attr("pointer-events", "none")
+                    .attr("text-anchor", "middle")
+                    .style("user-select", "none")
+                    .selectAll("text")
+                    .data(root.descendants().slice(1))
+                    .join("text")
+                    .attr("dy", "0.35em")
+                    .attr("fill-opacity", d => +labelVisible(d.current))
+                    .attr("transform", d => labelTransform(d.current))
+                    .text(d => d.data.name);
+            /* white circle in middle */
+            const parent = g.append("circle")
+                    .datum(root)
+                    .attr("r", radiusBurst)
+                    .attr("fill", "none")
+                    .attr("pointer-events", "all")
+                    .on("click", clicked);
+                d3.select("#yearslider").on("change", function(){
+                    year = this.value - 1990;
+                    g.remove();
+                    updateSunBurst("./energyusage.json", year);
+                    
+                });
+            /* Zoom in Sunburst on click */
+            function clicked(p) {
+                parent.datum(p.parent || root);
+        
+                root.each(d => d.target = {
+                        x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
+                        x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
+                        y0: Math.max(0, d.y0 - p.depth),
+                        y1: Math.max(0, d.y1 - p.depth)
+                    });
+        
+                const t = g.transition().duration(750);
+        
+                // Transition the data on all arcs, even the ones that aren’t visible,
+                // so that if this transition is interrupted, entering arcs will start
+                // the next transition from the desired position.
+                path.transition(t)
+                        .tween("data", d => {
+                            const i = d3.interpolate(d.current, d.target);
+                            return t => d.current = i(t);
+                        })
+                        .filter(function (d) {
+                            return +this.getAttribute("fill-opacity") || arcVisible(d.target);
+                        })
+                        .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
+                        .attrTween("d", d => () => arcBurst(d.current));
+        
+                label.filter(function (d) {
+                    return +this.getAttribute("fill-opacity") || labelVisible(d.target);
+                }).transition(t)
+                        .attr("fill-opacity", d => +labelVisible(d.target))
+                        .attrTween("transform", d => () => labelTransform(d.current));
+            }
+        
+        });
+    }
+    /* Decide whether arc fits on sunburst */
     function arcVisible(d) {
         return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;
     }
-
+    /* Decides wheter label fits in path */
     function labelVisible(d) {
         return d.y1 <= 3 && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.03;
     }
-
+    /* position of label */
     function labelTransform(d) {
         const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
-        const y = (d.y0 + d.y1) / 2 * radius;
+        const y = (d.y0 + d.y1) / 2 * radiusBurst;
         return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
     }
-});
+
+

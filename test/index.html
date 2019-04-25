@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>D3 v5 Zoomable Sunburst</title>
+    <title>Energy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="styles.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@observablehq/stdlib"></script></head>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      h2 {
+      position: absolute;
+      left: 00px;
+      top: 50px;
+    }
+      </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/stdlib"></script>
+</head>
 <body>
     <h2 id = "yeartxt">Year: 1990</h2>
     <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
+    
     <svg id="partitionSVG" width="932" height="932" ></svg>
   
      <script src="index.js"></script>
