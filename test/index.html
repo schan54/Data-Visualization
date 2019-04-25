@@ -24,6 +24,14 @@
 <body>
     <h2 id = "yeartxt">Year: 1990</h2>
     <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
+        
+    <select id = "selectFile" onchange="parseFile(this.value);">
+        <option value = "consumption">Global Energy Consumption</option>
+        <option value = "production">Energy Production</option>
+        <option value = "crudeoil">Crude Oil</option>
+        <option value = "naturalgas">Natural Gas</option>
+        <option value = "oilproducts">Oil Products</option>
+    </select>
     
     <svg id="partitionSVG" width="932" height="932" ></svg>
   

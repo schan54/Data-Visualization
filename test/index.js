@@ -24,17 +24,14 @@ d3.select("#yearslider").on("input", function(){
     d3.select("#yeartxt").text("Year: " + this.value);
   });
 
-//   d3.select("#yearslider").on("change", function(){
-//     year = this.value - 1990;
-//     drawSunburst(path,root[year]);
 
-//   });
-    const svg = d3.select('#partitionSVG')
+    const svgBurst = d3.select('#partitionSVG')
             .style("width", "100%")
             .style("height", "auto")
             .style("font", "10px sans-serif");
 
-    
+    const g = svgBurst.append("g")
+            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
 
 d3.json('./energyusage.json').then(data => {
     
@@ -43,7 +40,7 @@ d3.json('./energyusage.json').then(data => {
 
     root.each(d => d.current = d);
 
-const g = svg.append("g")
+    const g = svgBurst.append("g")
             .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
 
     const path = g.append("g")
@@ -98,7 +95,7 @@ const g = svg.append("g")
             .on("click", clicked);
     d3.select("#yearslider").on("change", function(){
         year = this.value - 1990;
-        g.remove();
+        g.remove()
         updateSunBurst("./energyusage.json", year);
         
     });
@@ -137,7 +134,40 @@ const g = svg.append("g")
     }
 
 });
-
+function parseFile(file) {
+    switch(file){
+      case "consumption":
+        d3.select("h1").text("Global Energy Consumption(Mtoe)");
+        g.remove();
+        updateSunBurst("./energyusage.json", 0);
+        break;
+      case "production":
+        d3.select("h1").text("Energy Production");
+        g.remove();
+        updateSunBurst("../dataSets/energy/individualCreate/Total energy production.json", 0);
+        break;
+      case "crudeoil":
+        d3.select("h1").text("Crude Oil Consumption");
+        g.remove();
+        updateSunBurst("../dataSets/energy/individualCreate/Crude oil input to refineries.json", 0);
+        break;
+      case "oilproducts":
+        d3.select("h1").text("Oil Products Consumption");
+        g.remove();
+        updateSunBurst("../dataSets/energy/individualCreate/Oil products domestic consumpt.json", 0);
+        break;
+      case "production":
+        d3.select("h1").text("Natural Gas Production");
+        g.remove();
+        updateSunBurst("../dataSets/energy/individualCreate/Natural gas production.json", 0);
+        break;
+      default:
+        d3.select("h1").text("Global Energy Consumption(Mtoe)");
+        g.remove();
+        updateSunBurst("./energyusage.json", 0);
+        break;
+    }
+  }
     function updateSunBurst(file, year){
         d3.json(file).then(data => {
     
@@ -145,10 +175,9 @@ const g = svg.append("g")
             const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data[year].children.length + 1));
         
             root.each(d => d.current = d);
-            const g = svg.append("g")
+            const g = svgBurst.append("g")
             .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
-        
-        
+
             const path = g.append("g")
                     .selectAll("path")
                     .data(root.descendants().slice(1))
@@ -199,12 +228,12 @@ const g = svg.append("g")
                     .attr("fill", "none")
                     .attr("pointer-events", "all")
                     .on("click", clicked);
-                d3.select("#yearslider").on("change", function(){
-                    year = this.value - 1990;
-                    g.remove();
-                    updateSunBurst("./energyusage.json", year);
+            d3.select("#yearslider").on("change", function(){
+                year = this.value - 1990;
+                g.remove()
+                updateSunBurst(file, year);
                     
-                });
+            });
             /* Zoom in Sunburst on click */
             function clicked(p) {
                 parent.datum(p.parent || root);
