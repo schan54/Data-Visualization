@@ -26,7 +26,12 @@ var svg = d3.select("body")
 
 var projection = d3.geoMercator()
                    .scale(200)
-                  .translate( [width / 2, height / 1.5]);
+                  .translate( [width / 2, height / 1.5 + 150]);
+
+  svg.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1500).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+  svg.append("line").attr("x1", 370).attr("y1", 0).attr("x2", 370).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+  svg.append("line").attr("x1", 580).attr("y1", 0).attr("x2", 580).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+  svg.append("line").attr("x1", 820).attr("y1", 0).attr("x2", 820).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
 
 var path = d3.geoPath().projection(projection);
 
