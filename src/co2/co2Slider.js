@@ -71,6 +71,7 @@ function update(h) {
     userYear = formatDateIntoYear(h);
 
     //Update bubble.js
+    currentValue = userYear;
     select(userYear);
 
     //Update Choropleth
