@@ -30,13 +30,13 @@ playButton.on("click", function() {
 enterButton.on("click", function() {
   currentValue = document.getElementById("myVal").value;
   if (currentValue < 1960 || currentValue > 2017) {
-    d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter a year between 1960 and 2017");
+    d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter a year</br>between 1960 and 2017");
     currentValue = 1960;
   } else if (!Number.isInteger(Number(currentValue))) {
     d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter an Integer year");
     currentValue = 1960;
   } else {
-    d3.select('#instructions').html("Or" + "</br></br>" + "Enter a year between 1960 and 2017");
+    d3.select('#instructions').html("Or" + "</br></br>" + "Enter a year between</br>1960 and 2017");
     currentValue--;
     step();
   }
@@ -183,7 +183,7 @@ function select(yearValue) {
             return xPosition[0];
           }
         }))
-        .force('y', d3.forceY().y(300))
+        .force('y', d3.forceY().y(340))
         .force("collision", d3.forceCollide().radius(function(d) {
           return scaleRadius(d.value)
         }))
@@ -320,7 +320,7 @@ function select(yearValue) {
 
       var topEmissions = d3.select("#mainChart");
 
-      topEmissions.append("text").html(currentValue).attr("x", 50).attr("y", 100).attr("id", "yearText");
+      topEmissions.append("text").html(currentValue).attr("x", 390).attr("y", 120).attr("id", "yearText");
 
       // Find the max value in this year
       max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
@@ -353,8 +353,8 @@ function select(yearValue) {
 
       topEmissions.append("text").html("Countries With the Most Emissions:").attr("id", "sumText").attr("x", 850).attr("y", 50);
 
-      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 500).attr("y", 50);
-      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 520).attr("y", 100);
+      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 600).attr("y", 70);
+      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 620).attr("y", 120);
 
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 730).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 610).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
@@ -368,6 +368,11 @@ function select(yearValue) {
       topEmissions.append("line").attr("x1", 210).attr("y1", 480).attr("x2", 210).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 70).attr("y1", 480).attr("x2", 190).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 70).attr("y1", 480).attr("x2", 70).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
+
+      topEmissions.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1500).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 370).attr("y1", 0).attr("x2", 370).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 580).attr("y1", 0).attr("x2", 580).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 820).attr("y1", 0).attr("x2", 820).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
 
       topEmissions.append("text").html(sumOceania + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
       topEmissions.append("text").html(sumAsia + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
