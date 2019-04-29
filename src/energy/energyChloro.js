@@ -97,23 +97,24 @@ var path = d3.geoPath().projection(projection);
 
 svg.call(tip);
 
-queue()
-    .defer(d3.json, "world_countries.json")
-    .defer(d3.tsv, "energyChloro.tsv")
-    .await(ready);
+var promises = [];
+promises.push(d3.json("../core/world_countries.json"));
+promises.push(d3.tsv("energyChloro.tsv"));
+Promise.all(promises).then(function(data){ready(data);});
 
 var userYear = "1991"
 
-function ready(error, data, population) {
+function ready(data) {
   var populationById = {};
-
-  population.forEach(function(d) { populationById[d.id] = +d[userYear]; });
-  data.features.forEach(function(d) { d.value = populationById[d.id] });
+  //data[0] = map feature
+  // data[1] = data
+  data[1].forEach(function(d) { populationById[d.id] = +d[userYear]; });
+  data[0].features.forEach(function(d) { d.value = populationById[d.id] });
 
   svg.append("g")
       .attr("class", "countries")
    .selectAll("path")
-      .data(data.features)
+      .data(data[0].features)
     .enter().append("path")
       .attr("d", path)
       .style("fill", function(d) { return color(populationById[d.id]); })
@@ -141,7 +142,7 @@ function ready(error, data, population) {
         });
 
   svg.append("path")
-      .datum(topojson.mesh(data.features, function(a, b) { return a.id !== b.id; }))
+      .datum(topojson.mesh(data[0].features, function(a, b) { return a.id !== b.id; }))
        // .datum(topojson.mesh(data.features, function(a, b) { return a !== b; }))
       .attr("class", "names")
       .attr("d", path);
@@ -166,9 +167,9 @@ function update(h) {
 
   if (userYear != (formatDateIntoYear(h))) {
     userYear = formatDateIntoYear(h)
-    queue()
-        .defer(d3.json, "../core/world_countries.json")
-        .defer(d3.tsv, "energyChloro.tsv")
-        .await(ready);
+    var promises = [];
+    promises.push(d3.json("../core/world_countries.json"));   
+    promises.push(d3.tsv("energyChloro.tsv"));
+    Promise.all(promises).then(function(data){ready(data);});
   }
 }

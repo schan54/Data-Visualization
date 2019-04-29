@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CO2</title>
+  <title>Energy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
 
-  <script type="text/javascript" src="../core/d3-v3.js"></script>
+  
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  
+  
   <script src="https://d3js.org/queue.v1.min.js"></script>
   <script src="https://d3js.org/topojson.v1.min.js"></script>
   <script src="https://d3js.org/d3-color.v1.min.js"></script>
   <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
 
   <link rel="stylesheet" type="text/css" href="../core/master.css" />
   <link rel="stylesheet" type="text/css" href="energy.css"/>
@@ -22,6 +24,7 @@
   <script type="text/javascript" src="../core/master.js"></script>
   <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@observablehq/stdlib"></script>
   <style>
     h2 {
     position: absolute;
@@ -41,10 +44,18 @@
     });
   </script>
 
+<!-- <select id = "selectFile" onchange="parseFile(this.value);">
+  <option value = "consumption">Global Energy Consumption</option>
+  <option value = "production">Energy Production</option>
+  <option value = "crudeoil">Crude Oil</option>
+  <option value = "naturalgas">Natural Gas</option>
+  <option value = "oilproducts">Oil Products</option>
+</select> -->
 
   <h2 id = "yeartxt">Year: 1990</h2>
   <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
-  <script type="text/javascript" src="energySunburst.js"></script>
+  <svg id="partitionSVG" width="932" height="932" ></svg>
+  <script type="text/javascript" src="energySunburst.js"></script>Code Reference from https://observablehq.com/@d3/zoomable-sunburst
 
   <div id="slider"></div>
   <script src="d3-tip.js"></script>
