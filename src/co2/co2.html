@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  
+
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://d3js.org/queue.v1.min.js"></script>
   <script src="https://d3js.org/topojson.v1.min.js"></script>
-  
+
   <script src="https://d3js.org/d3-color.v1.min.js"></script>
   <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -17,7 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="../core/master.css" />
   <link rel="stylesheet" type="text/css" href="co2ScatterPlot.css" />
   <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
-  <script type="text/javascript" src="../core/master.js"></script>  
+  <script type="text/javascript" src="../core/master.js"></script>
   <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -49,18 +49,46 @@
     </svg>
   </div>
 
-  <p id="description">Carbon dioxide (CO2). A minor but very important component of the atmosphere, carbon dioxide is released through natural processes such as respiration and volcano eruptions and through human activities such as deforestation, land use changes, and burning fossil fuels. Humans have increased atmospheric CO2 concentration by more than a third since the Industrial Revolution began. This is the most important long-lived "forcing" of climate change.</p>
+<!--
+<p id="description">Carbon dioxide (CO2). A minor but very important component of the atmosphere, carbon dioxide is released through natural processes such as respiration and volcano eruptions and through human activities such as deforestation, land use changes, and burning fossil fuels. Humans have increased atmospheric CO2 concentration by more than a third since the Industrial Revolution began. This is the most important long-lived "forcing" of climate change.</p>
+-->
 
   <p id="sources">
         Source:<a href="http://www.globalcarbonatlas.org/en/CO2-emissions" target="_blank">http://www.globalcarbonatlas.org/en/CO2-emissions</a><br/>
-  </p>  
+  </p>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
-  <script type="text/javascript" src="co2Bubble.js"></script>
-  
-  <div id="slider"></div>
   <script src="d3-tip.js"></script>
+
+  <div id = "choroDataFilter">
+  <input type="radio" name="choroDataFilter" id="Compare" value="Compare" checked> Compare <br>
+  <input type="radio" name="choroDataFilter" id="Isolated" value="Isolated"> Isolated<br>
+  </div>
+
+  <div id="dvTextA" style="display: none"> YearA:
+    <input type="text" id="compareTxtBoxA" value="1960"/>
+  </div>
+
+  <div id="dvTextB" style="display: none"> YearB:
+    <input type="text" id="compareTxtBoxB" value="1960"/>
+  </div>
+
+  <div id="dvTextIso" style="display: none"> Year:
+    <input type="text" id="isoTxtBox" value="1960"/>
+  </div>
+
+
+  <div id="slider"></div>
+  <script type="text/javascript" src="co2Slider.js"></script>
+
+  <script type="text/javascript" src="co2Buttons.js"></script>
+
+
+  <script type="text/javascript" src="co2Bubble.js"></script>
   <script type="text/javascript" src="co2Chloro.js"></script>
-  
+
+
+
 </body>
 </html>

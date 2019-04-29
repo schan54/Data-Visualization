@@ -102,6 +102,17 @@ function step() {
 // Render default state
 select(currentValue);
 
+/* README
+//  Here is the compare vs Isolated load.
+
+if(document.getElementById('Compare').checked) {
+    current - 1960 data
+}
+
+else if(document.getElementById('Isolated').checked) {
+  what it already does
+}*/
+
 function select(yearValue) {
   // Load data
   d3.csv('MtCO2Emissions.csv', function(error, data) {
@@ -109,7 +120,7 @@ function select(yearValue) {
     console.error('Error getting or parsing the data.');
     throw error;
   }
-  // selection.datum() returns the bound datum for the first element in the selection and 
+  // selection.datum() returns the bound datum for the first element in the selection and
   //  doesn't join the specified array of data with the selected elements
   var chart = bubbleChart().width(1200).height(700);
   d3.select('#chart').datum(data).call(chart);
@@ -153,7 +164,7 @@ function select(yearValue) {
       }), d3.max(data, function(d) {
         return +d[columnForRadius];
       })]).range([2, 90])
-        
+
       /*
       // Simulate forces acting on each node
       var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
@@ -166,7 +177,7 @@ function select(yearValue) {
         // Simulate forces acting on each node
       var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
         .force("charge", d3.forceManyBody().strength(5))
-        .force('x', d3.forceX().x(function(d) { 
+        .force('x', d3.forceX().x(function(d) {
           if (!d.continent.localeCompare("Africa")) {
             return xPosition[5];
           } else if (!d.continent.localeCompare("Asia")) {
@@ -250,9 +261,9 @@ function select(yearValue) {
           })
           .on("mouseover", function(d) {
             if (moving == false) {
-              tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
-                  + d.country + "</span><br>" 
-                  + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
+              tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">"
+                  + d.country + "</span><br>"
+                  + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">"
                   + d[columnForRadius] + " MtCO2</span>");
               return tooltip.style("visibility", "visible");
             }
@@ -300,9 +311,9 @@ function select(yearValue) {
         .attr('transform', 'translate(' + [width / 2, height / 2] + ')')
         .on("mouseover", function(d) {
           if (moving == false) {
-            tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
-                + d.country + "</span><br>" 
-                + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
+            tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">"
+                + d.country + "</span><br>"
+                + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">"
                 + d[columnForRadius] + " MtCO2</span>");
             return tooltip.style("visibility", "visible");
           }
@@ -332,9 +343,9 @@ function select(yearValue) {
         .attr('transform', 'translate(' + [400 / 2, 350 / 2] + ')')
         .on("mouseover", function(d) {
           if (moving == false) {
-            tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
-                + d.country + "</span><br>" 
-                + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
+            tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">"
+                + d.country + "</span><br>"
+                + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">"
                 + d[columnForRadius] + " MtCO2</span>");
             return tooltip.style("visibility", "visible");
           }
@@ -411,13 +422,13 @@ function select(yearValue) {
       topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2" + "</br>").attr("x", 850).attr("y", 60);
       tempStringArray.splice(tempArray.indexOf(max1), 1);
       tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary arra
-      
+
       max2 = d3.max(tempArray); // Find the second max
       stringIndex = tempArray.indexOf(max2); // Get the index
       topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2" + "</br>").attr("x", 850).attr("y", 80);
       tempStringArray.splice(tempArray.indexOf(max2), 1);
       tempArray.splice(tempArray.indexOf(max2), 1); // Remove second max from temporary array
-      
+
       max3 = d3.max(tempArray); // Find the third max
       stringIndex = tempArray.indexOf(max3); // Get the index
       topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2" + "</br>").attr("x", 850).attr("y", 100);
@@ -432,7 +443,7 @@ function select(yearValue) {
 
       max5 = d3.max(tempArray); // Find the fifth max
       stringIndex = tempArray.indexOf(max5);
-      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>").attr("x", 850).attr("y", 140);    
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>").attr("x", 850).attr("y", 140);
 
       topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 500).attr("y", 50);
       topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 520).attr("y", 100);
