@@ -30,13 +30,13 @@ playButton.on("click", function() {
 enterButton.on("click", function() {
   currentValue = document.getElementById("myVal").value;
   if (currentValue < 1960 || currentValue > 2017) {
-    d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter a year between 1960 and 2017");
+    d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter a year</br>between 1960 and 2017");
     currentValue = 1960;
   } else if (!Number.isInteger(Number(currentValue))) {
     d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter an Integer year");
     currentValue = 1960;
   } else {
-    d3.select('#instructions').html("Or" + "</br></br>" + "Enter a year between 1960 and 2017");
+    d3.select('#instructions').html("Or" + "</br></br>" + "Enter a year between</br>1960 and 2017");
     currentValue--;
     step();
   }
@@ -102,6 +102,17 @@ function step() {
 // Render default state
 select(currentValue);
 
+/* README
+//  Here is the compare vs Isolated load.
+
+if(document.getElementById('Compare').checked) {
+    current - 1960 data
+}
+
+else if(document.getElementById('Isolated').checked) {
+  what it already does
+}*/
+
 function select(yearValue) {
   // Load data
   d3.csv('MtCO2Emissions.csv', function(error, data) {
@@ -109,7 +120,7 @@ function select(yearValue) {
     console.error('Error getting or parsing the data.');
     throw error;
   }
-  // selection.datum() returns the bound datum for the first element in the selection and 
+  // selection.datum() returns the bound datum for the first element in the selection and
   //  doesn't join the specified array of data with the selected elements
   var chart = bubbleChart().width(1200).height(700);
   d3.select('#chart').datum(data).call(chart);
@@ -153,20 +164,11 @@ function select(yearValue) {
       }), d3.max(data, function(d) {
         return +d[columnForRadius];
       })]).range([2, 90])
-        
-      /*
-      // Simulate forces acting on each node
-      var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
-        .force("charge", d3.forceManyBody().strength([-35]))
-        .force("x", d3.forceX())
-        .force("y", d3.forceY())
-        .on("tick", ticked);
-      */
 
         // Simulate forces acting on each node
       var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
         .force("charge", d3.forceManyBody().strength(5))
-        .force('x', d3.forceX().x(function(d) { 
+        .force('x', d3.forceX().x(function(d) {
           if (!d.continent.localeCompare("Africa")) {
             return xPosition[5];
           } else if (!d.continent.localeCompare("Asia")) {
@@ -181,27 +183,11 @@ function select(yearValue) {
             return xPosition[0];
           }
         }))
-        .force('y', d3.forceY().y(300))
+        .force('y', d3.forceY().y(340))
         .force("collision", d3.forceCollide().radius(function(d) {
           return scaleRadius(d.value)
         }))
         .on('tick', ticked);
-
-      /*
-      function ticked(e) {
-        node.attr("cx", function(d) {
-          return d.x;
-        })
-        .attr("cy", function(d) {
-          return d.y;
-        });
-        node2.attr("cx", function(d) {
-          return d.x;
-        })
-        .attr("cy", function(d) {
-          return d.y;
-        });
-      } */
 
       function ticked() {
         var u = d3.select('svg')
@@ -250,9 +236,9 @@ function select(yearValue) {
           })
           .on("mouseover", function(d) {
             if (moving == false) {
-              tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
-                  + d.country + "</span><br>" 
-                  + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
+              tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">"
+                  + d.country + "</span><br>"
+                  + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">"
                   + d[columnForRadius] + " MtCO2</span>");
               return tooltip.style("visibility", "visible");
             }
@@ -282,127 +268,132 @@ function select(yearValue) {
 
         u.exit().remove();
       }
-      /*
-      // Remove all elements in chart area before entering
-      d3.selectAll("svg > *").remove();
-
-      // Enter() data
-      var node = svg.selectAll("circle")
-        .data(data.filter(function(d) { return d.year == yearTemp}))
-        .enter()
-        .append("circle")
-        .attr('r', function(d) {
-            return scaleRadius(d[columnForRadius])
-        })
-        .style("fill", function(d) {
-            return colorCircles(d[columnForColors])
-        })
-        .attr('transform', 'translate(' + [width / 2, height / 2] + ')')
-        .on("mouseover", function(d) {
-          if (moving == false) {
-            tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
-                + d.country + "</span><br>" 
-                + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
-                + d[columnForRadius] + " MtCO2</span>");
-            return tooltip.style("visibility", "visible");
-          }
-        })
-        .on("mousemove", function() {
-          if (moving == false) {
-            return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-          }
-        })
-        .on("mouseout", function() {
-          if (moving == false) {
-            return tooltip.style("visibility", "hidden");
-          }
-        });
-
-        // Enter() data
-      var node2 = svgNA.selectAll("circle")
-        .data(data.filter(function(d) { return d.year == yearTemp && d.continent == "North America"}))
-        .enter()
-        .append("circle")
-        .attr('r', function(d) {
-            return scaleRadius(d[columnForRadius])
-        })
-        .style("fill", function(d) {
-            return colorCircles(d[columnForColors])
-        })
-        .attr('transform', 'translate(' + [400 / 2, 350 / 2] + ')')
-        .on("mouseover", function(d) {
-          if (moving == false) {
-            tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">" 
-                + d.country + "</span><br>" 
-                + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">" 
-                + d[columnForRadius] + " MtCO2</span>");
-            return tooltip.style("visibility", "visible");
-          }
-        })
-        .on("mousemove", function() {
-          if (moving == false) {
-            return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-          }
-        })
-        .on("mouseout", function() {
-          if (moving == false) {
-            return tooltip.style("visibility", "hidden");
-          }
-        });
-      */
+      
       var tempArray = [];
       var tempStringArray = [];
+      var NAArray = [];
+      var EUArray = [];
+      var AfricaArray = [];
+      var OceaniaArray = [];
+      var SAArray = [];
+      var AsiaArray = [];
       var index = 0;
       var stringIndex = 0;
       var sumValues = 0;
+      var sumOceania = 0;
+      var sumEU = 0;
+      var sumAfrica = 0;
+      var sumNA = 0;
+      var sumAsia = 0;
+      var sumSA = 0;
 
       // Parse CO2 values from string to int
       data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
         d.value = parseInt(d.value);
         tempArray[index] = d.value;
         tempStringArray[index] = d.country;
+        if (!d.continent.localeCompare("Oceania")) {
+          OceaniaArray[index] = d.value;
+        } else if (!d.continent.localeCompare("North America")) {
+          NAArray[index] = d.value;
+        } else if (!d.continent.localeCompare("South America")) {
+          SAArray[index] = d.value;
+        } else if (!d.continent.localeCompare("Asia")) {
+          AsiaArray[index] = d.value;
+        } else if (!d.continent.localeCompare("Europe")) {
+          EUArray[index] = d.value;
+        } else if (!d.continent.localeCompare("Africa")) {
+          AfricaArray[index] = d.value;
+        }
         index++;
       })
 
       d3.select("#mainChart").selectAll("text").remove();
 
       sumValues = d3.sum(tempArray);
+      sumOceania = d3.sum(OceaniaArray);
+      sumSA = d3.sum(SAArray);
+      sumNA = d3.sum(NAArray);
+      sumEU = d3.sum(EUArray);
+      sumAsia = d3.sum(AsiaArray);
+      sumAfrica = d3.sum(AfricaArray);
 
       var topEmissions = d3.select("#mainChart");
 
-      topEmissions.append("text").html(currentValue).attr("x", 50).attr("y", 70);
+      topEmissions.append("text").html(currentValue).attr("x", 390).attr("y", 120).attr("id", "yearText");
 
       // Find the max value in this year
       max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
       stringIndex = tempArray.indexOf(max1);
-      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2" + "</br>").attr("x", 900).attr("y", 70);
+      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2").attr("x", 850).attr("y", 80);
       tempStringArray.splice(tempArray.indexOf(max1), 1);
       tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary arra
-      
+
       max2 = d3.max(tempArray); // Find the second max
       stringIndex = tempArray.indexOf(max2); // Get the index
-      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2" + "</br>").attr("x", 900).attr("y", 90);
+      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2").attr("x", 850).attr("y", 100);
       tempStringArray.splice(tempArray.indexOf(max2), 1);
       tempArray.splice(tempArray.indexOf(max2), 1); // Remove second max from temporary array
-      
+
       max3 = d3.max(tempArray); // Find the third max
       stringIndex = tempArray.indexOf(max3); // Get the index
-      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2" + "</br>").attr("x", 900).attr("y", 110);
+      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2").attr("x", 850).attr("y", 120);
       tempStringArray.splice(tempArray.indexOf(max3), 1);
       tempArray.splice(tempArray.indexOf(max3), 1);
 
       max4 = d3.max(tempArray); // Find the fourth max
       stringIndex = tempArray.indexOf(max4); // Get the index
-      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2" + "</br>").attr("x", 900).attr("y", 130);
+      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2").attr("x", 850).attr("y", 140);
       tempStringArray.splice(tempArray.indexOf(max4), 1);
       tempArray.splice(tempArray.indexOf(max4), 1);
 
       max5 = d3.max(tempArray); // Find the fifth max
       stringIndex = tempArray.indexOf(max5);
-      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2" + "</br>").attr("x", 900).attr("y", 150);    
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2").attr("x", 850).attr("y", 160);
 
-      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 500).attr("y", 50);
-      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 520).attr("y", 100);
+      topEmissions.append("text").html("Countries With the Most Emissions:").attr("id", "sumText").attr("x", 850).attr("y", 50);
+
+      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 600).attr("y", 70);
+      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 620).attr("y", 120);
+
+      topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 730).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 610).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 800).attr("y1", 480).attr("x2", 920).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 800).attr("y1", 480).attr("x2", 800).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 1040).attr("y1", 480).attr("x2", 1160).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 1040).attr("y1", 480).attr("x2", 1040).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 410).attr("y1", 480).attr("x2", 530).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 410).attr("y1", 480).attr("x2", 410).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 210).attr("y1", 480).attr("x2", 330).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 210).attr("y1", 480).attr("x2", 210).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 70).attr("y1", 480).attr("x2", 190).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 70).attr("y1", 480).attr("x2", 70).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
+
+      topEmissions.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1500).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 370).attr("y1", 0).attr("x2", 370).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 580).attr("y1", 0).attr("x2", 580).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 820).attr("y1", 0).attr("x2", 820).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+
+      topEmissions.append("text").html(sumOceania + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(sumAsia + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(sumNA + " MtCO2").attr("x", 80).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(sumSA + " MtCO2").attr("x", 220).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(sumEU + " MtCO2").attr("x", 420).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(sumAfrica + " MtCO2").attr("x", 1050).attr("y", 570).attr("font-weight", "bold");
+
+      topEmissions.append("text").html("Oceania").attr("x", 620).attr("y", 510);
+      topEmissions.append("text").html("Asia").attr("x", 810).attr("y", 510);
+      topEmissions.append("text").html("North America").attr("x", 80).attr("y", 510);
+      topEmissions.append("text").html("South America").attr("x", 220).attr("y", 510);
+      topEmissions.append("text").html("Europe").attr("x", 420).attr("y", 510);
+      topEmissions.append("text").html("Africa").attr("x", 1050).attr("y", 510);
+
+      topEmissions.append("text").html("Total Emissions:").attr("x", 620).attr("y", 540);
+      topEmissions.append("text").html("Total Emissions:").attr("x", 810).attr("y", 540);
+      topEmissions.append("text").html("Total Emissions:").attr("x", 80).attr("y", 540);
+      topEmissions.append("text").html("Total Emissions:").attr("x", 220).attr("y", 540);
+      topEmissions.append("text").html("Total Emissions:").attr("x", 420).attr("y", 540);
+      topEmissions.append("text").html("Total Emissions:").attr("x", 1050).attr("y", 540);
     }
 
     // Getters and setters

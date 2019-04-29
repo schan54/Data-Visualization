@@ -77,7 +77,7 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
 
 var color = d3.scaleThreshold()
     .domain([-1000,-500,-100,-25,-5,5,25,100,500,1000])
-    .range([d3.interpolateSpectral(0.9), d3.interpolateSpectral(0.8), d3.interpolateSpectral(0.7), d3.interpolateSpectral(0.6), 
+    .range([d3.interpolateSpectral(0.9), d3.interpolateSpectral(0.8), d3.interpolateSpectral(0.7), d3.interpolateSpectral(0.6),
             d3.interpolateSpectral(0.5), d3.interpolateSpectral(0.4), d3.interpolateSpectral(0.3), d3.interpolateSpectral(0.2), d3.interpolateSpectral(0.1)]);
 
 var path = d3.geoPath();
@@ -97,10 +97,17 @@ var path = d3.geoPath().projection(projection);
 
 svg.call(tip);
 
+<<<<<<< HEAD
 var promises = [];
 promises.push(d3.json("../core/world_countries.json"));
 promises.push(d3.tsv("energyChloro.tsv"));
 Promise.all(promises).then(function(data){ready(data);});
+=======
+queue()
+    .defer(d3.json, "../core/world_countries.json")
+    .defer(d3.tsv, "energyChloro.tsv")
+    .await(ready);
+>>>>>>> 4b3185de4118e0a2c427193928abf2e977232417
 
 var userYear = "1991"
 
