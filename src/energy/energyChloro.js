@@ -97,18 +97,10 @@ var path = d3.geoPath().projection(projection);
 
 svg.call(tip);
 
-<<<<<<< HEAD
 var promises = [];
 promises.push(d3.json("../core/world_countries.json"));
 promises.push(d3.tsv("energyChloro.tsv"));
 Promise.all(promises).then(function(data){ready(data);});
-=======
-queue()
-    .defer(d3.json, "../core/world_countries.json")
-    .defer(d3.tsv, "energyChloro.tsv")
-    .await(ready);
->>>>>>> 4b3185de4118e0a2c427193928abf2e977232417
-
 var userYear = "1991"
 
 function ready(data) {
