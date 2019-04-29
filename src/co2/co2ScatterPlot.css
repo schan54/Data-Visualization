@@ -6,25 +6,9 @@
   margin: 0px;
 }
 
-.displayDiv  {
-  position: absolute;
-  top: 80px;
-  left: 1130px;
-  padding: 15px;
-  background-color: var(--light-smoke);
-  border-radius: 2px;
-  border: solid;
-  border-color: var(--secondary-color);
-  border-radius: 5px;
-}
-
 #myVal {
   top: 160px;
   width: 100px;
-}
-
-#Submit {
-  top: 200px;
 }
 
 #sources {
@@ -38,17 +22,16 @@
 #Submit, #play-button, #plusFive, #plusTen, #minusFive, #minusTen {
   font-family: 'Nunito', sans-serif;
   letter-spacing: 1px;
-  color: var(--primary-color);
-  padding-right: 26px;
   border-radius: 3px;
   border: none;
   color: white;
-  margin: 0;
-  padding: 0 12px;
   width: 60px;
   cursor: pointer;
   height: 30px;
   background-color: var(--secondary-color);
+  position: inherit;
+  left: 20px;
+  top: 400px;
 }
 
 #Submit:hover, #play-button:hover {
@@ -56,31 +39,15 @@
 }
 
 #instructions {
-  top: 40px;
+  top: 0px;
   width: 100px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
 }
 
-#topThree {
-  top: 600px;
-  right: 5px;
-  width: 300px;
-}
-
-#userInput {
-  left: 7px;
-}
-
 h3 {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
-}
-
-img {
-  width: 60%;
-  height: auto;
-  margin-bottom: 5px;
 }
 
 #sum {
@@ -112,22 +79,13 @@ img {
   font-size: 18px;
 }
 
-#northAmerica, #europe, #asia {
-  border: none;
-  margin: -3px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  text-align: left;
-}
-
-#mainChart {
-  border-bottom: none;
-  margin-bottom: -1px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-
 #yearText {
   font-size: 80px;
   font-family: 'Roboto Slab', sans-serif;
+}
+
+#areaButtons {
+  width: 300px;
+  height: 50px;
+  top: 10px;
 }
