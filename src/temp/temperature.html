@@ -64,13 +64,22 @@
          the polar ice caps will cause a sea level rise which affects small islands the most. The coral reefs won't be able to protect the marine
           animals and humans that rely on the reefs for protection.
     </p>
+
+
 </div>
-<div class="displayDiv" id="userInput">
-    <button type="button" button id = "leftButt" onclick="changeColor('left')">Decrease Year</button>
+
+<div class = mainButts id = chart>
+    <svg id = mainChart>
+    <div id="buttonsArea">
+        <button id="leftButt">Decrement Year</button>
+    </div>
+    
+    <div id="buttonsArea2">
+        <button id="rightButt">Increment Year</button>
+    </div>
+    </svg>
 </div>
-<div class="displayDivRight" id="userInput">
-    <button type="button" button id = "rightButt" onclick="changeColor('right')">Increase Year</button>
-</div>
+
 <select id="inds">
     <option value="data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv">Afghanistan</option>
     <option value="data/crucy.v3.23.1901.2014.Albania.tmp.tsv">Albania</option>
@@ -270,7 +279,6 @@
 <div id="slider"></div>
 <script src="../core/d3-tip.js"></script>
 <script type="text/javascript" src="tempChloro.js"></script>
-
 
 
 </body>
