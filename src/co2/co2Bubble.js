@@ -268,7 +268,7 @@ function select(yearValue) {
 
         u.exit().remove();
       }
-      
+
       var tempArray = [];
       var tempStringArray = [];
       var NAArray = [];
@@ -324,6 +324,7 @@ function select(yearValue) {
 
       // Find the max value in this year
       max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
+
       stringIndex = tempArray.indexOf(max1);
       topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2").attr("x", 850).attr("y", 80);
       tempStringArray.splice(tempArray.indexOf(max1), 1);
