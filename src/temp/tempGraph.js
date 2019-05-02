@@ -195,7 +195,9 @@ for (var i = 0; i < selects.length; i++){
       })
      rightButt.on("click", function() {
         var button = d3v3.select(this);
+        if(year!=2014){
         year = Math.max(year0, year + 1);
+        }
         update();
       })
 
@@ -385,7 +387,10 @@ svg.selectAll(".month")
     })
    rightButt.on("click", function() {
       var button = d3v3.select(this);
+      if( year !=2014)
+      {
       year = Math.max(year0, year + 1);
+      }
       update();
     })
 // Allow the arrow keys to change the displayed year.
