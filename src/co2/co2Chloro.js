@@ -129,11 +129,11 @@ function ready(error, data, population) {
     d3.select("#top4").remove();
     d3.select("#top5").remove();
 
-    svg.append("text").html("1. " + a[4][2] + ": " + a[4][1] + " MtCO2").attr("id", "top1").attr("x", 850).attr("y", 80);
-    svg.append("text").html("2. " + a[3][2] + ": " + a[3][1] + " MtCO2").attr("id", "top2").attr("x", 850).attr("y", 100);
-    svg.append("text").html("3. " + a[2][2] + ": " + a[2][1] + " MtCO2").attr("id", "top3").attr("x", 850).attr("y", 120);
-    svg.append("text").html("4. " + a[1][2] + ": " + a[1][1] + " MtCO2").attr("id", "top4").attr("x", 850).attr("y", 140);
-    svg.append("text").html("5. " + a[0][2] + ": " + a[0][1] + " MtCO2").attr("id", "top5").attr("x", 850).attr("y", 160);
+    svg.append("text").html("1. " + a[4][2] + ": " + Math.floor(a[4][1]) + " MtCO2").attr("id", "top1").attr("x", 850).attr("y", 80);
+    svg.append("text").html("2. " + a[3][2] + ": " + Math.floor(a[3][1]) + " MtCO2").attr("id", "top2").attr("x", 850).attr("y", 100);
+    svg.append("text").html("3. " + a[2][2] + ": " + Math.floor(a[2][1]) + " MtCO2").attr("id", "top3").attr("x", 850).attr("y", 120);
+    svg.append("text").html("4. " + a[1][2] + ": " + Math.floor(a[1][1]) + " MtCO2").attr("id", "top4").attr("x", 850).attr("y", 140);
+    svg.append("text").html("5. " + a[0][2] + ": " + Math.floor(a[0][1]) + " MtCO2").attr("id", "top5").attr("x", 850).attr("y", 160);
   }
 
   function displayMax(a) {
@@ -143,11 +143,11 @@ function ready(error, data, population) {
     d3.select("#top4").remove();
     d3.select("#top5").remove();
 
-    svg.append("text").html("1. " + a[0][2] + ": " + a[0][1] + " MtCO2").attr("id", "top1").attr("x", 850).attr("y", 80);
-    svg.append("text").html("2. " + a[1][2] + ": " + a[1][1] + " MtCO2").attr("id", "top2").attr("x", 850).attr("y", 100);
-    svg.append("text").html("3. " + a[2][2] + ": " + a[2][1] + " MtCO2").attr("id", "top3").attr("x", 850).attr("y", 120);
-    svg.append("text").html("4. " + a[3][2] + ": " + a[3][1] + " MtCO2").attr("id", "top4").attr("x", 850).attr("y", 140);
-    svg.append("text").html("5. " + a[4][2] + ": " + a[4][1] + " MtCO2").attr("id", "top5").attr("x", 850).attr("y", 160);
+    svg.append("text").html("1. " + a[4][2] + ": " + Math.floor(a[4][1]) + " MtCO2").attr("id", "top1").attr("x", 850).attr("y", 80);
+    svg.append("text").html("2. " + a[3][2] + ": " + Math.floor(a[3][1]) + " MtCO2").attr("id", "top2").attr("x", 850).attr("y", 100);
+    svg.append("text").html("3. " + a[2][2] + ": " + Math.floor(a[2][1]) + " MtCO2").attr("id", "top3").attr("x", 850).attr("y", 120);
+    svg.append("text").html("4. " + a[1][2] + ": " + Math.floor(a[1][1]) + " MtCO2").attr("id", "top4").attr("x", 850).attr("y", 140);
+    svg.append("text").html("5. " + a[0][2] + ": " + Math.floor(a[0][1]) + " MtCO2").attr("id", "top5").attr("x", 850).attr("y", 160);
   }
 
   function displayTotal() {
