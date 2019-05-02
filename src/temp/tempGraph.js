@@ -37,7 +37,14 @@ var title2 = svg.append("text")
     .attr("dx","5em")
     .attr("dy", ".75em")
     .text("Afghanistan");
-
+var dataInfo = svg.append("text")
+    .attr("class", "dataInfo")
+    .attr("dx","5em")
+    .attr("dy", "3em")
+var dataInfo2 = svg.append("text")
+    .attr("class", "dataInfo")
+    .attr("dx","15em")
+    .attr("dy", "3em")
 d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data) {
 
   // Convert strings to numbers.
@@ -46,13 +53,22 @@ d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data)
 
     d.year = +d.year;
     d.month = +d.month;
+    
+
   });
 
   // Compute the extent of the data set in age and years.
   var month1 = d3v3.max(data, function(d) { return d.month; }),
       year0 = d3v3.min(data, function(d) { return d.year; }),
       year1 = d3v3.max(data, function(d) { return d.year; }),
-      year = year1;
+      year = year1,
+      tests = d3v3.max(data,function(d){ return d.temp})
+      tests2 = d3v3.min(data,function(d){ return d.temp})
+
+      dataInfo.text("Max Temp: "  + tests);
+      dataInfo2.text("Min Temp: "  + tests2);
+
+
 var selects = document.getElementsByTagName('select');
 for (var i = 0; i < selects.length; i++){
     selects[i].addEventListener('keydown',function(e){
@@ -167,20 +183,25 @@ for (var i = 0; i < selects.length; i++){
       .attr("dy", ".71em")
 
       .text(function(month) { return month; });
-var leftButt = d3v3.select("#leftButt");
-var rightButt = d3v3.select("#rightButt");
 
-leftButt.on("click", function() {
-  var button = d3v3.select(this);
-  year = Math.max(year0, year - 1);
-  update();
-})
+      var leftButt = d3.select("#leftButt");
+      var rightButt = d3.select("#rightButt");
+  
+      // Event Handler for clicking play button
+      leftButt.on("click", function() {
+        var button = d3v3.select(this);
+        year = Math.max(year0, year - 1);
+        update();
+      })
+     rightButt.on("click", function() {
+        var button = d3v3.select(this);
+        if(year!=2014){
+        year = Math.max(year0, year + 1);
+        }
+        update();
+      })
 
-rightButt.on("click", function() {
-  var button = d3v3.select(this);
-  year = Math.max(year0, year + 1);
-  update();
-})
+
   // Allow the arrow keys to change the displayed year.
   window.focus();
   d3v3.select(window).on("keydown", function() {
@@ -279,7 +300,12 @@ dot.exit().remove()
 var month1 = d3v3.max(data, function(d) { return d.month; }),
     year0 = d3v3.min(data, function(d) { return d.year; }),
     year1 = d3v3.max(data, function(d) { return d.year; }),
-    year = year1;
+    year = year1,
+    tests = d3v3.max(data,function(d){ return d.temp}),
+    tests2 = d3v3.min(data,function(d){ return d.temp})
+
+    dataInfo.text("Max Temp: "  + tests);
+    dataInfo2.text("Min Temp: "  + tests2);
 
 // Update the scale domains.
 x.domain([year1 - month1, year1]);
@@ -350,20 +376,23 @@ svg.selectAll(".month")
 
     .text(function(month) { return month; });
 
-    var leftButt = d3v3.select("#leftButt");
-var rightButt = d3v3.select("#rightButt");
+    var leftButt = d3.select("#leftButt");
+    var rightButt = d3.select("#rightButt");
 
-leftButt.on("click", function() {
-  var button = d3v3.select(this);
-  year = Math.max(year0, year - 1);
-  update();
-})
-
-rightButt.on("click", function() {
-  var button = d3v3.select(this);
-  year = Math.max(year0, year + 1);
-  update();
-})
+    // Event Handler for clicking play button
+    leftButt.on("click", function() {
+      var button = d3v3.select(this);
+      year = Math.max(year0, year - 1);
+      update();
+    })
+   rightButt.on("click", function() {
+      var button = d3v3.select(this);
+      if( year !=2014)
+      {
+      year = Math.max(year0, year + 1);
+      }
+      update();
+    })
 // Allow the arrow keys to change the displayed year.
 window.focus();
 d3v3.select(window).on("keydown", function() {
