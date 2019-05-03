@@ -1,3 +1,5 @@
+
+/*
 // Global variables
 var playButton = d3.select("#play-button");
 var enterButton = d3.select("#Submit");
@@ -5,12 +7,12 @@ var plusFiveButton = d3.select("#plusFive");
 var plusTenButton = d3.select("#plusTen");
 var minusFiveButton = d3.select("#minusFive");
 var minusTenButton = d3.select("#minusTen");
-
+*/
 var moving = false;
 
 var currentValue = 1960;
 var targetValue = 2016;
-
+/*
 // Event Handler for clicking play button
 playButton.on("click", function() {
   var button = d3.select(this);
@@ -85,7 +87,7 @@ minusTenButton.on("click", function() {
     step();
   }
 })
-
+*/
 // Increase year by one and render
 function step() {
   currentValue++;
