@@ -1,14 +1,4 @@
 // Set tooltips
-var tip = d3.tip()
-            .attr('class', 'd3-tip')
-            .offset([-10, 0])
-            .html(function(d) {
-              return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + ": </strong><span class='details'>" + format(d.value) +"</span>";
-            })
-
-var margin = {top: 0, right: 0, bottom: 0, left: 0},
-            width = 1400 - margin.left - margin.right,
-            height = 1000 - margin.top - margin.bottom;
 
 var color = d3.scaleThreshold()
     .domain([-25,0,25,50,100,200,500,800,1000])
@@ -16,20 +6,9 @@ var color = d3.scaleThreshold()
           d3.interpolateRdYlBu(0.4), d3.interpolateRdYlBu(0.25), d3.interpolateRdYlBu(0.1), d3.interpolateRdYlBu(0)]);
 
 
-
-var svg = d3.select("body")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append('g')
-            .attr('class', 'map');
-
 var projection = d3.geoMercator()
                    .scale(200)
                   .translate( [width / 2, height / 1.5 + 150]);
-
-
-
 
 var path = d3.geoPath().projection(projection);
 

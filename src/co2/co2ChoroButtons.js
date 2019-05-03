@@ -5,7 +5,7 @@ var number= svg.append("text")
                 .attr("y",30)
                 .attr("fill","green")
                 .attr("font-size",24)
-                .text("Select Method of input")
+                .text("Select Filtering Method")
 
 //container for all buttons
 var allButtons= svg.append("g")

@@ -6,25 +6,33 @@ var formatDate = d3.timeFormat("%Y");
 var startDate = new Date("1961"),
     endDate = new Date("2017");
 
-var marginSlider = {top:0, right:50, bottom:0, left:50},
-    width = 960 - marginSlider.left - marginSlider.right,
-    height = 200 - marginSlider.top - marginSlider.bottom;
-
 ////////// slider //////////
+var margin = {top: 0, right: 0, bottom: 0, left: 0},
+            width = 1300 - margin.left - margin.right,
+            height = 1200 - margin.top - margin.bottom;
 
-var svgSlider = d3.select("#slider")
-    .append("svg")
-    .attr("width", width + marginSlider.left + marginSlider.right)
-    .attr("height", height);
+var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append('g')
+            .attr('class', 'map');
+
+var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function(d) {
+              return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + ": </strong><span class='details'>" + format(d.value) +"</span>";
+            })
 
 var x = d3.scaleTime()
     .domain([startDate, endDate])
-    .range([0, width])
+    .range([0, width-100])
     .clamp(true);
 
-var slider = svgSlider.append("g")
+var slider = svg.append("g")
     .attr("class", "slider")
-    .attr("transform", "translate(" + marginSlider.left + "," + height / 2 + ")");
+    .attr("transform", "translate(" + 50 + "," + 200 + ")");
 
 slider.append("line")
     .attr("class", "track")
