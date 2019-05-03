@@ -54,7 +54,7 @@ function ready(error, data, population) {
   d3.select("#choroYear").remove()
   var populationById = {};
 
-  if(document.getElementById('Compare').checked) {
+  if(compareActive == true) {
     population.forEach(function(d) { populationById[d.id] = +d[userYear] - +d[1960]; });
     compareString = userYear + " vs " + 1960;
     svg.append("text").html(compareString).attr("x", 390).attr("y", 120).attr("id", "choroYear");
@@ -68,7 +68,7 @@ function ready(error, data, population) {
     displayMaxIso(max5, min5, sortedHash);
   }
 
-  else if(document.getElementById('Isolated').checked) {
+  else {
     population.forEach(function(d) { populationById[d.id] = +d[userYear]; });
     svg.append("text").html(userYear).attr("x", 390).attr("y", 120).attr("id", "choroYear");
 
@@ -77,7 +77,7 @@ function ready(error, data, population) {
     max5 = sortedHash.slice((sortedHash.length - 5), sortedHash.length);
     min5 = sortedHash.slice(0, 5);
 
-    displayTotalIso();
+    displayTotalIso(sortedHash);
     displayMaxIso(max5);
   }
 
