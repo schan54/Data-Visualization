@@ -6,6 +6,9 @@ var formatDate = d3.timeFormat("%Y");
 var startDate = new Date("1961"),
     endDate = new Date("2017");
 
+var userYear = formatDateIntoYear(startDate);
+var userYear2 = formatDateIntoYear(startDate);
+
 ////////// slider //////////
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
             width = 1300 - margin.left - margin.right,
@@ -27,21 +30,23 @@ var tip = d3.tip()
 
 var x = d3.scaleTime()
     .domain([startDate, endDate])
-    .range([0, width-100])
+    .range([0, width-50])
     .clamp(true);
 
 var slider = svg.append("g")
     .attr("class", "slider")
-    .attr("transform", "translate(" + 50 + "," + 200 + ")");
+    .attr("transform", "translate(" + 25 + "," + 205 + ")");
 
 slider.append("line")
     .attr("class", "track")
     .attr("x1", x.range()[0])
     .attr("x2", x.range()[1])
+
   .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
     .attr("class", "track-inset")
   .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
     .attr("class", "track-overlay")
+
     .call(d3.drag()
         .on("start.interrupt", function() { slider.interrupt(); })
         .on("start drag", function() { update(x.invert(d3.event.x)); }));
@@ -49,6 +54,7 @@ slider.append("line")
 slider.insert("g", ".track-overlay")
     .attr("class", "ticks")
     .attr("transform", "translate(0," + 18 + ")")
+
   .selectAll("text")
     .data(x.ticks(10))
     .enter()
@@ -60,9 +66,21 @@ slider.insert("g", ".track-overlay")
 
 var handle = slider.insert("circle", ".track-overlay")
     .attr("class", "handle")
-    .attr("r", 9);
+    .attr("r", 10)
+    .style("fill", "black");
+
+var handle2 = slider.insert("circle", ".track-overlay")
+    .attr("class", "handle2")
+    .attr("r", 10)
+    .style("fill", "grey");
 
 var label = slider.append("text")
+    .attr("class", "label")
+    .attr("text-anchor", "middle")
+    .text(formatDateIntoYear(startDate))
+    .attr("transform", "translate(0," + (-25) + ")");
+
+var label2 = slider.append("text")
     .attr("class", "label")
     .attr("text-anchor", "middle")
     .text(formatDateIntoYear(startDate))

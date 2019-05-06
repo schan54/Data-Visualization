@@ -19,12 +19,10 @@ queue()
     .defer(d3.tsv, "worldData.tsv")
     .await(ready);
 
-var userYear = formatDateIntoYear(startDate);
-
-svg.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1500).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
 svg.append("line").attr("x1", 370).attr("y1", 0).attr("x2", 370).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
 svg.append("line").attr("x1", 580).attr("y1", 0).attr("x2", 580).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
 svg.append("line").attr("x1", 820).attr("y1", 0).attr("x2", 820).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+
 var compareString = "1960 vs 1960";
 svg.append("text").html(compareString).attr("x", 390).attr("y", 120).attr("id", "choroYear");
 
@@ -32,26 +30,29 @@ function ready(error, data, population) {
 
   d3.select("#choroYear").remove()
   var populationById = {};
+  var max5, min5;
 
   if(compareActive == true) {
-    population.forEach(function(d) { populationById[d.id] = +d[userYear] - +d[1960]; });
+    population.forEach(function(d) { populationById[d.id] = +d[userYear] - +d[userYear2]; });
     compareString = userYear + " vs " + 1960;
     svg.append("text").html(compareString).attr("x", 390).attr("y", 120).attr("id", "choroYear");
 
-    var sortedHash = sortHash(population);
+    var sortedHash1 = sortHash(population, userYear);
+    var sortedHash2 = sortHash(population, userYear2);
 
-    max5 = sortedHash.slice((sortedHash.length - 5), sortedHash.length);
-    min5 = sortedHash.slice(0, 5);
-    displayTotalIso(sortedHash);
+    console.log(sortedHash1);
+    console.log(sortedHash2);
 
-    displayMaxIso(max5, min5, sortedHash);
+    displayTotalCompare(sortedHash1, sortedHash2);
+    displayMaxCompare(sortedHash1, sortedHash2);
+
   }
 
   else {
     population.forEach(function(d) { populationById[d.id] = +d[userYear]; });
     svg.append("text").html(userYear).attr("x", 390).attr("y", 120).attr("id", "choroYear");
 
-    var sortedHash = sortHash(population);
+    var sortedHash = sortHash(population, userYear);
 
     max5 = sortedHash.slice((sortedHash.length - 5), sortedHash.length);
     min5 = sortedHash.slice(0, 5);
