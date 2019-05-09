@@ -128,31 +128,12 @@ svg {
 }
   #instructions {
     font-family: 'Roboto', sans-serif;
-
+    left:10px;
     position: absolute;
     top: 320px;
     width: 270px;
   }
-  #instructions2 {
-    font-family: 'Roboto', sans-serif;
 
-    position: absolute;
-    top: 340px;
-    width: 270px;
-  }
-  #instructions3 {
-    font-family: 'Roboto', sans-serif;
-
-    position: absolute;
-    top: 380px;
-    width: 270px;
-  }
-  #instructions4 {
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-    top: 420px;
-    width: 270px;
-  }
   #instructionsMonth {
     font-family: 'Roboto', sans-serif;
     position: absolute;

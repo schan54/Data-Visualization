@@ -54,7 +54,6 @@ d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data)
     d.year = +d.year;
     d.month = +d.month;
     
-
   });
 
   // Compute the extent of the data set in age and years.
@@ -126,8 +125,9 @@ for (var i = 0; i < selects.length; i++){
     .selectAll("g")
     .filter(function(value) { return !value; })
       .classed("zero", true);
-
   // Add labeled rects for each birthyear (so that no enter or exit is required).
+  var value1 = [];//array of temps for this year 
+  var i=0;
   var birthyear = birthyears.selectAll(".birthyear")
       .data(d3v3.range(year0 - month1, year1 + 1, 1))
     .enter().append("g")
@@ -140,7 +140,9 @@ for (var i = 0; i < selects.length; i++){
       .attr("x", -barWidth / 2)
       .attr("width", barWidth)
       .attr("y", y)
-      .attr("height", function(value) { return (height - y(value)); })
+      .attr("sum", function(value) {value1.push(value);})
+
+      .attr("height", function(value) {return (height - y(value))})
        .on("mouseover", function(d) {
             divs.transition()
                 .duration(200)
@@ -156,7 +158,13 @@ for (var i = 0; i < selects.length; i++){
                 .duration(500)
                 .style("opacity", 0);
         });
-
+        console.log(value1.length);
+        for(i = 0; i<226;i++)
+        {
+            value1.shift();
+            
+        }
+        console.log(value1);
     svg.append("text")
       .attr("transform",
             "translate(" + (width/2) + " ," +
@@ -200,7 +208,6 @@ for (var i = 0; i < selects.length; i++){
         }
         update();
       })
-
 
   // Allow the arrow keys to change the displayed year.
   window.focus();
@@ -303,7 +310,6 @@ var month1 = d3v3.max(data, function(d) { return d.month; }),
     year = year1,
     tests = d3v3.max(data,function(d){ return d.temp}),
     tests2 = d3v3.min(data,function(d){ return d.temp})
-
     dataInfo.text("Max Temp: "  + tests);
     dataInfo2.text("Min Temp: "  + tests2);
 
@@ -319,6 +325,7 @@ data = d3v3.nest()
     .key(function(d) { return d.year - d.month; })
     .rollup(function(v) { return v.map(function(d) { return d.temp; }); })
     .map(data);
+
 var dot3 = svg.select('g').data(data)
 dot3.exit().remove()
 // Add an axis to show the population values.
@@ -364,7 +371,6 @@ birthyear.selectAll("rect")
               .duration(500)
               .style("opacity", 0);
       });
-
 // Add labels to show age (separate; not animated).
 svg.selectAll(".month")
     .data(d3v3.range(0, month1 + 1, 1))
@@ -406,7 +412,6 @@ d3v3.select(window).on("keydown", function() {
 function update() {
   if (!(year in data)) return;
   title.text(year);
-
   birthyears.transition()
       .duration(750)
       .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
