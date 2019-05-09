@@ -43,23 +43,33 @@
       });
     });
   </script>
-
-<!-- <select id = "selectFile" onchange="parseFile(this.value);">
-  <option value = "consumption">Global Energy Consumption</option>
-  <option value = "production">Energy Production</option>
-  <option value = "crudeoil">Crude Oil</option>
-  <option value = "naturalgas">Natural Gas</option>
-  <option value = "oilproducts">Oil Products</option>
-</select> -->
+  <h1>Global Energy Consumption(Mtoe)</h1>
+  <p>Hover over the burst to see tooltips and click on the part you're interesting in to see more info</p>
+  <p id = "selectTxt">Select a File</p>
+  <select id = "selectFile" onchange="parseFile(this.value);">
+    <option value = "consumption">Global Energy Consumption</option>
+    <option value = "production">Energy Production</option>
+    <option value = "crudeoil">Crude Oil</option>
+    <option value = "naturalgas">Natural Gas</option>
+    <option value = "oilproducts">Oil Products</option>
+  </select>
 
   <h2 id = "yeartxt">Year: 1990</h2>
   <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
-  <svg id="partitionSVG" width="932" height="932" style ="position:relative; left:15%;"></svg>
-  <script type="text/javascript" src="energySunburst.js"></script>Code Reference from https://observablehq.com/@d3/zoomable-sunburst
+  <svg id="partitionSVG" width="932" height="932" style ="position:relative; left:0%;"></svg>
+  <script type="text/javascript" src="energySunburst.js"></script>
+  <!-- Code Reference from https://observablehq.com/@d3/zoomable-sunburst -->
 
   <div id="slider"></div>
   <script src="../core/d3-tip.js"></script>
   <script type="text/javascript" src="energyChloro.js"></script>
 
+  <p id="shortDescription">It is important to know how the use of energy can impact climate change. As we can see in this sunburst, more and more energy is being
+    used every year. These energy include coals, natuarl gas, and oil. However, there are energy and resources that a non-renewable. Meaning
+    if we keep producing and consuming resources and energy, the world will eventually run out. We need to know how to minimize our energy usage
+    not only for the world, but for the climate as well. Fossil fuels for example generate a lot of CO2 that is a factor to global warming. This 
+    visualization tells us story of how if we keep using energy like this. Climate change will accelerate.
+  </p>
+  <p>Source:<a href="https://yearbook.enerdata.net/" target="_blank">https://yearbook.enerdata.net/</a></p><br/>
 </body>
 </html>
