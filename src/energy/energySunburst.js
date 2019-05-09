@@ -79,15 +79,6 @@ d3.json('./energyusage.json').then(data => {
             .style("cursor", "pointer")
             .on("click", clicked);
    
-  
-    function search(name){
-
-        path.each(d => {
-            if (d.data.name == name){
-                return clicked(d)
-            }
-        })
-    }
 
     /* hover over path for more info */
     path.append("title")
@@ -120,11 +111,19 @@ d3.json('./energyusage.json').then(data => {
     });
     d3.select("#searchSubmit").on("click", function(){
         var name = d3.select("#searchText").node().value;
+        var hide = false;
         path.each(d => {
             if (d.data.name == name){
+                hide = true;
+                d3.select("#searchErr")
+                  .style("visibility", "hidden");
                 return clicked(d);
             }
-        });
+        });        
+        if (hide == false){
+        d3.select("#searchErr")
+            .style("visibility", "visible");}
+        
     })
     /* Zoom in Sunburst on click */
     function clicked(p) {
@@ -166,6 +165,7 @@ function parseFile(file) {
       case "consumption":
         d3.select("h1").text("Global Energy Consumption(Mtoe)");
         svgBurst.selectAll("g").remove();
+        d3.select("#yearslider").attr("value", 1990);
         updateSunBurst("./energyusage.json", 0);
         break;
       case "production":

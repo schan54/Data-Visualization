@@ -45,7 +45,7 @@
   </script>
   <h1>Global Energy Consumption(Mtoe)</h1>
   <p>Hover over the burst to see tooltips and click on the part you're interesting in to see more info</p>
-  <p id = "selectTxt">Select a File</p>
+  <h3 id = "selectTxt">Select a File</h3>
   <select id = "selectFile" onchange="parseFile(this.value);">
     <option value = "consumption">Global Energy Consumption</option>
     <option value = "production">Energy Production</option>
@@ -56,11 +56,10 @@
 
   <h2 id = "yeartxt">Year: 1990</h2>
   <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
+  <input type="text" id = "searchText" placeholder="Search.." name="search" >
+  <button type="submit" id = "searchSubmit"><i class="fa fa-search"></i></button>
+  <p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
   <svg id="partitionSVG" width="932" height="932" style ="position:relative; left:0%;"></svg>
-
-  
-    <input type="text" id = "searchText" placeholder="Search.." name="search" >
-    <button type="submit" id = "searchSubmit"><i class="fa fa-search"></i></button>
   
   <script type="text/javascript" src="energySunburst.js"></script>
   <!-- Code Reference from https://observablehq.com/@d3/zoomable-sunburst -->

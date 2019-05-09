@@ -24,10 +24,21 @@ p {
     top:50px;
     
 }
-#selectTxt{
+#searchText, #searchSubmit{
     position: relative;
-    top: 280px;
-    left: 60px;
+    top: 480px;
+    left: 10%;
+}
+#searchErr{
+    position: absolute;
+    top: 690px;
+    right: 2%;
+    font-size: 13px;
+}
+#selectTxt{
+    position: absolute;
+    top: 250px;
+    left: 5%;
 }
 #selectFile{
     position:absolute;
