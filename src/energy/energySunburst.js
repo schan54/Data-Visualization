@@ -80,12 +80,13 @@ d3.json('./energyusage.json').then(data => {
             .on("click", clicked);
    
   
-    function search(d){
-        console.log(d);
-        if (d.data.name == name){
-            console.log(d.name);
-            return clicked;
-        }
+    function search(name){
+
+        path.each(d => {
+            if (d.data.name == name){
+                return clicked(d)
+            }
+        })
     }
 
     /* hover over path for more info */
@@ -117,6 +118,14 @@ d3.json('./energyusage.json').then(data => {
         updateSunBurst("./energyusage.json", year);
         
     });
+    d3.select("#searchSubmit").on("click", function(){
+        var name = d3.select("#searchText").node().value;
+        path.each(d => {
+            if (d.data.name == name){
+                return clicked(d);
+            }
+        });
+    })
     /* Zoom in Sunburst on click */
     function clicked(p) {
         parent.datum(p.parent || root);
@@ -227,7 +236,7 @@ function parseFile(file) {
                         .on("mouseout", function(d){
                         g.selectAll(".midText").remove();
                     })
-                    
+
             /* clicking on each path zooms in */
             path.filter(d => d.children)
                     .style("cursor", "pointer")
