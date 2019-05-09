@@ -19,7 +19,7 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                         .on("click",function(d,i) {
                             updateButtonColors(d3.select(this), d3.select(this.parentNode));
                             if (i == 0) {
-                                timer = setInterval(step, 1000);
+                                timer = setInterval(step, 6000);
                             } else if (i == 1) {
                                 clearInterval(timer);
                             } else if (i == 2) {
@@ -89,19 +89,6 @@ co2buttonGroups.append("rect")
             .attr("ry",5)
             .attr("fill",defaultColor)
 
-//adding text to each toggle button group, centered
-//within the toggle button rect
-co2buttonGroups.append("text")
-            .attr("class","buttonText")
-            .attr("font-family","FontAwesome")
-            .attr("x",function(d,i) {
-                return x0 + (bWidth+bSpace)*i + bWidth/2;
-            })
-            .attr("y",y0+bHeight/2)
-            .attr("text-anchor","middle")
-            .attr("dominant-baseline","central")
-            .attr("fill","white")
-            .text(function(d) {return d;})
 
 function updateButtonColors(button, parent) {
     parent.selectAll("rect")
