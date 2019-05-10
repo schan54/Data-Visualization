@@ -397,6 +397,20 @@ function select(yearValue) {
       topEmissions.append("text").html("Total Emissions:").attr("x", 220).attr("y", 540);
       topEmissions.append("text").html("Total Emissions:").attr("x", 420).attr("y", 540);
       topEmissions.append("text").html("Total Emissions:").attr("x", 1050).attr("y", 540);
+
+      //adding text to each toggle button group, centered
+      //within the toggle button rect
+      co2buttonGroups.append("text")
+            .attr("class","buttonText")
+            .attr("font-family","FontAwesome")
+            .attr("x",function(d,i) {
+                return x0 + (bWidth+bSpace)*i + bWidth/2;
+            })
+            .attr("y",y0+bHeight/2)
+            .attr("text-anchor","middle")
+            .attr("dominant-baseline","central")
+            .attr("fill","white")
+            .text(function(d) {return d;})
     }
 
     // Getters and setters

@@ -25,13 +25,13 @@ d3.select("#yearslider").on("input", function(){
   });
 
 
-const svgBurst = d3.select('#partitionSVG')
-        .style("width", widthBurst)
-        .style("height", "auto")
-        .style("font", "10px sans-serif");
+    const svgBurst = d3.select('#partitionSVG')
+            .style("width", "auto")
+            .style("height", "auto")
+            .style("font", "10px sans-serif");
 
-const g = svgBurst.append("g")
-        .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
+    const g = svgBurst.append("g")
+            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
 
 d3.json('./energyusage.json').then(data => {
     
@@ -55,20 +55,30 @@ d3.json('./energyusage.json').then(data => {
             .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
             .attr("d", d => arcBurst(d.current));
 
+    var total = 0;        
+    path.each(d => {total = total + Number(d.data.size); })
+
     /* hover over path to see values in the middle */
     path.on("mouseover", function(d){
+        var percentage = (Number(d.value) / total) * 100
         g.append("text")
-            .attr("id", "midText")
+            .attr("class", "midText")
             .text(formatNum(d.value))
-            .style("font-size", "50")
+            .style("font-size", "50");
+        g.append("text")
+            .attr("class", "midText")
+            .attr("dy", "1.5em")
+            .text(percentage.toFixed(2)+"%")
+            .style("font-size", "35px");
     })
         .on("mouseout", function(d){
-        g.select("#midText").remove();
+        g.selectAll(".midText").remove();
     })
     /* clicking on each path zooms in */
     path.filter(d => d.children)
             .style("cursor", "pointer")
             .on("click", clicked);
+   
 
     /* hover over path for more info */
     path.append("title")
@@ -99,6 +109,22 @@ d3.json('./energyusage.json').then(data => {
         updateSunBurst("./energyusage.json", year);
         
     });
+    d3.select("#searchSubmit").on("click", function(){
+        var name = d3.select("#searchText").node().value;
+        var hide = false;
+        path.each(d => {
+            if (d.data.name == name){
+                hide = true;
+                d3.select("#searchErr")
+                  .style("visibility", "hidden");
+                return clicked(d);
+            }
+        });        
+        if (hide == false){
+        d3.select("#searchErr")
+            .style("visibility", "visible");}
+        
+    })
     /* Zoom in Sunburst on click */
     function clicked(p) {
         parent.datum(p.parent || root);
@@ -138,32 +164,33 @@ function parseFile(file) {
     switch(file){
       case "consumption":
         d3.select("h1").text("Global Energy Consumption(Mtoe)");
-        g.remove();
+        svgBurst.selectAll("g").remove();
+        d3.select("#yearslider").attr("value", 1990);
         updateSunBurst("./energyusage.json", 0);
         break;
       case "production":
         d3.select("h1").text("Energy Production");
-        g.remove();
-        updateSunBurst("../dataSets/energy/individualCreate/Total energy production.json", 0);
+        svgBurst.selectAll("g").remove();
+        updateSunBurst("./energyData/individualCreate/Total energy production.json", 0);
         break;
       case "crudeoil":
         d3.select("h1").text("Crude Oil Consumption");
-        g.remove();
-        updateSunBurst("../dataSets/energy/individualCreate/Crude oil input to refineries.json", 0);
+        svgBurst.selectAll("g").remove();
+        updateSunBurst("./energyData/individualCreate/Crude oil input to refineries.json", 0);
         break;
       case "oilproducts":
         d3.select("h1").text("Oil Products Consumption");
-        g.remove();
-        updateSunBurst("../dataSets/energy/individualCreate/Oil products domestic consumpt.json", 0);
+        svgBurst.selectAll("g").remove();
+        updateSunBurst("./energyData/individualCreate/Oil products domestic consumpt.json", 0);
         break;
       case "production":
         d3.select("h1").text("Natural Gas Production");
-        g.remove();
-        updateSunBurst("../dataSets/energy/individualCreate/Natural gas production.json", 0);
+        svgBurst.selectAll("g").remove();
+        updateSunBurst("./energyData/individualCreate/Natural gas production.json", 0);
         break;
       default:
         d3.select("h1").text("Global Energy Consumption(Mtoe)");
-        g.remove();
+        svgBurst.selectAll("g").remove();
         updateSunBurst("./energyusage.json", 0);
         break;
     }
@@ -190,16 +217,26 @@ function parseFile(file) {
                     .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
                     .attr("d", d => arcBurst(d.current));
         
-            /* hover over path to see values in the middle */
-            path.on("mouseover", function(d){
-                g.append("text")
-                    .attr("id", "midText")
-                    .text(formatNum(d.value))
-                    .style("font-size", "50")
-            })
-                .on("mouseout", function(d){
-                g.select("#midText").remove();
-            })
+                    var total = 0;        
+                    path.each(d => {total = total + Number(d.data.size); })
+                
+                    /* hover over path to see values in the middle */
+                    path.on("mouseover", function(d){
+                        var percentage = (Number(d.value) / total) * 100
+                        g.append("text")
+                            .attr("class", "midText")
+                            .text(formatNum(d.value))
+                            .style("font-size", "50");
+                        g.append("text")
+                            .attr("class", "midText")
+                            .attr("dy", "1.5em")
+                            .text(percentage.toFixed(2)+"%")
+                            .style("font-size", "35px");
+                    })
+                        .on("mouseout", function(d){
+                        g.selectAll(".midText").remove();
+                    })
+
             /* clicking on each path zooms in */
             path.filter(d => d.children)
                     .style("cursor", "pointer")
