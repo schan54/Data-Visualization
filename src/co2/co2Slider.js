@@ -96,10 +96,6 @@ function update(h) {
   if (userYear != (formatDateIntoYear(h))) {
     userYear = formatDateIntoYear(h);
 
-    //Update bubble.js
-    currentValue = userYear;
-    select(userYear);
-
     //Update Choropleth
     queue()
         .defer(d3.json, "../core/world_countries.json")
