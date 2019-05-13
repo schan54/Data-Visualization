@@ -1,4 +1,4 @@
-#displayYear {
+#displayYear, #choroYear1, #choroYear2 {
   font-family: 'Roboto', sans-serif;
   font-size: 40pt;
   letter-spacing: -2px;
@@ -29,7 +29,6 @@
   cursor: pointer;
   height: 30px;
   background-color: var(--secondary-color);
-  
 }
 
 #Submit:hover, #play-button:hover {
@@ -43,11 +42,11 @@ h3 {
   font-size: 18px;
 }
 
-#sum {
+#sum, #choroSum, #vs {
   font-size: 25px;
 }
 
-#sumText {
+#sumText, #choroSumText, #choroSumText2, #topHeader, #botHeader {
   font-size: 18px;
   font-weight: bold;
 }
