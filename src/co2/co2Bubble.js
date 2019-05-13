@@ -1,93 +1,11 @@
 
-/*
-// Global variables
-var playButton = d3.select("#play-button");
-var enterButton = d3.select("#Submit");
-var plusFiveButton = d3.select("#plusFive");
-var plusTenButton = d3.select("#plusTen");
-var minusFiveButton = d3.select("#minusFive");
-var minusTenButton = d3.select("#minusTen");
-*/
 var moving = false;
-
 var currentValue = 1960;
 var targetValue = 2016;
-/*
-// Event Handler for clicking play button
-playButton.on("click", function() {
-  var button = d3.select(this);
-  if (button.text() == "Pause") {
-    moving = false;
-    clearInterval(timer);
-    // timer = 0;
-    button.text("Play");
-  } else {
-    moving = true;
-    timer = setInterval(step, 6000);
-    button.text("Pause");
-  }
-})
+var twoYears = false;
+var comparedValue = 1961;
+var UIFlag = false;
 
-// Event handler for clicking enter button
-enterButton.on("click", function() {
-  currentValue = document.getElementById("myVal").value;
-  if (currentValue < 1960 || currentValue > 2017) {
-    d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter a year</br>between 1960 and 2017");
-    currentValue = 1960;
-  } else if (!Number.isInteger(Number(currentValue))) {
-    d3.select('#instructions').html("Not a valid year." + "</br></br>" + "Please enter an Integer year");
-    currentValue = 1960;
-  } else {
-    d3.select('#instructions').html("Or" + "</br></br>" + "Enter a year between</br>1960 and 2017");
-    currentValue--;
-    step();
-  }
-})
-
-// Event handler for clicking plusFive button
-plusFiveButton.on("click", function() {
-  if (currentValue > 2012) {
-    currentValue = 1959;
-    step();
-  } else {
-    currentValue = currentValue + 4;
-    step();
-  }
-})
-
-// Event handler for clicking plusFive button
-minusFiveButton.on("click", function() {
-  if (currentValue < 1965) {
-    currentValue = 1959;
-    step();
-  } else {
-    currentValue = currentValue - 6;
-    step();
-  }
-})
-
-// Event handler for clicking plusTen button
-plusTenButton.on("click", function() {
-  if (currentValue > 2007) {
-    currentValue = 1959;
-    step();
-  } else {
-    currentValue = currentValue + 9;
-    step();
-  }
-})
-
-// Event handler for clicking plusFive button
-minusTenButton.on("click", function() {
-  if (currentValue < 1970) {
-    currentValue = 1959;
-    step();
-  } else {
-    currentValue = currentValue - 11;
-    step();
-  }
-})
-*/
 // Increase year by one and render
 function step() {
   currentValue++;
@@ -104,19 +22,11 @@ function step() {
 // Render default state
 select(currentValue);
 
-/* README
-//  Here is the compare vs Isolated load.
 
-if(document.getElementById('Compare').checked) {
-    current - 1960 data
-}
-
-else if(document.getElementById('Isolated').checked) {
-  what it already does
-}*/
 
 function select(yearValue) {
   // Load data
+  // Better structure to not load data each time you call select
   d3.csv('MtCO2Emissions.csv', function(error, data) {
   if (error) {
     console.error('Error getting or parsing the data.');
@@ -146,6 +56,13 @@ function select(yearValue) {
         colorFour = d3.interpolateYlOrBr(0.7);
         colorFive = d3.interpolateYlOrBr(0.8);
         colorSix = d3.interpolateYlOrBr(0.9);
+        colorGreen = d3.interpolateRdYlGn(1); 
+        colorRed = d3.interpolateRdYlGn(0);
+        colorGray = d3.interpolateRdYlGn(0.5);
+        yearOne = [];
+        yearTwo = [];
+        yearDiff = [];
+        indexesNegative = [];
 
     function chart(selection) {
       var data = selection.datum();
@@ -167,36 +84,174 @@ function select(yearValue) {
         return +d[columnForRadius];
       })]).range([2, 90])
 
+
+
+      // Compute difference between two years
+      yearOne = data.filter(function(d) { 
+          if (UIFlag) {
+              return d.year == currentValue;
+          } else {
+              return d.year == yearTemp
+          }}); // selected year
+      yearTwo = data.filter(function(d) { 
+          if (UIFlag) {
+            return d.year == comparedValue;
+          } else {
+              return d.year == yearTemp + 1;
+          }}); // selected year plus
+      yearDiff = yearTwo;
+
+      for (i = 0; i < yearTwo.length; i++) {
+        yearDiff[i].value = yearTwo[i].value - yearOne[i].value;
+        if (yearDiff[i].value < 0) {
+          indexesNegative[i] = 1;
+          yearDiff[i].value = Math.abs(yearDiff[i].value);
+        }
+      }
+
+      if (twoYears) {
         // Simulate forces acting on each node
-      var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp}))
-        .force("charge", d3.forceManyBody().strength(5))
-        .force('x', d3.forceX().x(function(d) {
-          if (!d.continent.localeCompare("Africa")) {
-            return xPosition[5];
-          } else if (!d.continent.localeCompare("Asia")) {
-            return xPosition[4];
-          } else if (!d.continent.localeCompare("Oceania")) {
-            return xPosition[3];
-          } else if (!d.continent.localeCompare("Europe")) {
-            return xPosition[2];
-          } else if (!d.continent.localeCompare("South America")) {
-            return xPosition[1];
-          } else if (!d.continent.localeCompare("North America")) {
-            return xPosition[0];
-          }
-        }))
-        .force('y', d3.forceY().y(340))
-        .force("collision", d3.forceCollide().radius(function(d) {
-          return scaleRadius(d.value)
-        }))
-        .on('tick', ticked);
+        var simulation = d3.forceSimulation(yearDiff)
+          .force("charge", d3.forceManyBody().strength(5))
+          .force('x', d3.forceX().x(function(d) {
+            if (!d.continent.localeCompare("Africa")) {
+              return xPosition[5];
+            } else if (!d.continent.localeCompare("Asia")) {
+              return xPosition[4];
+            } else if (!d.continent.localeCompare("Oceania")) {
+              return xPosition[3];
+            } else if (!d.continent.localeCompare("Europe")) {
+              return xPosition[2];
+            } else if (!d.continent.localeCompare("South America")) {
+              return xPosition[1];
+            } else if (!d.continent.localeCompare("North America")) {
+              return xPosition[0];
+            }
+          }))
+          .force('y', d3.forceY().y(340))
+          .force("collision", d3.forceCollide().radius(function(d) {
+            return scaleRadius(d.value)
+          }))
+          .on('tick', ticked);
+      } else {
+        // Simulate forces acting on each node
+        var simulation = d3.forceSimulation(data.filter(function(d) { return d.year == yearTemp})       )
+          .force("charge", d3.forceManyBody().strength(5))
+          .force('x', d3.forceX().x(function(d) {
+            if (!d.continent.localeCompare("Africa")) {
+              return xPosition[5];
+            } else if (!d.continent.localeCompare("Asia")) {
+              return xPosition[4];
+            } else if (!d.continent.localeCompare("Oceania")) {
+              return xPosition[3];
+            } else if (!d.continent.localeCompare("Europe")) {
+              return xPosition[2];
+            } else if (!d.continent.localeCompare("South America")) {
+              return xPosition[1];
+            } else if (!d.continent.localeCompare("North America")) {
+              return xPosition[0];
+            }
+          }))
+          .force('y', d3.forceY().y(340))
+          .force("collision", d3.forceCollide().radius(function(d) {
+            return scaleRadius(d.value)
+          }))
+          .on('tick', ticked);
+      }
 
       function ticked() {
-        var u = d3.select('svg')
-          .selectAll('circle')
-          .data(data.filter(function(d) { return d.year == yearTemp}));
 
-        u.enter()
+        if (twoYears) {
+          var u = d3.select('svg')
+          .selectAll('circle')
+          .data(yearDiff);
+        } else {
+          var u = d3.select('svg')
+          .selectAll('circle')
+          .data(data.filter(function(d) { return d.year == yearTemp }));
+        }
+
+        if (twoYears) {
+          u.enter()
+          .append('circle')
+          .attr('r', function(d) {
+            //console.log("here");
+            if (isNaN(d.value)) {
+              return 2;
+            } else {
+              return scaleRadius(d.value)
+            }
+          })
+          .merge(u)
+          .style("fill", function(d) {
+            if (indexesNegative[d.index] == 1) {
+              return colorGreen;
+            } else if (d.value > 0) {
+              return colorRed;
+            } else {
+              return colorGray;
+            }
+          })
+          .attr("cx", function(d) {
+            if (isNaN(d.x)) {
+              return 1;
+            } else {
+              return d.x
+            }
+          })
+          .attr("cy", function(d) {
+            if (isNaN(d.y)) {
+              return 2;
+            } else {
+              return d.y
+            }
+          })
+          .on("mouseover", function(d, i) {
+            if (moving == false && indexesNegative[i] == 1) {
+              tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">"
+                  + d.country + "</span><br>"
+                  + "<strong>" 
+                  + currentValue + " to " + comparedValue
+                  + ": </strong>" + "<span class=\"details\">"
+                  + "-" + Math.round(d[columnForRadius] * 100) / 100 + " MtCO2</span>");
+              return tooltip.style("visibility", "visible");
+            } else {
+              tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">"
+                  + d.country + "</span><br>"
+                  + "<strong>" 
+                  + currentValue + " to " + comparedValue
+                  + ": </strong>" + "<span class=\"details\">"
+                  + Math.round(d[columnForRadius] * 100) / 100 + " MtCO2</span>");
+              return tooltip.style("visibility", "visible");
+            }
+          })
+          .on("mousemove", function() {
+            if (moving == false) {
+              return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+            }
+          })
+          .on("mouseout", function() {
+            if (moving == false) {
+              return tooltip.style("visibility", "hidden");
+            }
+          });
+
+
+         u.transition()
+          .duration(50)
+          .attr('r', function(d) {
+            //console.log("here");
+            if (isNaN(d.value)) {
+              return 2;
+            } else {
+              return scaleRadius(d.value)
+            }
+          });
+
+        u.exit().remove();
+
+        } else { // If Isolated
+          u.enter()
           .append('circle')
           .attr('r', function(d) {
             //console.log("here");
@@ -240,7 +295,9 @@ function select(yearValue) {
             if (moving == false) {
               tooltip.html("<strong>Country: </strong>" + "<span class=\"details\">"
                   + d.country + "</span><br>"
-                  + "<strong>" + currentValue + ": </strong>" + "<span class=\"details\">"
+                  + "<strong>" 
+                  + currentValue 
+                  + ": </strong>" + "<span class=\"details\">"
                   + d[columnForRadius] + " MtCO2</span>");
               return tooltip.style("visibility", "visible");
             }
@@ -268,7 +325,9 @@ function select(yearValue) {
             }
           });
 
-        u.exit().remove();
+          u.exit().remove();
+        }
+        
       }
 
       var tempArray = [];
@@ -322,7 +381,14 @@ function select(yearValue) {
 
       var topEmissions = d3.select("#mainChart");
 
-      topEmissions.append("text").html(currentValue).attr("x", 390).attr("y", 120).attr("id", "yearText");
+
+      if (twoYears) {
+          topEmissions.append("text").html(currentValue).attr("x", 390).attr("y", 80).attr("id", "yearText");
+          topEmissions.append("text").html("to").attr("x", 470).attr("y", 110).attr("id", "toText");
+          topEmissions.append("text").html(comparedValue).attr("x", 390).attr("y", 180).attr("id", "yearText");
+      } else {
+          topEmissions.append("text").html(currentValue).attr("x", 390).attr("y", 120).attr("id", "yearText");
+      }
 
       // Find the max value in this year
       max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
@@ -404,13 +470,63 @@ function select(yearValue) {
             .attr("class","buttonText")
             .attr("font-family","FontAwesome")
             .attr("x",function(d,i) {
-                return x0 + (bWidth+bSpace)*i + bWidth/2;
+              if (i < 6) {
+                return x0 + (bWidth+bSpace)*(i%6) + bWidth/2;
+              } else {
+                return x0 + (b2Width+bSpace)*(i%6) + b2Width/2
+              }
             })
-            .attr("y",y0+bHeight/2)
+            .attr("y",function(d, i) {
+                if (i < 6) {
+                  return y0+bHeight/2;
+                } else if (i >= 6) {
+                  return y1+bHeight/2;
+                }
+            })
             .attr("text-anchor","middle")
             .attr("dominant-baseline","central")
             .attr("fill","white")
             .text(function(d) {return d;})
+
+      var text = d3.select("#mainChart").append("g")
+          .attr("transform", "translate(350, 15)")
+          .append("text")
+          .style("alignment-baseline", "hanging")
+          .style("user-select", "none")
+          .style("font-size", "120%")
+          .style("fill", "grey")
+
+      // Callback function for user input box
+      var callback = function(content) {
+          var yearUserText = content;
+          var userArray = yearUserText.split(',');
+          if ((parseInt(userArray[0]) < parseInt(userArray[1])) 
+                && (1960 <= parseInt(userArray[0]) <= 2016) 
+                && (1961 <= parseInt(userArray[1]) <= 2017)
+                && (twoYears)) {
+              UIFlag = true;
+              currentValue = parseInt(userArray[0]);
+              comparedValue = parseInt(userArray[1]);
+              select(currentValue);
+          }
+      }
+
+      var tf = textfield()
+          .x(20) // X Position
+          .y(90) // Y Position 
+          .width(160) // Width 
+          .height(30) // Height 
+          .callback(callback) // Callback returning the current text 
+          .text(currentValue + "," + comparedValue) // Default text 
+          .fill("steelblue") // Default fill 
+          .stroke("blue") // Default border 
+          .fillSelected("blue") // Fill when activated 
+          .strokeSelected("black") // Border when activated 
+          .color("white") // Text color 
+          .colorSelected("grey") // Text color when activated 
+          .returnLowercase(false) // Auto-lowercase input text before calling back 
+          .returnEmpty(false) // Shall textfield call back if input text is empty
+      d3.select("#mainChart").call(tf)
     }
 
     // Getters and setters
@@ -429,7 +545,6 @@ function select(yearValue) {
       height = value;
       return chart;
     };
-
 
     chart.columnForColors = function(value) {
       if (!arguments.columnForColors) {

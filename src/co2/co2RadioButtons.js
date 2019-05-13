@@ -2,7 +2,7 @@ var co2ButtonContainer = d3.select("#mainChart").append("g")
                     .attr("id", "co2buttons");
 
 //fontawesome button labels
-var co2Labels = ['Play', 'Pause', '+5', '+10', '-5', '-10']
+var co2Labels = ['Play', 'Pause', '+5', '+10', '-5', '-10', 'Compare', 'Isolated']
 
 //colors for different button states
 var defaultColor= "#7777BB"
@@ -54,6 +54,12 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   currentValue = currentValue - 11;
                                   step();
                                 }
+                            } else if (i == 6) {
+                                twoYears = true;
+                                select(currentValue);
+                            } else if (i == 7) {
+                                twoYears = false;
+                                select(currentValue);
                             }
                         })
                         .on("mouseover", function() {
@@ -72,19 +78,38 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                         })
 
 var bWidth= 40; //button width
+var b2Width= 80;
 var bHeight= 25; //button height
 var bSpace= 10; //space between buttons
 var x0= 20; //x offset
 var y0= 10; //y offset
+var y1= 50;
 
 //adding a rect to each toggle button group
 //rx and ry give the rect rounded corner
 co2buttonGroups.append("rect")
             .attr("class","buttonRect")
-            .attr("width",bWidth)
+            .attr("width",function(d, i) {
+                if (i >= 6) {
+                    return b2Width;
+                } else {
+                    return bWidth;
+                }
+            })
             .attr("height",bHeight)
-            .attr("x",function(d,i) {return x0+(bWidth+bSpace)*i;})
-            .attr("y",y0)
+            .attr("x",function(d,i) {
+                if (i >= 6) {
+                    return x0+(b2Width+bSpace)*(i%6);    
+                } else {
+                    return x0+(bWidth+bSpace)*(i%6);
+                }
+            })
+            .attr("y", function(d, i) { 
+                if (i < 6) {
+                    return y0;
+                } else {
+                    return y1;
+                }})
             .attr("rx",5) //rx and ry give the buttons rounded corners
             .attr("ry",5)
             .attr("fill",defaultColor)
