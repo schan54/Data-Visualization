@@ -473,7 +473,7 @@ function select(yearValue) {
               if (i < 6) {
                 return x0 + (bWidth+bSpace)*(i%6) + bWidth/2;
               } else {
-                return x0 + (b2Width+bSpace)*(i%6) + b2Width/2
+                return x0 + (b2Width+bSpace)*(i%6) + b2Width/2;
               }
             })
             .attr("y",function(d, i) {
@@ -508,10 +508,17 @@ function select(yearValue) {
               currentValue = parseInt(userArray[0]);
               comparedValue = parseInt(userArray[1]);
               select(currentValue);
+          } else if ((parseInt(userArray[0]) > 1959)
+                && (parseInt(userArray[0]) < 2017)
+                && (!twoYears)
+                && (parseInt(userArray[0]) != currentValue)) {
+            currentValue = parseInt(userArray[0]);
+            select(currentValue);
           }
       }
 
-      var tf = textfield()
+      if (twoYears) {
+        var tf = textfield()
           .x(20) // X Position
           .y(90) // Y Position 
           .width(160) // Width 
@@ -526,7 +533,25 @@ function select(yearValue) {
           .colorSelected("grey") // Text color when activated 
           .returnLowercase(false) // Auto-lowercase input text before calling back 
           .returnEmpty(false) // Shall textfield call back if input text is empty
-      d3.select("#mainChart").call(tf)
+        d3.select("#mainChart").call(tf)
+      } else {
+        var tf = textfield()
+          .x(20) // X Position
+          .y(90) // Y Position 
+          .width(160) // Width 
+          .height(30) // Height 
+          .callback(callback) // Callback returning the current text 
+          .text(currentValue) // Default text 
+          .fill("steelblue") // Default fill 
+          .stroke("blue") // Default border 
+          .fillSelected("blue") // Fill when activated 
+          .strokeSelected("black") // Border when activated 
+          .color("white") // Text color 
+          .colorSelected("grey") // Text color when activated 
+          .returnLowercase(false) // Auto-lowercase input text before calling back 
+          .returnEmpty(false) // Shall textfield call back if input text is empty
+        d3.select("#mainChart").call(tf)
+      }
     }
 
     // Getters and setters

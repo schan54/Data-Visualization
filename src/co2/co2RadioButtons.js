@@ -25,33 +25,41 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                             } else if (i == 2) {
                                 if (currentValue > 2012) {
                                   currentValue = 1959;
+                                  comparedValue = 1961;
                                   step();
                                 } else {
                                   currentValue = currentValue + 4;
+                                  comparedValue = comparedValue + 5;
                                   step();
                                 }
                             } else if (i == 3) {
                                 if (currentValue > 2007) {
                                   currentValue = 1959;
+                                  comparedValue = 1961;
                                   step();
                                 } else {
                                   currentValue = currentValue + 9;
+                                  comparedValue = comparedValue + 10;
                                   step();
                                 }
                             } else if (i == 4) {
                                 if (currentValue < 1965) {
                                   currentValue = 1959;
+                                  comparedValue = 1961;
                                   step();
                                 } else {
                                   currentValue = currentValue - 6;
+                                  comparedValue = comparedValue - 5;
                                   step();
                                 }
                             } else if (i == 5) {
                                 if (currentValue < 1970) {
                                   currentValue = 1959;
+                                  comparedValue = 1961;
                                   step();
                                 } else {
                                   currentValue = currentValue - 11;
+                                  comparedValue = comparedValue - 10;
                                   step();
                                 }
                             } else if (i == 6) {
