@@ -1,4 +1,5 @@
 svg {
+    height:650px;
     font-family: 14px 'Roboto', sans-serif;
   }
 #mainChart{
@@ -28,6 +29,18 @@ svg {
     font-family: 'Roboto', sans-serif;
 
     font: 300 78px 'Roboto';
+    fill: #666;
+  }
+  .globTit {
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 28px 'Roboto';
+    fill: #666;
+  }
+  .globTit2 {
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 28px 'Roboto';
     fill: #666;
   }
   .title2 {
