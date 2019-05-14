@@ -41,7 +41,7 @@ var title = svg.append("text")
     .text(2014);
 var globTit = svg.append("text")
     .attr("class", "globTit")
-    .attr("dy", "-.1em");
+    .attr("dy", "-1.5em");
 var globTit2 = svg.append("text")
     .attr("class", "globTit2")
     .attr("dy", "2em");    
@@ -52,12 +52,12 @@ var title2 = svg.append("text")
     .text("Afghanistan");
 var dataInfo = svg.append("text")
     .attr("class", "dataInfo")
-    .attr("dx","22em")
-    .attr("dy", "-1.5em")
+    .attr("dx","30em")
+    .attr("dy", "-2em")
 var dataInfo2 = svg.append("text")
     .attr("class", "dataInfo")
-    .attr("dx","22em")
-    .attr("dy", "-.5em")
+    .attr("dx","30em")
+    .attr("dy", "-1em")
 d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data) {
 
   // Convert strings to numbers.
@@ -142,6 +142,11 @@ for (var i = 0; i < selects.length; i++){
   var value1 = [];//array of temps for this year 
   var i=0;
   var tyear=0;
+  svg.append("line").attr("x1", 230).attr("y1", -150).attr("x2", 230).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 940).attr("y1", -70).attr("x2", -20).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 940).attr("y1", -15).attr("x2", -20).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 630).attr("y1", -70).attr("x2", 630).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
+
   var birthyear = birthyears.selectAll(".birthyear")
       .data(d3v3.range(year0 - month1, year1 + 1, 1))
     .enter().append("g")
@@ -205,6 +210,7 @@ for (var i = 0; i < selects.length; i++){
       .attr("dy", ".71em")
 
       .text(function(month) { return month; });
+      globTit.text("Temp difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 
       var leftButt = d3.select("#leftButt");
       var rightButt = d3.select("#rightButt");
@@ -243,6 +249,7 @@ for (var i = 0; i < selects.length; i++){
     {
         update2();
     }
+    if (track ==1){update2();}
 
     const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
     function add(accumulator, a) {
@@ -257,7 +264,8 @@ for (var i = 0; i < selects.length; i++){
     var difference=0;
     difference = sum-sum2;
 
-globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2));    
+
+globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
 
 //console.log(sum); // 6
 
@@ -426,6 +434,7 @@ var ret3 = ret2.replace(/_/g,' ');
 var ret4 = ret3.replace(/data/g,' ');
 var ret5 = ret4.replace(/\//g,' ');
 
+globTit.text("Temp difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 
 title.text(2014)
 var titSource = updateTitle(source);
@@ -579,6 +588,7 @@ else if (track%2 == 0)
 {
 update2();
 }
+if (track ==1){update2();}
 
 const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
 function add(accumulator, a) {
@@ -590,10 +600,11 @@ const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array
 function add1(accumulator1, a1) {
 return accumulator1 + a1;
 }
+if (track ==1){update2();}
 var difference=0;
 difference = sum-sum2;
 
-globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)); 
+globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
 });
 function roundTo(n, digits) {
   var negative = false;
@@ -661,7 +672,7 @@ function update() {
         
                 }
             }
-        
+            
  }
 
  function update2() {
