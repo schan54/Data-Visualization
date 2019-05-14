@@ -1,4 +1,4 @@
-var format = d3.format(",");
+var format = d3.format(".3n");
 
 var formatDateIntoYear = d3.timeFormat("%Y");
 var formatDate = d3.timeFormat("%Y");
@@ -69,23 +69,40 @@ var handle = slider.insert("circle", ".track-overlay")
     .attr("r", 10)
     .style("fill", "black");
 
-var handle2 = slider.insert("circle", ".track-overlay")
-    .attr("class", "handle2")
-    .attr("r", 10)
-    .style("fill", "grey");
-
 var label = slider.append("text")
     .attr("class", "label")
     .attr("text-anchor", "middle")
     .text(formatDateIntoYear(startDate))
     .attr("transform", "translate(0," + (-25) + ")");
 
-var label2 = slider.append("text")
-    .attr("class", "label")
-    .attr("text-anchor", "middle")
-    .text(formatDateIntoYear(startDate))
-    .attr("transform", "translate(0," + (-25) + ")");
 
+var handle2 = slider.insert("circle", ".track-overlay")
+        .attr("class", "handle2")
+        .attr("r", 10)
+        .style("fill", "grey");
+
+var label2 = slider.append("text")
+        .attr("class", "label")
+        .attr("text-anchor", "middle")
+        .text(userYear2)
+        .attr("transform", "translate(0," + (-25) + ")");
+
+
+
+
+function getTextInput() {
+  userYear2 = 1970;
+  return userYear2;
+}
+
+function setupCompareSlider() {
+}
+
+function setupIsolatedSlider(){
+}
+
+function createSecondBall(){
+}
 function update(h) {
   // update position and text of label according to slider scale
   handle.attr("cx", x(h));

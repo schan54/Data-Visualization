@@ -5,11 +5,11 @@ var number= svg.append("text")
                 .attr("y",30)
                 .attr("fill","green")
                 .attr("font-size",24)
-                .text("Select Filtering Method")
+                .text("Filter Method: Isolated")
 
 //container for all buttons
 var allButtons= svg.append("g")
-                    .attr("id","allButtons")
+                    .attr("id","Filter Method: Isolated")
 
 //fontawesome button labels
 var labels= ['\uf017','\uf200'];
@@ -19,7 +19,7 @@ var defaultColor= "#7777BB"
 var hoverColor= "#0000ff"
 var pressedColor= "#000077"
 
-var compareActive = true;
+var compareActive = false;
 
 //groups for each button (which will hold a rect and text)
 var buttonGroups= allButtons.selectAll("g.button")
