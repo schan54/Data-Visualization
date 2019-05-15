@@ -1,8 +1,15 @@
-var margin = {top: 20, right: 40, bottom: 30, left: 20},
+var margin = {top: 150, right: 40, bottom: 30, left: 20},
     width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom,
+    height = 650 - margin.top - margin.bottom,
     barWidth = Math.floor(width / 19) - 1;
-var x = d3v3.scale.linear()
+
+var glob=0;//GLOBAL VARIABLE
+var glob2=0;
+var value2=[];
+var value3=[];
+var track = 0;
+
+    var x = d3v3.scale.linear()
     .range([barWidth / 2, width - barWidth / 2]);
 
 var y = d3v3.scale.linear()
@@ -30,21 +37,27 @@ var birthyears = svg.append("g")
 // A label for the current year.
 var title = svg.append("text")
     .attr("class", "title")
-    .attr("dy", ".71em")
+    .attr("dy", "-1em")
     .text(2014);
+var globTit = svg.append("text")
+    .attr("class", "globTit")
+    .attr("dy", "-1.5em");
+var globTit2 = svg.append("text")
+    .attr("class", "globTit2")
+    .attr("dy", "2em");    
 var title2 = svg.append("text")
     .attr("class", "title2")
     .attr("dx","5em")
-    .attr("dy", ".75em")
+    .attr("dy", "-1.5em")
     .text("Afghanistan");
 var dataInfo = svg.append("text")
     .attr("class", "dataInfo")
-    .attr("dx","5em")
-    .attr("dy", "3em")
+    .attr("dx","30em")
+    .attr("dy", "-2em")
 var dataInfo2 = svg.append("text")
     .attr("class", "dataInfo")
-    .attr("dx","15em")
-    .attr("dy", "3em")
+    .attr("dx","30em")
+    .attr("dy", "-1em")
 d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data) {
 
   // Convert strings to numbers.
@@ -54,7 +67,6 @@ d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data)
     d.year = +d.year;
     d.month = +d.month;
     
-
   });
 
   // Compute the extent of the data set in age and years.
@@ -65,8 +77,8 @@ d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data)
       tests = d3v3.max(data,function(d){ return d.temp})
       tests2 = d3v3.min(data,function(d){ return d.temp})
 
-      dataInfo.text("Max Temp: "  + tests);
-      dataInfo2.text("Min Temp: "  + tests2);
+      dataInfo.text("Max Temp: "  + tests+"°C");
+      dataInfo2.text("Min Temp: "  + tests2+"°C");
 
 
 var selects = document.getElementsByTagName('select');
@@ -126,8 +138,15 @@ for (var i = 0; i < selects.length; i++){
     .selectAll("g")
     .filter(function(value) { return !value; })
       .classed("zero", true);
-
   // Add labeled rects for each birthyear (so that no enter or exit is required).
+  var value1 = [];//array of temps for this year 
+  var i=0;
+  var tyear=0;
+  svg.append("line").attr("x1", 230).attr("y1", -150).attr("x2", 230).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 940).attr("y1", -70).attr("x2", -20).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 940).attr("y1", -15).attr("x2", -20).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 630).attr("y1", -70).attr("x2", 630).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
+
   var birthyear = birthyears.selectAll(".birthyear")
       .data(d3v3.range(year0 - month1, year1 + 1, 1))
     .enter().append("g")
@@ -140,7 +159,9 @@ for (var i = 0; i < selects.length; i++){
       .attr("x", -barWidth / 2)
       .attr("width", barWidth)
       .attr("y", y)
-      .attr("height", function(value) { return (height - y(value)); })
+      .attr("sum", function(value) {value1.push(value);})
+      .attr("year",function(d){return tyear=year})
+      .attr("height", function(value) {return (height - y(value))})
        .on("mouseover", function(d) {
             divs.transition()
                 .duration(200)
@@ -156,7 +177,13 @@ for (var i = 0; i < selects.length; i++){
                 .duration(500)
                 .style("opacity", 0);
         });
-
+/*        for(i = 0; i<226;i++)
+        {
+            value1.shift();
+            
+        }
+        console.log(value1); */
+        console.log(tyear);
     svg.append("text")
       .attr("transform",
             "translate(" + (width/2) + " ," +
@@ -183,6 +210,7 @@ for (var i = 0; i < selects.length; i++){
       .attr("dy", ".71em")
 
       .text(function(month) { return month; });
+      globTit.text("Temp difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 
       var leftButt = d3.select("#leftButt");
       var rightButt = d3.select("#rightButt");
@@ -201,21 +229,73 @@ for (var i = 0; i < selects.length; i++){
         update();
       })
 
-
   // Allow the arrow keys to change the displayed year.
   window.focus();
+
   d3v3.select(window).on("keydown", function() {
     switch (d3v3.event.keyCode) {
-      case 37: year = Math.max(year0, year - 1); break;
-      case 39: year = Math.min(year1, year + 1); break;
+      case 37:  year = Math.max(year0, year - 1);//decrement
+                track++;
+                break;
+      case 39:  year = Math.min(year1, year + 1);
+                track++;
+                break;
     }
+    if(track%2 == 1)
+    {
     update();
-  });
+    }
+    else if (track%2 == 0)
+    {
+        update2();
+    }
+    if (track ==1){update2();}
 
+    const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+    function add(accumulator, a) {
+        return accumulator + a;
+    }
+
+
+    const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+    function add1(accumulator1, a1) {
+        return accumulator1 + a1;
+    }
+    var difference=0;
+    difference = sum-sum2;
+
+
+globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
+
+//console.log(sum); // 6
+
+//console.log(sum2); // 6
+  //  console.log(value2);
+  //  console.log(value3);
+//console.log(glob2);
+//console.log(glob);
+  });
+  function roundTo(n, digits) {
+    var negative = false;
+    if (digits === undefined) {
+        digits = 0;
+    }
+        if( n < 0) {
+        negative = true;
+      n = n * -1;
+    }
+    var multiplicator = Math.pow(10, digits);
+    n = parseFloat((n * multiplicator).toFixed(11));
+    n = (Math.round(n) / multiplicator).toFixed(2);
+    if( negative ) {    
+        n = (n * -1).toFixed(2);
+    }
+    return n;
+}
   function update() {
     if (!(year in data)) return;
     title.text(year);
-
+//    var value2=[];
     birthyears.transition()
         .duration(750)
         .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
@@ -225,8 +305,99 @@ for (var i = 0; i < selects.length; i++){
       .transition()
         .duration(750)
         .attr("y", y)
+    
+        .attr("year",function(d){return glob=year;})
+
+        .attr("sum", function(value) {value2.push(value);})//new
+
         .attr("height", function(value) { return height - y(value); });
-  }
+        var tem= 2014-glob;
+        var tempor=value2.length;
+        var newtem= 2014-glob;
+        if(tem >12){newtem=tem*2-tem;}
+        
+        if(tem<12){
+        while(value2.length!=12)
+            {
+                while(value2.length>tempor-newtem)
+                {
+                    value2.pop();
+    
+                }
+                value2.shift();
+    
+            }
+        }
+    
+        if(tem>12){
+            while(value2.length!=12)
+                {
+                    while(value2.length>tempor-newtem+(12-tem))
+                    {
+                        value2.pop();
+        
+                    }
+                    value2.shift();
+        
+                }
+            }
+        
+ }
+
+ function update2() {
+    if (!(year in data)) return;
+    title.text(year);
+//    var value3=[];
+    birthyears.transition()
+        .duration(750)
+        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+
+    birthyear.selectAll("rect")
+        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+      .transition()
+        .duration(750)
+        .attr("y", y)
+    
+        .attr("year",function(d){return glob2=year;})
+
+        .attr("sum", function(value) {value3.push(value);})//new
+
+        .attr("height", function(value) { return height - y(value); });
+    var tem= 2014-glob2;
+    var tempor=value3.length;
+    var newtem= 2014-glob2;
+    if(tem >12){newtem=tem*2-tem;}
+    
+    if(tem<=12){
+    while(value3.length!=12)
+        {
+            while(value3.length>tempor-newtem)
+            {
+                value3.pop();
+
+            }
+            value3.shift();
+
+        }
+    }
+
+    if(tem>12){
+        while(value3.length!=12)
+            {
+                while(value3.length>tempor-newtem+(12-tem))
+                {
+                    value3.pop();
+    
+                }
+                value3.shift();
+    
+            }
+        }
+    
+    
+
+ }
+ 
 });
 
 
@@ -263,6 +434,7 @@ var ret3 = ret2.replace(/_/g,' ');
 var ret4 = ret3.replace(/data/g,' ');
 var ret5 = ret4.replace(/\//g,' ');
 
+globTit.text("Temp difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 
 title.text(2014)
 var titSource = updateTitle(source);
@@ -303,9 +475,8 @@ var month1 = d3v3.max(data, function(d) { return d.month; }),
     year = year1,
     tests = d3v3.max(data,function(d){ return d.temp}),
     tests2 = d3v3.min(data,function(d){ return d.temp})
-
-    dataInfo.text("Max Temp: "  + tests);
-    dataInfo2.text("Min Temp: "  + tests2);
+    dataInfo.text("Max Temp: "  + tests+"°C");
+    dataInfo2.text("Min Temp: "  + tests2+"°C");
 
 // Update the scale domains.
 x.domain([year1 - month1, year1]);
@@ -319,6 +490,7 @@ data = d3v3.nest()
     .key(function(d) { return d.year - d.month; })
     .rollup(function(v) { return v.map(function(d) { return d.temp; }); })
     .map(data);
+
 var dot3 = svg.select('g').data(data)
 dot3.exit().remove()
 // Add an axis to show the population values.
@@ -364,7 +536,6 @@ birthyear.selectAll("rect")
               .duration(500)
               .style("opacity", 0);
       });
-
 // Add labels to show age (separate; not animated).
 svg.selectAll(".month")
     .data(d3v3.range(0, month1 + 1, 1))
@@ -375,7 +546,12 @@ svg.selectAll(".month")
     .attr("dy", ".71em")
 
     .text(function(month) { return month; });
-
+    var glob=0;//GLOBAL VARIABLE
+    var glob2=0;
+    var value2=[];
+    var value3=[];
+    var track = 0;
+    
     var leftButt = d3.select("#leftButt");
     var rightButt = d3.select("#rightButt");
 
@@ -397,28 +573,164 @@ svg.selectAll(".month")
 window.focus();
 d3v3.select(window).on("keydown", function() {
   switch (d3v3.event.keyCode) {
-    case 37: year = Math.max(year0, year - 1); break;
-    case 39: year = Math.min(year1, year + 1); break;
-  }
-  update();
-});
-
-function update() {
-  if (!(year in data)) return;
-  title.text(year);
-
-  birthyears.transition()
-      .duration(750)
-      .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
-
-  birthyear.selectAll("rect")
-      .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
-    .transition()
-      .duration(750)
-      .attr("y", y)
-      .attr("height", function(value) { return (height - y(value)) ; });
+    case 37:  year = Math.max(year0, year - 1);//decrement
+    track++;
+    break;
+case 39:  year = Math.min(year1, year + 1);
+    track++;
+    break;
 }
+if(track%2 == 1)
+{
+update();
+}
+else if (track%2 == 0)
+{
+update2();
+}
+if (track ==1){update2();}
+
+const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+function add(accumulator, a) {
+return accumulator + a;
+}
+
+
+const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+function add1(accumulator1, a1) {
+return accumulator1 + a1;
+}
+if (track ==1){update2();}
+var difference=0;
+difference = sum-sum2;
+
+globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
 });
+function roundTo(n, digits) {
+  var negative = false;
+  if (digits === undefined) {
+      digits = 0;
+  }
+      if( n < 0) {
+      negative = true;
+    n = n * -1;
+  }
+  var multiplicator = Math.pow(10, digits);
+  n = parseFloat((n * multiplicator).toFixed(11));
+  n = (Math.round(n) / multiplicator).toFixed(2);
+  if( negative ) {    
+      n = (n * -1).toFixed(2);
+  }
+  return n;
+}
+function update() {
+    if (!(year in data)) return;
+    title.text(year);
+//    var value2=[];
+    birthyears.transition()
+        .duration(750)
+        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+
+    birthyear.selectAll("rect")
+        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+      .transition()
+        .duration(750)
+        .attr("y", y)
+    
+        .attr("year",function(d){return glob=year;})
+
+        .attr("sum", function(value) {value2.push(value);})//new
+
+        .attr("height", function(value) { return height - y(value); });
+        var tem= 2014-glob;
+        var tempor=value2.length;
+        var newtem= 2014-glob;
+        if(tem >12){newtem=tem*2-tem;}
+        
+        if(tem<=12){
+        while(value2.length!=12)
+            {
+                while(value2.length>tempor-newtem)
+                {
+                    value2.pop();
+    
+                }
+                value2.shift();
+    
+            }
+        }
+    
+        if(tem>12){
+            while(value2.length!=12)
+                {
+                    while(value2.length>tempor-newtem+(12-tem))
+                    {
+                        value2.pop();
+        
+                    }
+                    value2.shift();
+        
+                }
+            }
+            
+ }
+
+ function update2() {
+    if (!(year in data)) return;
+    title.text(year);
+//    var value3=[];
+    birthyears.transition()
+        .duration(750)
+        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+
+    birthyear.selectAll("rect")
+        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+      .transition()
+        .duration(750)
+        .attr("y", y)
+    
+        .attr("year",function(d){return glob2=year;})
+
+        .attr("sum", function(value) {value3.push(value);})//new
+
+        .attr("height", function(value) { return height - y(value); });
+    var tem= 2014-glob2;
+    var tempor=value3.length;
+    var newtem= 2014-glob2;
+    if(tem >12){newtem=tem*2-tem;}
+    
+    if(tem<=12){
+    while(value3.length!=12)
+        {
+            while(value3.length>tempor-newtem)
+            {
+                value3.pop();
+
+            }
+            value3.shift();
+
+        }
+    }
+
+    if(tem>12){
+        while(value3.length!=12)
+            {
+                while(value3.length>tempor-newtem+(12-tem))
+                {
+                    value3.pop();
+    
+                }
+                value3.shift();
+    
+            }
+        }
+    
+    
+
+ }
+ 
+});
+
 
 
         }

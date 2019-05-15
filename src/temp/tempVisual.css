@@ -1,4 +1,5 @@
 svg {
+    height:650px;
     font-family: 14px 'Roboto', sans-serif;
   }
 #mainChart{
@@ -6,7 +7,7 @@ svg {
     top:0px;
     left: 0px;
     width:275px;
-    height: 500px;
+    height: 650px;
     z-index: -1;
 }
   .y.axis path {
@@ -28,6 +29,18 @@ svg {
     font-family: 'Roboto', sans-serif;
 
     font: 300 78px 'Roboto';
+    fill: #666;
+  }
+  .globTit {
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 23px 'Roboto';
+    fill: #666;
+  }
+  .globTit2 {
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 23px 'Roboto';
     fill: #666;
   }
   .title2 {
@@ -52,7 +65,7 @@ svg {
     width: 110px;
     height: 80px;
     font-family: 'Roboto', sans-serif;
-    font: 300 30px 'Roboto';
+    font: 300 23px 'Roboto';
     fill: #666;
     background-color: var(--light-smoke);
     z-index: -1;
@@ -128,41 +141,22 @@ svg {
 }
   #instructions {
     font-family: 'Roboto', sans-serif;
-
+    left:10px;
     position: absolute;
     top: 320px;
     width: 270px;
   }
-  #instructions2 {
-    font-family: 'Roboto', sans-serif;
 
-    position: absolute;
-    top: 340px;
-    width: 270px;
-  }
-  #instructions3 {
-    font-family: 'Roboto', sans-serif;
-
-    position: absolute;
-    top: 380px;
-    width: 270px;
-  }
-  #instructions4 {
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-    top: 420px;
-    width: 270px;
-  }
   #instructionsMonth {
     font-family: 'Roboto', sans-serif;
     position: absolute;
-    bottom: 100px;
+    bottom: -20px;
     left: 280px;
     width: 1000px;
   }
   #sources {
     position: absolute;
-    bottom: 0px;
+    bottom: -40px;
     left: -530px;
     width: 1500px;
     font: 10px sans-serif;
