@@ -15,6 +15,7 @@ function displayMaxIso(max5, min5) {
   d3.select("#bot5").remove();
 
   svg.append("text").html("Top5 CO2 Producers").attr("id", "topHeader").attr("x", 825).attr("y", 50);
+
   svg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]))
     .attr("id", "top1")
     .attr("x", 850).attr("y", 80);
@@ -38,9 +39,6 @@ function displayMaxIso(max5, min5) {
     svg.append("text").html("3. " + min5[2][2] + ": " + format(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
     svg.append("text").html("4. " + min5[3][2] + ": " + format(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
     svg.append("text").html("5. " + min5[4][2] + ": " + format(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
-
-
-
 }
 
 function displaySumIso(a) {
@@ -248,6 +246,7 @@ function sortHash(hashmap, year) {
     if (isNaN(countryArray[1]) || countryArray[1] == "" || !(isNaN(countryArray[2]))) {
     }
     else {
+      //console.log(countryArray);
       allCountries.push(countryArray);
     }
   }
