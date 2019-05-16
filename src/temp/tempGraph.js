@@ -252,6 +252,47 @@ for (var i = 0; i < selects.length; i++){
 
       .text(function(month) { return month; });
       globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+function compare() {
+
+    year =this.value;
+    title.text(year);
+//    var value2=[];
+    birthyears.transition()
+        .duration(750)
+        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+
+    birthyear.selectAll("rect")
+        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+      .transition()
+        .duration(750)
+        .attr("y", y)
+
+        .attr("height", function(value) { return height - y(value); });
+
+}
+function compare2() {
+    year =this.value;
+    title.text(year);
+//    var value2=[];
+    birthyears.transition()
+        .duration(750)
+        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+
+    birthyear.selectAll("rect")
+        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+      .transition()
+        .duration(750)
+        .attr("y", y)
+
+        .attr("height", function(value) { return height - y(value); });}
+  
+d3.select("#searchText").on("input", compare )
+
+
+d3.select("#searchText2").on("input", compare2 )
+
+ //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
       var leftButt = d3.select("#leftButt");
       var rightButt = d3.select("#rightButt");
