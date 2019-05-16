@@ -23,7 +23,6 @@ function step() {
 select(currentValue);
 
 
-
 function select(yearValue) {
   // Load data
   // Better structure to not load data each time you call select
@@ -258,6 +257,13 @@ function select(yearValue) {
             if (isNaN(d.value)) {
               return 2;
             } else {
+              console.log(scaleRadius(1));
+              console.log(scaleRadius(50));
+              console.log(scaleRadius(100));
+              console.log(scaleRadius(500));
+              console.log(scaleRadius(1000));
+              console.log(scaleRadius(5000));
+              console.log(scaleRadius(10000));
               return scaleRadius(d.value)
             }
           })
@@ -383,47 +389,78 @@ function select(yearValue) {
 
 
       if (twoYears) {
-          topEmissions.append("text").html(currentValue).attr("x", 390).attr("y", 80).attr("id", "yearText");
-          topEmissions.append("text").html("to").attr("x", 470).attr("y", 110).attr("id", "toText");
-          topEmissions.append("text").html(comparedValue).attr("x", 390).attr("y", 180).attr("id", "yearText");
+          topEmissions.append("text").html(currentValue).attr("x", 240).attr("y", 80).attr("id", "yearText");
+          topEmissions.append("text").html("to").attr("x", 310).attr("y", 110).attr("id", "toText");
+          topEmissions.append("text").html(comparedValue).attr("x", 240).attr("y", 180).attr("id", "yearText");
       } else {
-          topEmissions.append("text").html(currentValue).attr("x", 390).attr("y", 120).attr("id", "yearText");
+          topEmissions.append("text").html(currentValue).attr("x", 240).attr("y", 120).attr("id", "yearText");
       }
 
       // Find the max value in this year
       max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
 
       stringIndex = tempArray.indexOf(max1);
-      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2").attr("x", 850).attr("y", 80);
+      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2").attr("x", 650).attr("y", 80).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(max1), 1);
       tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary arra
 
       max2 = d3.max(tempArray); // Find the second max
       stringIndex = tempArray.indexOf(max2); // Get the index
-      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2").attr("x", 850).attr("y", 100);
+      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2").attr("x", 650).attr("y", 100).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(max2), 1);
       tempArray.splice(tempArray.indexOf(max2), 1); // Remove second max from temporary array
 
       max3 = d3.max(tempArray); // Find the third max
       stringIndex = tempArray.indexOf(max3); // Get the index
-      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2").attr("x", 850).attr("y", 120);
+      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2").attr("x", 650).attr("y", 120).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(max3), 1);
       tempArray.splice(tempArray.indexOf(max3), 1);
 
       max4 = d3.max(tempArray); // Find the fourth max
       stringIndex = tempArray.indexOf(max4); // Get the index
-      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2").attr("x", 850).attr("y", 140);
+      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2").attr("x", 650).attr("y", 140).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(max4), 1);
       tempArray.splice(tempArray.indexOf(max4), 1);
 
       max5 = d3.max(tempArray); // Find the fifth max
       stringIndex = tempArray.indexOf(max5);
-      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2").attr("x", 850).attr("y", 160);
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2").attr("x", 650).attr("y", 160).attr("class", "topText");
 
-      topEmissions.append("text").html("Countries With the Most Emissions:").attr("id", "sumText").attr("x", 850).attr("y", 50);
+      min1 = d3.min(tempArray); // Find the min
+      stringIndex = tempArray.indexOf(min1); // Get the index
+      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + min1 + " MtCO2").attr("x", 920).attr("y", 80).attr("class", "topText");
+      tempStringArray.splice(tempArray.indexOf(min1), 1);
+      tempArray.splice(tempArray.indexOf(min1), 1);
 
-      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 600).attr("y", 70);
-      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 620).attr("y", 120);
+      min2 = d3.min(tempArray); // Find the min
+      stringIndex = tempArray.indexOf(min2); // Get the index
+      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + min2 + " MtCO2").attr("x", 920).attr("y", 100).attr("class", "topText");
+      tempStringArray.splice(tempArray.indexOf(min2), 1);
+      tempArray.splice(tempArray.indexOf(min2), 1);
+
+      min3 = d3.min(tempArray); // Find the min
+      stringIndex = tempArray.indexOf(min3); // Get the index
+      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + min3 + " MtCO2").attr("x", 920).attr("y", 120).attr("class", "topText");
+      tempStringArray.splice(tempArray.indexOf(min3), 1);
+      tempArray.splice(tempArray.indexOf(min3), 1);
+
+      min4 = d3.min(tempArray); // Find the min
+      stringIndex = tempArray.indexOf(min4); // Get the index
+      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + min4 + " MtCO2").attr("x", 920).attr("y", 140).attr("class", "topText");
+      tempStringArray.splice(tempArray.indexOf(min4), 1);
+      tempArray.splice(tempArray.indexOf(min4), 1);
+
+      min5 = d3.min(tempArray); // Find the min
+      stringIndex = tempArray.indexOf(min5); // Get the index
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + min5 + " MtCO2").attr("x", 920).attr("y", 160).attr("class", "topText");
+      tempStringArray.splice(tempArray.indexOf(min5), 1);
+      tempArray.splice(tempArray.indexOf(min5), 1);
+
+      topEmissions.append("text").html("Countries With the Most Emissions:").attr("id", "sumText").attr("x", 650).attr("y", 50);
+      topEmissions.append("text").html("Countries With the Least Emissions:").attr("id", "sumText").attr("x", 920).attr("y", 50);
+
+      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 440).attr("y", 70);
+      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 460).attr("y", 120);
 
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 730).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 610).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
@@ -439,9 +476,19 @@ function select(yearValue) {
       topEmissions.append("line").attr("x1", 70).attr("y1", 480).attr("x2", 70).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
 
       topEmissions.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1500).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 370).attr("y1", 0).attr("x2", 370).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 580).attr("y1", 0).attr("x2", 580).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 820).attr("y1", 0).attr("x2", 820).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 220).attr("y1", 0).attr("x2", 220).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 430).attr("y1", 0).attr("x2", 430).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 640).attr("y1", 0).attr("x2", 640).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 910).attr("y1", 0).attr("x2", 910).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+
+      // Lines for legend
+      topEmissions.append("line").attr("x1", 100).attr("y1", 620).attr("x2", 105.66).attr("y2", 620).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 625).attr("x2", 116.54).attr("y2", 625).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 630).attr("x2", 120.64).attr("y2", 630).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 635).attr("x2", 143.68).attr("y2", 635).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 640).attr("x2", 160.1).attr("y2", 640).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 645).attr("x2", 229.4).attr("y2", 645).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 650).attr("x2", 281.4).attr("y2", 650).attr("stroke-width", 1).attr("stroke", "black");
 
       topEmissions.append("text").html(sumOceania + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
       topEmissions.append("text").html(sumAsia + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
@@ -468,18 +515,17 @@ function select(yearValue) {
       //within the toggle button rect
       co2buttonGroups.append("text")
             .attr("class","buttonText")
-            .attr("font-family","FontAwesome")
             .attr("x",function(d,i) {
-              if (i < 6) {
-                return x0 + (bWidth+bSpace)*(i%6) + bWidth/2;
+              if (i < 4) {
+                return x0 + (bWidth+bSpace)*(i%4) + bWidth/2;
               } else {
-                return x0 + (b2Width+bSpace)*(i%6) + b2Width/2;
+                return x0 + (b2Width+bSpace)*(i%4) + b2Width/2;
               }
             })
             .attr("y",function(d, i) {
-                if (i < 6) {
+                if (i < 4) {
                   return y0+bHeight/2;
-                } else if (i >= 6) {
+                } else if (i >= 4) {
                   return y1+bHeight/2;
                 }
             })
@@ -513,6 +559,7 @@ function select(yearValue) {
                 && (!twoYears)
                 && (parseInt(userArray[0]) != currentValue)) {
             currentValue = parseInt(userArray[0]);
+            comparedValue = currentValue + 1;
             select(currentValue);
           }
       }
@@ -525,9 +572,9 @@ function select(yearValue) {
           .height(30) // Height 
           .callback(callback) // Callback returning the current text 
           .text(currentValue + "," + comparedValue) // Default text 
-          .fill("steelblue") // Default fill 
-          .stroke("blue") // Default border 
-          .fillSelected("blue") // Fill when activated 
+          .fill("#2C3531") // Default fill 
+          .stroke("black") // Default border 
+          .fillSelected("#116466") // Fill when activated 
           .strokeSelected("black") // Border when activated 
           .color("white") // Text color 
           .colorSelected("grey") // Text color when activated 
@@ -542,9 +589,9 @@ function select(yearValue) {
           .height(30) // Height 
           .callback(callback) // Callback returning the current text 
           .text(currentValue) // Default text 
-          .fill("steelblue") // Default fill 
-          .stroke("blue") // Default border 
-          .fillSelected("blue") // Fill when activated 
+          .fill("#2C3531") // Default fill 
+          .stroke("black") // Default border 
+          .fillSelected("#116466") // Fill when activated 
           .strokeSelected("black") // Border when activated 
           .color("white") // Text color 
           .colorSelected("grey") // Text color when activated 

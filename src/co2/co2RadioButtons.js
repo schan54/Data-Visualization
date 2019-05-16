@@ -2,12 +2,12 @@ var co2ButtonContainer = d3.select("#mainChart").append("g")
                     .attr("id", "co2buttons");
 
 //fontawesome button labels
-var co2Labels = ['Play', 'Pause', '+5', '+10', '-5', '-10', 'Compare', 'Isolated']
+var co2Labels = ['+5', '+10', '-5', '-10', 'Compare', 'Isolated']
 
 //colors for different button states
-var defaultColor= "#7777BB"
-var hoverColor= "#0000ff"
-var pressedColor= "#000077"
+var defaultColor= "#2C3531"
+var hoverColor= "#D9B08C"
+var pressedColor= "#116466"
 
 //groups for each button (which will hold a rect and text)
 var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
@@ -18,11 +18,12 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                         .style("cursor","pointer")
                         .on("click",function(d,i) {
                             updateButtonColors(d3.select(this), d3.select(this.parentNode));
+                            /*
                             if (i == 0) {
                                 timer = setInterval(step, 6000);
                             } else if (i == 1) {
                                 clearInterval(timer);
-                            } else if (i == 2) {
+                            } */ if (i == 0) {
                                 if (currentValue > 2012) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
@@ -32,7 +33,7 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   comparedValue = comparedValue + 5;
                                   step();
                                 }
-                            } else if (i == 3) {
+                            } else if (i == 1) {
                                 if (currentValue > 2007) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
@@ -42,7 +43,7 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   comparedValue = comparedValue + 10;
                                   step();
                                 }
-                            } else if (i == 4) {
+                            } else if (i == 2) {
                                 if (currentValue < 1965) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
@@ -52,7 +53,7 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   comparedValue = comparedValue - 5;
                                   step();
                                 }
-                            } else if (i == 5) {
+                            } else if (i == 3) {
                                 if (currentValue < 1970) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
@@ -62,10 +63,10 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   comparedValue = comparedValue - 10;
                                   step();
                                 }
-                            } else if (i == 6) {
+                            } else if (i == 4) {
                                 twoYears = true;
                                 select(currentValue);
-                            } else if (i == 7) {
+                            } else if (i == 5) {
                                 twoYears = false;
                                 select(currentValue);
                             }
@@ -98,7 +99,7 @@ var y1= 50;
 co2buttonGroups.append("rect")
             .attr("class","buttonRect")
             .attr("width",function(d, i) {
-                if (i >= 6) {
+                if (i >= 4) {
                     return b2Width;
                 } else {
                     return bWidth;
@@ -106,14 +107,14 @@ co2buttonGroups.append("rect")
             })
             .attr("height",bHeight)
             .attr("x",function(d,i) {
-                if (i >= 6) {
-                    return x0+(b2Width+bSpace)*(i%6);    
+                if (i >= 4) {
+                    return x0+(b2Width+bSpace)*(i%4);    
                 } else {
-                    return x0+(bWidth+bSpace)*(i%6);
+                    return x0+(bWidth+bSpace)*(i%4);
                 }
             })
             .attr("y", function(d, i) { 
-                if (i < 6) {
+                if (i < 4) {
                     return y0;
                 } else {
                     return y1;
