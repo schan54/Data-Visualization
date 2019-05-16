@@ -1,10 +1,9 @@
 // Set tooltips
-
 var color = d3.scaleThreshold()
-    .domain([-25,0,25,50,100,200,500,800,1000])
-    .range([d3.interpolateRdYlBu(1), d3.interpolateRdYlBu(0.85), d3.interpolateRdYlBu(0.7), d3.interpolateRdYlBu(0.55),
-          d3.interpolateRdYlBu(0.4), d3.interpolateRdYlBu(0.25), d3.interpolateRdYlBu(0.1), d3.interpolateRdYlBu(0)]);
-
+    .domain(colorDomain)
+    .range([d3.interpolateRdYlBu(1), d3.interpolateRdYlBu(0.9), d3.interpolateRdYlBu(0.8), d3.interpolateRdYlBu(0.7),
+          d3.interpolateRdYlBu(0.6), d3.interpolateRdYlBu(0.5), d3.interpolateRdYlBu(0.4), d3.interpolateRdYlBu(0.3),
+					d3.interpolateRdYlBu(0.2), d3.interpolateRdYlBu(0.1), d3.interpolateRdYlBu(0.0)]);
 
 var projection = d3.geoMercator()
                    .scale(200)
@@ -33,6 +32,7 @@ function ready(error, data, population) {
 
   if(compareActive == true) {
     population.forEach(function(d) { populationById[d.id] = +d[userYear] - +d[userYear2]; });
+    console.log(population);
     svg.append("text").html(userYear).attr("x", 410).attr("y", 50).attr("id", "choroYear1");
     svg.append("text").html("vs").attr("x", 455).attr("y", 85).attr("id", "vs");
     svg.append("text").html(userYear2).attr("x", 410).attr("y", 145).attr("id", "choroYear2");
@@ -40,6 +40,7 @@ function ready(error, data, population) {
     var sortedHash1 = sortHash(population, userYear);
     var sortedHash2 = sortHash(population, userYear2);
 
+    //console.log(sortedHash1);
     setupCompareSlider();
 
     displaySumCompare(sortedHash1, sortedHash2);
@@ -61,8 +62,10 @@ function ready(error, data, population) {
     max5 = sortedHash.slice((sortedHash.length - 5), sortedHash.length);
     min5 = sortedHash.slice(0, 5);
 
+    console.log(sortedHash);
     displaySumIso(sortedHash);
     displayMaxIso(max5, min5);
+
 
     tip.html(function(d) {
       return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + ": </strong><span class='details'>" + format(d.value) +"</span>";
