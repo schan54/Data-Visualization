@@ -30,6 +30,7 @@ var svg = d3v3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+
 // A sliding container to hold the bars by birthyear.
 var birthyears = svg.append("g")
     .attr("class", "birthyears");
@@ -39,6 +40,43 @@ var title = svg.append("text")
     .attr("class", "title")
     .attr("dy", "-1em")
     .text(2014);
+var insn1 = svg.append("text")
+    .attr("class", "#instructions")
+    .attr("dx","-17.2em")
+    .attr("dy", "10em")
+    .text(" How to use:");
+var insn2 = svg.append("text")
+    .attr("class", "#instructions")
+    .attr("dx","-17.2em")
+
+    .attr("dy", "15em")
+    .text("        Use the right and left arrow keys");
+var insn2b = svg.append("text")
+    .attr("class", "#instructions")
+    .attr("dx","-17.2em")
+
+    .attr("dy", "16em")
+    .text("to navigate bewteen years.    ");    
+var insn3 = svg.append("text")
+    .attr("class", "#instructions")
+    .attr("dx","-17.2em")
+    .attr("dy", "12em")
+    .text(" Select your country using the");  
+var insn3b = svg.append("text")
+    .attr("class", "#instructions")
+    .attr("dx","-17.2em")
+    .attr("dy", "13em")
+    .text(" dropdown menu.");             
+var insn4 = svg.append("text")
+    .attr("class", "#instructions")
+    .attr("dx","-17.2em")
+    .attr("dy", "18em")
+    .text("             Use the mouse to hover over to ");
+var insn4 = svg.append("text")
+    .attr("class", "#instructions")
+    .attr("dx","-17.2em")
+    .attr("dy", "19em")
+    .text("view the temperature.    ");    
 var globTit = svg.append("text")
     .attr("class", "globTit")
     .attr("dy", "-1.5em");
@@ -246,7 +284,6 @@ for (var i = 0; i < selects.length; i++){
         var difference=0;
         difference = (sum-sum2)/2;
     
-    console.log(difference);
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
      rightButt.on("click", function() {
         var button = d3v3.select(this);
@@ -611,16 +648,62 @@ svg.selectAll(".month")
     leftButt.on("click", function() {
       var button = d3v3.select(this);
       year = Math.max(year0, year - 1);
+      track++;    
+      if(track%2 == 1)
+      {
       update();
-    })
+      }
+      else if (track%2 == 0)
+      {
+          update2();
+      }
+      if (track ==1){update2();}
+  
+      const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+      function add(accumulator, a) {
+          return accumulator + a;
+      }
+  
+  
+      const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+      function add1(accumulator1, a1) {
+          return accumulator1 + a1;
+      }
+      var difference=0;
+      difference = (sum-sum2)/2;
+  
+  globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
    rightButt.on("click", function() {
       var button = d3v3.select(this);
       if( year !=2014)
       {
       year = Math.max(year0, year + 1);
       }
+      track++;    
+      if(track%2 == 1)
+      {
       update();
-    })
+      }
+      else if (track%2 == 0)
+      {
+          update2();
+      }
+      if (track ==1){update2();}
+  
+      const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+      function add(accumulator, a) {
+          return accumulator + a;
+      }
+  
+  
+      const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+      function add1(accumulator1, a1) {
+          return accumulator1 + a1;
+      }
+      var difference=0;
+      difference = (sum-sum2)/2;
+  
+  globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
 // Allow the arrow keys to change the displayed year.
 window.focus();
 d3v3.select(window).on("keydown", function() {
