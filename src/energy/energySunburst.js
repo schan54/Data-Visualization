@@ -137,9 +137,7 @@ d3.json('./energyusage.json').then(data => {
         }
     });
     document.getElementById("searchText").addEventListener("keydown", function(event){
-        // console.log("hello");
         if (event.keyCode == 13){
-            console.log("hello");
             event.preventDefault();
             var name = d3.select("#searchText").node().value;
             var hide = false;
@@ -157,13 +155,18 @@ d3.json('./energyusage.json').then(data => {
             }
         }
     });
+    //console.log(root);
     path.each(function(d){
-        // console.log(root);
-        d3.select("#burstTable").append("tr")
-            .append("td")
-                .text(d.current.name)
-            .append("td")
-                .text(d.value);
+        // console.log(d);
+        if(d.depth == 1){
+          
+        
+            var row = d3.select("#burstTable").select("tbody").append("tr");
+            row.append("td")
+                    .text(d.data.name);
+            row.append("td")
+                    .text(Number(d.value).toFixed(2));
+        }
     });
     /* Zoom in Sunburst on click */
     function clicked(p) {
