@@ -153,6 +153,9 @@
     width: 270px;
     z-index: 1;
   }
+  #insn{
+      position: relative;
+  }
 
 
   #sources {
@@ -218,7 +221,7 @@ background-color: var(--secondary-color);
   }
   #leftButt, #rightButt {
     position: relative;
-    left: -610px;
+    left: -630px;
     bottom: -150px;
     font-family: 'Nunito', sans-serif;
     letter-spacing: 1px;
@@ -226,13 +229,13 @@ background-color: var(--secondary-color);
     padding-right: 26px;
     border-radius: 3px;
     border: none;
-    color: white;
+    color: #f8f8f2;
     margin: 0;
     padding: 0 12px;
     width: 90px;
     cursor: pointer;
     height: 50px;
-    background-color: var(--secondary-color);
+    background-color: #282a36;
     z-index: 1;
 
   }
