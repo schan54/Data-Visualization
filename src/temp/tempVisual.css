@@ -1,6 +1,10 @@
 svg {
+    position: relative;
     height:650px;
+    width:1250px;
     font-family: 14px 'Roboto', sans-serif;
+    left:-220px;
+    top: -120px;
   }
 #mainChart{
     position: absolute;
@@ -118,9 +122,10 @@ svg {
   }
   #inds{
             
-      position:absolute;
-      top:300px;
-      left:60px;
+      position: relative;
+      top:-730px;
+      left:470px;
+      z-index: 1;
   }
   #educate{
     font-family: 'Roboto', sans-serif;
@@ -145,15 +150,10 @@ svg {
     position: absolute;
     top: 320px;
     width: 270px;
+    z-index: 1;
   }
 
-  #instructionsMonth {
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-    bottom: -20px;
-    left: 280px;
-    width: 1000px;
-  }
+
   #sources {
     position: absolute;
     bottom: -40px;
@@ -173,9 +173,10 @@ svg {
     line-height: 25px; 		
     height: 28px;					
     pointer-events: none;		
+    z-index: 1;
   }
   #play-button{
-      position: absolute;
+      position: relative;
   font-family: 'Nunito', sans-serif;
   letter-spacing: 1px;
   border-radius: 3px;
@@ -189,7 +190,7 @@ svg {
   background-color: var(--secondary-color);
   }
   #play-button2{
-    position: absolute;
+    position: relative;
 font-family: 'Nunito', sans-serif;
 letter-spacing: 1px;
 border-radius: 3px;
@@ -204,19 +205,20 @@ background-color: var(--secondary-color);
 }
   #buttonsArea, #buttonsArea2 {
     width: 300px;
-    position: absolute;
+    position: relative;
     left: 50px;
     top: 170px;
     z-index: 1;
   }
   #buttonsArea2 {
+      position: relative;
     left: 50px;
     top: 250px;
   }
   #leftButt, #rightButt {
-    position: absolute;
-    left: 10px;
-    bottom: 13px;
+    position: relative;
+    left: -610px;
+    bottom: -150px;
     font-family: 'Nunito', sans-serif;
     letter-spacing: 1px;
     color: var(--primary-color);
@@ -230,6 +232,6 @@ background-color: var(--secondary-color);
     cursor: pointer;
     height: 50px;
     background-color: var(--secondary-color);
-    z-index: -10;
+    z-index: 1;
 
   }

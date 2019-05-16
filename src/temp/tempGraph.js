@@ -1,5 +1,5 @@
-var margin = {top: 150, right: 40, bottom: 30, left: 20},
-    width = 960 - margin.left - margin.right,
+var margin = {top: 150, right: 40, bottom: 30, left: 300},
+    width = 1250 - margin.left - margin.right,
     height = 650 - margin.top - margin.bottom,
     barWidth = Math.floor(width / 19) - 1;
 
@@ -26,7 +26,7 @@ var yAxis = d3v3.svg.axis()
 // An SVG element with a bottom-right origin.
 var svg = d3v3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom)    
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -47,7 +47,7 @@ var globTit2 = svg.append("text")
     .attr("dy", "2em");    
 var title2 = svg.append("text")
     .attr("class", "title2")
-    .attr("dx","5em")
+    .attr("dx","7.2em")
     .attr("dy", "-1.5em")
     .text("Afghanistan");
 var dataInfo = svg.append("text")
@@ -142,9 +142,12 @@ for (var i = 0; i < selects.length; i++){
   var value1 = [];//array of temps for this year 
   var i=0;
   var tyear=0;
-  svg.append("line").attr("x1", 230).attr("y1", -150).attr("x2", 230).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
-  svg.append("line").attr("x1", 940).attr("y1", -70).attr("x2", -20).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
-  svg.append("line").attr("x1", 940).attr("y1", -15).attr("x2", -20).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 200).attr("y1", -150).attr("x2", 200).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 400).attr("y1", -150).attr("x2", 400).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", -25).attr("y1", -150).attr("x2", -25).attr("y2", 500).attr("stroke-width", 1).attr("stroke", "black");
+
+  svg.append("line").attr("x1", 950).attr("y1", -70).attr("x2", -25).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  svg.append("line").attr("x1", 950).attr("y1", -15).attr("x2", -25).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
   svg.append("line").attr("x1", 630).attr("y1", -70).attr("x2", 630).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
 
   var birthyear = birthyears.selectAll(".birthyear")
@@ -170,7 +173,7 @@ for (var i = 0; i < selects.length; i++){
               divs.html("<strong>Temperature: </strong>" + "<span class=\"details\">"
               + d+ "</span><br>" )
                 .style("left", (d3v3.event.pageX) + "px")
-                .style("top", (d3v3.event.pageY) + "px");
+                .style("top", (d3v3.event.pageY) + "px");                
             })
         .on("mouseout", function(d) {
             divs.transition()
@@ -193,7 +196,7 @@ for (var i = 0; i < selects.length; i++){
 
     svg.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left)
+      .attr("y", 280 - margin.left)
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
@@ -219,15 +222,64 @@ for (var i = 0; i < selects.length; i++){
       leftButt.on("click", function() {
         var button = d3v3.select(this);
         year = Math.max(year0, year - 1);
+        track++;    
+        if(track%2 == 1)
+        {
         update();
-      })
+        }
+        else if (track%2 == 0)
+        {
+            update2();
+        }
+        if (track ==1){update2();}
+    
+        const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+        function add(accumulator, a) {
+            return accumulator + a;
+        }
+    
+    
+        const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+        function add1(accumulator1, a1) {
+            return accumulator1 + a1;
+        }
+        var difference=0;
+        difference = sum-sum2;
+    
+    
+    globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
      rightButt.on("click", function() {
         var button = d3v3.select(this);
         if(year!=2014){
         year = Math.max(year0, year + 1);
         }
+        track++;
+
+        if(track%2 == 1)
+        {
         update();
-      })
+        }
+        else if (track%2 == 0)
+        {
+            update2();
+        }
+        if (track ==1){update2();}
+    
+        const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+        function add(accumulator, a) {
+            return accumulator + a;
+        }
+    
+    
+        const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+        function add1(accumulator1, a1) {
+            return accumulator1 + a1;
+        }
+        var difference=0;
+        difference = sum-sum2;
+    
+    
+    globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
 
   // Allow the arrow keys to change the displayed year.
   window.focus();
