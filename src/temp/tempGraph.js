@@ -119,7 +119,7 @@ for (var i = 0; i < selects.length; i++){
     })
 }
   // Update the scale domains.
-  x.domain([year1 - month1, year1]);
+  x.domain([ year1,year1 - month1]);
   y.domain([ -50,50]);
 
 
@@ -205,7 +205,7 @@ for (var i = 0; i < selects.length; i++){
 
   // Add labels to show age (separate; not animated).
   svg.selectAll(".month")
-      .data(d3v3.range(0, month1 + 2, 1))
+      .data(d3v3.range(1, month1 + 2, 1))
     .enter().append("text")
       .attr("class", "month")
       .attr("x", function(month) { return x(year - month+1); })
@@ -213,7 +213,7 @@ for (var i = 0; i < selects.length; i++){
       .attr("dy", ".71em")
 
       .text(function(month) { return month; });
-      globTit.text("Temp difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
+      globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 
       var leftButt = d3.select("#leftButt");
       var rightButt = d3.select("#rightButt");
@@ -244,10 +244,10 @@ for (var i = 0; i < selects.length; i++){
             return accumulator1 + a1;
         }
         var difference=0;
-        difference = sum-sum2;
+        difference = (sum-sum2)/2;
     
-    
-    globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
+    console.log(difference);
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
      rightButt.on("click", function() {
         var button = d3v3.select(this);
         if(year!=2014){
@@ -276,10 +276,10 @@ for (var i = 0; i < selects.length; i++){
             return accumulator1 + a1;
         }
         var difference=0;
-        difference = sum-sum2;
+        difference = (sum-sum2)/2;
     
     
-    globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
 
   // Allow the arrow keys to change the displayed year.
   window.focus();
@@ -314,10 +314,10 @@ for (var i = 0; i < selects.length; i++){
         return accumulator1 + a1;
     }
     var difference=0;
-    difference = sum-sum2;
+    difference = (sum-sum2)/2;
 
 
-globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
+globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
 
 //console.log(sum); // 6
 
@@ -486,7 +486,7 @@ var ret3 = ret2.replace(/_/g,' ');
 var ret4 = ret3.replace(/data/g,' ');
 var ret5 = ret4.replace(/\//g,' ');
 
-globTit.text("Temp difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
+globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 
 title.text(2014)
 var titSource = updateTitle(source);
@@ -531,7 +531,7 @@ var month1 = d3v3.max(data, function(d) { return d.month; }),
     dataInfo2.text("Min Temp: "  + tests2+"°C");
 
 // Update the scale domains.
-x.domain([year1 - month1, year1]);
+x.domain([ year1,year1 - month1]);
 y.domain([ -50,50]);
 //y.domain([d3v3.min(data, function(d) { return d.temp}) , d3v3.max(data, function(d) { return d.temp; })]);
 
@@ -590,7 +590,7 @@ birthyear.selectAll("rect")
       });
 // Add labels to show age (separate; not animated).
 svg.selectAll(".month")
-    .data(d3v3.range(0, month1 + 1, 1))
+    .data(d3v3.range(1, month1 + 1, 1))
   .enter().append("text")
     .attr("class", "month")
     .attr("x", function(month) { return x(year - month); })
@@ -654,9 +654,9 @@ return accumulator1 + a1;
 }
 if (track ==1){update2();}
 var difference=0;
-difference = sum-sum2;
+difference = (sum-sum2)/2;
 
-globTit.text("Temp difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
+globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
 });
 function roundTo(n, digits) {
   var negative = false;

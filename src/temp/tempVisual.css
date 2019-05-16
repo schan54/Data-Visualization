@@ -1,10 +1,11 @@
-svg {
+    svg {
     position: relative;
     height:650px;
     width:1250px;
     font-family: 14px 'Roboto', sans-serif;
     left:-220px;
     top: -120px;
+
   }
 #mainChart{
     position: absolute;
@@ -115,7 +116,7 @@ svg {
   }
   
   rect:first-child {
-    fill: #1f77b4;
+    fill: #6272a4;
   }
   rect:nth-child(2) {
     fill:transparent;
