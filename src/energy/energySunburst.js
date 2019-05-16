@@ -1,6 +1,6 @@
 const formatNum = d3.format(",d");
-const widthBurst = 932;
-const radiusBurst = widthBurst / 6;
+const widthBurst = 1300;
+const radiusBurst = widthBurst / 9;
 
 const arcBurst = d3.arc()
         .startAngle(d => d.x0)
@@ -25,13 +25,16 @@ d3.select("#yearslider").on("input", function(){
   });
 
 
-    const svgBurst = d3.select('#partitionSVG')
-            .style("width", "auto")
-            .style("height", "auto")
-            .style("font", "10px sans-serif");
+const svgBurst = d3.select('#partitionSVG')
+        .style("top", "-245px")
+        .style("width", "auto")
+        .style("height", "auto")
+        .style("font", "10px sans-serif");
+svgBurst.append("line").attr("x1", 200).attr("y1", 0).attr("x2", 200).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
+svgBurst.append("line").attr("x1", 1100).attr("y1", 200).attr("x2", 1100).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
+svgBurst.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1400).attr("y2", 200).attr("stroke-width", 1).attr("stroke", "black");
 
-    const g = svgBurst.append("g")
-            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
+
 
 d3.json('./energyusage.json').then(data => {
     
@@ -60,7 +63,13 @@ d3.json('./energyusage.json').then(data => {
 
     /* hover over path to see values in the middle */
     path.on("mouseover", function(d){
+        // console.log(d);
         var percentage = (Number(d.value) / total) * 100
+        g.append("text")
+            .attr("class", "midText")
+            .attr("dy", "0.5em")
+            .text(d.name)
+            .style("font-size", "50");
         g.append("text")
             .attr("class", "midText")
             .text(formatNum(d.value))
@@ -103,12 +112,14 @@ d3.json('./energyusage.json').then(data => {
             .attr("fill", "none")
             .attr("pointer-events", "all")
             .on("click", clicked);
+    /* change sunburst based on years */
     d3.select("#yearslider").on("change", function(){
         year = this.value - 1990;
         g.remove()
         updateSunBurst("./energyusage.json", year);
         
     });
+    /* Search By Country Name */
     d3.select("#searchSubmit").on("click", function(){
         var name = d3.select("#searchText").node().value;
         var hide = false;
@@ -122,9 +133,38 @@ d3.json('./energyusage.json').then(data => {
         });        
         if (hide == false){
         d3.select("#searchErr")
-            .style("visibility", "visible");}
-        
-    })
+            .style("visibility", "visible");
+        }
+    });
+    document.getElementById("searchText").addEventListener("keydown", function(event){
+        // console.log("hello");
+        if (event.keyCode == 13){
+            console.log("hello");
+            event.preventDefault();
+            var name = d3.select("#searchText").node().value;
+            var hide = false;
+            path.each(d => {
+                if (d.data.name == name){
+                    hide = true;
+                    d3.select("#searchErr")
+                      .style("visibility", "hidden");
+                    return clicked(d);
+                }
+            });        
+            if (hide == false){
+            d3.select("#searchErr")
+                .style("visibility", "visible");
+            }
+        }
+    });
+    path.each(function(d){
+        // console.log(root);
+        d3.select("#burstTable").append("tr")
+            .append("td")
+                .text(d.current.name)
+            .append("td")
+                .text(d.value);
+    });
     /* Zoom in Sunburst on click */
     function clicked(p) {
         parent.datum(p.parent || root);
@@ -307,6 +347,7 @@ function parseFile(file) {
         
         });
     }
+
     /* Decide whether arc fits on sunburst */
     function arcVisible(d) {
         return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;
