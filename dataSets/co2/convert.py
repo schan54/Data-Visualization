@@ -1,11 +1,5 @@
 import shutil
 
-#Small script to sort world pop file by ID
-"""
-for line in sorted(inFile, key=lambda line: line.split()[0]):
-    outFile.write(line)
-"""
-
 #Creates basefile which only has id & name
 def createBaseFile():
     baseFile = open("base-worldco2.tsv", 'w+')
@@ -75,18 +69,19 @@ def createSingleYear():
 def createDataAsList():
     print('\n')
     #Iterate through your data file and map data
-    with open('co2.csv','r') as fp:
+    with open('co2.tsv','r') as fp:
         lists = []
         yearList = []
         for line in fp:
             try:
-                country, year, value, cont = line.split(",")
+                country, year, value, cont = line.split("\t")
                 info = [country, value, year]
                 #print("Info is %s" %info)
                 if not value:
                     value = "NaN"
 
                 foundCountryFlag = 0
+
                 for tuples in lists:
 
                     if country in tuples[0]:
@@ -101,7 +96,6 @@ def createDataAsList():
                 #Country not in list, add it to list
                 if foundCountryFlag == 0:
                     lists.append(info)
-
 
             except:
                 print("Failed to parse line: %s" % line.rstrip('\n'))
@@ -155,8 +149,6 @@ def addFullDataToBase(lists, yearList):
 #Prompt user and use calls from there
 userInput = input("\npress 1 for Single year, Anything else for All years\n\n")
 if userInput == 1:
-    createBaseFile()
     createSingleYear()
 else:
-    createBaseFile()
     createDataAsList()
