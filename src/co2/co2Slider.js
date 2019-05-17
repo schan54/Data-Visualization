@@ -41,7 +41,7 @@ function buildLegend() {
 	var tempArray = [];
 	for (i = 1; i < 12; i++) {
 		console.log(colorDomain[i]);
-		tempArray.push({bar: (width-100) - (barWidth * i), color: d3.interpolateRdYlBu(i/11), text: colorDomain[i]});
+		tempArray.push({bar: (width-100) - (barWidth * i), color: d3.interpolateRdYlBu(i/11), text: colorDomain[12-i]});
 	}
 	console.log(tempArray);
 	var g = svg.selectAll(".rect")
@@ -56,6 +56,11 @@ function buildLegend() {
 	  .attr("y", 260)
 		.attr("x", function(d) {return d.bar})
 	  .attr("fill",  function(d) {return d.color});
+
+	g.append("text")
+		.text(function(d) {return d.text})
+		.attr("y", 300)
+		.attr("x",  function(d) {return d.bar + barWidth/3});
 
 }
 
@@ -119,9 +124,6 @@ var label2 = slider.append("text")
         .attr("text-anchor", "middle")
         .text(userYear2)
         .attr("transform", "translate(0," + (-25) + ")");
-
-
-
 
 function getTextInput() {
   userYear2 = 1970;

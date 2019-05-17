@@ -41,7 +41,7 @@ function ready(error, data, population) {
     var sortedHash2 = sortHash(population, userYear2);
 
     //console.log(sortedHash1);
-    setupCompareSlider();
+    //setupCompareSlider();
 
     displaySumCompare(sortedHash1, sortedHash2);
     displayMaxCompare(sortedHash1, sortedHash2);
