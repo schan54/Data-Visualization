@@ -32,16 +32,12 @@ function ready(error, data, population) {
 
   if(compareActive == true) {
     population.forEach(function(d) { populationById[d.id] = +d[userYear] - +d[userYear2]; });
-    console.log(population);
     svg.append("text").html(userYear).attr("x", 410).attr("y", 50).attr("id", "choroYear1");
     svg.append("text").html("vs").attr("x", 455).attr("y", 85).attr("id", "vs");
     svg.append("text").html(userYear2).attr("x", 410).attr("y", 145).attr("id", "choroYear2");
 
     var sortedHash1 = sortHash(population, userYear);
     var sortedHash2 = sortHash(population, userYear2);
-
-    //console.log(sortedHash1);
-    //setupCompareSlider();
 
     displaySumCompare(sortedHash1, sortedHash2);
     displayMaxCompare(sortedHash1, sortedHash2);
@@ -62,7 +58,6 @@ function ready(error, data, population) {
     max5 = sortedHash.slice((sortedHash.length - 5), sortedHash.length);
     min5 = sortedHash.slice(0, 5);
 
-    console.log(sortedHash);
     displaySumIso(sortedHash);
     displayMaxIso(max5, min5);
 
