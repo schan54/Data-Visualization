@@ -1,5 +1,5 @@
 //text that the radio button will toggle
-var number= svg.append("text")
+var number= choroSvg.append("text")
                 .attr("id","numberToggle")
                 .attr("x",50)
                 .attr("y",30)
@@ -8,7 +8,7 @@ var number= svg.append("text")
                 .text("Filter Method: Isolated")
 
 //container for all buttons
-var allButtons= svg.append("g")
+var allButtons= choroSvg.append("g")
                     .attr("id","Filter Method: Isolated")
 
 //fontawesome button labels

@@ -6,7 +6,8 @@ function buildLegend() {
 	for (i = 1; i < 12; i++) {
 		tempArray.push({bar: (width-100) - (barWidth * i), color: d3.interpolateRdYlBu(i/11), text: colorDomain[12-i]});
 	}
-	var g = svg.selectAll(".rect")
+
+	var g = choroSvg.selectAll(".rect")
 	  .data(tempArray)
 	  .enter()
 	  .append("g")
@@ -30,7 +31,7 @@ var x = d3.scaleTime()
   .range([0, width-50])
   .clamp(true);
 
-var slider = svg.append("g")
+var slider = choroSvg.append("g")
   .attr("class", "slider")
   .attr("transform", "translate(" + 25 + "," + 205 + ")");
 

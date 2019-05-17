@@ -14,31 +14,31 @@ function displayMaxIso(max5, min5) {
   d3.select("#bot4").remove();
   d3.select("#bot5").remove();
 
-  svg.append("text").html("Top5 CO2 Producers").attr("id", "topHeader").attr("x", 825).attr("y", 50);
+  choroSvg.append("text").html("Top5 CO2 Producers").attr("id", "topHeader").attr("x", 825).attr("y", 50);
 
-  svg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]))
+  choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]))
     .attr("id", "top1")
     .attr("x", 850).attr("y", 80);
-  svg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1]))
+  choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1]))
     .attr("id", "top2")
     .attr("x", 850).attr("y", 100);
-  svg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1]))
+  choroSvg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1]))
     .attr("id", "top3")
     .attr("x", 850).attr("y", 120);
-  svg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1]))
+  choroSvg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1]))
     .attr("id", "top4")
     .attr("x", 850).attr("y", 140);
-  svg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1]))
+  choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1]))
     .attr("id", "top5")
     .attr("x", 850).attr("y", 160);
 
-    svg.append("text").html("Bottom5 CO2 Producers").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
+    choroSvg.append("text").html("Bottom5 CO2 Producers").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
 
-    svg.append("text").html("1. " + min5[0][2] + ": " + format(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
-    svg.append("text").html("2. " + min5[1][2] + ": " + format(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
-    svg.append("text").html("3. " + min5[2][2] + ": " + format(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
-    svg.append("text").html("4. " + min5[3][2] + ": " + format(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
-    svg.append("text").html("5. " + min5[4][2] + ": " + format(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
+    choroSvg.append("text").html("1. " + min5[0][2] + ": " + format(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
+    choroSvg.append("text").html("2. " + min5[1][2] + ": " + format(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
+    choroSvg.append("text").html("3. " + min5[2][2] + ": " + format(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
+    choroSvg.append("text").html("4. " + min5[3][2] + ": " + format(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
+    choroSvg.append("text").html("5. " + min5[4][2] + ": " + format(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
 }
 
 function displaySumIso(a) {
@@ -51,8 +51,8 @@ function displaySumIso(a) {
     totalSum = totalSum + Number(a[index][1]);
   }
 
-  svg.append("text").html("World's Total Emissions:").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
-  svg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 620).attr("y", 120);
+  choroSvg.append("text").html("World's Total Emissions:").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
+  choroSvg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 620).attr("y", 120);
 
 }
 
@@ -102,22 +102,22 @@ loop2:
   max5 = sortedCompare.slice((sortedCompare.length - 5), sortedCompare.length);
   min5 = sortedCompare.slice(0, 5);
 
-  svg.append("text").html("Top5 CO2 Growth").attr("id", "topHeader").attr("x", 825).attr("y", 50);
+  choroSvg.append("text").html("Top5 CO2 Growth").attr("id", "topHeader").attr("x", 825).attr("y", 50);
 
-  svg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1])).attr("id", "top1").attr("x", 850).attr("y", 80);
-  svg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1])).attr("id", "top2").attr("x", 850).attr("y", 100);
-  svg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1])).attr("id", "top3").attr("x", 850).attr("y", 120);
-  svg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1])).attr("id", "top4").attr("x", 850).attr("y", 140);
-  svg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1])).attr("id", "top5").attr("x", 850).attr("y", 160);
+  choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1])).attr("id", "top1").attr("x", 850).attr("y", 80);
+  choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1])).attr("id", "top2").attr("x", 850).attr("y", 100);
+  choroSvg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1])).attr("id", "top3").attr("x", 850).attr("y", 120);
+  choroSvg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1])).attr("id", "top4").attr("x", 850).attr("y", 140);
+  choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1])).attr("id", "top5").attr("x", 850).attr("y", 160);
 
 
-  svg.append("text").html("Top5 CO2 Reduction").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
+  choroSvg.append("text").html("Top5 CO2 Reduction").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
 
-  svg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
-  svg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
-  svg.append("text").html("3. " + min5[2][2] + ": " + Math.floor(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
-  svg.append("text").html("4. " + min5[3][2] + ": " + Math.floor(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
-  svg.append("text").html("5. " + min5[4][2] + ": " + Math.floor(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
+  choroSvg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
+  choroSvg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
+  choroSvg.append("text").html("3. " + min5[2][2] + ": " + Math.floor(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
+  choroSvg.append("text").html("4. " + min5[3][2] + ": " + Math.floor(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
+  choroSvg.append("text").html("5. " + min5[4][2] + ": " + Math.floor(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
 
 }
 
@@ -133,10 +133,10 @@ function displaySumCompare(a, b) {
   for (index in b) {
     totalSum = totalSum - Number(b[index][1]);
   }
-  svg.append("text").html("World's Compared").attr("id", "choroSumText").attr("x", 625).attr("y", 70);
-  svg.append("text").html("Emissions").attr("id", "choroSumText2").attr("x", 650).attr("y", 100);
+  choroSvg.append("text").html("World's Compared").attr("id", "choroSumText").attr("x", 625).attr("y", 70);
+  choroSvg.append("text").html("Emissions").attr("id", "choroSumText2").attr("x", 650).attr("y", 100);
 
-  svg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 625).attr("y", 140);
+  choroSvg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 625).attr("y", 140);
 }
 
 function displayPercentCompare(hash1, hash2) {
@@ -186,22 +186,22 @@ loop2:
   max5 = sortedCompare.slice((sortedCompare.length - 5), sortedCompare.length);
   min5 = sortedCompare.slice(0, 5);
 
-  svg.append("text").html("Top5 CO2 Growth").attr("id", "topHeader").attr("x", 850).attr("y", 60);
+  choroSvg.append("text").html("Top5 CO2 Growth").attr("id", "topHeader").attr("x", 850).attr("y", 60);
 
-  svg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]) + "%").attr("id", "top1").attr("x", 850).attr("y", 80);
-  svg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1]) + "%").attr("id", "top2").attr("x", 850).attr("y", 100);
-  svg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1]) + "%").attr("id", "top3").attr("x", 850).attr("y", 120);
-  svg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1]) + "%").attr("id", "top4").attr("x", 850).attr("y", 140);
-  svg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1]) + "%").attr("id", "top5").attr("x", 850).attr("y", 160);
+  choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]) + "%").attr("id", "top1").attr("x", 850).attr("y", 80);
+  choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1]) + "%").attr("id", "top2").attr("x", 850).attr("y", 100);
+  choroSvg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1]) + "%").attr("id", "top3").attr("x", 850).attr("y", 120);
+  choroSvg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1]) + "%").attr("id", "top4").attr("x", 850).attr("y", 140);
+  choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1]) + "%").attr("id", "top5").attr("x", 850).attr("y", 160);
 
 
-  svg.append("text").html("Top5 CO2 Reduction").attr("id", "botHeader").attr("x", 1050).attr("y", 60);
+  choroSvg.append("text").html("Top5 CO2 Reduction").attr("id", "botHeader").attr("x", 1050).attr("y", 60);
 
-  svg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1]) + "%").attr("id", "bot1").attr("x", 1050).attr("y", 80);
-  svg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1]) + "%").attr("id", "bot2").attr("x", 1050).attr("y", 100);
-  svg.append("text").html("3. " + min5[2][2] + ": " + Math.floor(min5[2][1]) + "%").attr("id", "bot3").attr("x", 1050).attr("y", 120);
-  svg.append("text").html("4. " + min5[3][2] + ": " + Math.floor(min5[3][1]) + "%").attr("id", "bot4").attr("x", 1050).attr("y", 140);
-  svg.append("text").html("5. " + min5[4][2] + ": " + Math.floor(min5[4][1]) + "%").attr("id", "bot5").attr("x", 1050).attr("y", 160);
+  choroSvg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1]) + "%").attr("id", "bot1").attr("x", 1050).attr("y", 80);
+  choroSvg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1]) + "%").attr("id", "bot2").attr("x", 1050).attr("y", 100);
+  choroSvg.append("text").html("3. " + min5[2][2] + ": " + Math.floor(min5[2][1]) + "%").attr("id", "bot3").attr("x", 1050).attr("y", 120);
+  choroSvg.append("text").html("4. " + min5[3][2] + ": " + Math.floor(min5[3][1]) + "%").attr("id", "bot4").attr("x", 1050).attr("y", 140);
+  choroSvg.append("text").html("5. " + min5[4][2] + ": " + Math.floor(min5[4][1]) + "%").attr("id", "bot5").attr("x", 1050).attr("y", 160);
 
 }
 
