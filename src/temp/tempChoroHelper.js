@@ -233,7 +233,7 @@ function sortHash(hashmap, year) {
 
   //console.log(Object.values(tea[1]))
 
-  var yearIndex = year - 1960
+  var yearIndex = year - 1901
   for (var index in tea) {
     //console.log(Object.keys(tea[index]));
     var countryKeys = (Object.keys(tea[index]));

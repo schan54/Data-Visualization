@@ -14,7 +14,7 @@ function displayMaxIso(max5, min5) {
   d3.select("#bot4").remove();
   d3.select("#bot5").remove();
 
-  choroSvg.append("text").html("Top5 CO2 Producers").attr("id", "topHeader").attr("x", 825).attr("y", 50);
+  choroSvg.append("text").html("Top5 Energy Producers").attr("id", "topHeader").attr("x", 825).attr("y", 50);
 
   choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]))
     .attr("id", "top1")
@@ -32,7 +32,7 @@ function displayMaxIso(max5, min5) {
     .attr("id", "top5")
     .attr("x", 850).attr("y", 160);
 
-    choroSvg.append("text").html("Bottom5 CO2 Producers").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
+    choroSvg.append("text").html("Top5 Energy Consumers").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
 
     choroSvg.append("text").html("1. " + min5[0][2] + ": " + format(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
     choroSvg.append("text").html("2. " + min5[1][2] + ": " + format(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
@@ -51,7 +51,7 @@ function displaySumIso(a) {
     totalSum = totalSum + Number(a[index][1]);
   }
 
-  choroSvg.append("text").html("World's Total Emissions:").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
+  choroSvg.append("text").html("World's Total Energy Production:").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
   choroSvg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 620).attr("y", 120);
 
 }
@@ -102,7 +102,7 @@ loop2:
   max5 = sortedCompare.slice((sortedCompare.length - 5), sortedCompare.length);
   min5 = sortedCompare.slice(0, 5);
 
-  choroSvg.append("text").html("Top5 CO2 Growth").attr("id", "topHeader").attr("x", 825).attr("y", 50);
+  choroSvg.append("text").html("Top5 Energy Production").attr("id", "topHeader").attr("x", 825).attr("y", 50);
 
   choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1])).attr("id", "top1").attr("x", 850).attr("y", 80);
   choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1])).attr("id", "top2").attr("x", 850).attr("y", 100);
@@ -111,7 +111,7 @@ loop2:
   choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1])).attr("id", "top5").attr("x", 850).attr("y", 160);
 
 
-  choroSvg.append("text").html("Top5 CO2 Reduction").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
+  choroSvg.append("text").html("Top5 Energy Consumers").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
 
   choroSvg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
   choroSvg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
@@ -134,7 +134,7 @@ function displaySumCompare(a, b) {
     totalSum = totalSum - Number(b[index][1]);
   }
   choroSvg.append("text").html("World's Compared").attr("id", "choroSumText").attr("x", 625).attr("y", 70);
-  choroSvg.append("text").html("Emissions").attr("id", "choroSumText2").attr("x", 650).attr("y", 100);
+  choroSvg.append("text").html("Energy").attr("id", "choroSumText2").attr("x", 650).attr("y", 100);
 
   choroSvg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 625).attr("y", 140);
 }
@@ -186,7 +186,7 @@ loop2:
   max5 = sortedCompare.slice((sortedCompare.length - 5), sortedCompare.length);
   min5 = sortedCompare.slice(0, 5);
 
-  choroSvg.append("text").html("Top5 CO2 Growth").attr("id", "topHeader").attr("x", 850).attr("y", 60);
+  choroSvg.append("text").html("Top5 Energy Producers").attr("id", "topHeader").attr("x", 850).attr("y", 60);
 
   choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]) + "%").attr("id", "top1").attr("x", 850).attr("y", 80);
   choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1]) + "%").attr("id", "top2").attr("x", 850).attr("y", 100);
@@ -195,7 +195,7 @@ loop2:
   choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1]) + "%").attr("id", "top5").attr("x", 850).attr("y", 160);
 
 
-  choroSvg.append("text").html("Top5 CO2 Reduction").attr("id", "botHeader").attr("x", 1050).attr("y", 60);
+  choroSvg.append("text").html("Top5 Energy Consumers").attr("id", "botHeader").attr("x", 1050).attr("y", 60);
 
   choroSvg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1]) + "%").attr("id", "bot1").attr("x", 1050).attr("y", 80);
   choroSvg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1]) + "%").attr("id", "bot2").attr("x", 1050).attr("y", 100);
