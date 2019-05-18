@@ -24,18 +24,18 @@
   .y.axis path {
     display: none;
   }
-  
+
   .y.axis line {
     stroke: rgb(26, 22, 22);
     stroke-opacity: 1;
     shape-rendering: crispEdges;
   }
-  
+
   .y.axis .zero line {
     stroke: #000;
     stroke-opacity: 1;
   }
-  
+
   .title {
     font-family: 'Roboto', sans-serif;
 
@@ -66,7 +66,7 @@
 
     text-anchor: middle;
   }
-  
+
   .birthyear {
     fill: #fff;
   }
@@ -120,7 +120,7 @@
     fill-opacity: .6;
     fill: #1f77b4;
   }
-  
+
   rect:first-child {
     fill: #6272a4;
   }
@@ -135,7 +135,7 @@
     fill:transparent;
   }
   #inds{
-            
+
       position: relative;
       top:-730px;
       left:470px;
@@ -178,7 +178,7 @@
     width: 1500px;
     font: 10px sans-serif;
   }
-  divs.tooltip {	
+  divs.tooltip {
     position: absolute;
     color: var(--tertiary-color);
     padding: 8px;
@@ -187,9 +187,9 @@
     text-align: center;
     width: 200px;
     font-family: 'avenir next', sans-serif;
-    line-height: 25px; 		
-    height: 28px;					
-    pointer-events: none;		
+    line-height: 25px;
+    height: 28px;
+    pointer-events: none;
     z-index: 1;
   }
   #play-button{
@@ -252,3 +252,19 @@ background-color: var(--secondary-color);
     z-index: 1;
 
   }
+
+#displayYear, #choroYear1, #choroYear2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40pt;
+  letter-spacing: -2px;
+  z-index: 1;
+  margin: 0px;
+}
+#sum, #choroSum, #vs {
+  font-size: 25px;
+}
+
+#choroSumText, #choroSumText2, #topHeader, #botHeader {
+  font-size: 18px;
+  font-weight: bold;
+}

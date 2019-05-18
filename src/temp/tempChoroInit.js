@@ -3,14 +3,14 @@ var format = d3.format(".3n");
 var formatDateIntoYear = d3.timeFormat("%Y");
 var formatDate = d3.timeFormat("%Y");
 
-var startDate = new Date("1961"),
-    endDate = new Date("2017");
+var startDate = new Date("1902"),
+    endDate = new Date("2015");
 
 var userYear = formatDateIntoYear(startDate);
 var userYear2 = formatDateIntoYear(startDate);
 
-var colorIsolatedDomain = [-25,0,5,25,50,100,200,500,800,1000, 2500, 5000]
-var colorCompareDomain = [-25,0,5,25,50,100,200,500,800,1000, 2500, 5000]
+var colorIsolatedDomain = [-.2,-.1,0,.1,.2,.4,.6,.8,1, 1.2, 1.4]
+var colorCompareDomain = [-.2,-.1,0,.1,.2,.4,.6,.8,1, 1.2, 1.4]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]
 
 var colorDomain = colorIsolatedDomain;
@@ -22,8 +22,8 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
 
 var choroSvg = d3.select("body")
   .append("svg")
-  .attr("width", width)
-  .attr("height", height)
+  .attr("width", 1300)
+  .attr("height", 1200)
   .append('g')
   .attr('class', 'map');
 

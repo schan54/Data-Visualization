@@ -77,7 +77,7 @@ function update(h) {
     //Update Choropleth
     queue()
         .defer(d3.json, "../core/world_countries.json")
-        .defer(d3.tsv, "worldData.tsv")
+        .defer(d3.tsv, "worldTemp.tsv")
         .await(ready);
   }
   // filter data set and redraw plot

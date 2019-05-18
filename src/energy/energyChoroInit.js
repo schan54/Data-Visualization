@@ -3,14 +3,14 @@ var format = d3.format(".3n");
 var formatDateIntoYear = d3.timeFormat("%Y");
 var formatDate = d3.timeFormat("%Y");
 
-var startDate = new Date("1961"),
-    endDate = new Date("2017");
+var startDate = new Date("1991"),
+    endDate = new Date("2018");
 
 var userYear = formatDateIntoYear(startDate);
 var userYear2 = formatDateIntoYear(startDate);
 
-var colorIsolatedDomain = [-25,0,5,25,50,100,200,500,800,1000, 2500, 5000]
-var colorCompareDomain = [-25,0,5,25,50,100,200,500,800,1000, 2500, 5000]
+var colorIsolatedDomain = [-1000,-500,-100,-25,-5,5,25,100,500,1000, 2000]
+var colorCompareDomain = [-1000,-500,-100,-25,-5,5,25,100,500,1000, 2000]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]
 
 var colorDomain = colorIsolatedDomain;

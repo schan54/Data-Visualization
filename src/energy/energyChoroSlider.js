@@ -47,7 +47,6 @@ var label = slider.append("text")
     .text(formatDateIntoYear(startDate))
     .attr("transform", "translate(0," + (-25) + ")");
 
-
 var handle2 = slider.insert("circle", ".track-overlay")
         .attr("class", "handle2")
         .attr("r", 10)
@@ -75,10 +74,10 @@ function update(h) {
     userYear = formatDateIntoYear(h);
 
     //Update Choropleth
-    queue()
-        .defer(d3.json, "../core/world_countries.json")
-        .defer(d3.tsv, "worldData.tsv")
-        .await(ready);
+		var promises = [];
+		promises.push(d3.json("../core/world_countries.json"));
+		promises.push(d3.tsv("energyChloro.tsv"));
+		Promise.all(promises).then(function(data){ready(data);});
   }
   // filter data set and redraw plot
 
