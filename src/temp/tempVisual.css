@@ -139,7 +139,7 @@
     position:absolute;
     top: 130px;
     right: 10px;
-    width: 250px;
+    width: 230px;
 }
 #educate1{
     font-family: 'Roboto', sans-serif;
@@ -147,8 +147,8 @@
 
     position:absolute;
     top:80px;
-    right:10px;
-    width: 250px;
+    right:15px;
+    width: 210px;
 }
   #instructions {
     font-family: 'Roboto', sans-serif;

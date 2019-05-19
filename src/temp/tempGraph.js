@@ -1,7 +1,7 @@
-var margin = {top: 150, right: 40, bottom: 30, left: 300},
-    width = 1250 - margin.left - margin.right,
-    height = 650 - margin.top - margin.bottom,
-    barWidth = Math.floor(width / 19) - 1;
+var margin1 = {top: 150, right: 40, bottom: 30, left: 300},
+    width = 1250 - margin1.left - margin1.right,
+    height = 650 - margin1.top - margin1.bottom,
+    barWidth1 = Math.floor(width / 19) - 1;
 
 var glob=0;//GLOBAL VARIABLE
 var glob2=0;
@@ -10,7 +10,7 @@ var value3=[];
 var track = 0;
 
     var x = d3v3.scale.linear()
-    .range([barWidth / 2, width - barWidth / 2]);
+    .range([barWidth1 / 2, width - barWidth1 / 2]);
 
 var y = d3v3.scale.linear()
     .range([height, 0]);
@@ -33,10 +33,10 @@ var tsavg = d3v3.select("#pSVG")
 .style("width", "auto")
 .style("height", "auto")
 .style("font", "14px sans-serif")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)    
+    .attr("width", width + margin1.left + margin1.right)
+    .attr("height", height + margin1.top + margin1.bottom)    
   .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin1.left + "," + margin1.top + ")");
 
 
 // A sliding container to hold the bars by birthyear.
@@ -205,8 +205,8 @@ for (var i = 0; i < selects.length; i++){
   birthyear.selectAll("rect")
       .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
     .enter().append("rect")
-      .attr("x", -barWidth / 2)
-      .attr("width", barWidth)
+      .attr("x", -barWidth1 / 2)
+      .attr("width", barWidth1)
       .attr("y", y)
       .attr("sum", function(value) {value1.push(value);})
       .attr("year",function(d){return tyear=year})
@@ -236,13 +236,13 @@ for (var i = 0; i < selects.length; i++){
     tsavg.append("text")
       .attr("transform",
             "translate(" + (width/2) + " ," +
-                           (height + margin.bottom ) + ")")
+                           (height + margin1.bottom ) + ")")
       .style("text-anchor", "middle")
       .text("Month");
 
     tsavg.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 280 - margin.left)
+      .attr("y", 280 - margin1.left)
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
