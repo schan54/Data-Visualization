@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CO2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+
+  <script src="https://d3js.org/d3-color.v1.min.js"></script>
+  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script type="text/javascript" src="textfield.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../core/master.css" />
+  <link rel="stylesheet" type="text/css" href="co2ScatterPlot.css" />
+  <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
+
+	<script type="text/javascript" src="../core/master.js"></script>
+  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("../navigation.html", function() {
+        $("a[href= '../co2/co2.html']").addClass("selected");
+      });
+    });
+  </script>
+
+  <div class="chart-example" id="chart">
+    <svg id="mainChart">
+      <div id="buttonsArea">
+        <!--
+        <button id="play-button">Play</button>
+        <p id="instructions">Or</br></br>Enter a year between</br> 1960 and 2017</p>
+        <input type="number" id="myVal" placeholder="Year">
+        <input type="submit" id="Submit" value="Enter">
+      </div>
+      <div id="buttonsAreaTwo">
+        <input type="submit" id="plusFive" value="+5">
+        <input type="submit" id="minusFive" value="-5"></br></br>
+        <input type="submit" id="plusTen" value="+10">
+        <input type="submit" id="minusTen" value="-10">
+        -->
+      </div>
+    </svg>
+  </div>
+
+<!--
+<p id="description">Carbon dioxide (CO2). A minor but very important component of the atmosphere, carbon dioxide is released through natural processes such as respiration and volcano eruptions and through human activities such as deforestation, land use changes, and burning fossil fuels. Humans have increased atmospheric CO2 concentration by more than a third since the Industrial Revolution began. This is the most important long-lived "forcing" of climate change.</p>
+-->
+  <!--
+  <p id="sources">
+        Source:<a href="http://www.globalcarbonatlas.org/en/CO2-emissions" target="_blank">http://www.globalcarbonatlas.org/en/CO2-emissions</a><br/>
+  </p>
+-->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+  <script src="d3-tip.js"></script>
+
+  <script type="text/javascript" src="co2Bubble.js"></script>
+	<script type="text/javascript" src="co2RadioButtons.js"></script>
+
+	<div id="slider"></div>
+	<script type="text/javascript" src="co2ChoroInit.js"></script>
+	<script type="text/javascript" src="co2ChoroSlider.js"></script>
+	<script type="text/javascript" src="co2ChoroButtons.js"></script>
+	<script type="text/javascript" src="co2Choro.js"></script>
+  <script type="text/javascript" src="co2ChoroHelper.js"></script>
+
+
+
+</body>
+</html>

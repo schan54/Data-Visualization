@@ -1,0 +1,42 @@
+1. Expand SVG canvas
+2. Push down your visual on said canvas
+3. Draw Boxes
+4. Add title text
+
+
+//Draw the Boxes
+svg?.append("line").attr("x1", 370).attr("y1", 0).attr("x2", 370).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+svg?.append("line").attr("x1", 580).attr("y1", 0).attr("x2", 580).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+svg?.append("line").attr("x1", 820).attr("y1", 0).attr("x2", 820).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+svg?.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1500).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+
+
+-----Add text now to boxes------
+//YearBox
+svg.append("text").html(compareString).attr("x", 390).attr("y", 120).attr("id", "choroYear");
+
+
+//Add cumulative values
+svg.append("text").html("World's Compared Emissions: " + Math.floor(totalSum)).attr("id", "totalSum").attr("x", 600).attr("y", 70);
+
+
+//Top, Bot 5
+svg.append("text").html("Top5 CO2 Growth").attr("id", "topHeader").attr("x", 850).attr("y", 60);
+
+svg.append("text").html("1. " + countryName1 + ": " + countryValue1 + " MtCO2").attr("id", "top1").attr("x", 850).attr("y", 80);
+svg.append("text").html("2. " + countryName2 + ": " + countryValue2 + " MtCO2").attr("id", "top2").attr("x", 850).attr("y", 100);
+svg.append("text").html("3. " + countryName3 + ": " + countryValue3 + " MtCO2").attr("id", "top3").attr("x", 850).attr("y", 120);
+svg.append("text").html("4. " + countryName4 + ": " + countryValue4 + " MtCO2").attr("id", "top4").attr("x", 850).attr("y", 140);
+svg.append("text").html("5. " + countryName5 + ": " + countryValue5 + " MtCO2").attr("id", "top5").attr("x", 850).attr("y", 160);
+
+
+svg.append("text").html("Top5 CO2 Reduction").attr("id", "botHeader").attr("x", 1100).attr("y", 60);
+
+svg.append("text").html("1. " + countryName1 + ": " + countryValue1 + " MtCO2").attr("id", "bot1").attr("x", 1100).attr("y", 80);
+svg.append("text").html("2. " + countryName2 + ": " + countryValue2 + " MtCO2").attr("id", "bot2").attr("x", 1100).attr("y", 100);
+svg.append("text").html("3. " + countryName3 + ": " + countryValue3 + " MtCO2").attr("id", "bot3").attr("x", 1100).attr("y", 120);
+svg.append("text").html("4. " + countryName4 + ": " + countryValue4 + " MtCO2").attr("id", "bot4").attr("x", 1100).attr("y", 140);
+svg.append("text").html("5. " + countryName5 + ": " + countryValue5 + " MtCO2").attr("id", "bot5").attr("x", 1100).attr("y", 160);
+
+
+

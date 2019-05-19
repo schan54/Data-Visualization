@@ -1,0 +1,262 @@
+
+  #searchText,#searchText2{
+    position: relative;
+    top: 200px;
+    left: -570px;
+    z-index: 1;
+}
+#mainChart{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width:275px;
+    height: 650px;
+    z-index: -1;
+}
+  .y.axis path {
+    display: none;
+  }
+
+  .y.axis line {
+    stroke: rgb(26, 22, 22);
+    stroke-opacity: 1;
+    shape-rendering: crispEdges;
+  }
+
+  .y.axis .zero line {
+    stroke: #000;
+    stroke-opacity: 1;
+  }
+
+  .title {
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 78px 'Roboto';
+    fill: #666;
+  }
+  .globTit {
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 23px 'Roboto';
+    fill: #666;
+  }
+  .globTit2 {
+    font-family: 'Roboto', sans-serif;
+
+    font: 300 23px 'Roboto';
+    fill: #666;
+  }
+  .title2 {
+    position:absolute;
+    font-family: 'Roboto', sans-serif;
+    font: 300 58px 'Roboto';
+    fill: #666;
+  }
+  .birthyear,
+  .month {
+    font-family: 'Roboto', sans-serif;
+
+    text-anchor: middle;
+  }
+
+  .birthyear {
+    fill: #fff;
+  }
+  .dataInfo  {
+    position: absolute;
+    left: 0px;
+    width: 110px;
+    height: 80px;
+    font-family: 'Roboto', sans-serif;
+    font: 300 23px 'Roboto';
+    fill: #666;
+    background-color: var(--light-smoke);
+    z-index: -1;
+
+    border-radius: 2px;
+    border: solid;
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+  }
+  .displayDiv  {
+    position: absolute;
+    bottom: 80px;
+    left: 230px;
+    width: 110px;
+    height: 80px;
+    background-color: var(--light-smoke);
+    z-index: -1;
+
+    border-radius: 2px;
+    border: solid;
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+  }
+  .displayDivRight  {
+    position: absolute;
+    bottom: 80px;
+    right: 200px;
+    width: 110px;
+    height: 80px;
+    text-align: center;
+    background-color: var(--light-smoke);
+    z-index: -1;
+
+    border-radius: 2px;
+
+    border: solid;
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+  }
+  rect {
+    fill-opacity: .6;
+    fill: #1f77b4;
+  }
+
+  rect:first-child {
+    fill: #6272a4;
+  }
+  rects {
+    fill-opacity: .6;
+    fill: #1f77b4;
+  }
+  rects:first-child {
+    fill: blue;
+  }
+  rect:nth-child(2) {
+    fill:transparent;
+  }
+  #inds{
+
+      position: relative;
+      top:-730px;
+      left:470px;
+      z-index: 1;
+  }
+  #educate{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    position:absolute;
+    top: 130px;
+    right: 10px;
+    width: 250px;
+}
+#educate1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+
+    position:absolute;
+    top:80px;
+    right:10px;
+    width: 250px;
+}
+  #instructions {
+    font-family: 'Roboto', sans-serif;
+    left:10px;
+    position: absolute;
+    top: 320px;
+    width: 270px;
+    z-index: 1;
+  }
+  #insn{
+      position: relative;
+  }
+
+
+  #sources {
+    position: absolute;
+    bottom: -40px;
+    left: -530px;
+    width: 1500px;
+    font: 10px sans-serif;
+  }
+  divs.tooltip {
+    position: absolute;
+    color: var(--tertiary-color);
+    padding: 8px;
+    background-color: rgba(44, 53, 49, 0.8);
+    border-radius: 3px;
+    text-align: center;
+    width: 200px;
+    font-family: 'avenir next', sans-serif;
+    line-height: 25px;
+    height: 28px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  #play-button{
+      position: relative;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  width: 60px;
+  cursor: pointer;
+  height: 30px;
+  top: 60px;
+  right:400px;
+  background-color: var(--secondary-color);
+  }
+  #play-button2{
+    position: relative;
+font-family: 'Nunito', sans-serif;
+letter-spacing: 1px;
+border-radius: 3px;
+border: none;
+color: white;
+width: 60px;
+cursor: pointer;
+height: 30px;
+top: 60px;
+right:400px;
+background-color: var(--secondary-color);
+}
+  #buttonsArea, #buttonsArea2 {
+    width: 300px;
+    position: relative;
+    left: 50px;
+    top: 170px;
+    z-index: 1;
+  }
+  #buttonsArea2 {
+      position: relative;
+    left: 50px;
+    top: 250px;
+  }
+  #leftButt, #rightButt {
+    position: relative;
+    left: -630px;
+    bottom: -150px;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    padding-right: 26px;
+    border-radius: 3px;
+    border: none;
+    color: #f8f8f2;
+    margin: 0;
+    padding: 0 12px;
+    width: 90px;
+    cursor: pointer;
+    height: 50px;
+    background-color: #282a36;
+    z-index: 1;
+
+  }
+
+#displayYear, #choroYear1, #choroYear2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40pt;
+  letter-spacing: -2px;
+  z-index: 1;
+  margin: 0px;
+}
+#sum, #choroSum, #vs {
+  font-size: 25px;
+}
+
+#choroSumText, #choroSumText2, #topHeader, #botHeader {
+  font-size: 18px;
+  font-weight: bold;
+}

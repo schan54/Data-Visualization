@@ -65,7 +65,7 @@ Eritrea	1960		Africa
 Estonia	1960	10.2217	Europe
 Ethiopia	1960	0.35163	Africa
 Faeroe Islands	1960	0.058624	Europe
-Falkland Islands (Malvinas)	1960		South America
+Falkland Islands	1960		South America
 Fiji	1960	0.19419	Oceania
 Finland	1960	15.0869	Europe
 France	1960	271.3608	Europe
@@ -159,10 +159,10 @@ Philippines	1960	8.3251	Asia
 Poland	1960	199.5771	Europe
 Portugal	1960	8.2135	Europe
 Qatar	1960	0.17587	Asia
-Republic of South Sudan	1960	0.11328	Africa
+South Sudan	1960	0.11328	Africa
 Réunion	1960		Africa
 Romania	1960	53.3941	Europe
-Russian Federation	1960	889.983	Asia
+Russia	1960	889.983	Asia
 Rwanda	1960	0.069825	Africa
 Saint Helena	1960		Africa
 Saint Kitts and Nevis	1960		North America
@@ -195,7 +195,7 @@ Taiwan	1960	11.8739	Asia
 Tajikistan	1960	3.131	Asia
 Tanzania	1960	0.82806	Africa
 Thailand	1960	3.7095	Asia
-Timor-Leste	1960		Asia
+East Timor	1960		Asia
 Togo	1960	0.065952	Africa
 Tonga	1960	0.010992	Oceania
 Trinidad and Tobago	1960	2.5787	South America
@@ -208,7 +208,7 @@ Uganda	1960	0.42106	Africa
 Ukraine	1960	269.8205	Europe
 United Arab Emirates	1960	0.010992	Asia
 United Kingdom	1960	584.02	Europe
-United States of America	1960	2887.8204	North America
+United States	1960	2887.8204	North America
 Uruguay	1960	4.3145	South America
 Uzbekistan	1960	47.8515	Asia
 Vanuatu	1960		Oceania
@@ -285,7 +285,7 @@ Eritrea	1961		Africa
 Estonia	1961	10.5411	Europe
 Ethiopia	1961	0.34063	Africa
 Faeroe Islands	1961	0.11358	Europe
-Falkland Islands (Malvinas)	1961		South America
+Falkland Islands	1961		South America
 Fiji	1961	0.16854	Oceania
 Finland	1961	14.9217	Europe
 France	1961	281.3733	Europe
@@ -379,10 +379,10 @@ Philippines	1961	8.7125	Asia
 Poland	1961	207.2354	Europe
 Portugal	1961	9.078	Europe
 Qatar	1961	0.16122	Asia
-Republic of South Sudan	1961	0.11542	Africa
+South Sudan	1961	0.11542	Africa
 Réunion	1961		Africa
 Romania	1961	55.7161	Europe
-Russian Federation	1961	917.8258	Asia
+Russia	1961	917.8258	Asia
 Rwanda	1961	0.091495	Africa
 Saint Helena	1961		Africa
 Saint Kitts and Nevis	1961		North America
@@ -415,7 +415,7 @@ Taiwan	1961	12.5285	Asia
 Tajikistan	1961	3.2288	Asia
 Tanzania	1961	0.70349	Africa
 Thailand	1961	4.1407	Asia
-Timor-Leste	1961		Asia
+East Timor	1961		Asia
 Togo	1961	0.0916	Africa
 Tonga	1961	0.010992	Oceania
 Trinidad and Tobago	1961	4.5979	South America
@@ -428,7 +428,7 @@ Uganda	1961	0.40644	Africa
 Ukraine	1961	278.2184	Europe
 United Arab Emirates	1961	0.010992	Asia
 United Kingdom	1961	588.6148	Europe
-United States of America	1961	2877.3698	North America
+United States	1961	2877.3698	North America
 Uruguay	1961	4.1168	South America
 Uzbekistan	1961	49.3462	Asia
 Vanuatu	1961		Oceania
@@ -505,7 +505,7 @@ Eritrea	1962		Africa
 Estonia	1962	11.0633	Europe
 Ethiopia	1962	0.39553	Africa
 Faeroe Islands	1962	0.11725	Europe
-Falkland Islands (Malvinas)	1962		South America
+Falkland Islands	1962		South America
 Fiji	1962	0.23083	Oceania
 Finland	1962	16.7903	Europe
 France	1962	298.8665	Europe
@@ -599,10 +599,10 @@ Philippines	1962	10.3359	Asia
 Poland	1962	216.6072	Europe
 Portugal	1962	9.2899	Europe
 Qatar	1962	0.19053	Asia
-Republic of South Sudan	1962	0.12366	Africa
+South Sudan	1962	0.12366	Africa
 Réunion	1962		Africa
 Romania	1962	63.8128	Europe
-Russian Federation	1962	963.3179	Asia
+Russia	1962	963.3179	Asia
 Rwanda	1962	0.084272	Africa
 Saint Helena	1962		Africa
 Saint Kitts and Nevis	1962		North America
@@ -635,7 +635,7 @@ Taiwan	1962	14.1648	Asia
 Tajikistan	1962	3.3886	Asia
 Tanzania	1962	0.76578	Africa
 Thailand	1962	5.0268	Asia
-Timor-Leste	1962		Asia
+East Timor	1962		Asia
 Togo	1962	0.087936	Africa
 Tonga	1962	0.010992	Oceania
 Trinidad and Tobago	1962	7.2321	South America
@@ -648,7 +648,7 @@ Uganda	1962	0.42845	Africa
 Ukraine	1962	291.9614	Europe
 United Arab Emirates	1962	0.01832	Asia
 United Kingdom	1962	592.9315	Europe
-United States of America	1962	2984.0017	North America
+United States	1962	2984.0017	North America
 Uruguay	1962	4.0069	South America
 Uzbekistan	1962	51.7895	Asia
 Vanuatu	1962	0.040304	Oceania
@@ -725,7 +725,7 @@ Eritrea	1963		Africa
 Estonia	1963	11.8646	Europe
 Ethiopia	1963	0.42121	Africa
 Faeroe Islands	1963	0.12458	Europe
-Falkland Islands (Malvinas)	1963		South America
+Falkland Islands	1963		South America
 Fiji	1963	0.24182	Oceania
 Finland	1963	19.3365	Europe
 France	1963	334.2264	Europe
@@ -819,10 +819,10 @@ Philippines	1963	11.4718	Asia
 Poland	1963	230.9988	Europe
 Portugal	1963	10.0116	Europe
 Qatar	1963	6.1335	Asia
-Republic of South Sudan	1963	0.13984	Africa
+South Sudan	1963	0.13984	Africa
 Réunion	1963		Africa
 Romania	1963	69.4555	Europe
-Russian Federation	1963	1033.1063	Asia
+Russia	1963	1033.1063	Asia
 Rwanda	1963	0.084272	Africa
 Saint Helena	1963		Africa
 Saint Kitts and Nevis	1963		North America
@@ -855,7 +855,7 @@ Taiwan	1963	15.1086	Asia
 Tajikistan	1963	3.6341	Asia
 Tanzania	1963	0.80242	Africa
 Thailand	1963	5.5616	Asia
-Timor-Leste	1963		Asia
+East Timor	1963		Asia
 Togo	1963	0.10626	Africa
 Tonga	1963	0.010992	Oceania
 Trinidad and Tobago	1963	1.3074	South America
@@ -868,7 +868,7 @@ Uganda	1963	0.43214	Africa
 Ukraine	1963	313.0965	Europe
 United Arab Emirates	1963	0.021984	Asia
 United Kingdom	1963	603.3857	Europe
-United States of America	1963	3116.0224	North America
+United States	1963	3116.0224	North America
 Uruguay	1963	4.3148	South America
 Uzbekistan	1963	55.5408	Asia
 Vanuatu	1963	0.032976	Oceania
@@ -945,7 +945,7 @@ Eritrea	1964		Africa
 Estonia	1964	12.618	Europe
 Ethiopia	1964	0.40653	Africa
 Faeroe Islands	1964	0.12091	Europe
-Falkland Islands (Malvinas)	1964		South America
+Falkland Islands	1964		South America
 Fiji	1964	0.42491	Oceania
 Finland	1964	22.8277	Europe
 France	1964	345.5381	Europe
@@ -1039,10 +1039,10 @@ Philippines	1964	12.8228	Asia
 Poland	1964	242.8805	Europe
 Portugal	1964	11.0074	Europe
 Qatar	1964	6.2691	Asia
-Republic of South Sudan	1964	0.1548	Africa
+South Sudan	1964	0.1548	Africa
 Réunion	1964		Africa
 Romania	1964	72.037	Europe
-Russian Federation	1964	1098.7224	Asia
+Russia	1964	1098.7224	Asia
 Rwanda	1964	0.03664	Africa
 Saint Helena	1964		Africa
 Saint Kitts and Nevis	1964		North America
@@ -1075,7 +1075,7 @@ Taiwan	1964	16.9072	Asia
 Tajikistan	1964	3.8648	Asia
 Tanzania	1964	1.0332	Africa
 Thailand	1964	7.4703	Asia
-Timor-Leste	1964		Asia
+East Timor	1964		Asia
 Togo	1964	0.1319	Africa
 Tonga	1964	0.010992	Oceania
 Trinidad and Tobago	1964	3.7915	South America
@@ -1088,7 +1088,7 @@ Uganda	1964	0.49068	Africa
 Ukraine	1964	332.9609	Europe
 United Arab Emirates	1964	0.01832	Asia
 United Kingdom	1964	607.866	Europe
-United States of America	1964	3252.7552	North America
+United States	1964	3252.7552	North America
 Uruguay	1964	4.5527	South America
 Uzbekistan	1964	59.0674	Asia
 Vanuatu	1964	0.062288	Oceania
@@ -1165,7 +1165,7 @@ Eritrea	1965		Africa
 Estonia	1965	13.3852	Europe
 Ethiopia	1965	0.64448	Africa
 Faeroe Islands	1965	0.13557	Europe
-Falkland Islands (Malvinas)	1965		South America
+Falkland Islands	1965		South America
 Fiji	1965	0.34427	Oceania
 Finland	1965	25.3001	Europe
 France	1965	352.1116	Europe
@@ -1259,10 +1259,10 @@ Philippines	1965	13.9647	Asia
 Poland	1965	246.9809	Europe
 Portugal	1965	11.5825	Europe
 Qatar	1965	6.2874	Asia
-Republic of South Sudan	1965	0.20213	Africa
+South Sudan	1965	0.20213	Africa
 Réunion	1965		Africa
 Romania	1965	78.6369	Europe
-Russian Federation	1965	1165.5583	Asia
+Russia	1965	1165.5583	Asia
 Rwanda	1965	0.047632	Africa
 Saint Helena	1965		Africa
 Saint Kitts and Nevis	1965		North America
@@ -1295,7 +1295,7 @@ Taiwan	1965	17.8448	Asia
 Tajikistan	1965	4.0997	Asia
 Tanzania	1965	1.1615	Africa
 Thailand	1965	7.4402	Asia
-Timor-Leste	1965		Asia
+East Timor	1965		Asia
 Togo	1965	0.1319	Africa
 Tonga	1965	0.010992	Oceania
 Trinidad and Tobago	1965	5.1911	South America
@@ -1308,7 +1308,7 @@ Uganda	1965	0.62601	Africa
 Ukraine	1965	353.1631	Europe
 United Arab Emirates	1965	0.021984	Asia
 United Kingdom	1965	622.1116	Europe
-United States of America	1965	3388.1927	North America
+United States	1965	3388.1927	North America
 Uruguay	1965	5.5163	South America
 Uzbekistan	1965	62.6578	Asia
 Vanuatu	1965	0.047632	Oceania
@@ -1385,7 +1385,7 @@ Eritrea	1966		Africa
 Estonia	1966	14.1353	Europe
 Ethiopia	1966	0.82398	Africa
 Faeroe Islands	1966	0.13923	Europe
-Falkland Islands (Malvinas)	1966		South America
+Falkland Islands	1966		South America
 Fiji	1966	0.32225	Oceania
 Finland	1966	29.4888	Europe
 France	1966	347.6048	Europe
@@ -1479,10 +1479,10 @@ Philippines	1966	16.1041	Asia
 Poland	1966	252.431	Europe
 Portugal	1966	11.8351	Europe
 Qatar	1966	6.2728	Asia
-Republic of South Sudan	1966	0.22015	Africa
+South Sudan	1966	0.22015	Africa
 Réunion	1966		Africa
 Romania	1966	84.0907	Europe
-Russian Federation	1966	1230.9175	Asia
+Russia	1966	1230.9175	Asia
 Rwanda	1966	0.043968	Africa
 Saint Helena	1966		Africa
 Saint Kitts and Nevis	1966		North America
@@ -1515,7 +1515,7 @@ Taiwan	1966	19.4616	Asia
 Tajikistan	1966	4.3294	Asia
 Tanzania	1966	1.3701	Africa
 Thailand	1966	9.4654	Asia
-Timor-Leste	1966		Asia
+East Timor	1966		Asia
 Togo	1966	0.17954	Africa
 Tonga	1966	0.010992	Oceania
 Trinidad and Tobago	1966	4.0515	South America
@@ -1528,7 +1528,7 @@ Uganda	1966	0.73232	Africa
 Ukraine	1966	372.9109	Europe
 United Arab Emirates	1966	0.025648	Asia
 United Kingdom	1966	618.0747	Europe
-United States of America	1966	3559.1792	North America
+United States	1966	3559.1792	North America
 Uruguay	1966	5.3988	South America
 Uzbekistan	1966	66.1684	Asia
 Vanuatu	1966	0.076944	Oceania
@@ -1605,7 +1605,7 @@ Eritrea	1967		Africa
 Estonia	1967	14.7805	Europe
 Ethiopia	1967	1.073	Africa
 Faeroe Islands	1967	0.16854	Europe
-Falkland Islands (Malvinas)	1967		South America
+Falkland Islands	1967		South America
 Fiji	1967	0.35523	Oceania
 Finland	1967	28.5877	Europe
 France	1967	372.4753	Europe
@@ -1699,10 +1699,10 @@ Philippines	1967	18.2089	Asia
 Poland	1967	259.0255	Europe
 Portugal	1967	12.3916	Europe
 Qatar	1967	6.6831	Asia
-Republic of South Sudan	1967	0.26533	Africa
+South Sudan	1967	0.26533	Africa
 Réunion	1967		Africa
 Romania	1967	92.0288	Europe
-Russian Federation	1967	1287.1255	Asia
+Russia	1967	1287.1255	Asia
 Rwanda	1967	0.040304	Africa
 Saint Helena	1967		Africa
 Saint Kitts and Nevis	1967		North America
@@ -1735,7 +1735,7 @@ Taiwan	1967	21.9699	Asia
 Tajikistan	1967	4.527	Asia
 Tanzania	1967	1.7581	Africa
 Thailand	1967	12.1501	Asia
-Timor-Leste	1967		Asia
+East Timor	1967		Asia
 Togo	1967	0.19786	Africa
 Tonga	1967	0.014656	Oceania
 Trinidad and Tobago	1967	4.6342	South America
@@ -1748,7 +1748,7 @@ Uganda	1967	0.80918	Africa
 Ukraine	1967	389.902	Europe
 United Arab Emirates	1967	0.916	Asia
 United Kingdom	1967	592.057	Europe
-United States of America	1967	3693.2982	North America
+United States	1967	3693.2982	North America
 Uruguay	1967	4.8788	South America
 Uzbekistan	1967	69.1881	Asia
 Vanuatu	1967	0.084272	Oceania
@@ -1825,7 +1825,7 @@ Eritrea	1968		Africa
 Estonia	1968	15.1957	Europe
 Ethiopia	1968	1.725	Africa
 Faeroe Islands	1968	0.1832	Europe
-Falkland Islands (Malvinas)	1968		South America
+Falkland Islands	1968		South America
 Fiji	1968	0.3955	Oceania
 Finland	1968	33.2815	Europe
 France	1968	385.101	Europe
@@ -1919,10 +1919,10 @@ Philippines	1968	22.2228	Asia
 Poland	1968	275.801	Europe
 Portugal	1968	12.9924	Europe
 Qatar	1968	7.0752	Asia
-Republic of South Sudan	1968	0.25862	Africa
+South Sudan	1968	0.25862	Africa
 Réunion	1968		Africa
 Romania	1968	100.0794	Europe
-Russian Federation	1968	1323.3053	Asia
+Russia	1968	1323.3053	Asia
 Rwanda	1968	0.05496	Africa
 Saint Helena	1968	0.003664	Africa
 Saint Kitts and Nevis	1968		North America
@@ -1955,7 +1955,7 @@ Taiwan	1968	24.1406	Asia
 Tajikistan	1968	4.6542	Asia
 Tanzania	1968	1.6518	Africa
 Thailand	1968	17.0757	Asia
-Timor-Leste	1968		Asia
+East Timor	1968		Asia
 Togo	1968	0.19419	Africa
 Tonga	1968	0.014656	Oceania
 Trinidad and Tobago	1968	4.0369	South America
@@ -1968,7 +1968,7 @@ Uganda	1968	0.98133	Africa
 Ukraine	1968	400.83	Europe
 United Arab Emirates	1968	1.2421	Asia
 United Kingdom	1968	606.4883	Europe
-United States of America	1968	3828.3061	North America
+United States	1968	3828.3061	North America
 Uruguay	1968	4.8784	South America
 Uzbekistan	1968	71.1314	Asia
 Vanuatu	1968	0.062288	Oceania
@@ -2045,7 +2045,7 @@ Eritrea	1969		Africa
 Estonia	1969	15.8253	Europe
 Ethiopia	1969	1.6664	Africa
 Faeroe Islands	1969	0.21251	Europe
-Falkland Islands (Malvinas)	1969		South America
+Falkland Islands	1969		South America
 Fiji	1969	0.43214	Oceania
 Finland	1969	37.8968	Europe
 France	1969	413.7595	Europe
@@ -2139,10 +2139,10 @@ Philippines	1969	22.8295	Asia
 Poland	1969	293.3653	Europe
 Portugal	1969	14.5928	Europe
 Qatar	1969	7.1666	Asia
-Republic of South Sudan	1969	0.34839	Africa
+South Sudan	1969	0.34839	Africa
 Réunion	1969		Africa
 Romania	1969	111.5274	Europe
-Russian Federation	1969	1378.1502	Asia
+Russia	1969	1378.1502	Asia
 Rwanda	1969	0.058624	Africa
 Saint Helena	1969		Africa
 Saint Kitts and Nevis	1969		North America
@@ -2175,7 +2175,7 @@ Taiwan	1969	26.291	Asia
 Tajikistan	1969	4.847	Asia
 Tanzania	1969	1.7947	Africa
 Thailand	1969	14.54	Asia
-Timor-Leste	1969		Asia
+East Timor	1969		Asia
 Togo	1969	0.24182	Africa
 Tonga	1969	0.010992	Oceania
 Trinidad and Tobago	1969	3.9012	South America
@@ -2188,7 +2188,7 @@ Uganda	1969	1.1754	Africa
 Ukraine	1969	417.4261	Europe
 United Arab Emirates	1969	20.5074	Asia
 United Kingdom	1969	628.3825	Europe
-United States of America	1969	4021.5026	North America
+United States	1969	4021.5026	North America
 Uruguay	1969	5.5894	South America
 Uzbekistan	1969	74.0789	Asia
 Vanuatu	1969	0.043968	Oceania
@@ -2265,7 +2265,7 @@ Eritrea	1970		Africa
 Estonia	1970	16.6451	Europe
 Ethiopia	1970	1.6517	Africa
 Faeroe Islands	1970	0.25648	Europe
-Falkland Islands (Malvinas)	1970		South America
+Falkland Islands	1970		South America
 Fiji	1970	0.52005	Oceania
 Finland	1970	40.355	Europe
 France	1970	439.6251	Europe
@@ -2359,10 +2359,10 @@ Philippines	1970	24.7514	Asia
 Poland	1970	304.1434	Europe
 Portugal	1970	15.2365	Europe
 Qatar	1970	7.5615	Asia
-Republic of South Sudan	1970	0.40426	Africa
+South Sudan	1970	0.40426	Africa
 Réunion	1970		Africa
 Romania	1970	119.9815	Europe
-Russian Federation	1970	1449.5706	Asia
+Russia	1970	1449.5706	Asia
 Rwanda	1970	0.058624	Africa
 Saint Helena	1970		Africa
 Saint Kitts and Nevis	1970		North America
@@ -2395,7 +2395,7 @@ Taiwan	1970	28.734	Asia
 Tajikistan	1970	5.0981	Asia
 Tanzania	1970	1.7654	Africa
 Thailand	1970	15.3525	Asia
-Timor-Leste	1970		Asia
+East Timor	1970		Asia
 Togo	1970	0.2748	Africa
 Tonga	1970	0.025648	Oceania
 Trinidad and Tobago	1970	8.9904	South America
@@ -2408,7 +2408,7 @@ Uganda	1970	1.4428	Africa
 Ukraine	1970	439.0199	Europe
 United Arab Emirates	1970	15.2349	Asia
 United Kingdom	1970	652.5774	Europe
-United States of America	1970	4325.5008	North America
+United States	1970	4325.5008	North America
 Uruguay	1970	5.7358	South America
 Uzbekistan	1970	77.9161	Asia
 Vanuatu	1970	0.040304	Oceania
@@ -2485,7 +2485,7 @@ Eritrea	1971		Africa
 Estonia	1971	17.672	Europe
 Ethiopia	1971	1.8495	Africa
 Faeroe Islands	1971	0.26014	Europe
-Falkland Islands (Malvinas)	1971		South America
+Falkland Islands	1971		South America
 Fiji	1971	0.54927	Oceania
 Finland	1971	40.5368	Europe
 France	1971	463.1427	Europe
@@ -2579,10 +2579,10 @@ Philippines	1971	27.5517	Asia
 Poland	1971	312.8808	Europe
 Portugal	1971	16.3757	Europe
 Qatar	1971	9.1443	Asia
-Republic of South Sudan	1971	0.41495	Africa
+South Sudan	1971	0.41495	Africa
 Réunion	1971		Africa
 Romania	1971	125.6815	Europe
-Russian Federation	1971	1538.2421	Asia
+Russia	1971	1538.2421	Asia
 Rwanda	1971	0.062288	Africa
 Saint Helena	1971		Africa
 Saint Kitts and Nevis	1971		North America
@@ -2615,7 +2615,7 @@ Taiwan	1971	31.4754	Asia
 Tajikistan	1971	5.4125	Asia
 Tanzania	1971	2.4615	Africa
 Thailand	1971	19.2211	Asia
-Timor-Leste	1971		Asia
+East Timor	1971		Asia
 Togo	1971	0.3151	Africa
 Tonga	1971	0.01832	Oceania
 Trinidad and Tobago	1971	8.0964	South America
@@ -2628,7 +2628,7 @@ Uganda	1971	1.4391	Africa
 Ukraine	1971	465.8754	Europe
 United Arab Emirates	1971	21.1669	Asia
 United Kingdom	1971	660.3883	Europe
-United States of America	1971	4351.3087	North America
+United States	1971	4351.3087	North America
 Uruguay	1971	5.8019	South America
 Uzbekistan	1971	82.6726	Asia
 Vanuatu	1971	0.058624	Oceania
@@ -2705,7 +2705,7 @@ Eritrea	1972		Africa
 Estonia	1972	18.602	Europe
 Ethiopia	1972	1.4062	Africa
 Faeroe Islands	1972	0.2345	Europe
-Falkland Islands (Malvinas)	1972		South America
+Falkland Islands	1972		South America
 Fiji	1972	0.57856	Oceania
 Finland	1972	44.1061	Europe
 France	1972	481.6113	Europe
@@ -2799,10 +2799,10 @@ Philippines	1972	26.4094	Asia
 Poland	1972	329.5064	Europe
 Portugal	1972	18.3073	Europe
 Qatar	1972	10.7754	Asia
-Republic of South Sudan	1972	0.44792	Africa
+South Sudan	1972	0.44792	Africa
 Réunion	1972		Africa
 Romania	1972	132.2542	Europe
-Russian Federation	1972	1618.4149	Asia
+Russia	1972	1618.4149	Asia
 Rwanda	1972	0.065952	Africa
 Saint Helena	1972		Africa
 Saint Kitts and Nevis	1972		North America
@@ -2835,7 +2835,7 @@ Taiwan	1972	35.8725	Asia
 Tajikistan	1972	5.6973	Asia
 Tanzania	1972	2.1645	Africa
 Thailand	1972	21.8055	Asia
-Timor-Leste	1972		Asia
+East Timor	1972		Asia
 Togo	1972	0.40486	Africa
 Tonga	1972	0.021984	Oceania
 Trinidad and Tobago	1972	8.2355	South America
@@ -2848,7 +2848,7 @@ Uganda	1972	1.3806	Africa
 Ukraine	1972	490.1622	Europe
 United Arab Emirates	1972	23.4349	Asia
 United Kingdom	1972	648.0264	Europe
-United States of America	1972	4558.4526	North America
+United States	1972	4558.4526	North America
 Uruguay	1972	6.0694	South America
 Uzbekistan	1972	86.971	Asia
 Vanuatu	1972	0.062288	Oceania
@@ -2925,7 +2925,7 @@ Eritrea	1973		Africa
 Estonia	1973	19.3971	Europe
 Ethiopia	1973	1.7509	Africa
 Faeroe Islands	1973	0.25282	Europe
-Falkland Islands (Malvinas)	1973		South America
+Falkland Islands	1973		South America
 Fiji	1973	0.62985	Oceania
 Finland	1973	49.3202	Europe
 France	1973	517.5783	Europe
@@ -3019,10 +3019,10 @@ Philippines	1973	31.5013	Asia
 Poland	1973	335.59	Europe
 Portugal	1973	19.9451	Europe
 Qatar	1973	12.4572	Asia
-Republic of South Sudan	1973	0.45189	Africa
+South Sudan	1973	0.45189	Africa
 Réunion	1973		Africa
 Romania	1973	144.765	Europe
-Russian Federation	1973	1686.7543	Asia
+Russia	1973	1686.7543	Asia
 Rwanda	1973	0.069616	Africa
 Saint Helena	1973		Africa
 Saint Kitts and Nevis	1973		North America
@@ -3055,7 +3055,7 @@ Taiwan	1973	40.2464	Asia
 Tajikistan	1973	5.9407	Asia
 Tanzania	1973	3.1827	Africa
 Thailand	1973	24.4202	Asia
-Timor-Leste	1973		Asia
+East Timor	1973		Asia
 Togo	1973	0.41151	Africa
 Tonga	1973	0.025648	Oceania
 Trinidad and Tobago	1973	9.3898	South America
@@ -3068,7 +3068,7 @@ Uganda	1973	1.1792	Africa
 Ukraine	1973	510.8441	Europe
 United Arab Emirates	1973	30.6054	Asia
 United Kingdom	1973	659.5773	Europe
-United States of America	1973	4762.4522	North America
+United States	1973	4762.4522	North America
 Uruguay	1973	5.7687	South America
 Uzbekistan	1973	90.6301	Asia
 Vanuatu	1973	0.05496	Oceania
@@ -3145,7 +3145,7 @@ Eritrea	1974		Africa
 Estonia	1974	20.1458	Europe
 Ethiopia	1974	1.7363	Africa
 Faeroe Islands	1974	0.30045	Europe
-Falkland Islands (Malvinas)	1974		South America
+Falkland Islands	1974		South America
 Fiji	1974	0.67019	Oceania
 Finland	1974	46.6085	Europe
 France	1974	500.0189	Europe
@@ -3239,10 +3239,10 @@ Philippines	1974	30.4923	Asia
 Poland	1974	346.2366	Europe
 Portugal	1974	20.645	Europe
 Qatar	1974	10.4785	Asia
-Republic of South Sudan	1974	0.47327	Africa
+South Sudan	1974	0.47327	Africa
 Réunion	1974		Africa
 Romania	1974	150.7203	Europe
-Russian Federation	1974	1750.9716	Asia
+Russia	1974	1750.9716	Asia
 Rwanda	1974	0.07328	Africa
 Saint Helena	1974		Africa
 Saint Kitts and Nevis	1974		North America
@@ -3275,7 +3275,7 @@ Taiwan	1974	39.3118	Asia
 Tajikistan	1974	6.1699	Asia
 Tanzania	1974	2.3035	Africa
 Thailand	1974	24.2105	Asia
-Timor-Leste	1974		Asia
+East Timor	1974		Asia
 Togo	1974	0.39027	Africa
 Tonga	1974	0.021984	Oceania
 Trinidad and Tobago	1974	10.042	South America
@@ -3288,7 +3288,7 @@ Uganda	1974	1.1938	Africa
 Ukraine	1974	530.2697	Europe
 United Arab Emirates	1974	31.3016	Asia
 United Kingdom	1974	617.1839	Europe
-United States of America	1974	4592.9583	North America
+United States	1974	4592.9583	North America
 Uruguay	1974	5.677	South America
 Uzbekistan	1974	94.0649	Asia
 Vanuatu	1974	0.062288	Oceania
@@ -3365,7 +3365,7 @@ Eritrea	1975		Africa
 Estonia	1975	21.1868	Europe
 Ethiopia	1975	1.2085	Africa
 Faeroe Islands	1975	0.34808	Europe
-Falkland Islands (Malvinas)	1975		South America
+Falkland Islands	1975		South America
 Fiji	1975	0.62258	Oceania
 Finland	1975	46.0258	Europe
 France	1975	447.806	Europe
@@ -3459,10 +3459,10 @@ Philippines	1975	32.4824	Asia
 Poland	1975	374.7801	Europe
 Portugal	1975	21.2753	Europe
 Qatar	1975	10.9474	Asia
-Republic of South Sudan	1975	0.35297	Africa
+South Sudan	1975	0.35297	Africa
 Réunion	1975		Africa
 Romania	1975	162.0064	Europe
-Russian Federation	1975	1840.5008	Asia
+Russia	1975	1840.5008	Asia
 Rwanda	1975	0.17587	Africa
 Saint Helena	1975		Africa
 Saint Kitts and Nevis	1975		North America
@@ -3495,7 +3495,7 @@ Taiwan	1975	43.4569	Asia
 Tajikistan	1975	6.4885	Asia
 Tanzania	1975	2.2816	Africa
 Thailand	1975	24.3715	Asia
-Timor-Leste	1975		Asia
+East Timor	1975		Asia
 Togo	1975	0.31144	Africa
 Tonga	1975	0.032976	Oceania
 Trinidad and Tobago	1975	9.6133	South America
@@ -3508,7 +3508,7 @@ Uganda	1975	1.1318	Africa
 Ukraine	1975	557.3642	Europe
 United Arab Emirates	1975	31.0451	Asia
 United Kingdom	1975	603.2474	Europe
-United States of America	1975	4400.795	North America
+United States	1975	4400.795	North America
 Uruguay	1975	5.9624	South America
 Uzbekistan	1975	98.8572	Asia
 Vanuatu	1975	0.05496	Oceania
@@ -3585,7 +3585,7 @@ Eritrea	1976		Africa
 Estonia	1976	22.0053	Europe
 Ethiopia	1976	1.1747	Africa
 Faeroe Islands	1976	0.32976	Europe
-Falkland Islands (Malvinas)	1976		South America
+Falkland Islands	1976		South America
 Fiji	1976	0.483	Oceania
 Finland	1976	51.1986	Europe
 France	1976	506.6836	Europe
@@ -3679,10 +3679,10 @@ Philippines	1976	35.0662	Asia
 Poland	1976	398.1187	Europe
 Portugal	1976	22.3258	Europe
 Qatar	1976	10.3749	Asia
-Republic of South Sudan	1976	0.31266	Africa
+South Sudan	1976	0.31266	Africa
 Réunion	1976		Africa
 Romania	1976	174.472	Europe
-Russian Federation	1976	1911.3261	Asia
+Russia	1976	1911.3261	Asia
 Rwanda	1976	0.26747	Africa
 Saint Helena	1976		Africa
 Saint Kitts and Nevis	1976		North America
@@ -3715,7 +3715,7 @@ Taiwan	1976	56.0537	Asia
 Tajikistan	1976	6.7366	Asia
 Tanzania	1976	2.786	Africa
 Thailand	1976	28.7162	Asia
-Timor-Leste	1976		Asia
+East Timor	1976		Asia
 Togo	1976	0.32243	Africa
 Tonga	1976	0.029312	Oceania
 Trinidad and Tobago	1976	15.9108	South America
@@ -3728,7 +3728,7 @@ Uganda	1976	0.98843	Africa
 Ukraine	1976	578.7824	Europe
 United Arab Emirates	1976	39.617	Asia
 United Kingdom	1976	598.5263	Europe
-United States of America	1976	4607.1682	North America
+United States	1976	4607.1682	North America
 Uruguay	1976	5.8871	South America
 Uzbekistan	1976	102.597	Asia
 Vanuatu	1976	0.043968	Oceania
@@ -3805,7 +3805,7 @@ Eritrea	1977		Africa
 Estonia	1977	22.7569	Europe
 Ethiopia	1977	1.0468	Africa
 Faeroe Islands	1977	0.4067	Europe
-Falkland Islands (Malvinas)	1977		South America
+Falkland Islands	1977		South America
 Fiji	1977	0.76463	Oceania
 Finland	1977	50.1371	Europe
 France	1977	481.9868	Europe
@@ -3899,10 +3899,10 @@ Philippines	1977	36.6761	Asia
 Poland	1977	417.9549	Europe
 Portugal	1977	22.6051	Europe
 Qatar	1977	9.916	Asia
-Republic of South Sudan	1977	0.31694	Africa
+South Sudan	1977	0.31694	Africa
 Réunion	1977		Africa
 Romania	1977	178.0767	Europe
-Russian Federation	1977	1976.2968	Asia
+Russia	1977	1976.2968	Asia
 Rwanda	1977	0.26747	Africa
 Saint Helena	1977		Africa
 Saint Kitts and Nevis	1977		North America
@@ -3935,7 +3935,7 @@ Taiwan	1977	61.0163	Asia
 Tajikistan	1977	6.964	Asia
 Tanzania	1977	2.0076	Africa
 Thailand	1977	32.0649	Asia
-Timor-Leste	1977		Asia
+East Timor	1977		Asia
 Togo	1977	0.46166	Africa
 Tonga	1977	0.029312	Oceania
 Trinidad and Tobago	1977	16.1593	South America
@@ -3948,7 +3948,7 @@ Uganda	1977	0.80485	Africa
 Ukraine	1977	598.4154	Europe
 United Arab Emirates	1977	38.7513	Asia
 United Kingdom	1977	604.3621	Europe
-United States of America	1977	4735.3663	North America
+United States	1977	4735.3663	North America
 Uruguay	1977	5.6396	South America
 Uzbekistan	1977	106.0188	Asia
 Vanuatu	1977	0.051296	Oceania
@@ -4025,7 +4025,7 @@ Eritrea	1978		Africa
 Estonia	1978	23.5402	Europe
 Ethiopia	1978	1.3685	Africa
 Faeroe Islands	1978	0.39938	Europe
-Falkland Islands (Malvinas)	1978		South America
+Falkland Islands	1978		South America
 Fiji	1978	0.70908	Oceania
 Finland	1978	51.8252	Europe
 France	1978	506.8283	Europe
@@ -4119,10 +4119,10 @@ Philippines	1978	37.3802	Asia
 Poland	1978	430.87	Europe
 Portugal	1978	22.5849	Europe
 Qatar	1978	10.519	Asia
-Republic of South Sudan	1978	0.2864	Africa
+South Sudan	1978	0.2864	Africa
 Réunion	1978		Africa
 Romania	1978	193.5394	Europe
-Russian Federation	1978	2044.1249	Asia
+Russia	1978	2044.1249	Asia
 Rwanda	1978	0.28946	Africa
 Saint Helena	1978		Africa
 Saint Kitts and Nevis	1978		North America
@@ -4155,7 +4155,7 @@ Taiwan	1978	70.8362	Asia
 Tajikistan	1978	7.2013	Asia
 Tanzania	1978	2.1973	Africa
 Thailand	1978	34.947	Asia
-Timor-Leste	1978		Asia
+East Timor	1978		Asia
 Togo	1978	0.35541	Africa
 Tonga	1978	0.03664	Oceania
 Trinidad and Tobago	1978	15.3119	South America
@@ -4168,7 +4168,7 @@ Uganda	1978	0.69814	Africa
 Ukraine	1978	618.9486	Europe
 United Arab Emirates	1978	44.7536	Asia
 United Kingdom	1978	604.714	Europe
-United States of America	1978	4882.964	North America
+United States	1978	4882.964	North America
 Uruguay	1978	5.7293	South America
 Uzbekistan	1978	109.6001	Asia
 Vanuatu	1978	0.058624	Oceania
@@ -4245,7 +4245,7 @@ Eritrea	1979		Africa
 Estonia	1979	23.7363	Europe
 Ethiopia	1979	1.8441	Africa
 Faeroe Islands	1979	0.47998	Europe
-Falkland Islands (Malvinas)	1979		South America
+Falkland Islands	1979		South America
 Fiji	1979	0.83646	Oceania
 Finland	1979	54.2372	Europe
 France	1979	530.3821	Europe
@@ -4339,10 +4339,10 @@ Philippines	1979	38.031	Asia
 Poland	1979	441.3086	Europe
 Portugal	1979	24.8557	Europe
 Qatar	1979	14.3424	Asia
-Republic of South Sudan	1979	0.29739	Africa
+South Sudan	1979	0.29739	Africa
 Réunion	1979		Africa
 Romania	1979	195.6764	Europe
-Russian Federation	1979	2061.0096	Asia
+Russia	1979	2061.0096	Asia
 Rwanda	1979	0.29678	Africa
 Saint Helena	1979		Africa
 Saint Kitts and Nevis	1979		North America
@@ -4375,7 +4375,7 @@ Taiwan	1979	75.4992	Asia
 Tajikistan	1979	7.2591	Asia
 Tanzania	1979	2.0628	Africa
 Thailand	1979	36.5865	Asia
-Timor-Leste	1979		Asia
+East Timor	1979		Asia
 Togo	1979	1.3813	Africa
 Tonga	1979	0.040304	Oceania
 Trinidad and Tobago	1979	16.7071	South America
@@ -4388,7 +4388,7 @@ Uganda	1979	0.67282	Africa
 Ukraine	1979	624.0669	Europe
 United Arab Emirates	1979	36.5465	Asia
 United Kingdom	1979	644.5133	Europe
-United States of America	1979	4894.0429	North America
+United States	1979	4894.0429	North America
 Uruguay	1979	6.2624	South America
 Uzbekistan	1979	110.4545	Asia
 Vanuatu	1979	0.062288	Oceania
@@ -4465,7 +4465,7 @@ Eritrea	1980		Africa
 Estonia	1980	24.6728	Europe
 Ethiopia	1980	1.8175	Africa
 Faeroe Islands	1980	0.42136	Europe
-Falkland Islands (Malvinas)	1980		South America
+Falkland Islands	1980		South America
 Fiji	1980	0.79242	Oceania
 Finland	1980	58.1395	Europe
 France	1980	506.1981	Europe
@@ -4559,10 +4559,10 @@ Philippines	1980	36.8686	Asia
 Poland	1980	463.329	Europe
 Portugal	1980	26.7736	Europe
 Qatar	1980	13.0817	Asia
-Republic of South Sudan	1980	0.31205	Africa
+South Sudan	1980	0.31205	Africa
 Réunion	1980		Africa
 Romania	1980	196.199	Europe
-Russian Federation	1980	2142.0907	Asia
+Russia	1980	2142.0907	Asia
 Rwanda	1980	0.49464	Africa
 Saint Helena	1980		Africa
 Saint Kitts and Nevis	1980		North America
@@ -4595,7 +4595,7 @@ Taiwan	1980	83.1194	Asia
 Tajikistan	1980	7.5432	Asia
 Tanzania	1980	1.8737	Africa
 Thailand	1980	39.9562	Asia
-Timor-Leste	1980		Asia
+East Timor	1980		Asia
 Togo	1980	0.7933	Africa
 Tonga	1980	0.040304	Oceania
 Trinidad and Tobago	1980	16.9194	South America
@@ -4608,14 +4608,14 @@ Uganda	1980	0.62631	Africa
 Ukraine	1980	648.5996	Europe
 United Arab Emirates	1980	36.8234	Asia
 United Kingdom	1980	579.036	Europe
-United States of America	1980	4716.7164	North America
+United States	1980	4716.7164	North America
 Uruguay	1980	5.8185	South America
 Uzbekistan	1980	114.7442	Asia
 Vanuatu	1980	0.062288	Oceania
 Venezuela	1980	90.6406	South America
 Vietnam	1980	16.7857	Asia
 Wallis and Futuna Islands	1980		Oceania
-Western Sahara	1980		Africa
+Guin	1980		Africa
 Yemen	1980	3.3135	Asia
 Zambia	1980	3.5233	Africa
 Zimbabwe	1980	9.614	Africa
@@ -4685,7 +4685,7 @@ Eritrea	1981		Africa
 Estonia	1981	24.2127	Europe
 Ethiopia	1981	1.86	Africa
 Faeroe Islands	1981	0.43968	Europe
-Falkland Islands (Malvinas)	1981		South America
+Falkland Islands	1981		South America
 Fiji	1981	1.0772	Oceania
 Finland	1981	51.4035	Europe
 France	1981	455.6122	Europe
@@ -4779,10 +4779,10 @@ Philippines	1981	34.5282	Asia
 Poland	1981	408.9969	Europe
 Portugal	1981	27.0007	Europe
 Qatar	1981	12.8407	Asia
-Republic of South Sudan	1981	0.3032	Africa
+South Sudan	1981	0.3032	Africa
 Réunion	1981		Africa
 Romania	1981	197.7302	Europe
-Russian Federation	1981	2101.2213	Asia
+Russia	1981	2101.2213	Asia
 Rwanda	1981	0.6009	Africa
 Saint Helena	1981	0.007328	Africa
 Saint Kitts and Nevis	1981	0.05496	North America
@@ -4815,7 +4815,7 @@ Taiwan	1981	74.567	Asia
 Tajikistan	1981	7.4002	Asia
 Tanzania	1981	2.1068	Africa
 Thailand	1981	37.8168	Asia
-Timor-Leste	1981		Asia
+East Timor	1981		Asia
 Togo	1981	0.7053	Africa
 Tonga	1981	0.047632	Oceania
 Trinidad and Tobago	1981	17.2424	South America
@@ -4828,7 +4828,7 @@ Uganda	1981	0.52734	Africa
 Ukraine	1981	636.1434	Europe
 United Arab Emirates	1981	36.7669	Asia
 United Kingdom	1981	560.555	Europe
-United States of America	1981	4530.3698	North America
+United States	1981	4530.3698	North America
 Uruguay	1981	5.356	South America
 Uzbekistan	1981	112.5003	Asia
 Vanuatu	1981	0.051296	Oceania
@@ -4905,7 +4905,7 @@ Eritrea	1982		Africa
 Estonia	1982	24.6732	Europe
 Ethiopia	1982	1.4739	Africa
 Faeroe Islands	1982	0.458	Europe
-Falkland Islands (Malvinas)	1982		South America
+Falkland Islands	1982		South America
 Fiji	1982	0.83512	Oceania
 Finland	1982	42.9768	Europe
 France	1982	438.0107	Europe
@@ -4999,10 +4999,10 @@ Philippines	1982	34.8385	Asia
 Poland	1982	420.9704	Europe
 Portugal	1982	29.0001	Europe
 Qatar	1982	12.3349	Asia
-Republic of South Sudan	1982	0.31877	Africa
+South Sudan	1982	0.31877	Africa
 Réunion	1982		Africa
 Romania	1982	195.3292	Europe
-Russian Federation	1982	2140.7791	Asia
+Russia	1982	2140.7791	Asia
 Rwanda	1982	0.60822	Africa
 Saint Helena	1982	0.003664	Africa
 Saint Kitts and Nevis	1982	0.065952	North America
@@ -5035,7 +5035,7 @@ Taiwan	1982	74.854	Asia
 Tajikistan	1982	7.54	Asia
 Tanzania	1982	2.1483	Africa
 Thailand	1982	37.6356	Asia
-Timor-Leste	1982		Asia
+East Timor	1982		Asia
 Togo	1982	0.81661	Africa
 Tonga	1982	0.043968	Oceania
 Trinidad and Tobago	1982	18.4052	South America
@@ -5048,7 +5048,7 @@ Uganda	1982	0.5453	Africa
 Ukraine	1982	648.1716	Europe
 United Arab Emirates	1982	36.7528	Asia
 United Kingdom	1982	548.241	Europe
-United States of America	1982	4301.9707	North America
+United States	1982	4301.9707	North America
 Uruguay	1982	4.8538	South America
 Uzbekistan	1982	114.6055	Asia
 Vanuatu	1982	0.051296	Oceania
@@ -5125,7 +5125,7 @@ Eritrea	1983		Africa
 Estonia	1983	25.0327	Europe
 Ethiopia	1983	1.8348	Africa
 Faeroe Islands	1983	0.48731	Europe
-Falkland Islands (Malvinas)	1983		South America
+Falkland Islands	1983		South America
 Fiji	1983	0.70893	Oceania
 Finland	1983	41.4637	Europe
 France	1983	423.9521	Europe
@@ -5219,10 +5219,10 @@ Philippines	1983	35.2391	Asia
 Poland	1983	421.0237	Europe
 Portugal	1983	29.9019	Europe
 Qatar	1983	11.2426	Asia
-Republic of South Sudan	1983	0.32549	Africa
+South Sudan	1983	0.32549	Africa
 Réunion	1983		Africa
 Romania	1983	200.1164	Europe
-Russian Federation	1983	2171.0891	Asia
+Russia	1983	2171.0891	Asia
 Rwanda	1983	0.69616	Africa
 Saint Helena	1983	0.003664	Africa
 Saint Kitts and Nevis	1983	0.051296	North America
@@ -5255,7 +5255,7 @@ Taiwan	1983	82.4673	Asia
 Tajikistan	1983	7.6477	Asia
 Tanzania	1983	2.1963	Africa
 Thailand	1983	42.1173	Asia
-Timor-Leste	1983		Asia
+East Timor	1983		Asia
 Togo	1983	0.62247	Africa
 Tonga	1983	0.047632	Oceania
 Trinidad and Tobago	1983	16.2755	South America
@@ -5268,7 +5268,7 @@ Uganda	1983	0.61448	Africa
 Ukraine	1983	657.2896	Europe
 United Arab Emirates	1983	35.2205	Asia
 United Kingdom	1983	545.4858	Europe
-United States of America	1983	4335.9166	North America
+United States	1983	4335.9166	North America
 Uruguay	1983	3.8035	South America
 Uzbekistan	1983	116.1777	Asia
 Vanuatu	1983	0.05496	Oceania
@@ -5345,7 +5345,7 @@ Eritrea	1984		Africa
 Estonia	1984	25.2632	Europe
 Ethiopia	1984	1.6503	Africa
 Faeroe Islands	1984	0.4983	Europe
-Falkland Islands (Malvinas)	1984		South America
+Falkland Islands	1984		South America
 Fiji	1984	0.57721	Oceania
 Finland	1984	42.1474	Europe
 France	1984	407.301	Europe
@@ -5439,10 +5439,10 @@ Philippines	1984	30.8313	Asia
 Poland	1984	432.4673	Europe
 Portugal	1984	28.794	Europe
 Qatar	1984	12.298	Asia
-Republic of South Sudan	1984	0.2919	Africa
+South Sudan	1984	0.2919	Africa
 Réunion	1984		Africa
 Romania	1984	188.8166	Europe
-Russian Federation	1984	2190.2891	Asia
+Russia	1984	2190.2891	Asia
 Rwanda	1984	0.63387	Africa
 Saint Helena	1984	0.003664	Africa
 Saint Kitts and Nevis	1984	0.051296	North America
@@ -5475,7 +5475,7 @@ Taiwan	1984	84.1395	Asia
 Tajikistan	1984	7.7161	Asia
 Tanzania	1984	2.347	Africa
 Thailand	1984	45.5557	Asia
-Timor-Leste	1984		Asia
+East Timor	1984		Asia
 Togo	1984	0.6933	Africa
 Tonga	1984	0.047632	Oceania
 Trinidad and Tobago	1984	17.5044	South America
@@ -5488,7 +5488,7 @@ Uganda	1984	0.58138	Africa
 Ukraine	1984	663.0675	Europe
 United Arab Emirates	1984	46.1556	Asia
 United Kingdom	1984	529.1089	Europe
-United States of America	1984	4468.262	North America
+United States	1984	4468.262	North America
 Uruguay	1984	3.4382	South America
 Uzbekistan	1984	117.1616	Asia
 Vanuatu	1984	0.05496	Oceania
@@ -5565,7 +5565,7 @@ Eritrea	1985		Africa
 Estonia	1985	27.2464	Europe
 Ethiopia	1985	1.7987	Africa
 Faeroe Islands	1985	0.51662	Europe
-Falkland Islands (Malvinas)	1985		South America
+Falkland Islands	1985		South America
 Fiji	1985	0.57299	Oceania
 Finland	1985	49.5494	Europe
 France	1985	402.4593	Europe
@@ -5659,10 +5659,10 @@ Philippines	1985	27.8991	Asia
 Poland	1985	444.5078	Europe
 Portugal	1985	27.1299	Europe
 Qatar	1985	12.3778	Asia
-Republic of South Sudan	1985	0.33923	Africa
+South Sudan	1985	0.33923	Africa
 Réunion	1985		Africa
 Romania	1985	193.9069	Europe
-Russian Federation	1985	2362.1321	Asia
+Russia	1985	2362.1321	Asia
 Rwanda	1985	0.61555	Africa
 Saint Helena	1985	0.003664	Africa
 Saint Kitts and Nevis	1985	0.051296	North America
@@ -5695,7 +5695,7 @@ Taiwan	1985	83.9175	Asia
 Tajikistan	1985	8.3217	Asia
 Tanzania	1985	2.3379	Africa
 Thailand	1985	48.2304	Asia
-Timor-Leste	1985		Asia
+East Timor	1985		Asia
 Togo	1985	0.65741	Africa
 Tonga	1985	0.047632	Oceania
 Trinidad and Tobago	1985	20.7231	South America
@@ -5708,7 +5708,7 @@ Uganda	1985	0.6179	Africa
 Ukraine	1985	715.1954	Europe
 United Arab Emirates	1985	49.6525	Asia
 United Kingdom	1985	559.6281	Europe
-United States of America	1985	4484.3382	North America
+United States	1985	4484.3382	North America
 Uruguay	1985	3.2838	South America
 Uzbekistan	1985	126.3618	Asia
 Vanuatu	1985	0.12091	Oceania
@@ -5785,7 +5785,7 @@ Eritrea	1986		Africa
 Estonia	1986	27.327	Europe
 Ethiopia	1986	2.1952	Africa
 Faeroe Islands	1986	0.49098	Europe
-Falkland Islands (Malvinas)	1986		South America
+Falkland Islands	1986		South America
 Fiji	1986	0.59809	Oceania
 Finland	1986	53.2147	Europe
 France	1986	387.4211	Europe
@@ -5879,10 +5879,10 @@ Philippines	1986	29.0247	Asia
 Poland	1986	451.8486	Europe
 Portugal	1986	30.2214	Europe
 Qatar	1986	13.267	Asia
-Republic of South Sudan	1986	0.35388	Africa
+South Sudan	1986	0.35388	Africa
 Réunion	1986		Africa
 Romania	1986	201.6413	Europe
-Russian Federation	1986	2368.15	Asia
+Russia	1986	2368.15	Asia
 Rwanda	1986	0.59723	Africa
 Saint Helena	1986	0.003664	Africa
 Saint Kitts and Nevis	1986	0.058624	North America
@@ -5915,7 +5915,7 @@ Taiwan	1986	93.411	Asia
 Tajikistan	1986	8.3434	Asia
 Tanzania	1986	2.2776	Africa
 Thailand	1986	49.2234	Asia
-Timor-Leste	1986		Asia
+East Timor	1986		Asia
 Togo	1986	0.84583	Africa
 Tonga	1986	0.047632	Oceania
 Trinidad and Tobago	1986	17.3548	South America
@@ -5928,7 +5928,7 @@ Uganda	1986	0.70253	Africa
 Ukraine	1986	716.9314	Europe
 United Arab Emirates	1986	47.0301	Asia
 United Kingdom	1986	568.5548	Europe
-United States of America	1986	4487.8558	North America
+United States	1986	4487.8558	North America
 Uruguay	1986	3.1649	South America
 Uzbekistan	1986	126.6134	Asia
 Vanuatu	1986	0.058624	Oceania
@@ -6005,7 +6005,7 @@ Eritrea	1987		Africa
 Estonia	1987	28.4808	Europe
 Ethiopia	1987	2.5544	Africa
 Faeroe Islands	1987	0.4983	Europe
-Falkland Islands (Malvinas)	1987		South America
+Falkland Islands	1987		South America
 Fiji	1987	0.472	Oceania
 Finland	1987	57.5337	Europe
 France	1987	379.6927	Europe
@@ -6099,10 +6099,10 @@ Philippines	1987	32.4958	Asia
 Poland	1987	463.7326	Europe
 Portugal	1987	31.1986	Europe
 Qatar	1987	11.4705	Asia
-Republic of South Sudan	1987	0.27907	Africa
+South Sudan	1987	0.27907	Africa
 Réunion	1987		Africa
 Romania	1987	211.6316	Europe
-Russian Federation	1987	2467.7245	Asia
+Russia	1987	2467.7245	Asia
 Rwanda	1987	0.61085	Africa
 Saint Helena	1987	0.003664	Africa
 Saint Kitts and Nevis	1987	0.05496	North America
@@ -6135,7 +6135,7 @@ Taiwan	1987	97.1234	Asia
 Tajikistan	1987	8.6942	Asia
 Tanzania	1987	2.3675	Africa
 Thailand	1987	56.3062	Asia
-Timor-Leste	1987		Asia
+East Timor	1987		Asia
 Togo	1987	0.92262	Africa
 Tonga	1987	0.05496	Oceania
 Trinidad and Tobago	1987	17.4891	South America
@@ -6148,7 +6148,7 @@ Uganda	1987	0.76892	Africa
 Ukraine	1987	747.0925	Europe
 United Arab Emirates	1987	47.4504	Asia
 United Kingdom	1987	571.6685	Europe
-United States of America	1987	4680.8341	North America
+United States	1987	4680.8341	North America
 Uruguay	1987	3.5425	South America
 Uzbekistan	1987	131.9068	Asia
 Vanuatu	1987	0.047632	Oceania
@@ -6225,7 +6225,7 @@ Eritrea	1988		Africa
 Estonia	1988	29.2669	Europe
 Ethiopia	1988	2.6401	Africa
 Faeroe Islands	1988	0.52762	Europe
-Falkland Islands (Malvinas)	1988		South America
+Falkland Islands	1988		South America
 Fiji	1988	0.54977	Oceania
 Finland	1988	52.0584	Europe
 France	1988	374.6584	Europe
@@ -6319,10 +6319,10 @@ Philippines	1988	37.4847	Asia
 Poland	1988	444.2299	Europe
 Portugal	1988	32.5679	Europe
 Qatar	1988	11.8977	Asia
-Republic of South Sudan	1988	0.40365	Africa
+South Sudan	1988	0.40365	Africa
 Réunion	1988		Africa
 Romania	1988	212.2216	Europe
-Russian Federation	1988	2535.2876	Asia
+Russia	1988	2535.2876	Asia
 Rwanda	1988	0.69165	Africa
 Saint Helena	1988	0.007328	Africa
 Saint Kitts and Nevis	1988	0.065952	North America
@@ -6355,7 +6355,7 @@ Taiwan	1988	111.8179	Asia
 Tajikistan	1988	8.9323	Asia
 Tanzania	1988	2.2717	Africa
 Thailand	1988	66.2029	Asia
-Timor-Leste	1988		Asia
+East Timor	1988		Asia
 Togo	1988	0.96091	Africa
 Tonga	1988	0.069616	Oceania
 Trinidad and Tobago	1988	15.8331	South America
@@ -6368,7 +6368,7 @@ Uganda	1988	0.86358	Africa
 Ukraine	1988	767.5397	Europe
 United Arab Emirates	1988	48.0956	Asia
 United Kingdom	1988	570.2949	Europe
-United States of America	1988	4885.5905	North America
+United States	1988	4885.5905	North America
 Uruguay	1988	4.786	South America
 Uzbekistan	1988	135.4778	Asia
 Vanuatu	1988	0.065952	Oceania
@@ -6445,7 +6445,7 @@ Eritrea	1989		Africa
 Estonia	1989	28.6605	Europe
 Ethiopia	1989	2.7941	Africa
 Faeroe Islands	1989	0.57891	Europe
-Falkland Islands (Malvinas)	1989		South America
+Falkland Islands	1989		South America
 Fiji	1989	0.6252	Oceania
 Finland	1989	52.4483	Europe
 France	1989	392.9411	Europe
@@ -6539,10 +6539,10 @@ Philippines	1989	38.9065	Asia
 Poland	1989	422.1751	Europe
 Portugal	1989	40.8226	Europe
 Qatar	1989	14.2924	Asia
-Republic of South Sudan	1989	0.31297	Africa
+South Sudan	1989	0.31297	Africa
 Réunion	1989		Africa
 Romania	1989	213.5994	Europe
-Russian Federation	1989	2481.7172	Asia
+Russia	1989	2481.7172	Asia
 Rwanda	1989	0.68339	Africa
 Saint Helena	1989	0.007328	Africa
 Saint Kitts and Nevis	1989	0.065952	North America
@@ -6575,7 +6575,7 @@ Taiwan	1989	121.6921	Asia
 Tajikistan	1989	8.7441	Asia
 Tanzania	1989	2.1616	Africa
 Thailand	1989	77.7842	Asia
-Timor-Leste	1989		Asia
+East Timor	1989		Asia
 Togo	1989	1.0214	Africa
 Tonga	1989	0.069616	Oceania
 Trinidad and Tobago	1989	16.105	South America
@@ -6588,7 +6588,7 @@ Uganda	1989	0.80121	Africa
 Ukraine	1989	751.2363	Europe
 United Arab Emirates	1989	54.1861	Asia
 United Kingdom	1989	581.5773	Europe
-United States of America	1989	4948.0212	North America
+United States	1989	4948.0212	North America
 Uruguay	1989	4.8526	South America
 Uzbekistan	1989	132.5396	Asia
 Vanuatu	1989	0.062288	Oceania
@@ -6665,7 +6665,7 @@ Eritrea	1990		Africa
 Estonia	1990	37.069	Europe
 Ethiopia	1990	2.9858	Africa
 Faeroe Islands	1990	0.71082	Europe
-Falkland Islands (Malvinas)	1990		South America
+Falkland Islands	1990		South America
 Fiji	1990	0.80606	Oceania
 Finland	1990	56.967	Europe
 France	1990	403.1017	Europe
@@ -6759,10 +6759,10 @@ Philippines	1990	41.3495	Asia
 Poland	1990	376.0387	Europe
 Portugal	1990	45.5791	Europe
 Qatar	1990	11.7437	Asia
-Republic of South Sudan	1990	0.43479	Africa
+South Sudan	1990	0.43479	Africa
 Réunion	1990		Africa
 Romania	1990	171.2318	Europe
-Russian Federation	1990	2571.2107	Asia
+Russia	1990	2571.2107	Asia
 Rwanda	1990	0.53711	Africa
 Saint Helena	1990	0.007328	Africa
 Saint Kitts and Nevis	1990	0.10626	North America
@@ -6795,7 +6795,7 @@ Taiwan	1990	121.9053	Asia
 Tajikistan	1990	8.1971	Asia
 Tanzania	1990	2.2172	Africa
 Thailand	1990	89.3901	Asia
-Timor-Leste	1990		Asia
+East Timor	1990		Asia
 Togo	1990	0.97267	Africa
 Tonga	1990	0.076944	Oceania
 Trinidad and Tobago	1990	16.9825	South America
@@ -6808,7 +6808,7 @@ Uganda	1990	0.75587	Africa
 Ukraine	1990	705.8322	Europe
 United Arab Emirates	1990	51.7026	Asia
 United Kingdom	1990	601.0676	Europe
-United States of America	1990	5121.2645	North America
+United States	1990	5121.2645	North America
 Uruguay	1990	3.9671	South America
 Uzbekistan	1990	124.1543	Asia
 Vanuatu	1990	0.065952	Oceania
@@ -6885,7 +6885,7 @@ Eritrea	1991		Africa
 Estonia	1991	34.0377	Europe
 Ethiopia	1991	2.9571	Africa
 Faeroe Islands	1991	0.66685	Europe
-Falkland Islands (Malvinas)	1991		South America
+Falkland Islands	1991		South America
 Fiji	1991	0.66312	Oceania
 Finland	1991	55.2253	Europe
 France	1991	428.6495	Europe
@@ -6979,10 +6979,10 @@ Philippines	1991	43.4712	Asia
 Poland	1991	373.3782	Europe
 Portugal	1991	47.2062	Europe
 Qatar	1991	17.6453	Asia
-Republic of South Sudan	1991	0.40731	Africa
+South Sudan	1991	0.40731	Africa
 Réunion	1991		Africa
 Romania	1991	140.9668	Europe
-Russian Federation	1991	2437.0381	Asia
+Russia	1991	2437.0381	Asia
 Rwanda	1991	0.48211	Africa
 Saint Helena	1991	0.007328	Africa
 Saint Kitts and Nevis	1991	0.10626	North America
@@ -7015,7 +7015,7 @@ Taiwan	1991	133.0049	Asia
 Tajikistan	1991	7.9037	Asia
 Tanzania	1991	2.3488	Africa
 Thailand	1991	98.3656	Asia
-Timor-Leste	1991		Asia
+East Timor	1991		Asia
 Togo	1991	1.0485	Africa
 Tonga	1991	0.095264	Oceania
 Trinidad and Tobago	1991	16.9683	South America
@@ -7028,7 +7028,7 @@ Uganda	1991	0.77588	Africa
 Ukraine	1991	632.5388	Europe
 United Arab Emirates	1991	56.6723	Asia
 United Kingdom	1991	609.0204	Europe
-United States of America	1991	5070.8394	North America
+United States	1991	5070.8394	North America
 Uruguay	1991	4.5275	South America
 Uzbekistan	1991	119.8753	Asia
 Vanuatu	1991	0.065952	Oceania
@@ -7105,7 +7105,7 @@ Eritrea	1992		Africa
 Estonia	1992	24.5146	Europe
 Ethiopia	1992	2.9373	Africa
 Faeroe Islands	1992	0.64853	Europe
-Falkland Islands (Malvinas)	1992		South America
+Falkland Islands	1992		South America
 Fiji	1992	0.74003	Oceania
 Finland	1992	54.2805	Europe
 France	1992	418.4452	Europe
@@ -7199,10 +7199,10 @@ Philippines	1992	48.2938	Asia
 Poland	1992	363.7189	Europe
 Portugal	1992	51.4585	Europe
 Qatar	1992	26.7327	Asia
-Republic of South Sudan	1992	0.36457	Africa
+South Sudan	1992	0.36457	Africa
 Réunion	1992		Africa
 Romania	1992	130.286	Europe
-Russian Federation	1992	1993.2176	Asia
+Russia	1992	1993.2176	Asia
 Rwanda	1992	0.48207	Africa
 Saint Helena	1992	0.007328	Africa
 Saint Kitts and Nevis	1992	0.10992	North America
@@ -7235,7 +7235,7 @@ Taiwan	1992	143.3457	Asia
 Tajikistan	1992	7.2946	Asia
 Tanzania	1992	2.2752	Africa
 Thailand	1992	108.0767	Asia
-Timor-Leste	1992		Asia
+East Timor	1992		Asia
 Togo	1992	1.0307	Africa
 Tonga	1992	0.069616	Oceania
 Trinidad and Tobago	1992	19.1042	South America
@@ -7248,7 +7248,7 @@ Uganda	1992	0.78318	Africa
 Ukraine	1992	589.0622	Europe
 United Arab Emirates	1992	57.7577	Asia
 United Kingdom	1992	593.5041	Europe
-United States of America	1992	5174.0591	North America
+United States	1992	5174.0591	North America
 Uruguay	1992	5.1429	South America
 Uzbekistan	1992	111.2702	Asia
 Vanuatu	1992	0.062288	Oceania
@@ -7325,7 +7325,7 @@ Eritrea	1993		Africa
 Estonia	1993	19.066	Europe
 Ethiopia	1993	2.9948	Africa
 Faeroe Islands	1993	0.58258	Europe
-Falkland Islands (Malvinas)	1993		South America
+Falkland Islands	1993		South America
 Fiji	1993	0.74366	Oceania
 Finland	1993	56.3485	Europe
 France	1993	398.6448	Europe
@@ -7419,10 +7419,10 @@ Philippines	1993	48.9292	Asia
 Poland	1993	364.5653	Europe
 Portugal	1993	50.07	Europe
 Qatar	1993	30.6479	Asia
-Republic of South Sudan	1993	0.25159	Africa
+South Sudan	1993	0.25159	Africa
 Réunion	1993		Africa
 Romania	1993	121.6272	Europe
-Russian Federation	1993	1890.935	Asia
+Russia	1993	1890.935	Asia
 Rwanda	1993	0.48937	Africa
 Saint Helena	1993	0.010992	Africa
 Saint Kitts and Nevis	1993	0.11358	North America
@@ -7455,7 +7455,7 @@ Taiwan	1993	154.8355	Asia
 Tajikistan	1993	5.1614	Asia
 Tanzania	1993	2.546	Africa
 Thailand	1993	122.8659	Asia
-Timor-Leste	1993		Asia
+East Timor	1993		Asia
 Togo	1993	1.0689	Africa
 Tonga	1993	0.084272	Oceania
 Trinidad and Tobago	1993	17.9211	South America
@@ -7468,7 +7468,7 @@ Uganda	1993	0.77582	Africa
 Ukraine	1993	510.2014	Europe
 United Arab Emirates	1993	65.5654	Asia
 United Kingdom	1993	579.4028	Europe
-United States of America	1993	5284.6879	North America
+United States	1993	5284.6879	North America
 Uruguay	1993	4.4392	South America
 Uzbekistan	1993	115.8664	Asia
 Vanuatu	1993	0.062288	Oceania
@@ -7545,7 +7545,7 @@ Eritrea	1994	0.86072	Africa
 Estonia	1994	19.901	Europe
 Ethiopia	1994	2.1969	Africa
 Faeroe Islands	1994	0.57525	Europe
-Falkland Islands (Malvinas)	1994		South America
+Falkland Islands	1994		South America
 Fiji	1994	0.7386	Oceania
 Finland	1994	61.7116	Europe
 France	1994	393.3949	Europe
@@ -7639,10 +7639,10 @@ Philippines	1994	54.1233	Asia
 Poland	1994	359.6111	Europe
 Portugal	1994	50.8204	Europe
 Qatar	1994	30.1548	Asia
-Republic of South Sudan	1994	0.34533	Africa
+South Sudan	1994	0.34533	Africa
 Réunion	1994		Africa
 Romania	1994	119.6707	Europe
-Russian Federation	1994	1669.6371	Asia
+Russia	1994	1669.6371	Asia
 Rwanda	1994	0.47199	Africa
 Saint Helena	1994	0.010992	Africa
 Saint Kitts and Nevis	1994	0.12091	North America
@@ -7675,7 +7675,7 @@ Taiwan	1994	161.8216	Asia
 Tajikistan	1994	2.3474	Asia
 Tanzania	1994	2.375	Africa
 Thailand	1994	136.8442	Asia
-Timor-Leste	1994		Asia
+East Timor	1994		Asia
 Togo	1994	1.0049	Africa
 Tonga	1994	0.0916	Oceania
 Trinidad and Tobago	1994	17.386	South America
@@ -7688,7 +7688,7 @@ Uganda	1994	0.70383	Africa
 Ukraine	1994	419.2676	Europe
 United Arab Emirates	1994	72.6046	Asia
 United Kingdom	1994	575.6574	Europe
-United States of America	1994	5377.9871	North America
+United States	1994	5377.9871	North America
 Uruguay	1994	4.0299	South America
 Uzbekistan	1994	108.2841	Asia
 Vanuatu	1994	0.062288	Oceania
@@ -7765,7 +7765,7 @@ Eritrea	1995	0.92964	Africa
 Estonia	1995	18.204	Europe
 Ethiopia	1995	2.5057	Africa
 Faeroe Islands	1995	0.57158	Europe
-Falkland Islands (Malvinas)	1995		South America
+Falkland Islands	1995		South America
 Fiji	1995	0.75389	Oceania
 Finland	1995	58.1416	Europe
 France	1995	400.5639	Europe
@@ -7859,10 +7859,10 @@ Philippines	1995	59.9487	Asia
 Poland	1995	361.3039	Europe
 Portugal	1995	54.7909	Europe
 Qatar	1995	31.7171	Asia
-Republic of South Sudan	1995	0.35785	Africa
+South Sudan	1995	0.35785	Africa
 Réunion	1995		Africa
 Romania	1995	124.8369	Europe
-Russian Federation	1995	1640.2632	Asia
+Russia	1995	1640.2632	Asia
 Rwanda	1995	0.461	Africa
 Saint Helena	1995	0.010992	Africa
 Saint Kitts and Nevis	1995	0.12824	North America
@@ -7895,7 +7895,7 @@ Taiwan	1995	172.1115	Asia
 Tajikistan	1995	2.4429	Asia
 Tanzania	1995	3.4963	Africa
 Thailand	1995	158.4571	Asia
-Timor-Leste	1995		Asia
+East Timor	1995		Asia
 Togo	1995	1.1747	Africa
 Tonga	1995	0.095264	Oceania
 Trinidad and Tobago	1995	16.9695	South America
@@ -7908,7 +7908,7 @@ Uganda	1995	0.92996	Africa
 Ukraine	1995	389.8658	Europe
 United Arab Emirates	1995	70.0127	Asia
 United Kingdom	1995	566.8341	Europe
-United States of America	1995	5439.2133	North America
+United States	1995	5439.2133	North America
 Uruguay	1995	4.5585	South America
 Uzbekistan	1995	103.2023	Asia
 Vanuatu	1995	0.065952	Oceania
@@ -7985,7 +7985,7 @@ Eritrea	1996	1.0072	Africa
 Estonia	1996	18.9254	Europe
 Ethiopia	1996	2.7947	Africa
 Faeroe Islands	1996	0.6009	Europe
-Falkland Islands (Malvinas)	1996		South America
+Falkland Islands	1996		South America
 Fiji	1996	0.81317	Oceania
 Finland	1996	64.0584	Europe
 France	1996	416.1896	Europe
@@ -8079,10 +8079,10 @@ Philippines	1996	61.2537	Asia
 Poland	1996	375.3046	Europe
 Portugal	1996	52.0981	Europe
 Qatar	1996	32.2038	Asia
-Republic of South Sudan	1996	0.36915	Africa
+South Sudan	1996	0.36915	Africa
 Réunion	1996		Africa
 Romania	1996	128.2776	Europe
-Russian Federation	1996	1606.949	Asia
+Russia	1996	1606.949	Asia
 Rwanda	1996	0.47595	Africa
 Saint Helena	1996	0.010992	Africa
 Saint Kitts and Nevis	1996	0.1319	North America
@@ -8115,7 +8115,7 @@ Taiwan	1996	180.3419	Asia
 Tajikistan	1996	2.8225	Asia
 Tanzania	1996	3.3922	Africa
 Thailand	1996	177.2644	Asia
-Timor-Leste	1996		Asia
+East Timor	1996		Asia
 Togo	1996	1.2652	Africa
 Tonga	1996	0.076944	Oceania
 Trinidad and Tobago	1996	20.5301	South America
@@ -8128,7 +8128,7 @@ Uganda	1996	1.036	Africa
 Ukraine	1996	351.4099	Europe
 United Arab Emirates	1996	40.429	Asia
 United Kingdom	1996	588.4935	Europe
-United States of America	1996	5626.1867	North America
+United States	1996	5626.1867	North America
 Uruguay	1996	5.4044	South America
 Uzbekistan	1996	105.8721	Asia
 Vanuatu	1996	0.084272	Oceania
@@ -8205,7 +8205,7 @@ Eritrea	1997	0.85928	Africa
 Estonia	1997	18.4823	Europe
 Ethiopia	1997	2.9793	Africa
 Faeroe Islands	1997	0.5899	Europe
-Falkland Islands (Malvinas)	1997		South America
+Falkland Islands	1997		South America
 Fiji	1997	0.78244	Oceania
 Finland	1997	62.7183	Europe
 France	1997	409.4499	Europe
@@ -8299,10 +8299,10 @@ Philippines	1997	70.0626	Asia
 Poland	1997	366.5701	Europe
 Portugal	1997	55.1088	Europe
 Qatar	1997	37.3935	Asia
-Republic of South Sudan	1997	0.45128	Africa
+South Sudan	1997	0.45128	Africa
 Réunion	1997		Africa
 Romania	1997	119.2659	Europe
-Russian Federation	1997	1502.1374	Asia
+Russia	1997	1502.1374	Asia
 Rwanda	1997	0.49288	Africa
 Saint Helena	1997	0.010992	Africa
 Saint Kitts and Nevis	1997	0.1429	North America
@@ -8335,7 +8335,7 @@ Taiwan	1997	194.3045	Asia
 Tajikistan	1997	2.1489	Asia
 Tanzania	1997	2.823	Africa
 Thailand	1997	183.0459	Asia
-Timor-Leste	1997		Asia
+East Timor	1997		Asia
 Togo	1997	0.87899	Africa
 Tonga	1997	0.098928	Oceania
 Trinidad and Tobago	1997	18.3325	South America
@@ -8348,7 +8348,7 @@ Uganda	1997	1.0801	Africa
 Ukraine	1997	340.2438	Europe
 United Arab Emirates	1997	41.0737	Asia
 United Kingdom	1997	562.4847	Europe
-United States of America	1997	5703.8907	North America
+United States	1997	5703.8907	North America
 Uruguay	1997	5.5131	South America
 Uzbekistan	1997	107.0033	Asia
 Vanuatu	1997	0.084272	Oceania
@@ -8425,7 +8425,7 @@ Eritrea	1998	0.58581	Africa
 Estonia	1998	16.9096	Europe
 Ethiopia	1998	3.1474	Africa
 Faeroe Islands	1998	0.62288	Europe
-Falkland Islands (Malvinas)	1998		South America
+Falkland Islands	1998		South America
 Fiji	1998	0.7611	Oceania
 Finland	1998	59.3751	Europe
 France	1998	429.789	Europe
@@ -8519,10 +8519,10 @@ Philippines	1998	68.253	Asia
 Poland	1998	337.3415	Europe
 Portugal	1998	59.5976	Europe
 Qatar	1998	32.271	Asia
-Republic of South Sudan	1998	0.39113	Africa
+South Sudan	1998	0.39113	Africa
 Réunion	1998		Africa
 Romania	1998	104.7557	Europe
-Russian Federation	1998	1484.8522	Asia
+Russia	1998	1484.8522	Asia
 Rwanda	1998	0.48185	Africa
 Saint Helena	1998	0.010992	Africa
 Saint Kitts and Nevis	1998	0.15022	North America
@@ -8555,7 +8555,7 @@ Taiwan	1998	197.8532	Asia
 Tajikistan	1998	2.4944	Asia
 Tanzania	1998	2.4815	Africa
 Thailand	1998	162.5516	Asia
-Timor-Leste	1998		Asia
+East Timor	1998		Asia
 Togo	1998	1.29	Africa
 Tonga	1998	0.087936	Oceania
 Trinidad and Tobago	1998	19.0586	South America
@@ -8568,7 +8568,7 @@ Uganda	1998	1.2341	Africa
 Ukraine	1998	321.0672	Europe
 United Arab Emirates	1998	80.6825	Asia
 United Kingdom	1998	567.4862	Europe
-United States of America	1998	5752.3242	North America
+United States	1998	5752.3242	North America
 Uruguay	1998	5.6401	South America
 Uzbekistan	1998	118.946	Asia
 Vanuatu	1998	0.080608	Oceania
@@ -8645,7 +8645,7 @@ Eritrea	1999	0.6151	Africa
 Estonia	1999	15.7271	Europe
 Ethiopia	1999	3.095	Africa
 Faeroe Islands	1999	0.63021	Europe
-Falkland Islands (Malvinas)	1999		South America
+Falkland Islands	1999		South America
 Fiji	1999	0.77502	Oceania
 Finland	1999	58.8983	Europe
 France	1999	425.6747	Europe
@@ -8739,10 +8739,10 @@ Philippines	1999	68.1766	Asia
 Poland	1999	327.6524	Europe
 Portugal	1999	67.2235	Europe
 Qatar	1999	31.2711	Asia
-Republic of South Sudan	1999	0.42411	Africa
+South Sudan	1999	0.42411	Africa
 Réunion	1999		Africa
 Romania	1999	88.6823	Europe
-Russian Federation	1999	1512.9847	Asia
+Russia	1999	1512.9847	Asia
 Rwanda	1999	0.50311	Africa
 Saint Helena	1999	0.010992	Africa
 Saint Kitts and Nevis	1999	0.16122	North America
@@ -8775,7 +8775,7 @@ Taiwan	1999	205.2223	Asia
 Tajikistan	1999	2.5155	Asia
 Tanzania	1999	2.4579	Africa
 Thailand	1999	174.131	Asia
-Timor-Leste	1999		Asia
+East Timor	1999		Asia
 Togo	1999	1.8504	Africa
 Tonga	1999	0.10992	Oceania
 Trinidad and Tobago	1999	22.4768	South America
@@ -8788,7 +8788,7 @@ Uganda	1999	1.2794	Africa
 Ukraine	1999	292.3113	Europe
 United Arab Emirates	1999	77.5427	Asia
 United Kingdom	1999	560.5053	Europe
-United States of America	1999	5832.2502	North America
+United States	1999	5832.2502	North America
 Uruguay	1999	6.681	South America
 Uzbekistan	1999	122.2045	Asia
 Vanuatu	1999	0.084272	Oceania
@@ -8865,7 +8865,7 @@ Eritrea	2000	0.60408	Africa
 Estonia	2000	15.3622	Europe
 Ethiopia	2000	3.4638	Africa
 Faeroe Islands	2000	0.68883	Europe
-Falkland Islands (Malvinas)	2000		South America
+Falkland Islands	2000		South America
 Fiji	2000	0.8336	Oceania
 Finland	2000	57.0415	Europe
 France	2000	420.6527	Europe
@@ -8959,10 +8959,10 @@ Philippines	2000	72.3464	Asia
 Poland	2000	317.0973	Europe
 Portugal	2000	66.0443	Europe
 Qatar	2000	34.5662	Asia
-Republic of South Sudan	2000	0.46075	Africa
+South Sudan	2000	0.46075	Africa
 Réunion	2000		Africa
 Romania	2000	93.5384	Europe
-Russian Federation	2000	1499.6162	Asia
+Russia	2000	1499.6162	Asia
 Rwanda	2000	0.5207	Africa
 Saint Helena	2000	0.010992	Africa
 Saint Kitts and Nevis	2000	0.17221	North America
@@ -8995,7 +8995,7 @@ Taiwan	2000	217.1857	Asia
 Tajikistan	2000	2.2321	Asia
 Tanzania	2000	2.5709	Africa
 Thailand	2000	179.264	Asia
-Timor-Leste	2000		Asia
+East Timor	2000		Asia
 Togo	2000	1.3314	Africa
 Tonga	2000	0.095264	Oceania
 Trinidad and Tobago	2000	23.7661	South America
@@ -9008,7 +9008,7 @@ Uganda	2000	1.3944	Africa
 Ukraine	2000	279.5378	Europe
 United Arab Emirates	2000	111.7881	Asia
 United Kingdom	2000	567.0615	Europe
-United States of America	2000	6000.6061	North America
+United States	2000	6000.6061	North America
 Uruguay	2000	5.2672	South America
 Uzbekistan	2000	121.4556	Asia
 Vanuatu	2000	0.084272	Oceania
@@ -9085,7 +9085,7 @@ Eritrea	2001	0.62599	Africa
 Estonia	2001	15.7079	Europe
 Ethiopia	2001	4.2634	Africa
 Faeroe Islands	2001	0.76211	Europe
-Falkland Islands (Malvinas)	2001		South America
+Falkland Islands	2001		South America
 Fiji	2001	1.046	Oceania
 Finland	2001	62.5393	Europe
 France	2001	425.8825	Europe
@@ -9179,10 +9179,10 @@ Philippines	2001	70.3046	Asia
 Poland	2001	313.5457	Europe
 Portugal	2001	65.7042	Europe
 Qatar	2001	41.2145	Asia
-Republic of South Sudan	2001	0.53036	Africa
+South Sudan	2001	0.53036	Africa
 Réunion	2001		Africa
 Romania	2001	98.8771	Europe
-Russian Federation	2001	1538.2444	Asia
+Russia	2001	1538.2444	Asia
 Rwanda	2001	0.52284	Africa
 Saint Helena	2001	0.010992	Africa
 Saint Kitts and Nevis	2001	0.17587	North America
@@ -9215,7 +9215,7 @@ Taiwan	2001	226.2105	Asia
 Tajikistan	2001	2.2855	Asia
 Tanzania	2001	3.0396	Africa
 Thailand	2001	192.3773	Asia
-Timor-Leste	2001		Asia
+East Timor	2001		Asia
 Togo	2001	1.1589	Africa
 Tonga	2001	0.087936	Oceania
 Trinidad and Tobago	2001	26.2806	South America
@@ -9228,7 +9228,7 @@ Uganda	2001	1.4681	Africa
 Ukraine	2001	301.3007	Europe
 United Arab Emirates	2001	100.6029	Asia
 United Kingdom	2001	575.9275	Europe
-United States of America	2001	5902.455	North America
+United States	2001	5902.455	North America
 Uruguay	2001	5.0306	South America
 Uzbekistan	2001	123.0407	Asia
 Vanuatu	2001	0.087936	Oceania
@@ -9305,7 +9305,7 @@ Eritrea	2002	0.60027	Africa
 Estonia	2002	15.2333	Europe
 Ethiopia	2002	4.4305	Africa
 Faeroe Islands	2002	0.72547	Europe
-Falkland Islands (Malvinas)	2002		South America
+Falkland Islands	2002		South America
 Fiji	2002	0.87945	Oceania
 Finland	2002	65.0618	Europe
 France	2002	420.9195	Europe
@@ -9399,10 +9399,10 @@ Philippines	2002	70.1551	Asia
 Poland	2002	305.7305	Europe
 Portugal	2002	69.5567	Europe
 Qatar	2002	40.7019	Asia
-Republic of South Sudan	2002	0.67601	Africa
+South Sudan	2002	0.67601	Africa
 Réunion	2002		Africa
 Romania	2002	99.1519	Europe
-Russian Federation	2002	1528.9617	Asia
+Russia	2002	1528.9617	Asia
 Rwanda	2002	0.52127	Africa
 Saint Helena	2002	0.010992	Africa
 Saint Kitts and Nevis	2002	0.19786	North America
@@ -9435,7 +9435,7 @@ Taiwan	2002	235.7338	Asia
 Tajikistan	2002	1.8729	Asia
 Tanzania	2002	3.487	Africa
 Thailand	2002	205.776	Asia
-Timor-Leste	2002	0.16122	Asia
+East Timor	2002	0.16122	Asia
 Togo	2002	1.3225	Africa
 Tonga	2002	0.10259	Oceania
 Trinidad and Tobago	2002	28.5393	South America
@@ -9448,7 +9448,7 @@ Uganda	2002	1.5079	Africa
 Ukraine	2002	294.2	Europe
 United Arab Emirates	2002	83.7456	Asia
 United Kingdom	2002	560.041	Europe
-United States of America	2002	5943.6513	North America
+United States	2002	5943.6513	North America
 Uruguay	2002	4.5577	South America
 Uzbekistan	2002	127.9434	Asia
 Vanuatu	2002	0.084272	Oceania
@@ -9525,7 +9525,7 @@ Eritrea	2003	0.72111	Africa
 Estonia	2003	17.0872	Europe
 Ethiopia	2003	4.8711	Africa
 Faeroe Islands	2003	0.7328	Europe
-Falkland Islands (Malvinas)	2003		South America
+Falkland Islands	2003		South America
 Fiji	2003	1.0361	Oceania
 Finland	2003	72.6584	Europe
 France	2003	428.0028	Europe
@@ -9619,10 +9619,10 @@ Philippines	2003	70.2147	Asia
 Poland	2003	318.4156	Europe
 Portugal	2003	64.4372	Europe
 Qatar	2003	41.2994	Asia
-Republic of South Sudan	2003	0.75539	Africa
+South Sudan	2003	0.75539	Africa
 Réunion	2003		Africa
 Romania	2003	103.5767	Europe
-Russian Federation	2003	1562.4724	Asia
+Russia	2003	1562.4724	Asia
 Rwanda	2003	0.51011	Africa
 Saint Helena	2003	0.010992	Africa
 Saint Kitts and Nevis	2003	0.19786	North America
@@ -9655,7 +9655,7 @@ Taiwan	2003	244.5065	Asia
 Tajikistan	2003	2.0622	Asia
 Tanzania	2003	3.6862	Africa
 Thailand	2003	221.9164	Asia
-Timor-Leste	2003	0.16122	Asia
+East Timor	2003	0.16122	Asia
 Togo	2003	1.8047	Africa
 Tonga	2003	0.11725	Oceania
 Trinidad and Tobago	2003	31.8987	South America
@@ -9668,7 +9668,7 @@ Uganda	2003	1.5474	Africa
 Ukraine	2003	305.1834	Europe
 United Arab Emirates	2003	105.6771	Asia
 United Kingdom	2003	571.601	Europe
-United States of America	2003	5991.3196	North America
+United States	2003	5991.3196	North America
 Uruguay	2003	4.5278	South America
 Uzbekistan	2003	126.438	Asia
 Vanuatu	2003	0.084272	Oceania
@@ -9745,7 +9745,7 @@ Eritrea	2004	0.76501	Africa
 Estonia	2004	17.2866	Europe
 Ethiopia	2004	5.1586	Africa
 Faeroe Islands	2004	0.74746	Europe
-Falkland Islands (Malvinas)	2004		South America
+Falkland Islands	2004		South America
 Fiji	2004	1.34	Oceania
 Finland	2004	68.9616	Europe
 France	2004	428.9277	Europe
@@ -9839,10 +9839,10 @@ Philippines	2004	72.7708	Asia
 Poland	2004	322.5389	Europe
 Portugal	2004	67.2205	Europe
 Qatar	2004	42.7103	Asia
-Republic of South Sudan	2004	0.95447	Africa
+South Sudan	2004	0.95447	Africa
 Réunion	2004		Africa
 Romania	2004	102.8744	Europe
-Russian Federation	2004	1570.8642	Asia
+Russia	2004	1570.8642	Asia
 Rwanda	2004	0.51728	Africa
 Saint Helena	2004	0.010992	Africa
 Saint Kitts and Nevis	2004	0.21251	North America
@@ -9875,7 +9875,7 @@ Taiwan	2004	258.4556	Asia
 Tajikistan	2004	2.5473	Asia
 Tanzania	2004	4.2317	Africa
 Thailand	2004	240.2417	Asia
-Timor-Leste	2004	0.17587	Asia
+East Timor	2004	0.17587	Asia
 Togo	2004	1.7439	Africa
 Tonga	2004	0.10992	Oceania
 Trinidad and Tobago	2004	33.34	South America
@@ -9888,7 +9888,7 @@ Uganda	2004	1.6806	Africa
 Ukraine	2004	306.2554	Europe
 United Arab Emirates	2004	111.8675	Asia
 United Kingdom	2004	573.2038	Europe
-United States of America	2004	6106.6207	North America
+United States	2004	6106.6207	North America
 Uruguay	2004	5.5638	South America
 Uzbekistan	2004	125.7191	Asia
 Vanuatu	2004	0.058624	Oceania
@@ -9965,7 +9965,7 @@ Eritrea	2005	0.76127	Africa
 Estonia	2005	17.1363	Europe
 Ethiopia	2005	4.9551	Africa
 Faeroe Islands	2005	0.72181	Europe
-Falkland Islands (Malvinas)	2005		South America
+Falkland Islands	2005		South America
 Fiji	2005	1.081	Oceania
 Finland	2005	57.045	Europe
 France	2005	432.6393	Europe
@@ -10059,10 +10059,10 @@ Philippines	2005	73.2713	Asia
 Poland	2005	321.6688	Europe
 Portugal	2005	69.4974	Europe
 Qatar	2005	50.6901	Asia
-Republic of South Sudan	2005	0.91447	Africa
+South Sudan	2005	0.91447	Africa
 Réunion	2005		Africa
 Romania	2005	100.9666	Europe
-Russian Federation	2005	1588.6629	Asia
+Russia	2005	1588.6629	Asia
 Rwanda	2005	0.51711	Africa
 Saint Helena	2005	0.010992	Africa
 Saint Kitts and Nevis	2005	0.19786	North America
@@ -10095,7 +10095,7 @@ Taiwan	2005	257.1081	Asia
 Tajikistan	2005	2.4212	Asia
 Tanzania	2005	5.3601	Africa
 Thailand	2005	244.3039	Asia
-Timor-Leste	2005	0.17587	Asia
+East Timor	2005	0.17587	Asia
 Togo	2005	1.7216	Africa
 Tonga	2005	0.11358	Oceania
 Trinidad and Tobago	2005	38.0602	South America
@@ -10108,7 +10108,7 @@ Uganda	2005	2.1046	Africa
 Ukraine	2005	313.5337	Europe
 United Arab Emirates	2005	114.5544	Asia
 United Kingdom	2005	570.001	Europe
-United States of America	2005	6132.0057	North America
+United States	2005	6132.0057	North America
 Uruguay	2005	5.7258	South America
 Uzbekistan	2005	116.8949	Asia
 Vanuatu	2005	0.058624	Oceania
@@ -10185,7 +10185,7 @@ Eritrea	2006	0.55593	Africa
 Estonia	2006	16.4392	Europe
 Ethiopia	2006	5.3169	Africa
 Faeroe Islands	2006	0.67784	Europe
-Falkland Islands (Malvinas)	2006		South America
+Falkland Islands	2006		South America
 Fiji	2006	1.2014	Oceania
 Finland	2006	68.3798	Europe
 France	2006	422.1013	Europe
@@ -10279,10 +10279,10 @@ Philippines	2006	66.5219	Asia
 Poland	2006	334.6228	Europe
 Portugal	2006	64.7702	Europe
 Qatar	2006	63.1962	Asia
-Republic of South Sudan	2006	1.0003	Africa
+South Sudan	2006	1.0003	Africa
 Réunion	2006		Africa
 Romania	2006	104.1306	Europe
-Russian Federation	2006	1648.6587	Asia
+Russia	2006	1648.6587	Asia
 Rwanda	2006	0.51673	Africa
 Saint Helena	2006	0.010992	Africa
 Saint Kitts and Nevis	2006	0.20152	North America
@@ -10315,7 +10315,7 @@ Taiwan	2006	264.8075	Asia
 Tajikistan	2006	2.6341	Asia
 Tanzania	2006	5.879	Africa
 Thailand	2006	248.62	Asia
-Timor-Leste	2006	0.17954	Asia
+East Timor	2006	0.17954	Asia
 Togo	2006	1.5005	Africa
 Tonga	2006	0.12824	Oceania
 Trinidad and Tobago	2006	42.5606	South America
@@ -10328,7 +10328,7 @@ Uganda	2006	2.4686	Africa
 Ukraine	2006	332.7647	Europe
 United Arab Emirates	2006	121.8838	Asia
 United Kingdom	2006	567.6522	Europe
-United States of America	2006	6052.2363	North America
+United States	2006	6052.2363	North America
 Uruguay	2006	6.5961	South America
 Uzbekistan	2006	119.6984	Asia
 Vanuatu	2006	0.047632	Oceania
@@ -10405,7 +10405,7 @@ Eritrea	2007	0.57401	Africa
 Estonia	2007	20.0716	Europe
 Ethiopia	2007	5.8284	Africa
 Faeroe Islands	2007	0.68883	Europe
-Falkland Islands (Malvinas)	2007		South America
+Falkland Islands	2007		South America
 Fiji	2007	1.1411	Oceania
 Finland	2007	66.7557	Europe
 France	2007	412.8984	Europe
@@ -10499,10 +10499,10 @@ Philippines	2007	70.7641	Asia
 Poland	2007	334.3657	Europe
 Portugal	2007	62.2701	Europe
 Qatar	2007	62.8994	Asia
-Republic of South Sudan	2007	1.1761	Africa
+South Sudan	2007	1.1761	Africa
 Réunion	2007		Africa
 Romania	2007	108.5597	Europe
-Russian Federation	2007	1647.7289	Asia
+Russia	2007	1647.7289	Asia
 Rwanda	2007	0.54549	Africa
 Saint Helena	2007	0.010992	Africa
 Saint Kitts and Nevis	2007	0.21618	North America
@@ -10535,7 +10535,7 @@ Taiwan	2007	275.5366	Asia
 Tajikistan	2007	3.2043	Asia
 Tanzania	2007	5.7103	Africa
 Thailand	2007	249.1661	Asia
-Timor-Leste	2007	0.1832	Asia
+East Timor	2007	0.1832	Asia
 Togo	2007	1.5168	Africa
 Tonga	2007	0.11358	Oceania
 Trinidad and Tobago	2007	45.3492	South America
@@ -10548,7 +10548,7 @@ Uganda	2007	2.8153	Africa
 Ukraine	2007	336.6011	Europe
 United Arab Emirates	2007	133.337	Asia
 United Kingdom	2007	559.322	Europe
-United States of America	2007	6130.9836	North America
+United States	2007	6130.9836	North America
 Uruguay	2007	5.9465	South America
 Uzbekistan	2007	119.4173	Asia
 Vanuatu	2007	0.098928	Oceania
@@ -10625,7 +10625,7 @@ Eritrea	2008	0.40902	Africa
 Estonia	2008	17.8727	Europe
 Ethiopia	2008	6.3651	Africa
 Faeroe Islands	2008	0.63021	Europe
-Falkland Islands (Malvinas)	2008		South America
+Falkland Islands	2008		South America
 Fiji	2008	0.87776	Oceania
 Finland	2008	58.6088	Europe
 France	2008	406.7908	Europe
@@ -10719,10 +10719,10 @@ Philippines	2008	77.3	Asia
 Poland	2008	327.4482	Europe
 Portugal	2008	59.9235	Europe
 Qatar	2008	64.2571	Asia
-Republic of South Sudan	2008	1.2418	Africa
+South Sudan	2008	1.2418	Africa
 Réunion	2008		Africa
 Romania	2008	105.3654	Europe
-Russian Federation	2008	1679.7944	Asia
+Russia	2008	1679.7944	Asia
 Rwanda	2008	0.53057	Africa
 Saint Helena	2008	0.010992	Africa
 Saint Kitts and Nevis	2008	0.21618	North America
@@ -10755,7 +10755,7 @@ Taiwan	2008	259.3619	Asia
 Tajikistan	2008	2.8853	Asia
 Tanzania	2008	5.9374	Africa
 Thailand	2008	249.591	Asia
-Timor-Leste	2008	0.20152	Asia
+East Timor	2008	0.20152	Asia
 Togo	2008	1.5228	Africa
 Tonga	2008	0.12091	Oceania
 Trinidad and Tobago	2008	44.2524	South America
@@ -10768,7 +10768,7 @@ Uganda	2008	3.0523	Africa
 Ukraine	2008	325.7328	Europe
 United Arab Emirates	2008	154.1554	Asia
 United Kingdom	2008	544.8482	Europe
-United States of America	2008	5932.7753	North America
+United States	2008	5932.7753	North America
 Uruguay	2008	8.2007	South America
 Uzbekistan	2008	123.3356	Asia
 Vanuatu	2008	0.095264	Oceania
@@ -10845,7 +10845,7 @@ Eritrea	2009	0.50797	Africa
 Estonia	2009	14.6091	Europe
 Ethiopia	2009	6.433	Africa
 Faeroe Islands	2009	0.57525	Europe
-Falkland Islands (Malvinas)	2009		South America
+Falkland Islands	2009		South America
 Fiji	2009	0.77856	Oceania
 Finland	2009	55.8182	Europe
 France	2009	386.9421	Europe
@@ -10939,10 +10939,10 @@ Philippines	2009	75.7671	Asia
 Poland	2009	314.1446	Europe
 Portugal	2009	57.0771	Europe
 Qatar	2009	68.5969	Asia
-Republic of South Sudan	2009	1.2958	Africa
+South Sudan	2009	1.2958	Africa
 Réunion	2009		Africa
 Romania	2009	87.2054	Europe
-Russian Federation	2009	1572.439	Asia
+Russia	2009	1572.439	Asia
 Rwanda	2009	0.56443	Africa
 Saint Helena	2009	0.010992	Africa
 Saint Kitts and Nevis	2009	0.2235	North America
@@ -10975,7 +10975,7 @@ Taiwan	2009	246.4562	Asia
 Tajikistan	2009	2.4347	Asia
 Tanzania	2009	5.6939	Africa
 Thailand	2009	264.7503	Asia
-Timor-Leste	2009	0.22717	Asia
+East Timor	2009	0.22717	Asia
 Togo	2009	2.7408	Africa
 Tonga	2009	0.1319	Oceania
 Trinidad and Tobago	2009	44.769	South America
@@ -10988,7 +10988,7 @@ Uganda	2009	3.2467	Africa
 Ukraine	2009	277.1699	Europe
 United Arab Emirates	2009	165.1851	Asia
 United Kingdom	2009	494.6047	Europe
-United States of America	2009	5495.395	North America
+United States	2009	5495.395	North America
 Uruguay	2009	7.9473	South America
 Uzbekistan	2009	106.5339	Asia
 Vanuatu	2009	0.12091	Oceania
@@ -11065,7 +11065,7 @@ Eritrea	2010	0.50799	Africa
 Estonia	2010	19.0149	Europe
 Ethiopia	2010	6.3957	Africa
 Faeroe Islands	2010	0.63021	Europe
-Falkland Islands (Malvinas)	2010		South America
+Falkland Islands	2010		South America
 Fiji	2010	1.2012	Oceania
 Finland	2010	63.9918	Europe
 France	2010	397.9005	Europe
@@ -11159,10 +11159,10 @@ Philippines	2010	82.9329	Asia
 Poland	2010	332.1307	Europe
 Portugal	2010	52.8818	Europe
 Qatar	2010	71.9199	Asia
-Republic of South Sudan	2010	1.3273	Africa
+South Sudan	2010	1.3273	Africa
 Réunion	2010		Africa
 Romania	2010	83.5513	Europe
-Russian Federation	2010	1657.5607	Asia
+Russia	2010	1657.5607	Asia
 Rwanda	2010	0.57913	Africa
 Saint Helena	2010	0.010992	Africa
 Saint Kitts and Nevis	2010	0.21984	North America
@@ -11195,7 +11195,7 @@ Taiwan	2010	267.8754	Asia
 Tajikistan	2010	2.5178	Asia
 Tanzania	2010	6.8406	Africa
 Thailand	2010	279.4285	Asia
-Timor-Leste	2010	0.2345	Asia
+East Timor	2010	0.2345	Asia
 Togo	2010	2.5994	Africa
 Tonga	2010	0.11725	Oceania
 Trinidad and Tobago	2010	47.8123	South America
@@ -11208,7 +11208,7 @@ Uganda	2010	3.7652	Africa
 Ukraine	2010	293.5188	Europe
 United Arab Emirates	2010	158.1647	Asia
 United Kingdom	2010	512.2143	Europe
-United States of America	2010	5701.0758	North America
+United States	2010	5701.0758	North America
 Uruguay	2010	6.2967	South America
 Uzbekistan	2010	103.5815	Asia
 Vanuatu	2010	0.12091	Oceania
@@ -11285,7 +11285,7 @@ Eritrea	2011	0.57142	Africa
 Estonia	2011	19.0972	Europe
 Ethiopia	2011	7.479	Africa
 Faeroe Islands	2011	0.56792	Europe
-Falkland Islands (Malvinas)	2011		South America
+Falkland Islands	2011		South America
 Fiji	2011	1.0679	Oceania
 Finland	2011	56.5441	Europe
 France	2011	372.7926	Europe
@@ -11379,10 +11379,10 @@ Philippines	2011	83.5348	Asia
 Poland	2011	331.6946	Europe
 Portugal	2011	51.7018	Europe
 Qatar	2011	79.6476	Asia
-Republic of South Sudan	2011	1.3038	Africa
+South Sudan	2011	1.3038	Africa
 Réunion	2011		Africa
 Romania	2011	89.3432	Europe
-Russian Federation	2011	1712.4248	Asia
+Russia	2011	1712.4248	Asia
 Rwanda	2011	0.65211	Africa
 Saint Helena	2011	0.010992	Africa
 Saint Kitts and Nevis	2011	0.23083	North America
@@ -11415,7 +11415,7 @@ Taiwan	2011	266.9359	Asia
 Tajikistan	2011	2.32	Asia
 Tanzania	2011	7.807	Africa
 Thailand	2011	275.836	Asia
-Timor-Leste	2011	0.24549	Asia
+East Timor	2011	0.24549	Asia
 Togo	2011	2.5076	Africa
 Tonga	2011	0.10259	Oceania
 Trinidad and Tobago	2011	46.807	South America
@@ -11428,7 +11428,7 @@ Uganda	2011	4.0678	Africa
 Ukraine	2011	307.0712	Europe
 United Arab Emirates	2011	162.7049	Asia
 United Kingdom	2011	469.8115	Europe
-United States of America	2011	5570.7066	North America
+United States	2011	5570.7066	North America
 Uruguay	2011	7.6538	South America
 Uzbekistan	2011	113.0454	Asia
 Vanuatu	2011	0.1319	Oceania
@@ -11505,7 +11505,7 @@ Eritrea	2012	0.62967	Africa
 Estonia	2012	17.9381	Europe
 Ethiopia	2012	8.1495	Africa
 Faeroe Islands	2012	0.5899	Europe
-Falkland Islands (Malvinas)	2012		South America
+Falkland Islands	2012		South America
 Fiji	2012	1.0411	Oceania
 Finland	2012	51.1119	Europe
 France	2012	374.1126	Europe
@@ -11599,10 +11599,10 @@ Philippines	2012	88.9271	Asia
 Poland	2012	324.2166	Europe
 Portugal	2012	49.8779	Europe
 Qatar	2012	93.2194	Asia
-Republic of South Sudan	2012	1.33	Africa
+South Sudan	2012	1.33	Africa
 Réunion	2012		Africa
 Romania	2012	86.3209	Europe
-Russian Federation	2012	1726.0995	Asia
+Russia	2012	1726.0995	Asia
 Rwanda	2012	0.72453	Africa
 Saint Helena	2012	0.010992	Africa
 Saint Kitts and Nevis	2012	0.21984	North America
@@ -11635,7 +11635,7 @@ Taiwan	2012	256.0042	Asia
 Tajikistan	2012	2.9063	Asia
 Tanzania	2012	9.2381	Africa
 Thailand	2012	293.6644	Asia
-Timor-Leste	2012	0.29312	Asia
+East Timor	2012	0.29312	Asia
 Togo	2012	2.2926	Africa
 Tonga	2012	0.10626	Oceania
 Trinidad and Tobago	2012	45.3105	South America
@@ -11648,7 +11648,7 @@ Uganda	2012	3.8607	Africa
 Ukraine	2012	303.7051	Europe
 United Arab Emirates	2012	173.9237	Asia
 United Kingdom	2012	487.6708	Europe
-United States of America	2012	5366.7303	North America
+United States	2012	5366.7303	North America
 Uruguay	2012	8.5931	South America
 Uzbekistan	2012	115.1219	Asia
 Vanuatu	2012	0.11358	Oceania
@@ -11725,7 +11725,7 @@ Eritrea	2013	0.63878	Africa
 Estonia	2013	19.6956	Europe
 Ethiopia	2013	10.0802	Africa
 Faeroe Islands	2013	0.67784	Europe
-Falkland Islands (Malvinas)	2013		South America
+Falkland Islands	2013		South America
 Fiji	2013	1.1292	Oceania
 Finland	2013	51.9016	Europe
 France	2013	374.2586	Europe
@@ -11819,10 +11819,10 @@ Philippines	2013	95.7229	Asia
 Poland	2013	319.9113	Europe
 Portugal	2013	48.0819	Europe
 Qatar	2013	84.1525	Asia
-Republic of South Sudan	2013	1.4473	Africa
+South Sudan	2013	1.4473	Africa
 Réunion	2013		Africa
 Romania	2013	76.8292	Europe
-Russian Federation	2013	1665.9886	Asia
+Russia	2013	1665.9886	Asia
 Rwanda	2013	0.79038	Africa
 Saint Helena	2013	0.010992	Africa
 Saint Kitts and Nevis	2013	0.2235	North America
@@ -11855,7 +11855,7 @@ Taiwan	2013	258.3049	Asia
 Tajikistan	2013	3.4371	Asia
 Tanzania	2013	10.912	Africa
 Thailand	2013	296.903	Asia
-Timor-Leste	2013	0.43968	Asia
+East Timor	2013	0.43968	Asia
 Togo	2013	2.2361	Africa
 Tonga	2013	0.11358	Oceania
 Trinidad and Tobago	2013	46.4155	South America
@@ -11868,7 +11868,7 @@ Uganda	2013	4.6452	Africa
 Ukraine	2013	296.0741	Europe
 United Arab Emirates	2013	168.211	Asia
 United Kingdom	2013	477.7326	Europe
-United States of America	2013	5519.6126	North America
+United States	2013	5519.6126	North America
 Uruguay	2013	7.4898	South America
 Uzbekistan	2013	102.6549	Asia
 Vanuatu	2013	0.10626	Oceania
@@ -11945,7 +11945,7 @@ Eritrea	2014	0.66275	Africa
 Estonia	2014	18.9038	Europe
 Ethiopia	2014	10.9911	Africa
 Faeroe Islands	2014	0.59723	Europe
-Falkland Islands (Malvinas)	2014		South America
+Falkland Islands	2014		South America
 Fiji	2014	1.1465	Oceania
 Finland	2014	47.7997	Europe
 France	2014	343.5726	Europe
@@ -12039,10 +12039,10 @@ Philippines	2014	103.025	Asia
 Poland	2014	307.5551	Europe
 Portugal	2014	47.9558	Europe
 Qatar	2014	106.8712	Asia
-Republic of South Sudan	2014	1.4949	Africa
+South Sudan	2014	1.4949	Africa
 Réunion	2014		Africa
 Romania	2014	77.1605	Europe
-Russian Federation	2014	1667.1107	Asia
+Russia	2014	1667.1107	Asia
 Rwanda	2014	0.82357	Africa
 Saint Helena	2014	0.010992	Africa
 Saint Kitts and Nevis	2014	0.23083	North America
@@ -12075,7 +12075,7 @@ Taiwan	2014	262.1522	Asia
 Tajikistan	2014	5.0607	Asia
 Tanzania	2014	11.2413	Africa
 Thailand	2014	313.1865	Asia
-Timor-Leste	2014	0.46899	Asia
+East Timor	2014	0.46899	Asia
 Togo	2014	2.2197	Africa
 Tonga	2014	0.12091	Oceania
 Trinidad and Tobago	2014	46.1433	South America
@@ -12088,7 +12088,7 @@ Uganda	2014	4.9877	Africa
 Ukraine	2014	256.5836	Europe
 United Arab Emirates	2014	208.8116	Asia
 United Kingdom	2014	438.6912	Europe
-United States of America	2014	5568.7593	North America
+United States	2014	5568.7593	North America
 Uruguay	2014	6.6561	South America
 Uzbekistan	2014	104.4808	Asia
 Vanuatu	2014	0.15389	Oceania
@@ -12165,7 +12165,7 @@ Eritrea	2015	0.71653	Africa
 Estonia	2015	15.8911	Europe
 Ethiopia	2015	12.3814	Africa
 Faeroe Islands	2015	0.61738	Europe
-Falkland Islands (Malvinas)	2015		South America
+Falkland Islands	2015		South America
 Fiji	2015	1.2507	Oceania
 Finland	2015	44.3461	Europe
 France	2015	348.1637	Europe
@@ -12259,10 +12259,10 @@ Philippines	2015	113.8232	Asia
 Poland	2015	310.6151	Europe
 Portugal	2015	52.1952	Europe
 Qatar	2015	120.5472	Asia
-Republic of South Sudan	2015	1.6311	Africa
+South Sudan	2015	1.6311	Africa
 Réunion	2015		Africa
 Romania	2015	77.7882	Europe
-Russian Federation	2015	1671.8951	Asia
+Russia	2015	1671.8951	Asia
 Rwanda	2015	0.91689	Africa
 Saint Helena	2015	0.011475	Africa
 Saint Kitts and Nevis	2015	0.24098	North America
@@ -12295,7 +12295,7 @@ Taiwan	2015	258.8876	Asia
 Tajikistan	2015	5.4602	Asia
 Tanzania	2015	12.4535	Africa
 Thailand	2015	320.574	Asia
-Timor-Leste	2015	0.5118	Asia
+East Timor	2015	0.5118	Asia
 Togo	2015	2.6403	Africa
 Tonga	2015	0.13195	Oceania
 Trinidad and Tobago	2015	45.685	South America
@@ -12308,7 +12308,7 @@ Uganda	2015	5.3248	Africa
 Ukraine	2015	223.5797	Europe
 United Arab Emirates	2015	227.4772	Asia
 United Kingdom	2015	422.6626	Europe
-United States of America	2015	5420.8041	North America
+United States	2015	5420.8041	North America
 Uruguay	2015	6.6511	South America
 Uzbekistan	2015	110.6693	Asia
 Vanuatu	2015	0.16793	Oceania
@@ -12385,7 +12385,7 @@ Eritrea	2016	0.76427	Africa
 Estonia	2016	17.4935	Europe
 Ethiopia	2016	12.9419	Africa
 Faeroe Islands	2016	0.66171	Europe
-Falkland Islands (Malvinas)	2016		South America
+Falkland Islands	2016		South America
 Fiji	2016	1.2641	Oceania
 Finland	2016	47.9264	Europe
 France	2016	350.1047	Europe
@@ -12479,10 +12479,10 @@ Philippines	2016	119.2737	Asia
 Poland	2016	322.234	Europe
 Portugal	2016	50.2748	Europe
 Qatar	2016	118.6898	Asia
-Republic of South Sudan	2016	1.7619	Africa
+South Sudan	2016	1.7619	Africa
 Réunion	2016		Africa
 Romania	2016	75.0517	Europe
-Russian Federation	2016	1668.0699	Asia
+Russia	2016	1668.0699	Asia
 Rwanda	2016	0.98418	Africa
 Saint Helena	2016	0.011698	Africa
 Saint Kitts and Nevis	2016	0.24566	North America
@@ -12515,7 +12515,7 @@ Taiwan	2016	263.4759	Asia
 Tajikistan	2016	5.579	Asia
 Tanzania	2016	13.6047	Africa
 Thailand	2016	324.8341	Asia
-Timor-Leste	2016	0.51766	Asia
+East Timor	2016	0.51766	Asia
 Togo	2016	2.7522	Africa
 Tonga	2016	0.13346	Oceania
 Trinidad and Tobago	2016	41.0236	South America
@@ -12528,7 +12528,7 @@ Uganda	2016	5.5714	Africa
 Ukraine	2016	235.156	Europe
 United Arab Emirates	2016	233.4265	Asia
 United Kingdom	2016	398.5509	Europe
-United States of America	2016	5310.8614	North America
+United States	2016	5310.8614	North America
 Uruguay	2016	6.7644	South America
 Uzbekistan	2016	97.9253	Asia
 Vanuatu	2016	0.16986	Oceania
@@ -12605,7 +12605,7 @@ Eritrea	2017	0.79305	Africa
 Estonia	2017	19.8093	Europe
 Ethiopia	2017	13.3962	Africa
 Faeroe Islands	2017	0.67294	Europe
-Falkland Islands (Malvinas)	2017		South America
+Falkland Islands	2017		South America
 Fiji	2017	1.3444	Oceania
 Finland	2017	45.956	Europe
 France	2017	356.3007	Europe
@@ -12699,10 +12699,10 @@ Philippines	2017	127.608	Asia
 Poland	2017	326.6045	Europe
 Portugal	2017	54.8636	Europe
 Qatar	2017	129.8033	Asia
-Republic of South Sudan	2017	1.8407	Africa
+South Sudan	2017	1.8407	Africa
 Réunion	2017		Africa
 Romania	2017	79.9955	Europe
-Russian Federation	2017	1692.7948	Asia
+Russia	2017	1692.7948	Asia
 Rwanda	2017	1.0247	Africa
 Saint Helena	2017	0.011696	Africa
 Saint Kitts and Nevis	2017	0.24561	North America
@@ -12735,7 +12735,7 @@ Taiwan	2017	271.525	Asia
 Tajikistan	2017	5.7114	Asia
 Tanzania	2017	14.2305	Africa
 Thailand	2017	330.8396	Asia
-Timor-Leste	2017	0.55273	Asia
+East Timor	2017	0.55273	Asia
 Togo	2017	2.9911	Africa
 Tonga	2017	0.1425	Oceania
 Trinidad and Tobago	2017	40.6972	South America
@@ -12748,7 +12748,7 @@ Uganda	2017	5.7828	Africa
 Ukraine	2017	212.1163	Europe
 United Arab Emirates	2017	231.7735	Asia
 United Kingdom	2017	384.7068	Europe
-United States of America	2017	5269.5295	North America
+United States	2017	5269.5295	North America
 Uruguay	2017	6.8403	South America
 Uzbekistan	2017	98.9989	Asia
 Vanuatu	2017	0.18136	Oceania
