@@ -24,7 +24,15 @@ var yAxis = d3v3.svg.axis()
     .attr("class", "tooltip")
     .style("opacity", 0);
 // An SVG element with a bottom-right origin.
-var svg = d3v3.select("body").append("svg")
+//var svg = d3v3.select("body").append("svg")
+
+var tsavg = d3v3.select("#pSVG")
+.style("top", "-150px")
+.style("left", "-133px")
+
+.style("width", "auto")
+.style("height", "auto")
+.style("font", "14px sans-serif")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)    
   .append("g")
@@ -32,67 +40,67 @@ var svg = d3v3.select("body").append("svg")
 
 
 // A sliding container to hold the bars by birthyear.
-var birthyears = svg.append("g")
+var birthyears = tsavg.append("g")
     .attr("class", "birthyears");
 
 // A label for the current year.
-var title = svg.append("text")
+var title = tsavg.append("text")
     .attr("class", "title")
     .attr("dy", "-1em")
     .text(2014);
-var insn1 = svg.append("text")
+var insn1 = tsavg.append("text")
     .attr("class", "#instructions")
     .attr("dx","-17.2em")
     .attr("dy", "10em")
     .text(" How to use:");
-var insn2 = svg.append("text")
+var insn2 = tsavg.append("text")
     .attr("class", "#instructions")
     .attr("dx","-17.2em")
 
     .attr("dy", "15em")
     .text("        Use the right and left arrow keys");
-var insn2b = svg.append("text")
+var insn2b = tsavg.append("text")
     .attr("class", "#instructions")
     .attr("dx","-17.2em")
 
     .attr("dy", "16em")
     .text("to navigate bewteen years.    ");    
-var insn3 = svg.append("text")
+var insn3 = tsavg.append("text")
     .attr("class", "#instructions")
     .attr("dx","-17.2em")
     .attr("dy", "12em")
     .text(" Select your country using the");  
-var insn3b = svg.append("text")
+var insn3b = tsavg.append("text")
     .attr("class", "#instructions")
     .attr("dx","-17.2em")
     .attr("dy", "13em")
     .text(" dropdown menu.");             
-var insn4 = svg.append("text")
+var insn4 = tsavg.append("text")
     .attr("class", "#instructions")
     .attr("dx","-17.2em")
     .attr("dy", "18em")
     .text("             Use the mouse to hover over to ");
-var insn4 = svg.append("text")
+var insn4 = tsavg.append("text")
     .attr("class", "#instructions")
     .attr("dx","-17.2em")
     .attr("dy", "19em")
     .text("view the temperature.    ");    
-var globTit = svg.append("text")
+var globTit = tsavg.append("text")
     .attr("class", "globTit")
     .attr("dy", "-1.5em");
-var globTit2 = svg.append("text")
+var globTit2 = tsavg.append("text")
     .attr("class", "globTit2")
     .attr("dy", "2em");    
-var title2 = svg.append("text")
+var title2 = tsavg.append("text")
     .attr("class", "title2")
     .attr("dx","7.2em")
     .attr("dy", "-1.5em")
     .text("Afghanistan");
-var dataInfo = svg.append("text")
+var dataInfo = tsavg.append("text")
     .attr("class", "dataInfo")
     .attr("dx","30em")
     .attr("dy", "-2em")
-var dataInfo2 = svg.append("text")
+var dataInfo2 = tsavg.append("text")
     .attr("class", "dataInfo")
     .attr("dx","30em")
     .attr("dy", "-1em")
@@ -169,7 +177,7 @@ for (var i = 0; i < selects.length; i++){
       .map(data);
 
   // Add an axis to show the population values.
-  svg.append("g")
+  tsavg.append("g")
       .attr("class", "y axis")
       .attr("transform", "translate(" + width + ",0)")
       .call(yAxis)
@@ -180,13 +188,13 @@ for (var i = 0; i < selects.length; i++){
   var value1 = [];//array of temps for this year 
   var i=0;
   var tyear=0;
-  svg.append("line").attr("x1", 200).attr("y1", -150).attr("x2", 200).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
-  svg.append("line").attr("x1", 400).attr("y1", -150).attr("x2", 400).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
-  svg.append("line").attr("x1", -25).attr("y1", -150).attr("x2", -25).attr("y2", 500).attr("stroke-width", 1).attr("stroke", "black");
+  tsavg.append("line").attr("x1", 200).attr("y1", -150).attr("x2", 200).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  tsavg.append("line").attr("x1", 400).attr("y1", -150).attr("x2", 400).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  tsavg.append("line").attr("x1", -25).attr("y1", -150).attr("x2", -25).attr("y2", 500).attr("stroke-width", 1).attr("stroke", "black");
 
-  svg.append("line").attr("x1", 950).attr("y1", -70).attr("x2", -25).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
-  svg.append("line").attr("x1", 950).attr("y1", -15).attr("x2", -25).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
-  svg.append("line").attr("x1", 630).attr("y1", -70).attr("x2", 630).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
+  tsavg.append("line").attr("x1", 950).attr("y1", -70).attr("x2", -25).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
+  tsavg.append("line").attr("x1", 950).attr("y1", -15).attr("x2", -25).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
+  tsavg.append("line").attr("x1", 630).attr("y1", -70).attr("x2", 630).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
 
   var birthyear = birthyears.selectAll(".birthyear")
       .data(d3v3.range(year0 - month1, year1 + 1, 1))
@@ -225,14 +233,14 @@ for (var i = 0; i < selects.length; i++){
         }
         console.log(value1); */
         console.log(tyear);
-    svg.append("text")
+    tsavg.append("text")
       .attr("transform",
             "translate(" + (width/2) + " ," +
                            (height + margin.bottom ) + ")")
       .style("text-anchor", "middle")
       .text("Month");
 
-    svg.append("text")
+    tsavg.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 280 - margin.left)
       .attr("x",0 - (height / 2))
@@ -242,7 +250,7 @@ for (var i = 0; i < selects.length; i++){
 
 
   // Add labels to show age (separate; not animated).
-  svg.selectAll(".month")
+  tsavg.selectAll(".month")
       .data(d3v3.range(1, month1 + 2, 1))
     .enter().append("text")
       .attr("class", "month")
@@ -253,6 +261,7 @@ for (var i = 0; i < selects.length; i++){
       .text(function(month) { return month; });
       globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 function compare() {
 
     year =this.value;
