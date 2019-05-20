@@ -1,12 +1,4 @@
-    svg {
-    position: relative;
-    height:650px;
-    width:1250px;
-    font-family: 14px 'Roboto', sans-serif;
-    left:-133px;
-    top: -150px;
 
-  }
   #searchText,#searchText2{
     position: relative;
     top: 200px;
@@ -147,7 +139,7 @@
     position:absolute;
     top: 130px;
     right: 10px;
-    width: 250px;
+    width: 230px;
 }
 #educate1{
     font-family: 'Roboto', sans-serif;
@@ -155,8 +147,8 @@
 
     position:absolute;
     top:80px;
-    right:10px;
-    width: 250px;
+    right:15px;
+    width: 210px;
 }
   #instructions {
     font-family: 'Roboto', sans-serif;
