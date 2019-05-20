@@ -1,7 +1,7 @@
 
 var moving = false;
 var currentValue = 1960;
-var targetValue = 2016;
+var targetValue = 2055;
 var twoYears = false;
 var comparedValue = 1961;
 var UIFlag = false;
@@ -402,26 +402,50 @@ function select(yearValue) {
       var sumAsia = 0;
       var sumSA = 0;
 
-      // Parse CO2 values from string to double with 3 decimal places
-      data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
-        d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
-        tempArray[index] = d.value;
-        tempStringArray[index] = d.country;
-        if (!d.continent.localeCompare("Oceania")) {
-          OceaniaArray[index] = d.value;
-        } else if (!d.continent.localeCompare("North America")) {
-          NAArray[index] = d.value;
-        } else if (!d.continent.localeCompare("South America")) {
-          SAArray[index] = d.value;
-        } else if (!d.continent.localeCompare("Asia")) {
-          AsiaArray[index] = d.value;
-        } else if (!d.continent.localeCompare("Europe")) {
-          EUArray[index] = d.value;
-        } else if (!d.continent.localeCompare("Africa")) {
-          AfricaArray[index] = d.value;
-        }
-        index++;
-      })
+      if (yearTemp < 2018) {
+        // Parse CO2 values from string to double with 3 decimal places
+        data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
+          d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
+          tempArray[index] = d.value;
+          tempStringArray[index] = d.country;
+          if (!d.continent.localeCompare("Oceania")) {
+            OceaniaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("North America")) {
+            NAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("South America")) {
+            SAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Asia")) {
+            AsiaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Europe")) {
+            EUArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Africa")) {
+            AfricaArray[index] = d.value;
+          }
+          index++;
+        })
+      } else {
+        // Parse CO2 values from string to double with 3 decimal places
+        year2017.forEach(function(d) {
+          d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
+          tempArray[index] = d.value;
+          tempStringArray[index] = d.country;
+          if (!d.continent.localeCompare("Oceania")) {
+            OceaniaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("North America")) {
+            NAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("South America")) {
+            SAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Asia")) {
+            AsiaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Europe")) {
+            EUArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Africa")) {
+            AfricaArray[index] = d.value;
+          }
+          index++;
+        })
+      }
+
 
       d3.select("#mainChart").selectAll("text").remove();
 
@@ -444,7 +468,7 @@ function select(yearValue) {
       }
 
       // Find the max value in this year
-      max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) { return d.value; });
+      max1 = d3.max(tempArray);
 
       stringIndex = tempArray.indexOf(max1);
       topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2").attr("x", 650).attr("y", 80).attr("class", "topText");
