@@ -5,9 +5,9 @@ var co2ButtonContainer = d3.select("#mainChart").append("g")
 var co2Labels = ['+5', '+10', '-5', '-10', 'Compare', 'Isolated']
 
 //colors for different button states
-var defaultColor= "#2C3531"
-var hoverColor= "#D9B08C"
-var pressedColor= "#116466"
+var defaultColor= "#2C3531";
+var hoverColor= "#D9B08C";
+var pressedColor= "#116466";
 
 //groups for each button (which will hold a rect and text)
 var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
@@ -24,7 +24,7 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                             } else if (i == 1) {
                                 clearInterval(timer);
                             } */ if (i == 0) {
-                                if (currentValue > 2012) {
+                                if (currentValue > 2050) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
                                   step();
@@ -34,7 +34,7 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   step();
                                 }
                             } else if (i == 1) {
-                                if (currentValue > 2007) {
+                                if (currentValue > 2045) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
                                   step();
