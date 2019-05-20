@@ -62,6 +62,11 @@ function select(yearValue) {
         yearTwo = [];
         yearDiff = [];
         indexesNegative = [];
+        year2017 = [];
+        year2007 = [];
+        netDiff = [];
+        netDiffNegative = [];
+        yearFuture = [];
 
     function chart(selection) {
       var data = selection.datum();
@@ -83,14 +88,35 @@ function select(yearValue) {
         return +d[columnForRadius];
       })]).range([2, 90])
 
+      // Compute difference between 2007 and 2017
+      year2007 = data.filter(function(d) { return d.year == 2007});
+      year2017 = data.filter(function(d) { return d.year == 2017});
+      netDiff = year2007;
+      yearFuture = year2017;
 
+
+      if (yearTemp > 2017 && yearTemp <= 2055) {
+        // Avg change in each country between 2007 and 2017
+        for (i = 0; i < year2017.length; i++) {
+          netDiff[i].value = (year2017[i].value - year2007[i].value) / 11;
+        }
+
+        // Extrapolate
+        for (i = 0; i < year2017.length; i++) {
+          yearFuture[i].value = parseFloat(year2017[i].value) + parseFloat(netDiff[i].value * (yearTemp - 2017));
+          if (yearFuture[i].value < 0) {
+            netDiffNegative[i] = 1;
+            yearFuture[i].value = Math.abs(year2017[i].value);
+          }
+        }
+      }
 
       // Compute difference between two years
       yearOne = data.filter(function(d) { 
           if (UIFlag) {
               return d.year == currentValue;
           } else {
-              return d.year == yearTemp
+              return d.year == yearTemp;
           }}); // selected year
       yearTwo = data.filter(function(d) { 
           if (UIFlag) {
@@ -98,6 +124,7 @@ function select(yearValue) {
           } else {
               return d.year == yearTemp + 1;
           }}); // selected year plus
+
       yearDiff = yearTwo;
 
       for (i = 0; i < yearTwo.length; i++) {
@@ -111,6 +138,30 @@ function select(yearValue) {
       if (twoYears) {
         // Simulate forces acting on each node
         var simulation = d3.forceSimulation(yearDiff)
+          .force("charge", d3.forceManyBody().strength(5))
+          .force('x', d3.forceX().x(function(d) {
+            if (!d.continent.localeCompare("Africa")) {
+              return xPosition[5];
+            } else if (!d.continent.localeCompare("Asia")) {
+              return xPosition[4];
+            } else if (!d.continent.localeCompare("Oceania")) {
+              return xPosition[3];
+            } else if (!d.continent.localeCompare("Europe")) {
+              return xPosition[2];
+            } else if (!d.continent.localeCompare("South America")) {
+              return xPosition[1];
+            } else if (!d.continent.localeCompare("North America")) {
+              return xPosition[0];
+            }
+          }))
+          .force('y', d3.forceY().y(340))
+          .force("collision", d3.forceCollide().radius(function(d) {
+            return scaleRadius(d.value)
+          }))
+          .on('tick', ticked);
+      } else if (yearTemp > 2017 && yearTemp <= 2055) {
+        // Simulate forces acting on each node
+        var simulation = d3.forceSimulation(year2017)
           .force("charge", d3.forceManyBody().strength(5))
           .force('x', d3.forceX().x(function(d) {
             if (!d.continent.localeCompare("Africa")) {
@@ -164,6 +215,10 @@ function select(yearValue) {
           var u = d3.select('svg')
           .selectAll('circle')
           .data(yearDiff);
+        } else if (yearTemp > 2017 && yearTemp <= 2055) {
+          var u = d3.select('svg')
+          .selectAll('circle')
+          .data(year2017);
         } else {
           var u = d3.select('svg')
           .selectAll('circle')
@@ -235,7 +290,6 @@ function select(yearValue) {
             }
           });
 
-
          u.transition()
           .duration(50)
           .attr('r', function(d) {
@@ -252,18 +306,11 @@ function select(yearValue) {
         } else { // If Isolated
           u.enter()
           .append('circle')
-          .attr('r', function(d) {
+          .attr('r', function(d, i) {
             //console.log("here");
             if (isNaN(d.value)) {
               return 2;
             } else {
-              console.log(scaleRadius(1));
-              console.log(scaleRadius(50));
-              console.log(scaleRadius(100));
-              console.log(scaleRadius(500));
-              console.log(scaleRadius(1000));
-              console.log(scaleRadius(5000));
-              console.log(scaleRadius(10000));
               return scaleRadius(d.value)
             }
           })
@@ -344,6 +391,7 @@ function select(yearValue) {
       var OceaniaArray = [];
       var SAArray = [];
       var AsiaArray = [];
+      var minToBeSpliced = [];
       var index = 0;
       var stringIndex = 0;
       var sumValues = 0;
@@ -354,9 +402,9 @@ function select(yearValue) {
       var sumAsia = 0;
       var sumSA = 0;
 
-      // Parse CO2 values from string to int
+      // Parse CO2 values from string to double with 3 decimal places
       data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
-        d.value = parseInt(d.value);
+        d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
         tempArray[index] = d.value;
         tempStringArray[index] = d.country;
         if (!d.continent.localeCompare("Oceania")) {
@@ -387,7 +435,6 @@ function select(yearValue) {
 
       var topEmissions = d3.select("#mainChart");
 
-
       if (twoYears) {
           topEmissions.append("text").html(currentValue).attr("x", 240).attr("y", 80).attr("id", "yearText");
           topEmissions.append("text").html("to").attr("x", 310).attr("y", 110).attr("id", "toText");
@@ -397,7 +444,7 @@ function select(yearValue) {
       }
 
       // Find the max value in this year
-      max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
+      max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) { return d.value; });
 
       stringIndex = tempArray.indexOf(max1);
       topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2").attr("x", 650).attr("y", 80).attr("class", "topText");
@@ -425,6 +472,21 @@ function select(yearValue) {
       max5 = d3.max(tempArray); // Find the fifth max
       stringIndex = tempArray.indexOf(max5);
       topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2").attr("x", 650).attr("y", 160).attr("class", "topText");
+
+      for (i = 0; i < tempArray.length; i++) {
+        if (Math.round(parseFloat(tempArray[i]) * 1000) / 1000 == 0 || isNaN(tempArray[i])) {
+          minToBeSpliced[i] = 1;
+        } else {
+          minToBeSpliced[i] = 0;
+        }
+      }
+
+      for (i = minToBeSpliced.length; i >= 0; i--) {
+        if (minToBeSpliced[i] == 1) {
+          tempArray.splice(i, 1);
+          tempStringArray.splice(i, 1);
+        }
+      }
 
       min1 = d3.min(tempArray); // Find the min
       stringIndex = tempArray.indexOf(min1); // Get the index
@@ -460,7 +522,7 @@ function select(yearValue) {
       topEmissions.append("text").html("Countries With the Least Emissions:").attr("id", "sumText").attr("x", 920).attr("y", 50);
 
       topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 440).attr("y", 70);
-      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 460).attr("y", 120);
+      topEmissions.append("text").html(+ Math.round(parseFloat(sumValues) * 1000) / 1000 + " MtCO2").attr("id", "sum").attr("x", 460).attr("y", 120);
 
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 730).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 610).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
@@ -490,12 +552,12 @@ function select(yearValue) {
       topEmissions.append("line").attr("x1", 100).attr("y1", 645).attr("x2", 229.4).attr("y2", 645).attr("stroke-width", 1).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 100).attr("y1", 650).attr("x2", 281.4).attr("y2", 650).attr("stroke-width", 1).attr("stroke", "black");
 
-      topEmissions.append("text").html(sumOceania + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumAsia + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumNA + " MtCO2").attr("x", 80).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumSA + " MtCO2").attr("x", 220).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumEU + " MtCO2").attr("x", 420).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumAfrica + " MtCO2").attr("x", 1050).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumOceania) * 1000) / 1000 + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumAsia) * 1000) / 1000 + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumNA) * 1000) / 1000 + " MtCO2").attr("x", 80).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumSA) * 1000) / 1000 + " MtCO2").attr("x", 220).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumEU) * 1000) / 1000 + " MtCO2").attr("x", 420).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumAfrica) * 1000) / 1000 + " MtCO2").attr("x", 1050).attr("y", 570).attr("font-weight", "bold");
 
       topEmissions.append("text").html("Oceania").attr("x", 620).attr("y", 510);
       topEmissions.append("text").html("Asia").attr("x", 810).attr("y", 510);
@@ -555,7 +617,7 @@ function select(yearValue) {
               comparedValue = parseInt(userArray[1]);
               select(currentValue);
           } else if ((parseInt(userArray[0]) > 1959)
-                && (parseInt(userArray[0]) < 2017)
+                && (parseInt(userArray[0]) <= 2055)
                 && (!twoYears)
                 && (parseInt(userArray[0]) != currentValue)) {
             currentValue = parseInt(userArray[0]);
