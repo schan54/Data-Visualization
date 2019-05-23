@@ -60,7 +60,7 @@ d3.json('./energyusage.json').then(data => {
 
     /* add all values */
     var total = 0;
-    path.each(d => {console.log(d); total = total + Number(d.data.size); })
+    path.each(d => {total = total + Number(d.data.size); })
     
     /* hover over path to see values in the middle */
     path.on("mouseover", function(d){
@@ -259,7 +259,7 @@ function parseFile(file) {
         
             /* add all values */
             var total = 0;
-            path.each(d => {console.log(d); total = total + Number(d.data.size); })
+            path.each(d => { total = total + Number(d.data.size); })
             
             /* hover over path to see values in the middle */
             path.on("mouseover", function(d){
@@ -371,7 +371,7 @@ function parseFile(file) {
             /* Zoom in Sunburst on click */
             function clicked(p) {
                 parent.datum(p.parent || root);
-        
+                //console.log(p);
                 root.each(d => d.target = {
                         x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
                         x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
