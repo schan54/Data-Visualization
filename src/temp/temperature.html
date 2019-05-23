@@ -4,7 +4,6 @@
   <title>Temperature</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script type="text/javascript" src="../core/d3-v3.js"></script>
 
@@ -17,10 +16,11 @@
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="../core/master.css" />
-    <link rel="stylesheet" type="text/css" href="tempVisual.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="tempVisual.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
   <script type="text/javascript" src="../core/master.js"></script>
-  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+
+	<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -36,9 +36,10 @@
 
 
 <div id="insns">
+	<!--
     <p id="sources">
         Source:<a href="https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_3.23/crucy.1506241137.v3.23/countries/tmp/" target="_blank">https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_3.23/crucy.1506241137.v3.23/countries/tmp/</a><br/>
-    </p>
+    </p>-->
     <p id="educate1">
         Why it matters
     </p>
@@ -264,6 +265,7 @@
 </select>
 <svg id="pSVG" width="1250" height="650" style ="position:relative;">
 </svg>
+
 <script type="text/javascript" src="tempGraph.js"></script>
 
 <script src="../core/d3-tip.js"></script>

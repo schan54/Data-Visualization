@@ -9,11 +9,11 @@ var startDate = new Date("1961"),
 var userYear = formatDateIntoYear(startDate);
 var userYear2 = formatDateIntoYear(startDate);
 
-var colorIsolatedDomain = [-25,0,5,25,50,100,200,500,800,1000, 2500, 5000]
-var colorCompareDomain = [-25,0,5,25,50,100,200,500,800,1000, 2500, 5000]
+var colorIsolatedDomain = [-25,0,5,25,50,100,200,500,1000, 2500, 5000]
+var colorCompareDomain = [-100, -50, 0, 50, 100, 200, 500, 750, 1000, 2500, 5000]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]
 
-var colorDomain = colorIsolatedDomain;
+var colorDomain = colorCompareDomain;
 
 ////////// slider //////////
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
@@ -34,32 +34,35 @@ var tip = d3.tip()
     return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + ": </strong><span class='details'>" + format(d.value) +"</span>";
   })
 
-buildLegend();
+	buildLegend();
 
-function buildLegend() {
+	function buildLegend() {
 
-	legendWidth = (width-200);
-	barWidth = legendWidth/11;
-	var tempArray = [];
-	for (i = 1; i < 12; i++) {
-		tempArray.push({bar: (width-100) - (barWidth * i), color: d3.interpolateRdYlBu(i/11), text: colorDomain[12-i]});
+		legendWidth = (width-200);
+		barWidth = legendWidth/11;
+		var tempArray = [];
+		for (i = 1; i < 12; i++) {
+			tempArray.push({bars: (width-100) - (barWidth * i), colors: d3.interpolateRdYlBu(i/11), texting: colorDomain[11-i]});
+		}
+		console.log(tempArray);
+
+		var g = choroSvg.selectAll(".rect")
+		g.remove();
+		g = choroSvg.selectAll(".rect")
+		  .data(tempArray)
+		  .enter()
+		  .append("g")
+		  .classed('rect', true)
+
+		g.append("rect")
+		  .attr("width", barWidth)
+		  .attr("height", 20)
+		  .attr("y", 260)
+			.attr("x", function(d) {return d.bars})
+		  .style("fill",  function(d) {return d.colors});
+
+		g.append("text")
+			.text(function(d) {return d.texting})
+			.attr("y", 300)
+			.attr("x",  function(d) {return d.bars + barWidth/3});
 	}
-
-	var g = choroSvg.selectAll(".rect")
-	  .data(tempArray)
-	  .enter()
-	  .append("g")
-	  .classed('rect', true)
-
-	g.append("rect")
-	  .attr("width", barWidth)
-	  .attr("height", 20)
-	  .attr("y", 260)
-		.attr("x", function(d) {return d.bar})
-	  .attr("fill",  function(d) {return d.color});
-
-	g.append("text")
-		.text(function(d) {return d.text})
-		.attr("y", 300)
-		.attr("x",  function(d) {return d.bar + barWidth/3});
-}

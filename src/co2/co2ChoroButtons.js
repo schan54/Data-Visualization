@@ -34,7 +34,7 @@ var buttonGroups= allButtons.selectAll("g.button")
       if (i == 0) {
         d3.select("#numberToggle").text("Filter Method: Comparative");
         compareActive = true;
-
+				buildLegend();
         //Reload Choro Data
         queue()
           .defer(d3.json, "../core/world_countries.json")
@@ -46,7 +46,7 @@ var buttonGroups= allButtons.selectAll("g.button")
       if (i == 1) {
         d3.select("#numberToggle").text("Filter Method: Isolated");
         compareActive = false;
-
+				buildLegend();
         //Reload Choro Data
         queue()
           .defer(d3.json, "../core/world_countries.json")

@@ -35,10 +35,11 @@ var buttonGroups= allButtons.selectAll("g.button")
         d3.select("#numberToggle").text("Filter Method: Comparative");
         compareActive = true;
 
+				buildLegend();
         //Reload Choro Data
         queue()
           .defer(d3.json, "../core/world_countries.json")
-          .defer(d3.tsv, "worldData.tsv")
+          .defer(d3.tsv, "worldTemp.tsv")
           .await(ready);
       }
 
@@ -47,10 +48,11 @@ var buttonGroups= allButtons.selectAll("g.button")
         d3.select("#numberToggle").text("Filter Method: Isolated");
         compareActive = false;
 
+				buildLegend();
         //Reload Choro Data
         queue()
           .defer(d3.json, "../core/world_countries.json")
-          .defer(d3.tsv, "worldData.tsv")
+          .defer(d3.tsv, "worldTemp.tsv")
           .await(ready);
       }
   })

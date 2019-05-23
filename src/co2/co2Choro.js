@@ -1,6 +1,12 @@
 // Set tooltips
-var color = d3.scaleThreshold()
-    .domain(colorDomain)
+var colorCompare = d3.scaleThreshold()
+    .domain(colorCompareDomain)
+    .range([d3.interpolateRdYlBu(1), d3.interpolateRdYlBu(0.9), d3.interpolateRdYlBu(0.8), d3.interpolateRdYlBu(0.7),
+          d3.interpolateRdYlBu(0.6), d3.interpolateRdYlBu(0.5), d3.interpolateRdYlBu(0.4), d3.interpolateRdYlBu(0.3),
+					d3.interpolateRdYlBu(0.2), d3.interpolateRdYlBu(0.1), d3.interpolateRdYlBu(0.0)]);
+
+var colorIsolated = d3.scaleThreshold()
+    .domain(colorIsolatedDomain)
     .range([d3.interpolateRdYlBu(1), d3.interpolateRdYlBu(0.9), d3.interpolateRdYlBu(0.8), d3.interpolateRdYlBu(0.7),
           d3.interpolateRdYlBu(0.6), d3.interpolateRdYlBu(0.5), d3.interpolateRdYlBu(0.4), d3.interpolateRdYlBu(0.3),
 					d3.interpolateRdYlBu(0.2), d3.interpolateRdYlBu(0.1), d3.interpolateRdYlBu(0.0)]);
@@ -76,7 +82,17 @@ function ready(error, data, population) {
       .data(data.features)
     .enter().append("path")
       .attr("d", path)
-      .style("fill", function(d) { return color(populationById[d.id]); })
+
+			//Fill based on data which changes for compare/isolated
+			.style("fill", function (d)  {
+				if (compareActive == true) {
+					return colorCompare(populationById[d.id]);
+				}
+				else {
+					return colorIsolated(populationById[d.id]);
+				}
+			})
+
       .style('stroke', 'white')
       .style('stroke-width', 1.5)
       .style("opacity",0.8)
