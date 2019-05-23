@@ -119,6 +119,15 @@ d3.json('./energyusage.json').then(data => {
         updateSunBurst("./energyusage.json", year);
         
     });
+        /* change sunburst based on years */
+    d3.select("#compare").on("click", function(){
+        g.selectAll("g").transition().remove();
+        updateSunBurst("./energyusage.json", "compare"); 
+    });
+    d3.select("#isolate").on("click", function(){
+        g.selectAll("g").transition().remove();
+        updateSunBurst("./energyusage.json", 0); 
+    });
 
     /* Search By Country Name */
     d3.select("#searchSubmit").on("click", function(){
@@ -157,11 +166,13 @@ d3.json('./energyusage.json').then(data => {
         }
     });
     /* Display data on a table */
+    var tableIndex = 0;
     path.each(function(d){
         if(d.depth == 1){
+            tableIndex++;
             var row = d3.select("#burstTable").select("tbody").append("tr");
             row.append("td")
-                    .text(d.data.name);
+                    .text(tableIndex + ". " + d.data.name);
             row.append("td")
                     .text(Number(d.value).toFixed(2));
         }
@@ -192,8 +203,7 @@ d3.json('./energyusage.json').then(data => {
         // the next transition from the desired position.
         path.transition(t)
                 .tween("data", d => {
-                    
-                    
+                
                     const i = d3.interpolate(d.current, d.target);
                     return t => d.current = i(t);
                 })
@@ -248,9 +258,14 @@ function parseFile(file) {
   }
     function updateSunBurst(file, year){
         d3.json(file).then(data => {
-    
-            const root = partition(data[year]);
-            const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data[year].children.length + 1));
+            var datas = data[year];
+            if ( year == "compare")
+            {
+                datas = {name:"compare", children: data};
+            }
+            console.log(datas);
+            const root = partition(datas);
+            const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, datas.children.length + 1));
         
             root.each(d => d.current = d);
         
@@ -367,12 +382,13 @@ function parseFile(file) {
             });
             /* Display data on a table */
             d3.select("#burstTable").select("tbody").selectAll("tr").remove();
+            var tableIndex = 0;
             path.each(function(d){
-             
                 if(d.depth == 1){
+                    tableIndex++;
                     var row = d3.select("#burstTable").select("tbody").append("tr");
                     row.append("td")
-                            .text(d.data.name);
+                            .text(tableIndex + ". " + d.data.name);
                     row.append("td")
                             .text(Number(d.value).toFixed(2));
                 }
