@@ -57,26 +57,31 @@
   </select>
 
   <h2 id = "yeartxt">Year: 1990</h2>
-  <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
-  <input type="text" id = "searchText" placeholder="Search.." name="search" >
+  
+  
 
-  <table id = "burstTable">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Size</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
 
-  <button type="submit" id = "searchSubmit"><i class="fa fa-search"></i></button>
-  <p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
+
+  
+  
   <svg id="partitionSVG" width="1400" height="1400" style ="position:relative; left:0%;">
-    <!-- <foreignObject xmlns="http://www.w3.org/1999/xhtml">
-       <h1 xmlns="http://www.w3.org/1999/xhtml" style="z-index:1"> HELLO  </h1> 
-    </foreignObject> -->
+    <foreignObject width="1400" height="1400">
+
+      <input type="text" id = "searchText" placeholder="Search.." name="search" >
+      <button type="submit" id = "searchSubmit"><i class="fa fa-search"></i></button>
+      <p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
+      
+      <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
+      <table id = "burstTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </foreignObject>
   </svg>
 
   <script type="text/javascript" src="energySunburst.js"></script>
