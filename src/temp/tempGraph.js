@@ -8,17 +8,18 @@ var glob2=0;
 var value2=[];
 var value3=[];
 var track = 0;
-
-    var x = d3v3.scale.linear()
-    .range([barWidth1 / 2, width - barWidth1 / 2]);
+var height1 = height;
+var width1 = width;
+    var tGraphx = d3v3.scale.linear()
+    .range([barWidth1 / 2, width1 - barWidth1 / 2]);
 
 var y = d3v3.scale.linear()
-    .range([height, 0]);
+    .range([height1, 0]);
 
 var yAxis = d3v3.svg.axis()
     .scale(y)
     .orient("right")
-    .tickSize(-width)
+    .tickSize(-width1)
     .tickFormat(function(d) { return Math.round((d / 1)) ; });
  var divs = d3v3.select("body").append("divs")
     .attr("class", "tooltip")
@@ -33,8 +34,8 @@ var tsavg = d3v3.select("#pSVG")
 .style("width", "auto")
 .style("height", "auto")
 .style("font", "14px sans-serif")
-    .attr("width", width + margin1.left + margin1.right)
-    .attr("height", height + margin1.top + margin1.bottom)    
+    .attr("width", width1 + margin1.left + margin1.right)
+    .attr("height", height1 + margin1.top + margin1.bottom)    
   .append("g")
     .attr("transform", "translate(" + margin1.left + "," + margin1.top + ")");
 
@@ -165,7 +166,7 @@ for (var i = 0; i < selects.length; i++){
     })
 }
   // Update the scale domains.
-  x.domain([ year1,year1 - month1]);
+  tGraphx.domain([ year1,year1 - month1]);
   y.domain([ -50,50]);
 
 
@@ -179,7 +180,7 @@ for (var i = 0; i < selects.length; i++){
   // Add an axis to show the population values.
   tsavg.append("g")
       .attr("class", "y axis")
-      .attr("transform", "translate(" + width + ",0)")
+      .attr("transform", "translate(" + width1 + ",0)")
       .call(yAxis)
     .selectAll("g")
     .filter(function(value) { return !value; })
@@ -200,7 +201,7 @@ for (var i = 0; i < selects.length; i++){
       .data(d3v3.range(year0 - month1, year1 + 1, 1))
     .enter().append("g")
       .attr("class", "birthyear")
-      .attr("transform", function(birthyear) { return "translate(" + x(birthyear) + ",0)"; });
+      .attr("transform", function(birthyear) { return "translate(" + tGraphx(birthyear) + ",0)"; });
 
   birthyear.selectAll("rect")
       .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
@@ -210,7 +211,7 @@ for (var i = 0; i < selects.length; i++){
       .attr("y", y)
       .attr("sum", function(value) {value1.push(value);})
       .attr("year",function(d){return tyear=year})
-      .attr("height", function(value) {return (height - y(value))})
+      .attr("height", function(value) {return (height1 - y(value))})
        .on("mouseover", function(d) {
             divs.transition()
                 .duration(200)
@@ -235,15 +236,15 @@ for (var i = 0; i < selects.length; i++){
         console.log(tyear);
     tsavg.append("text")
       .attr("transform",
-            "translate(" + (width/2) + " ," +
-                           (height + margin1.bottom ) + ")")
+            "translate(" + (width1/2) + " ," +
+                           (height1 + margin1.bottom ) + ")")
       .style("text-anchor", "middle")
       .text("Month");
 
     tsavg.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 280 - margin1.left)
-      .attr("x",0 - (height / 2))
+      .attr("x",0 - (height1 / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .text("Temperature °C");
@@ -254,8 +255,8 @@ for (var i = 0; i < selects.length; i++){
       .data(d3v3.range(1, month1 + 2, 1))
     .enter().append("text")
       .attr("class", "month")
-      .attr("x", function(month) { return x(year - month+1); })
-      .attr("y", height + 4)
+      .attr("x", function(month) { return tGraphx(year - month+1); })
+      .attr("y", height1 + 4)
       .attr("dy", ".71em")
 
       .text(function(month) { return month; });
@@ -269,7 +270,7 @@ function compare() {
 //    var value2=[];
     birthyears.transition()
         .duration(750)
-        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
     birthyear.selectAll("rect")
         .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
@@ -277,7 +278,7 @@ function compare() {
         .duration(750)
         .attr("y", y)
 
-        .attr("height", function(value) { return height - y(value); });
+        .attr("height", function(value) { return height1 - y(value); });
 
 }
 function compare2() {
@@ -286,7 +287,7 @@ function compare2() {
 //    var value2=[];
     birthyears.transition()
         .duration(750)
-        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
     birthyear.selectAll("rect")
         .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
@@ -294,7 +295,7 @@ function compare2() {
         .duration(750)
         .attr("y", y)
 
-        .attr("height", function(value) { return height - y(value); });}
+        .attr("height", function(value) { return height1 - y(value); });}
   
 d3.select("#searchText").on("input", compare )
 
@@ -437,7 +438,7 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
 //    var value2=[];
     birthyears.transition()
         .duration(750)
-        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
     birthyear.selectAll("rect")
         .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
@@ -449,7 +450,7 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
 
         .attr("sum", function(value) {value2.push(value);})//new
 
-        .attr("height", function(value) { return height - y(value); });
+        .attr("height", function(value) { return height1 - y(value); });
         var tem= 2014-glob;
         var tempor=value2.length;
         var newtem= 2014-glob;
@@ -489,7 +490,7 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
 //    var value3=[];
     birthyears.transition()
         .duration(750)
-        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
     birthyear.selectAll("rect")
         .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
@@ -501,7 +502,7 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
 
         .attr("sum", function(value) {value3.push(value);})//new
 
-        .attr("height", function(value) { return height - y(value); });
+        .attr("height", function(value) { return height1 - y(value); });
     var tem= 2014-glob2;
     var tempor=value3.length;
     var newtem= 2014-glob2;
@@ -581,8 +582,8 @@ var titSource = updateTitle(source);
 title2.text(ret5)
 
 
-var x = d3v3.scale.linear()
-    .range([barWidth / 2, width - barWidth / 2]);
+var tGraphx = d3v3.scale.linear()
+    .range([barWidth1 / 2, width1 - barWidth1 / 2]);
 
 var y = d3v3.scale.linear()
     .range([height,0]);
@@ -590,7 +591,7 @@ var y = d3v3.scale.linear()
 var yAxis = d3v3.svg.axis()
     .scale(y)
     .orient("right")
-    .tickSize(-width)
+    .tickSize(-width1)
     .tickFormat(function(d) { return Math.round(d / 1) ; });
 
 // A sliding container to hold the bars by birthyear.
@@ -618,7 +619,7 @@ var month1 = d3v3.max(data, function(d) { return d.month; }),
     dataInfo2.text("Min Temp: "  + tests2+"°C");
 
 // Update the scale domains.
-x.domain([ year1,year1 - month1]);
+tGraphx.domain([ year1,year1 - month1]);
 y.domain([ -50,50]);
 //y.domain([d3v3.min(data, function(d) { return d.temp}) , d3v3.max(data, function(d) { return d.temp; })]);
 
@@ -635,7 +636,7 @@ dot3.exit().remove()
 // Add an axis to show the population values.
 svg.append("g")
     .attr("class", "y axis")
-    .attr("transform", "translate(" + width + ",0)")
+    .attr("transform", "translate(" + width1 + ",0)")
     .call(yAxis)
   .selectAll("g")
   .filter(function(value) { return !value; })
@@ -655,8 +656,8 @@ birthyear.selectAll("rect")
 
     .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
   .enter().append("rect")
-    .attr("x", -barWidth / 2)
-    .attr("width", barWidth)
+    .attr("x", -barWidth1 / 2)
+    .attr("width", barWidth1)
     .attr("y", y)
 
     .attr("height", function(value) { return height - y(value)  ; })
@@ -680,7 +681,7 @@ svg.selectAll(".month")
     .data(d3v3.range(1, month1 + 1, 1))
   .enter().append("text")
     .attr("class", "month")
-    .attr("x", function(month) { return x(year - month); })
+    .attr("x", function(month) { return tGraphx(year - month); })
     .attr("y", height + 4)
     .attr("dy", ".71em")
 
@@ -814,7 +815,7 @@ function update() {
 //    var value2=[];
     birthyears.transition()
         .duration(750)
-        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
     birthyear.selectAll("rect")
         .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
@@ -866,7 +867,7 @@ function update() {
 //    var value3=[];
     birthyears.transition()
         .duration(750)
-        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
     birthyear.selectAll("rect")
         .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
