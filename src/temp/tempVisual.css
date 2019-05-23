@@ -52,7 +52,7 @@
     font: 300 58px 'Roboto';
     fill: #666;
   }
-  .birthyear,
+  .birthyear,.birthyear1,
   .month {
     font-family: 'Roboto', sans-serif;
 
@@ -108,20 +108,16 @@
     border-color: var(--secondary-color);
     border-radius: 5px;
   }
-  rect {
-    fill-opacity: .6;
-    fill: #1f77b4;
-  }
 
-  rect:first-child {
-    fill: #6272a4;
-  }
+
+
   rects {
     fill-opacity: .6;
     fill: #1f77b4;
   }
   rects:first-child {
-    fill: blue;
+
+    fill: #6272a4;
   }
   rect:nth-child(2) {
     fill:transparent;
