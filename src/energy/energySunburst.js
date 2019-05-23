@@ -357,8 +357,9 @@ function parseFile(file) {
                 }
             });
             /* Display data on a table */
+            d3.select("#burstTable").select("tbody").selectAll("tr").remove();
             path.each(function(d){
-                d3.select("#burstTable").select("tbody").selectAll("tr").remove();
+             
                 if(d.depth == 1){
                     var row = d3.select("#burstTable").select("tbody").append("tr");
                     row.append("td")
