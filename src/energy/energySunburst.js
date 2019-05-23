@@ -170,21 +170,31 @@ d3.json('./energyusage.json').then(data => {
     /* Zoom in Sunburst on click */
     function clicked(p) {
         parent.datum(p.parent || root);
-
+        /* Displays where you are when you clicked and transition */
+        g.select('#clickText').remove();
+        if (p.data.name != root.data.name){
+            g.append("text")
+                .attr("id", "clickText")
+                .attr("x", "-350px")
+                .attr("y", "-350px")
+                    .text(p.data.name)
+                    .style("font-size", "50");
+        }
         root.each(d => d.target = {
                 x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
                 x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
                 y0: Math.max(0, d.y0 - p.depth),
                 y1: Math.max(0, d.y1 - p.depth)
             });
-
         const t = g.transition().duration(750);
-
+            
         // Transition the data on all arcs, even the ones that aren’t visible,
         // so that if this transition is interrupted, entering arcs will start
         // the next transition from the desired position.
         path.transition(t)
                 .tween("data", d => {
+                    
+                    
                     const i = d3.interpolate(d.current, d.target);
                     return t => d.current = i(t);
                 })
@@ -371,7 +381,16 @@ function parseFile(file) {
             /* Zoom in Sunburst on click */
             function clicked(p) {
                 parent.datum(p.parent || root);
-                //console.log(p);
+                /* Displays where you are when you clicked and transition */
+                g.select('#clickText').remove();
+                if (p.data.name != root.data.name){
+                    g.append("text")
+                        .attr("id", "clickText")
+                        .attr("x", "-350px")
+                        .attr("y", "-350px")
+                            .text(p.data.name)
+                            .style("font-size", "50");
+                }
                 root.each(d => d.target = {
                         x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
                         x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
