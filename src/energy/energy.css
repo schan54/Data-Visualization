@@ -14,47 +14,48 @@ p {
 
 #yeartxt {
     position: relative;
-    top:160px;
+    top:190px;
     left: -400px;
     z-index: 1;
 }
 #yearslider{
     width:60%;
     position:relative;
-    top:-20px;
-    left: 150px;
+    top:100px;
+    left: 50px;
     z-index: 1;
     background: "black";
 }
 #searchText, #searchSubmit{
     position: relative;
-    top: 200px;
-    left: -1060px;
+    top: 250px;
+    left: -597px;
     z-index: 1;
 }
 #searchErr{
     position: relative;
-    top: 200px;
-    left: -600px;
+    top: 255px;
+    left: -597px;
     font-size: 11px;
     z-index: 1;
 }
 #selectTxt{
     position: relative;
-    top: 50px;
+    top: 70px;
     left: -600px;
     z-index: 1;
 }
 #selectFile{
     position: relative;;
-    top:50px;
+    top:70px;
     left:-600px;
     z-index: 1;
 }
 #burstTable{
     position: absolute;
-    top:400px;
-    left: 1200px;
+    top:250px;
+    left: 1160px;
+    font-size: 15px;
     z-index: 1;
 }
 

@@ -26,18 +26,17 @@ d3.select("#yearslider").on("input", function(){
 
 
 const svgBurst = d3.select('#partitionSVG')
-        .style("top", "-245px")
+        .style("top", "-150px")
         .style("width", "auto")
         .style("height", "auto")
         .style("font", "10px sans-serif");
-svgBurst.append("line").attr("x1", 200).attr("y1", 0).attr("x2", 200).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
+svgBurst.append("line").attr("x1", 205).attr("y1", 0).attr("x2", 205).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
 svgBurst.append("line").attr("x1", 1100).attr("y1", 200).attr("x2", 1100).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
 svgBurst.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1400).attr("y2", 200).attr("stroke-width", 1).attr("stroke", "black");
-svgBurst.append("xhtml:div").html("HELLO");
-    const g = svgBurst.append("g")
-            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
 
-// var data4 = { name:"compare", children: data};
+const g = svgBurst.append("g")
+        .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
+
 d3.json('./energyusage.json').then(data => {
 
     const root = partition(data[0]);
