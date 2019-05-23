@@ -41,8 +41,8 @@ var tsavg = d3v3.select("#pSVG")
   .append("g")
     .attr("transform", "translate(" + margin1.left + "," + margin1.top + ")");
 
-var birthyears1 = tsavg.append("g")
-    .attr("class", "birthyears1");
+    var birthyears1 = tsavg.append("g")
+        .attr("class", "birthyears1");
 // A sliding container to hold the bars by birthyear.
 var birthyears = tsavg.append("g")
     .attr("class", "birthyears");
@@ -242,14 +242,7 @@ var yeart=2014;
         .enter().append("g")
         .attr("class", "birthyear1")
         .attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1+(2014-yeart)) + ",0)"; });
-      
 
-/*        for(i = 0; i<226;i++)
-        {
-            value1.shift();
-            
-        }
-        console.log(value1); */
         console.log(tyear);
     tsavg.append("text")
       .attr("transform",
@@ -283,8 +276,7 @@ var yeart=2014;
 function compare() {
 
     year =this.value;
-    title.text("x");
-//    var value2=[];
+    title.text(year);
     birthyears.transition()
         .duration(750)
         .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
@@ -296,66 +288,11 @@ function compare() {
         .attr("y", tGraphy)
 
         .attr("height", function(value) { return height1 - tGraphy(value); });
-      
-      /*
-        var birthyears1 = tsavg.append("g")
-        .attr("class", "birthyears1");
-        yeart = 2014;
-        var birthyear1 = birthyears1.selectAll(".birthyear1")
-        .data(d3v3.range(year0 - month1, year1 + 1, 1))
-      .enter().append("g")
-        .attr("class", "birthyear1")
-        .attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1) + ",0)"; });
-  
-    birthyear1.selectAll("rect")
-        .data(function(birthyear1) { return data[yeart][birthyear1] || [-800, -800]; })
-      .enter().append("rect")
-        .attr("x", -barWidth1 / 2)
-        .attr("width", barWidth1)
-        .attr("y", y)
-        .attr("sum", function(value) {value1.push(value);})
-        .attr("year",function(d){return tyear=yeart})
-        .attr("height", function(value) {return (height1 - y(value))})
-         .on("mouseover", function(d) {
-              divs.transition()
-                  .duration(200)
-                  .style("opacity", .9);
-                //  divs.html(d)
-                divs.html("<strong>Temperature: </strong>" + "<span class=\"details\">"
-                + d+ "</span><br>" )
-                  .style("left", (d3v3.event.pageX) + "px")
-                  .style("top", (d3v3.event.pageY) + "px");                
-              })
-          .on("mouseout", function(d) {
-              divs.transition()
-                  .duration(500)
-                  .style("opacity", 0);
-          });*/
-
 }
 function compare2() {
 
     yeart =this.value;
     title.text(yeart);
- /*   birthyears.transition()
-        .duration(750)
-        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
-
-    birthyear.selectAll("rect")
-        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
-      .transition()
-        .duration(750)
-        .attr("y", y)
-
-        .attr("height", function(value) { return height1 - y(value); });
-      
-*/
-//    var value2=[];
-  /*  birthyears.transition()
-        .duration(750)
-        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
-*/
-
 
 
 var birthyears1 = tsavg.append("g")
@@ -378,7 +315,7 @@ birthyear1.selectAll(".rect1")
 .attr("year",function(d){return tyear=yeart})
 .attr("height", function(value) {return (height1 - tGraphy(value))})
 .attr("fill-opacity",".6")
-.attr("fill","skyblue ")
+.attr("fill","lightpink ")
   .on("mouseover", function(d) {
       divs.transition()
           .duration(200)
@@ -720,6 +657,8 @@ var yAxis = d3v3.svg.axis()
     .tickSize(-width1)
     .tickFormat(function(d) { return Math.round(d / 1) ; });
 
+    var birthyears1 = tsavg.append("g")
+    .attr("class", "birthyears1");
 // A sliding container to hold the bars by birthyear.
 var birthyears = tsavg.append("g")
     .attr("class", "birthyears");
@@ -805,7 +744,13 @@ birthyear.selectAll("rect")
               .duration(500)
               .style("opacity", 0);
       });
+      var yeart=2014;   
 
+      var birthyear1 = birthyears1.selectAll(".birthyear1")
+      .data(d3v3.range(year0 - month1, year1 + 1, 1))
+      .enter().append("g")
+      .attr("class", "birthyear1")
+      .attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1+(2014-yeart)) + ",0)"; });
 // Add labels to show age (separate; not animated).
 tsavg.selectAll(".month")
     .data(d3v3.range(1, month1 + 1, 1))
@@ -816,6 +761,72 @@ tsavg.selectAll(".month")
     .attr("dy", ".71em")
 
     .text(function(month) { return month; });
+
+
+    function compare() {
+
+        year =this.value;
+        title.text(year);
+    //    var value2=[];
+        birthyears.transition()
+            .duration(750)
+            .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
+    
+        birthyear.selectAll("rect")
+            .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+          .transition()
+            .duration(750)
+            .attr("y", tGraphy)
+    
+            .attr("height", function(value) { return height1 - tGraphy(value); });
+    
+    }
+    function compare2() {
+    
+        yeart =this.value;
+        title.text(yeart);
+
+    var birthyears1 = tsavg.append("g")
+    .attr("class", "birthyears1");
+    var birthyear1 = birthyears1.selectAll(".birthyear1")
+    .data(d3v3.range(year0 - month1, year1 + 1, 1))
+    .enter().append("g")
+    .attr("class", "birthyear1")
+    .attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1+(2014-yeart)) + ",0)"; });
+    
+    birthyear1.selectAll(".rect1")
+    .data(function(birthyear1) { return data[yeart][birthyear1] || [-800, -800]; })
+    .enter().append("rect")
+    .attr('class', 'rect1')
+    .attr("x", -barWidth1 / 2)
+    .attr("width", barWidth1)
+    .attr("y", tGraphy)
+    .attr("z",-1)
+    .attr("year",function(d){return tyear=yeart})
+    .attr("height", function(value) {return (height1 - tGraphy(value))})
+    .attr("fill-opacity",".6")
+    .attr("fill","lightpink ")
+      .on("mouseover", function(d) {
+          divs.transition()
+              .duration(200)
+              .style("opacity", .9);
+            //  divs.html(d)
+            divs.html("<strong>Temperature: </strong>" + "<span class=\"details\">"
+            + d+ "</span><br>" )
+              .style("left", (d3v3.event.pageX) + "px")
+              .style("top", (d3v3.event.pageY) + "px");                
+          })
+      .on("mouseout", function(d) {
+          divs.transition()
+              .duration(500)
+              .style("opacity", 0);
+      });
+    }
+    
+    d3.select("#searchText").on("input", compare )
+    
+    d3.select("#searchText2").on("input", compare2 )
+
     var glob=0;//GLOBAL VARIABLE
     var glob2=0;
     var value2=[];
@@ -891,9 +902,33 @@ d3v3.select(window).on("keydown", function() {
   switch (d3v3.event.keyCode) {
     case 37:  year = Math.max(year0, year - 1);//decrement
     track++;
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
     break;
 case 39:  year = Math.min(year1, year + 1);
     track++;
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
     break;
 }
 if(track%2 == 1)
