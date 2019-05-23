@@ -33,18 +33,18 @@ const svgBurst = d3.select('#partitionSVG')
 svgBurst.append("line").attr("x1", 200).attr("y1", 0).attr("x2", 200).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
 svgBurst.append("line").attr("x1", 1100).attr("y1", 200).attr("x2", 1100).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
 svgBurst.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1400).attr("y2", 200).attr("stroke-width", 1).attr("stroke", "black");
+svgBurst.append("xhtml:div").html("HELLO");
+    const g = svgBurst.append("g")
+            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
 
-
-
+// var data4 = { name:"compare", children: data};
 d3.json('./energyusage.json').then(data => {
-    
+
     const root = partition(data[0]);
     const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data[0].children.length + 1));
 
     root.each(d => d.current = d);
 
-    const g = svgBurst.append("g")
-            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
 
     const path = g.append("g")
             .selectAll("path")
@@ -58,9 +58,10 @@ d3.json('./energyusage.json').then(data => {
             .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
             .attr("d", d => arcBurst(d.current));
 
-    var total = 0;        
+    /* add all values */
+    var total = 0;
     path.each(d => {total = total + Number(d.data.size); })
-
+    
     /* hover over path to see values in the middle */
     path.on("mouseover", function(d){
         // console.log(d);
@@ -87,7 +88,6 @@ d3.json('./energyusage.json').then(data => {
     path.filter(d => d.children)
             .style("cursor", "pointer")
             .on("click", clicked);
-   
 
     /* hover over path for more info */
     path.append("title")
@@ -112,13 +112,15 @@ d3.json('./energyusage.json').then(data => {
             .attr("fill", "none")
             .attr("pointer-events", "all")
             .on("click", clicked);
+
     /* change sunburst based on years */
     d3.select("#yearslider").on("change", function(){
         year = this.value - 1990;
-        g.remove()
+        g.selectAll("g").transition().remove();
         updateSunBurst("./energyusage.json", year);
         
     });
+
     /* Search By Country Name */
     d3.select("#searchSubmit").on("click", function(){
         var name = d3.select("#searchText").node().value;
@@ -155,12 +157,9 @@ d3.json('./energyusage.json').then(data => {
             }
         }
     });
-    //console.log(root);
+    /* Display data on a table */
     path.each(function(d){
-        // console.log(d);
         if(d.depth == 1){
-          
-        
             var row = d3.select("#burstTable").select("tbody").append("tr");
             row.append("td")
                     .text(d.data.name);
@@ -207,33 +206,33 @@ function parseFile(file) {
     switch(file){
       case "consumption":
         d3.select("h1").text("Global Energy Consumption(Mtoe)");
-        svgBurst.selectAll("g").remove();
+        g.selectAll("g").transition().remove();
         d3.select("#yearslider").attr("value", 1990);
         updateSunBurst("./energyusage.json", 0);
         break;
       case "production":
         d3.select("h1").text("Energy Production");
-        svgBurst.selectAll("g").remove();
+        g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Total energy production.json", 0);
         break;
       case "crudeoil":
         d3.select("h1").text("Crude Oil Consumption");
-        svgBurst.selectAll("g").remove();
+        g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Crude oil input to refineries.json", 0);
         break;
       case "oilproducts":
         d3.select("h1").text("Oil Products Consumption");
-        svgBurst.selectAll("g").remove();
+        g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Oil products domestic consumpt.json", 0);
         break;
-      case "production":
+      case "naturalgas":
         d3.select("h1").text("Natural Gas Production");
-        svgBurst.selectAll("g").remove();
+        g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Natural gas production.json", 0);
         break;
       default:
         d3.select("h1").text("Global Energy Consumption(Mtoe)");
-        svgBurst.selectAll("g").remove();
+        g.selectAll("g").transition().remove();
         updateSunBurst("./energyusage.json", 0);
         break;
     }
@@ -245,9 +244,7 @@ function parseFile(file) {
             const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data[year].children.length + 1));
         
             root.each(d => d.current = d);
-            const g = svgBurst.append("g")
-            .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
-
+        
             const path = g.append("g")
                     .selectAll("path")
                     .data(root.descendants().slice(1))
@@ -260,26 +257,32 @@ function parseFile(file) {
                     .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
                     .attr("d", d => arcBurst(d.current));
         
-                    var total = 0;        
-                    path.each(d => {total = total + Number(d.data.size); })
-                
-                    /* hover over path to see values in the middle */
-                    path.on("mouseover", function(d){
-                        var percentage = (Number(d.value) / total) * 100
-                        g.append("text")
-                            .attr("class", "midText")
-                            .text(formatNum(d.value))
-                            .style("font-size", "50");
-                        g.append("text")
-                            .attr("class", "midText")
-                            .attr("dy", "1.5em")
-                            .text(percentage.toFixed(2)+"%")
-                            .style("font-size", "35px");
-                    })
-                        .on("mouseout", function(d){
-                        g.selectAll(".midText").remove();
-                    })
-
+            /* add all values */
+            var total = 0;
+            path.each(d => { total = total + Number(d.data.size); })
+            
+            /* hover over path to see values in the middle */
+            path.on("mouseover", function(d){
+                // console.log(d);
+                var percentage = (Number(d.value) / total) * 100
+                g.append("text")
+                    .attr("class", "midText")
+                    .attr("dy", "0.5em")
+                    .text(d.name)
+                    .style("font-size", "50");
+                g.append("text")
+                    .attr("class", "midText")
+                    .text(formatNum(d.value))
+                    .style("font-size", "50");
+                g.append("text")
+                    .attr("class", "midText")
+                    .attr("dy", "1.5em")
+                    .text(percentage.toFixed(2)+"%")
+                    .style("font-size", "35px");
+            })
+                .on("mouseout", function(d){
+                g.selectAll(".midText").remove();
+            })
             /* clicking on each path zooms in */
             path.filter(d => d.children)
                     .style("cursor", "pointer")
@@ -308,16 +311,67 @@ function parseFile(file) {
                     .attr("fill", "none")
                     .attr("pointer-events", "all")
                     .on("click", clicked);
+        
+            /* change sunburst based on years */
             d3.select("#yearslider").on("change", function(){
                 year = this.value - 1990;
-                g.remove()
+                g.selectAll("g").transition().remove();
                 updateSunBurst(file, year);
-                    
+                
+            });
+        
+            /* Search By Country Name */
+            d3.select("#searchSubmit").on("click", function(){
+                var name = d3.select("#searchText").node().value;
+                var hide = false;
+                path.each(d => {
+                    if (d.data.name == name){
+                        hide = true;
+                        d3.select("#searchErr")
+                          .style("visibility", "hidden");
+                        return clicked(d);
+                    }
+                });        
+                if (hide == false){
+                d3.select("#searchErr")
+                    .style("visibility", "visible");
+                }
+            });
+            document.getElementById("searchText").addEventListener("keydown", function(event){
+                if (event.keyCode == 13){
+                    event.preventDefault();
+                    var name = d3.select("#searchText").node().value;
+                    var hide = false;
+                    path.each(d => {
+                        if (d.data.name == name){
+                            hide = true;
+                            d3.select("#searchErr")
+                              .style("visibility", "hidden");
+                            return clicked(d);
+                        }
+                    });        
+                    if (hide == false){
+                    d3.select("#searchErr")
+                        .style("visibility", "visible");
+                    }
+                }
+            });
+            /* Display data on a table */
+            d3.select("#burstTable").select("tbody").selectAll("tr").remove();
+            path.each(function(d){
+             
+                if(d.depth == 1){
+                    var row = d3.select("#burstTable").select("tbody").append("tr");
+                    row.append("td")
+                            .text(d.data.name);
+                    row.append("td")
+                            .text(Number(d.value).toFixed(2));
+                }
             });
             /* Zoom in Sunburst on click */
             function clicked(p) {
                 parent.datum(p.parent || root);
-        
+                //console.log(p);
                 root.each(d => d.target = {
                         x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
                         x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
