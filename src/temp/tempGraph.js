@@ -30,8 +30,8 @@ var yAxis = d3v3.svg.axis()
 //var svg = d3v3.select("body").append("svg")
 
 var tsavg = d3v3.select("#pSVG")
-.style("top", "-150px")
-.style("left", "-133px")
+.style("top", "0px")
+.style("left", "-132px")
 
 .style("width", "auto")
 .style("height", "auto")
@@ -614,6 +614,7 @@ d3v3.select('#inds')
             .on("change", function () {
                 var sect = document.getElementById("inds");
                 var section = sect.options[sect.selectedIndex].value;
+
                 updateTest(section);
 
             });
@@ -670,8 +671,8 @@ data.forEach(function(d) {
   d.year = +d.year;
   d.month = +d.month;
 });
-var dot = tsavg.select('.birthyear').data(data)
-dot.exit().remove()
+var dot = tsavg.select('.birthyear').data(data);
+dot.exit().remove();
 
 // Compute the extent of the data set in age and years.
 var month1 = d3v3.max(data, function(d) { return d.month; }),
@@ -709,6 +710,16 @@ tsavg.append("g")
 
     var dot3 = tsavg.select('g').data(data)
 dot3.exit().remove()
+var dot3 = tsavg.select('g').data(data)
+dot3.exit().remove()
+var dotzz = tsavg.select('.birthyears1').data(data)
+dotzz.exit().remove()
+var dotzz = tsavg.select('.birthyears1').data(data)
+dotzz.exit().remove()
+var dotzz = tsavg.select('.birthyears1').data(data)
+dotzz.exit().remove()
+var dotzz = tsavg.select('.birthyears1').data(data)
+dotzz.exit().remove()
 // Add labeled rects for each birthyear (so that no enter or exit is required).
 var birthyear = birthyears.selectAll(".birthyear")
     .data(d3v3.range(year0 - month1, year1 + 1, 1))
@@ -914,6 +925,8 @@ d3v3.select(window).on("keydown", function() {
     dotzz.exit().remove();
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
+
+
     break;
 case 39:  year = Math.min(year1, year + 1);
     track++;
@@ -929,6 +942,7 @@ case 39:  year = Math.min(year1, year + 1);
     dotzz.exit().remove();
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
+
     break;
 }
 if(track%2 == 1)

@@ -1,14 +1,14 @@
 
   #searchText{
-    position: relative;
-    top: 200px;
-    left: -630px;
+    position: absolute;
+    top: 170px;
+    left: 50px;
     z-index: 1;
 }
 #searchText2{
-    position: relative;
-    top: 200px;
-    left: -546px;
+    position: absolute;
+    top: 190px;
+    left: 50px;
     z-index: 1;}
 #mainChart{
     position: absolute;
@@ -130,8 +130,8 @@
   #inds{
 
       position: relative;
-      top:-15px;
-      left:-240px;
+      top:-6px;
+      left:-25px;
       z-index: 1;
   }
   #educate{
@@ -225,10 +225,10 @@ background-color: var(--secondary-color);
     left: 50px;
     top: 250px;
   }
-  #leftButt, #rightButt {
-    position: relative;
-    left: -630px;
-    bottom: -150px;
+  #leftButt{
+    position: absolute;
+    left: 100px;
+    top: 110px;
     font-family: 'Nunito', sans-serif;
     letter-spacing: 1px;
     color: var(--primary-color);
@@ -245,7 +245,26 @@ background-color: var(--secondary-color);
     z-index: 1;
 
   }
+  #rightButt {
+    position: absolute;
+    left: 100px;
+    top: 50px;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    padding-right: 26px;
+    border-radius: 3px;
+    border: none;
+    color: #f8f8f2;
+    margin: 0;
+    padding: 0 12px;
+    width: 90px;
+    cursor: pointer;
+    height: 50px;
+    background-color: #282a36;
+    z-index: 1;
 
+  }
 #displayYear, #choroYear1, #choroYear2 {
   font-family: 'Roboto', sans-serif;
   font-size: 40pt;
