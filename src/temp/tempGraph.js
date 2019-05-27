@@ -55,42 +55,52 @@ var title = tsavg.append("text")
     .attr("dy", "-1em")
     .text(2014);
 var insn1 = tsavg.append("text")
-    .attr("class", "#instructions")
+    .attr("class", "instructions2")
     .attr("dx","-17.2em")
     .attr("dy", "10em")
     .text(" How to use:");
 var insn2 = tsavg.append("text")
-    .attr("class", "#instructions")
+    .attr("class", "instructions")
     .attr("dx","-17.2em")
 
     .attr("dy", "15em")
     .text("        Use the right and left arrow keys");
 var insn2b = tsavg.append("text")
-    .attr("class", "#instructions")
+    .attr("class", "instructions")
     .attr("dx","-17.2em")
 
     .attr("dy", "16em")
     .text("to navigate bewteen years.    ");    
 var insn3 = tsavg.append("text")
-    .attr("class", "#instructions")
+    .attr("class", "instructions")
     .attr("dx","-17.2em")
     .attr("dy", "12em")
     .text(" Select your country using the");  
 var insn3b = tsavg.append("text")
-    .attr("class", "#instructions")
+    .attr("class", "instructions")
     .attr("dx","-17.2em")
     .attr("dy", "13em")
     .text(" dropdown menu.");             
 var insn4 = tsavg.append("text")
-    .attr("class", "#instructions")
+    .attr("class", "instructions")
     .attr("dx","-17.2em")
     .attr("dy", "18em")
     .text("             Use the mouse to hover over to ");
 var insn4 = tsavg.append("text")
-    .attr("class", "#instructions")
+    .attr("class", "instructions")
     .attr("dx","-17.2em")
     .attr("dy", "19em")
     .text("view the temperature.    ");    
+    var insn5 = tsavg.append("text")
+    .attr("class", "instructions")
+    .attr("dx","-17.2em")
+    .attr("dy", "21em")
+    .text("Use search bars to compare"); 
+    var insn5b = tsavg.append("text")
+    .attr("class", "instructions")
+    .attr("dx","-17.2em")
+    .attr("dy", "22em")
+    .text(" temperatures");    
 var globTit = tsavg.append("text")
     .attr("class", "globTit")
     .attr("dy", "-1.5em");
