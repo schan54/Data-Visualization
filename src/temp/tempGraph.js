@@ -247,7 +247,7 @@ var yeart=2014;
     tsavg.append("text")
       .attr("transform",
             "translate(" + (width1/2) + " ," +
-                           (height1 + margin1.bottom ) + ")")
+                           (height1 + margin1.bottom -2 ) + ")")
       .style("text-anchor", "middle")
       .text("Month");
 
