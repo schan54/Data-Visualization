@@ -313,7 +313,10 @@ function compare2() {
     yeart =this.value;
     title.text(yeart);
 
-
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();     
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
 var birthyears1 = tsavg.append("g")
 .attr("class", "birthyears1");
 var birthyear1 = birthyears1.selectAll(".birthyear1")
@@ -356,7 +359,6 @@ birthyear1.selectAll(".rect1")
   .attr("y", height1 + margin1.bottom -38 )
   .text(function(birthyear) { return data[yeart][birthyear]; });
 }
-
 d3.select("#searchText").on("input", compare )
 
 
@@ -451,9 +453,7 @@ d3.select("#searchText2").on("input", compare2 )
 
 
                 birthyear.select("text").remove();
-              /*  birthyear.append("text")
-                .attr("y", height1 + margin1.bottom -38 )
-                .text(function(birthyear) { return data[year][birthyear]; });*/
+
                 break;
                 
       case 39:  year = Math.min(year1, year + 1);
@@ -832,6 +832,10 @@ tsavg.selectAll(".month")
         yeart =this.value;
         title.text(yeart);
 
+        var dotzz = tsavg.select('.birthyears1').data(data);
+        dotzz.exit().remove();     
+        var dotzz = tsavg.select('.birthyears1').data(data);
+        dotzz.exit().remove();
     var birthyears1 = tsavg.append("g")
     .attr("class", "birthyears1");
     var birthyear1 = birthyears1.selectAll(".birthyear1")
