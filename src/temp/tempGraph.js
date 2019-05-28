@@ -245,6 +245,10 @@ for (var i = 0; i < selects.length; i++){
                 .duration(500)
                 .style("opacity", 0);
         });
+    /*    birthyear.append("text")
+        .attr("y", height1 + margin1.bottom -38 )
+        .text(function(birthyear) { return data[year][birthyear]; });*/
+
 var yeart=2014;   
 
         var birthyear1 = birthyears1.selectAll(".birthyear1")
@@ -298,6 +302,11 @@ function compare() {
         .attr("y", tGraphy)
 
         .attr("height", function(value) { return height1 - tGraphy(value); });
+
+        birthyear.append("text")
+        .attr("class", "texted")
+        .attr("y", height1 + margin1.bottom -65 )
+        .text(function(birthyear) { return data[year][birthyear]; });
 }
 function compare2() {
 
@@ -341,6 +350,11 @@ birthyear1.selectAll(".rect1")
           .duration(500)
           .style("opacity", 0);
   });
+  birthyear1.append("text")
+  .attr("class", "texted2")
+
+  .attr("y", height1 + margin1.bottom -38 )
+  .text(function(birthyear) { return data[yeart][birthyear]; });
 }
 
 d3.select("#searchText").on("input", compare )
@@ -434,7 +448,14 @@ d3.select("#searchText2").on("input", compare2 )
                 dotzz.exit().remove();
                 var dotzz = tsavg.select('.birthyears1').data(data);
                 dotzz.exit().remove();
+
+
+                birthyear.select("text").remove();
+              /*  birthyear.append("text")
+                .attr("y", height1 + margin1.bottom -38 )
+                .text(function(birthyear) { return data[year][birthyear]; });*/
                 break;
+                
       case 39:  year = Math.min(year1, year + 1);
                 track++;
                 var dotzz = tsavg.select('.birthyears1').data(data);
@@ -447,6 +468,7 @@ d3.select("#searchText2").on("input", compare2 )
                 dotzz.exit().remove();
                 var dotzz = tsavg.select('.birthyears1').data(data);
                 dotzz.exit().remove();
+                birthyear.select("text").remove();
 
                 break;
     }
@@ -800,7 +822,10 @@ tsavg.selectAll(".month")
             .attr("y", tGraphy)
     
             .attr("height", function(value) { return height1 - tGraphy(value); });
-    
+            birthyear.append("text")
+        .attr("class", "texted")
+        .attr("y", height1 + margin1.bottom -65 )
+        .text(function(birthyear) { return data[year][birthyear]; });
     }
     function compare2() {
     
@@ -842,6 +867,11 @@ tsavg.selectAll(".month")
               .duration(500)
               .style("opacity", 0);
       });
+      birthyear1.append("text")
+      .attr("class", "texted2")
+    
+      .attr("y", height1 + margin1.bottom -38 )
+      .text(function(birthyear) { return data[yeart][birthyear]; });
     }
     
     d3.select("#searchText").on("input", compare )
@@ -935,6 +965,7 @@ d3v3.select(window).on("keydown", function() {
     dotzz.exit().remove();
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
+    birthyear.select("text").remove();
 
 
     break;
@@ -952,6 +983,7 @@ case 39:  year = Math.min(year1, year + 1);
     dotzz.exit().remove();
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
+    birthyear.select("text").remove();
 
     break;
 }
