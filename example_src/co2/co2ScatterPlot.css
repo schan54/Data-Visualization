@@ -1,0 +1,56 @@
+#displayYear, #choroYear1, #choroYear2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40pt;
+  letter-spacing: -2px;
+  z-index: 1;
+  margin: 0px;
+}
+
+#sources {
+  position: absolute;
+  bottom: -285px;
+  left: -590px;
+  width: 1500px;
+  font: 10px sans-serif;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+#sum, #choroSum, #vs {
+  font-size: 25px;
+}
+
+#sumText, #choroSumText, #choroSumText2, #topHeader, #botHeader {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#toolChart {
+  position: absolute;
+  visibility: hidden;
+  color: var(--tertiary-color);
+  padding: 8px;
+  background-color: rgba(44, 53, 49, 0.8);
+  border-radius: 3px;
+  text-align: center;
+  width: 350px;
+  font-family: 'avenir next', sans-serif;
+  line-height: 25px;
+}
+
+#yearText {
+  font-size: 80px;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.buttonText, .topText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+#sumText {
+  font-size: 16px;
+}
