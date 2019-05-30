@@ -99,6 +99,7 @@ function select(yearValue) {
         // Avg change in each country between 2007 and 2017
         for (i = 0; i < year2017.length; i++) {
           netDiff[i].value = (year2017[i].value - year2007[i].value) / 11;
+          //console.log(netDiff[i].value + ": " + netDiff[i].country);
         }
 
         // Extrapolate
@@ -127,6 +128,7 @@ function select(yearValue) {
 
       yearDiff = yearTwo;
 
+      // Find negatives
       for (i = 0; i < yearTwo.length; i++) {
         yearDiff[i].value = yearTwo[i].value - yearOne[i].value;
         if (yearDiff[i].value < 0) {
@@ -135,7 +137,47 @@ function select(yearValue) {
         }
       }
 
-      if (twoYears) {
+      // Find negatives for 2017 < yearTemp < 2055
+      for (i = 0; i < year2017.length; i++) {
+        if (netDiff[i].value < 0) {
+          indexesNegative[i] = 1;
+          netDiff[i].value = Math.abs(netDiff[i].value);
+        }
+      }
+
+      //console.log(netDiff);
+
+      for (i = 0; i < year2017.length; i++) {
+        //console.log(netDiff[i].value);
+      }
+
+
+      if (twoYears && yearTemp > 2017 && yearTemp <= 2055) {
+        // Simulate forces acting on each node
+        console.log(netDiff);
+        var simulation = d3.forceSimulation(netDiff)
+          .force("charge", d3.forceManyBody().strength(5))
+          .force('x', d3.forceX().x(function(d) {
+            if (!d.continent.localeCompare("Africa")) {
+              return xPosition[5];
+            } else if (!d.continent.localeCompare("Asia")) {
+              return xPosition[4];
+            } else if (!d.continent.localeCompare("Oceania")) {
+              return xPosition[3];
+            } else if (!d.continent.localeCompare("Europe")) {
+              return xPosition[2];
+            } else if (!d.continent.localeCompare("South America")) {
+              return xPosition[1];
+            } else if (!d.continent.localeCompare("North America")) {
+              return xPosition[0];
+            }
+          }))
+          .force('y', d3.forceY().y(340))
+          .force("collision", d3.forceCollide().radius(function(d) {
+            return scaleRadius(d.value)
+          }))
+          .on('tick', ticked);
+      } else if (twoYears) {
         // Simulate forces acting on each node
         var simulation = d3.forceSimulation(yearDiff)
           .force("charge", d3.forceManyBody().strength(5))
@@ -211,7 +253,11 @@ function select(yearValue) {
 
       function ticked() {
 
-        if (twoYears) {
+        if (twoYears && yearTemp > 2017 && yearTemp < 2055) {
+          var u = d3.select('svg')
+          .selectAll('circle')
+          .data(netDiff);
+        } else if (twoYears) {
           var u = d3.select('svg')
           .selectAll('circle')
           .data(yearDiff);
