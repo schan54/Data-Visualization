@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>Data Viz</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script> -->
+
+  <!-- MUST INCLUDE FIREBASE AT VERY BEGINNING -->
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+
+  <!-- Add additional services that you want to use -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-storage.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-messaging.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script> -->
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAdulZqhzuyQ274Hssvo4duvmp_arpHKA0",
+    authDomain: "dataviz-adf9c.firebaseapp.com",
+    databaseURL: "https://dataviz-adf9c.firebaseio.com",
+    projectId: "dataviz-adf9c",
+    storageBucket: "dataviz-adf9c.appspot.com",
+    messagingSenderId: "180690652523"
+  };
+  firebase.initializeApp(config);
+  </script>
+  <link rel="stylesheet" type="text/css" href="core/master.css" />
+  <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
+  <script type="text/javascript" href="master.js"></script>
+  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("navigation2.html", function() {
+        $("a[href= 'index.html']").addClass("selected");
+      });
+    });
+  </script>
+
+  <script type="text/javascript" src="home/home.js"></script>
+<!--
+  <p id="sources">
+        Source:<a href="https://climate.nasa.gov" target="_blank">https://climate.nasa.gov</a><br/>
+  </p>
+
+  
+  <form action = "">
+    <select name = "climateCategory">
+      <option value = "temperature"> Global Temperature</option>
+      <option value = "co2"> CO2</option>
+      <option value = "energy"> Global Energy Usage</option>
+      <option value = "rainfall"> Rainfall</option>
+    </select>
+    <input type="submit" value="Visualize!"/>
+  </form>
+
+  <progress value = "0" max = "100" id = "uploader">0%</progress>
+  <input type = "file" value = "upload" id = "fileButton"/>
+  <script src="./firebase/firebaseStorage.js"></script>
+  --->
+</body>
+</html>

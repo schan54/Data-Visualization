@@ -1,0 +1,128 @@
+
+h1 {
+    position:relative;
+    top:50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    letter-spacing: 1px;
+}
+p {
+    position:relative;
+    top:50px;
+    font-family: 'Nunito', sans-serif;
+}
+
+#yeartxt {
+    position: relative;
+    top:190px;
+    left: -400px;
+    z-index: 1;
+}
+#yearslider{
+    width:60%;
+    position:relative;
+    top:80px;
+    left: -100px;
+    z-index: 1;
+    background: "black";
+}
+#compare, #isolate {
+    position: relative;
+    top: 300px;
+    left: -180px;
+}
+#searchText, #searchSubmit{
+    position: relative;
+    top: 250px;
+    left: -597px;
+    z-index: 1;
+}
+#searchErr{
+    position: relative;
+    top: 255px;
+    left: -597px;
+    font-size: 11px;
+    z-index: 1;
+}
+#selectTxt{
+    position: relative;
+    top: 70px;
+    left: -600px;
+    z-index: 1;
+}
+#selectFile{
+    position: relative;;
+    top:70px;
+    left:-600px;
+    z-index: 1;
+}
+#burstTable{
+    position: absolute;
+    top:250px;
+    left: 1130px;
+    font-size: 15px;
+    z-index: 1;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+}
+thead {
+    display:table;
+    width: calc(100% - 17px);
+}
+
+tbody {
+  display:block;
+  max-height: 800px;
+  text-align: left;
+  overflow: auto;
+}
+tr:hover {background-color: #f5f5f5;}
+#toolTip {
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    padding: 2px;
+    font-family:12px 'Roboto', sans-serif;
+
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
+#shortDescription {
+	margin-left: 300px;
+    margin-right: 300px;
+    z-index: 1;
+}
+
+
+body {
+    margin-bottom: 10px;
+}
+
+text {
+    font: 10px sans-serif;
+    text-anchor: middle;
+}
+
+
+#displayYear, #choroYear1, #choroYear2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40pt;
+  letter-spacing: -2px;
+  z-index: 1;
+  margin: 0px;
+}
+#sum, #choroSum, #vs {
+  font-size: 25px;
+}
+
+#choroSumText, #choroSumText2, #topHeader, #botHeader {
+  font-size: 18px;
+  font-weight: bold;
+}
