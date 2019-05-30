@@ -227,7 +227,10 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 .navbar-brand .logo > img {
-	max-height:30px;
+	max-height:100px;
+	position: relative;
+
+	left: -180px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -246,7 +249,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	top:0;
 	z-index:99;
 	border-bottom:1px solid rgba(235, 235, 235, 0.25);
-	background-color:#f0f0f0; /* FFF*/
+	background-color:#0084ff; /* FFF*/
 	-webkit-transition:0.2s all;
 	transition:0.2s all;
 }
@@ -705,6 +708,8 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 /* -- Footer copyright -- */
 .footer-copyright {
 	line-height:40px;
+	position: relative;
+	left: 280px;
 }
 
 /* -- Footer Social -- */
