@@ -7,7 +7,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
   #searchText{
     position: absolute;
-    top: 170px;
+    top: 160px;
     left: 50px;
     z-index: 1;
 }
@@ -137,7 +137,7 @@ input[type=number]::-webkit-outer-spin-button {
 
       position: relative;
       top:-6px;
-      left:-25px;
+      left:-130px;
       z-index: 1;
   }
   #educate{
@@ -211,8 +211,9 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     width: 200px;
     font-family: 'avenir next', sans-serif;
+    font-size: 16px;
     line-height: 25px;
-    height: 28px;
+    height: 40px;
     pointer-events: none;
     z-index: 1;
   }
