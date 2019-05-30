@@ -1,7 +1,9 @@
+
 const formatNum = d3.format(",d");
 const widthBurst = 1300;
 const radiusBurst = widthBurst / 9;
 
+/* Create arcs */
 const arcBurst = d3.arc()
         .startAngle(d => d.x0)
         .endAngle(d => d.x1)
@@ -10,6 +12,7 @@ const arcBurst = d3.arc()
         .innerRadius(d => d.y0 * radiusBurst)
         .outerRadius(d => Math.max(d.y0 * radiusBurst, d.y1 * radiusBurst - 1));
 
+/* Partition Data */
 const partition = data => {
     const root = d3.hierarchy(data)
             .sum(d => d.size)
@@ -19,23 +22,27 @@ const partition = data => {
             (root);
 }
 
-//const {require} = new observablehq.Library;
-d3.select("#yearslider").on("input", function(){
-    d3.select("#yeartxt").text("Year: " + this.value);
-  });
 
-
+/* SVG Container */
 const svgBurst = d3.select('#partitionSVG')
         .style("top", "-150px")
         .style("width", "auto")
         .style("height", "auto")
         .style("font", "10px sans-serif");
+
+/* Lines */
 svgBurst.append("line").attr("x1", 205).attr("y1", 0).attr("x2", 205).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
 svgBurst.append("line").attr("x1", 1100).attr("y1", 200).attr("x2", 1100).attr("y2", 1400).attr("stroke-width", 1).attr("stroke", "black");
 svgBurst.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1400).attr("y2", 200).attr("stroke-width", 1).attr("stroke", "black");
 
+/* Append base for visualization */
 const g = svgBurst.append("g")
         .attr("transform", `translate(${widthBurst / 2},${widthBurst / 2})`);
+
+// Change year as you slide
+d3.select("#yearslider").on("input", function(){
+    d3.select("#yeartxt").text("Year: " + this.value);
+  });
 
 d3.json('./energyusage.json').then(data => {
 
@@ -43,8 +50,7 @@ d3.json('./energyusage.json').then(data => {
     const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data[0].children.length + 1));
 
     root.each(d => d.current = d);
-
-
+    /*  Draw Sun Burst */
     const path = g.append("g")
             .selectAll("path")
             .data(root.descendants().slice(1))
@@ -57,13 +63,12 @@ d3.json('./energyusage.json').then(data => {
             .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
             .attr("d", d => arcBurst(d.current));
 
-    /* add all values */
+    /* add all values in data */
     var total = 0;
     path.each(d => {total = total + Number(d.data.size); })
     
     /* hover over path to see values in the middle */
     path.on("mouseover", function(d){
-        // console.log(d);
         var percentage = (Number(d.value) / total) * 100
         g.append("text")
             .attr("class", "midText")
@@ -83,6 +88,7 @@ d3.json('./energyusage.json').then(data => {
         .on("mouseout", function(d){
         g.selectAll(".midText").remove();
     })
+
     /* clicking on each path zooms in */
     path.filter(d => d.children)
             .style("cursor", "pointer")
@@ -104,6 +110,7 @@ d3.json('./energyusage.json').then(data => {
             .attr("fill-opacity", d => +labelVisible(d.current))
             .attr("transform", d => labelTransform(d.current))
             .text(d => d.data.name);
+
     /* white circle in middle */
     const parent = g.append("circle")
             .datum(root)
@@ -119,7 +126,7 @@ d3.json('./energyusage.json').then(data => {
         updateSunBurst("./energyusage.json", year);
         
     });
-        /* change sunburst based on years */
+        /* Compare years*/
     d3.select("#compare").on("click", function(){
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyusage.json", "compare"); 
@@ -221,6 +228,8 @@ d3.json('./energyusage.json').then(data => {
     }
 
 });
+
+/* Swtich between files to look at different datasets */
 function parseFile(file) {
     switch(file){
       case "consumption":
@@ -255,7 +264,8 @@ function parseFile(file) {
         updateSunBurst("./energyusage.json", 0);
         break;
     }
-  }
+}
+/* Same function but its for updating , takes in file and year */
 function updateSunBurst(file, year){
     d3.json(file).then(data => {
         var datas = data[year];
@@ -263,12 +273,11 @@ function updateSunBurst(file, year){
         {
             datas = {name:"compare", children: data};
         }
-        console.log(datas);
         const root = partition(datas);
         const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, datas.children.length + 1));
     
         root.each(d => d.current = d);
-    
+        /* draw Sunburst */
         const path = g.append("g")
                 .selectAll("path")
                 .data(root.descendants().slice(1))
@@ -287,7 +296,6 @@ function updateSunBurst(file, year){
         
         /* hover over path to see values in the middle */
         path.on("mouseover", function(d){
-            // console.log(d);
             var percentage = (Number(d.value) / total) * 100
             g.append("text")
                 .attr("class", "midText")
@@ -343,7 +351,15 @@ function updateSunBurst(file, year){
             updateSunBurst(file, year);
             
         });
-    
+                /* Compare years*/
+        d3.select("#compare").on("click", function(){
+            g.selectAll("g").transition().remove();
+            updateSunBurst(file, "compare"); 
+        });
+        d3.select("#isolate").on("click", function(){
+            g.selectAll("g").transition().remove();
+            updateSunBurst(file, 0); 
+        });
         /* Search By Country Name */
         d3.select("#searchSubmit").on("click", function(){
             var name = d3.select("#searchText").node().value;

@@ -83,9 +83,7 @@
 			</div>
 		</header>
 		<!-- /Header -->
-
-
-
+	<!-- Drop Down Menu -->
   <h3 id = "selectTxt">Select a File</h3>
   <select id = "selectFile" onchange="parseFile(this.value);">
     <option value = "consumption">Global Energy Consumption</option>
@@ -101,17 +99,18 @@
     <foreignObject width="1400" height="1400">
 			<h1>Global Energy Consumption(Mtoe)</h1>
 			<p><b>HOW TO USE :</b> Hover over the visualization to view stats in the middle. CLICK a section to zoom and view more	</p>
-
+			<!-- Slider -->
 			<input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"> Slide to change year</input>
 			<a href = "#slider" style="position:absolute;top:275px;left:30px;font-size:15px;text-decoration:underline"> Jump to Map >></a>
+			<!-- Search Bar -->
       <input type="text" id = "searchText" placeholder="Look up a country" name="search" ><br/>
       <button type="submit" id = "searchSubmit">Zoom In     <i class="fa fa-search"></i></button>
 			<p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
-
+			<!-- Compare -->
 			<text style="position:relative;top:300px;left:-510px;font-size:25px">COMPARISON</text>
       <button id = "compare">COMPARE</button>
       <button id = "isolate">ISOLATE</button>
-
+			<!-- Table -->
       <table id = "burstTable">
         <thead>
           <tr>
@@ -120,7 +119,17 @@
           </tr>
         </thead>
         <tbody></tbody>
-      </table>
+			</table>
+			<!-- Text -->
+			<div class = "storytxt">
+				<p> This Sunburst is a unique way to display different types of energy usage (consumption, natural gas, etc.).</p>
+				<p> To begin, you can see energy usages of different countries/continents/groups.</p>
+				<p> Click on a section you are interested in (United States) or look it up to zoom in for more info about its energy usage.</p>
+				<p> As you slide through the years, you can see that certain parts (Asia) are increasingly moving up in energy usage</p>
+				<p> The table on the right shows an overview of the data presented and can help understand that energy usage is climbing for certain countries and over the years</p>
+				<p>To view other energy statistics, select a new file</p>
+				<p> Click on Jump to Map to view map representation</p>
+			</div>
     </foreignObject>
   </svg>
 
