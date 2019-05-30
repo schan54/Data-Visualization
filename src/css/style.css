@@ -246,7 +246,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	top:0;
 	z-index:99;
 	border-bottom:1px solid rgba(235, 235, 235, 0.25);
-	background-color:#FFF;
+	background-color:#f0f0f0; /* FFF*/
 	-webkit-transition:0.2s all;
 	transition:0.2s all;
 }
@@ -1336,7 +1336,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   --primary-color-shade-2: #042037;
   --secondary-color: #2C3531;
   --secondary-color-tint-1: #FFDBAA;
-  --secondary-color-tint-2: #92A29E;
+  --secondary-color-tint-2: #4D6675; /*was 92A29E--------POT 4D6675*/
   --secondary-color-shade-1: #805215;
   --secondary-color-shade-2: #553100;
   --tertiary-color: #FFCB9A;

@@ -30,8 +30,8 @@ var yAxis = d3v3.svg.axis()
 //var svg = d3v3.select("body").append("svg")
 
 var tsavg = d3v3.select("#pSVG")
-.style("top", "0px")
-.style("left", "-132px")
+.style("top", "-40px")
+.style("left", "0px")
 
 .style("width", "auto")
 .style("height", "auto")
