@@ -99,13 +99,17 @@
 			<input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"> Slide to change year</input>
 			<a href = "#slider" style="position:absolute;top:275px;left:30px;font-size:15px;text-decoration:underline"> Jump to Map >></a>
 			<!-- Search Bar -->
-      <input autocomplete="off" type="text" id = "searchText" placeholder="Look up a country" name="search" ><br/>
+      <input autocomplete="off" type="text" id = "searchText" placeholder="Look up a country" name="search" ><br/></input>
       <button type="submit" id = "searchSubmit">Zoom In     <i class="fa fa-search"></i></button>
 			<p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
 			<!-- Compare -->
 			<text style="position:relative;top:300px;left:-510px;font-size:25px">COMPARISON</text>
       <button id = "compare">COMPARE</button>
-      <button id = "isolate">ISOLATE</button>
+			<button id = "isolate">ISOLATE</button>
+			<div class = "compareTxt">
+				<input autocomplete="off" type="number" placeholder="Year 1" name="search" > TO </input>
+				<input autocomplete="off" type="number" placeholder="Year 2" name="search" ></input>
+			</div>
 			<!-- Table -->
       <table id = "burstTable">
         <thead>
@@ -158,8 +162,16 @@
     not only for the world, but for the climate as well. Fossil fuels for example generate a lot of CO2 that is a factor to global warming. This
     visualization tells us story of how if we keep using energy like this. Climate change will accelerate.
   </p>
-  <p>Source:<a href="https://yearbook.enerdata.net/" target="_blank">https://yearbook.enerdata.net/</a></p><br/>
-
+	<p>Source:<a href="https://yearbook.enerdata.net/" target="_blank">https://yearbook.enerdata.net/</a></p><br/>
+	<p>Alternative visualizations to help understand</p>>
+	<div>
+		<img src= "./energyImg/altEnergy.png">
+		<!-- https://www.e-education.psu.edu/earth104/node/1347 -->
+		<img src="./energyImg/altEnergy2.jpg"width=45%> 
+		<!-- https://seekingalpha.com/article/4083393-world-energy-2017minus-2050-annual-report -->
+		<p>Source: https://www.e-education.psu.edu/earth104/node/1347</p>
+		<p>Source: https://seekingalpha.com/article/4083393-world-energy-2017minus-2050-annual-report</p>
+	</div>
 		<!-- Footer -->
 		<footer id="footer" class="section">
 

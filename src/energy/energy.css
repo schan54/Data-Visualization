@@ -138,6 +138,13 @@ input[type=range] {
     width: 50;
     font-size: 16px;
 }
+div.compareTxt {
+    position: absolute;
+    display:inline-block;
+    top:650px;
+    left:000px;
+    width: 75px;
+}
 /* CSS for Search Bar */
 #searchSubmit{
     position: relative;
