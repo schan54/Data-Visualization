@@ -84,8 +84,7 @@
 		</header>
 		<!-- /Header -->
 
-  <h1>Global Energy Consumption(Mtoe)</h1>
-  <p>Hover over the burst to see tooltips and click on the part you're interesting in to see more info</p>
+
 
   <h3 id = "selectTxt">Select a File</h3>
   <select id = "selectFile" onchange="parseFile(this.value);">
@@ -100,13 +99,19 @@
 
   <svg id="partitionSVG" width="1400" height="1400" style ="position:relative; left:0%;">
     <foreignObject width="1400" height="1400">
+			<h1>Global Energy Consumption(Mtoe)</h1>
+			<p><b>HOW TO USE :</b> Hover over the visualization to view stats in the middle. CLICK a section to zoom and view more	</p>
 
-      <input type="text" id = "searchText" placeholder="Search.." name="search" >
-      <button type="submit" id = "searchSubmit"><i class="fa fa-search"></i></button>
-      <p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
+			<input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"> Slide to change year</input>
+			<a href = "#slider" style="position:absolute;top:275px;left:30px;font-size:15px;text-decoration:underline"> Jump to Map >></a>
+      <input type="text" id = "searchText" placeholder="Look up a country" name="search" ><br/>
+      <button type="submit" id = "searchSubmit">Zoom In     <i class="fa fa-search"></i></button>
+			<p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
+
+			<text style="position:relative;top:300px;left:-510px;font-size:25px">COMPARISON</text>
       <button id = "compare">COMPARE</button>
       <button id = "isolate">ISOLATE</button>
-      <input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"></input>
+
       <table id = "burstTable">
         <thead>
           <tr>

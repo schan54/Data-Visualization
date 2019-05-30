@@ -1,14 +1,20 @@
 
 h1 {
     position:relative;
-    top:50px;
+    top:20px;
+    color: crimson;
     font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
+    font-size: 50px;
+    text-align: center;
     letter-spacing: 1px;
 }
+
 p {
     position:relative;
-    top:50px;
+    top:20px;
+    left: 10px;
+    font-size: 20px;
+    color: black;
     font-family: 'Nunito', sans-serif;
 }
 
@@ -21,26 +27,43 @@ p {
 #yearslider{
     width:60%;
     position:relative;
-    top:80px;
-    left: -100px;
+    top:50px;
+    left: 250px;
     z-index: 1;
     background: "black";
 }
 #compare, #isolate {
+    display: inline-block;
     position: relative;
-    top: 300px;
-    left: -180px;
+    top: 330px;
+    left: -685px;
+    height: 25;
+    width: 50;
+    font-size: 16px;
 }
-#searchText, #searchSubmit{
+#searchSubmit{
     position: relative;
+    width: 70px;
+    height: 30px;
+    top: 255px;
+    left: -600px;
+    z-index: 1;
+}
+#searchText{
+    position: relative;
+    width: 150px;
+    height: 40px;
+    background-color: lightcyan;
     top: 250px;
-    left: -597px;
+    left: -646px;
+    text-align: left;  
+    margin: 5px 1px;
     z-index: 1;
 }
 #searchErr{
     position: relative;
-    top: 255px;
-    left: -597px;
+    top: 160px;
+    left: -600px;
     font-size: 11px;
     z-index: 1;
 }
@@ -53,6 +76,7 @@ p {
 #selectFile{
     position: relative;;
     top:70px;
+    width: 200px;
     left:-600px;
     z-index: 1;
 }
