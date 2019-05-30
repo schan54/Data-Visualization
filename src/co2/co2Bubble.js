@@ -139,18 +139,12 @@ function select(yearValue) {
 
       // Find negatives for 2017 < yearTemp < 2055
       for (i = 0; i < year2017.length; i++) {
+        netDiff[i].value = netDiff[i].value * (comparedValue - yearTemp);
         if (netDiff[i].value < 0) {
           indexesNegative[i] = 1;
           netDiff[i].value = Math.abs(netDiff[i].value);
         }
       }
-
-      //console.log(netDiff);
-
-      for (i = 0; i < year2017.length; i++) {
-        //console.log(netDiff[i].value);
-      }
-
 
       if (twoYears && yearTemp > 2017 && yearTemp <= 2055) {
         // Simulate forces acting on each node
@@ -448,7 +442,7 @@ function select(yearValue) {
       var sumAsia = 0;
       var sumSA = 0;
 
-      if (yearTemp < 2018) {
+      if (yearTemp < 2018 && !twoYears) {
         // Parse CO2 values from string to double with 3 decimal places
         data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
           d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
@@ -469,7 +463,7 @@ function select(yearValue) {
           }
           index++;
         })
-      } else {
+      } else if (!twoYears) {
         // Parse CO2 values from string to double with 3 decimal places
         year2017.forEach(function(d) {
           d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
@@ -490,10 +484,37 @@ function select(yearValue) {
           }
           index++;
         })
+      } else {
+        yearDiff.forEach(function(d) {
+          d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
+          if (indexesNegative[index] == 1) {
+            d.value = -d.value;
+          }
+          tempArray[index] = d.value;
+          tempStringArray[index] = d.country;
+          if (!d.continent.localeCompare("Oceania")) {
+            OceaniaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("North America")) {
+            NAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("South America")) {
+            SAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Asia")) {
+            AsiaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Europe")) {
+            EUArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Africa")) {
+            AfricaArray[index] = d.value;
+          }
+          if (indexesNegative[index] == 1) {
+            d.value = -d.value;
+          }
+          index++;
+        })
       }
 
       d3.select("#mainChart").selectAll("text").remove();
 
+      console.log(AsiaArray);
       sumValues = d3.sum(tempArray);
       sumOceania = d3.sum(OceaniaArray);
       sumSA = d3.sum(SAArray);
@@ -635,12 +656,21 @@ function select(yearValue) {
       topEmissions.append("text").html("Europe").attr("x", 420).attr("y", 510);
       topEmissions.append("text").html("Africa").attr("x", 1050).attr("y", 510);
 
-      topEmissions.append("text").html("Total Emissions:").attr("x", 620).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 810).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 80).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 220).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 420).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 1050).attr("y", 540);
+      if (!twoYears) {
+        topEmissions.append("text").html("Total Emissions:").attr("x", 620).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 810).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 80).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 220).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 420).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 1050).attr("y", 540);
+      } else {
+        topEmissions.append("text").html("Net Difference:").attr("x", 620).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 810).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 80).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 220).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 420).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 1050).attr("y", 540);
+      }
 
       //adding text to each toggle button group, centered
       //within the toggle button rect
