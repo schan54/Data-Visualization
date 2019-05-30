@@ -446,7 +446,6 @@ function select(yearValue) {
         })
       }
 
-
       d3.select("#mainChart").selectAll("text").remove();
 
       sumValues = d3.sum(tempArray);
