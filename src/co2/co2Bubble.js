@@ -529,8 +529,10 @@ function select(yearValue) {
           topEmissions.append("text").html(currentValue).attr("x", 240).attr("y", 80).attr("id", "yearText");
           topEmissions.append("text").html("to").attr("x", 310).attr("y", 110).attr("id", "toText");
           topEmissions.append("text").html(comparedValue).attr("x", 240).attr("y", 180).attr("id", "yearText");
+          topEmissions.append("text").html("Net Difference in Emissions:").attr("id", "sumText").attr("x", 440).attr("y", 70);
       } else {
           topEmissions.append("text").html(currentValue).attr("x", 240).attr("y", 120).attr("id", "yearText");
+          topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 440).attr("y", 70);
       }
 
       // Find the max value in this year
@@ -611,7 +613,6 @@ function select(yearValue) {
       topEmissions.append("text").html("Countries With the Most Emissions:").attr("id", "sumText").attr("x", 650).attr("y", 50);
       topEmissions.append("text").html("Countries With the Least Emissions:").attr("id", "sumText").attr("x", 920).attr("y", 50);
 
-      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 440).attr("y", 70);
       topEmissions.append("text").html(+ Math.round(parseFloat(sumValues) * 1000) / 1000 + " MtCO2").attr("id", "sum").attr("x", 460).attr("y", 120);
 
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 730).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
