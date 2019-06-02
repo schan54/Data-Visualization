@@ -51,7 +51,7 @@ function ready(error, data, population) {
     //displayPercentCompare(sortedHash1, sortedHash2);
 
     tip.html(function(d) {
-      return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + " vs " + userYear2 +": </strong><span class='details'>" + format(d.value) +"</span>";
+      return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + " vs " + userYear2 +": </strong><span class='details'>" + format2(d.value) +"</span>";
     })
   }
 
@@ -69,7 +69,7 @@ function ready(error, data, population) {
 
 
     tip.html(function(d) {
-      return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + ": </strong><span class='details'>" + format(d.value) +"</span>";
+      return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>" + userYear + ": </strong><span class='details'>" + format3(d.value) +"</span>";
     })
   }
 

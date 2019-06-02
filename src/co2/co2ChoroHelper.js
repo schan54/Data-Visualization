@@ -16,29 +16,29 @@ function displayMaxIso(max5, min5) {
 
   choroSvg.append("text").html("Highest Producers").attr("id", "topHeader").attr("x", 825).attr("y", 50);
 
-  choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]))
+  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + Math.floor(max5[4][1]))
     .attr("id", "top1")
     .attr("x", 850).attr("y", 80);
-  choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1]))
+  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + Math.floor(max5[3][1]))
     .attr("id", "top2")
     .attr("x", 850).attr("y", 100);
-  choroSvg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1]))
+  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + Math.floor(max5[2][1]))
     .attr("id", "top3")
     .attr("x", 850).attr("y", 120);
-  choroSvg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1]))
+  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + Math.floor(max5[1][1]))
     .attr("id", "top4")
     .attr("x", 850).attr("y", 140);
-  choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1]))
+  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + Math.floor(max5[0][1]))
     .attr("id", "top5")
     .attr("x", 850).attr("y", 160);
 
     choroSvg.append("text").html("Lowest Producers").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
 
-    choroSvg.append("text").html("1. " + min5[0][2] + ": " + format(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
-    choroSvg.append("text").html("2. " + min5[1][2] + ": " + format(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
-    choroSvg.append("text").html("3. " + min5[2][2] + ": " + format(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
-    choroSvg.append("text").html("4. " + min5[3][2] + ": " + format(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
-    choroSvg.append("text").html("5. " + min5[4][2] + ": " + format(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
+    choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + format2(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
+    choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + format2(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
+    choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + format2(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
+    choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + format2(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
+    choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + format2(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
 }
 
 function displaySumIso(a) {
@@ -104,20 +104,20 @@ loop2:
 
   choroSvg.append("text").html("Largest Growth").attr("id", "topHeader").attr("x", 825).attr("y", 50);
 
-  choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1])).attr("id", "top1").attr("x", 850).attr("y", 80);
-  choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1])).attr("id", "top2").attr("x", 850).attr("y", 100);
-  choroSvg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1])).attr("id", "top3").attr("x", 850).attr("y", 120);
-  choroSvg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1])).attr("id", "top4").attr("x", 850).attr("y", 140);
-  choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1])).attr("id", "top5").attr("x", 850).attr("y", 160);
+  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + Math.floor(max5[4][1])).attr("id", "top1").attr("x", 850).attr("y", 80);
+  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + Math.floor(max5[3][1])).attr("id", "top2").attr("x", 850).attr("y", 100);
+  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + Math.floor(max5[2][1])).attr("id", "top3").attr("x", 850).attr("y", 120);
+  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + Math.floor(max5[1][1])).attr("id", "top4").attr("x", 850).attr("y", 140);
+  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + Math.floor(max5[0][1])).attr("id", "top5").attr("x", 850).attr("y", 160);
 
 
   choroSvg.append("text").html("Largest Reduction").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
 
-  choroSvg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
-  choroSvg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
-  choroSvg.append("text").html("3. " + min5[2][2] + ": " + Math.floor(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
-  choroSvg.append("text").html("4. " + min5[3][2] + ": " + Math.floor(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
-  choroSvg.append("text").html("5. " + min5[4][2] + ": " + Math.floor(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
+  choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + Math.floor(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
+  choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + Math.floor(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
+  choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + Math.floor(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
+  choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + Math.floor(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
+  choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + Math.floor(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
 
 }
 
@@ -188,20 +188,20 @@ loop2:
 
   choroSvg.append("text").html("Largest Growth").attr("id", "topHeader").attr("x", 850).attr("y", 60);
 
-  choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]) + "%").attr("id", "top1").attr("x", 850).attr("y", 80);
-  choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1]) + "%").attr("id", "top2").attr("x", 850).attr("y", 100);
-  choroSvg.append("text").html("3. " + max5[2][2] + ": " + Math.floor(max5[2][1]) + "%").attr("id", "top3").attr("x", 850).attr("y", 120);
-  choroSvg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1]) + "%").attr("id", "top4").attr("x", 850).attr("y", 140);
-  choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1]) + "%").attr("id", "top5").attr("x", 850).attr("y", 160);
+  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + Math.floor(max5[4][1]) + "%").attr("id", "top1").attr("x", 850).attr("y", 80);
+  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + Math.floor(max5[3][1]) + "%").attr("id", "top2").attr("x", 850).attr("y", 100);
+  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + Math.floor(max5[2][1]) + "%").attr("id", "top3").attr("x", 850).attr("y", 120);
+  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + Math.floor(max5[1][1]) + "%").attr("id", "top4").attr("x", 850).attr("y", 140);
+  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + Math.floor(max5[0][1]) + "%").attr("id", "top5").attr("x", 850).attr("y", 160);
 
 
   choroSvg.append("text").html("Largest Reduction").attr("id", "botHeader").attr("x", 1050).attr("y", 60);
 
-  choroSvg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1]) + "%").attr("id", "bot1").attr("x", 1050).attr("y", 80);
-  choroSvg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1]) + "%").attr("id", "bot2").attr("x", 1050).attr("y", 100);
-  choroSvg.append("text").html("3. " + min5[2][2] + ": " + Math.floor(min5[2][1]) + "%").attr("id", "bot3").attr("x", 1050).attr("y", 120);
-  choroSvg.append("text").html("4. " + min5[3][2] + ": " + Math.floor(min5[3][1]) + "%").attr("id", "bot4").attr("x", 1050).attr("y", 140);
-  choroSvg.append("text").html("5. " + min5[4][2] + ": " + Math.floor(min5[4][1]) + "%").attr("id", "bot5").attr("x", 1050).attr("y", 160);
+  choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + Math.floor(min5[0][1]) + "%").attr("id", "bot1").attr("x", 1050).attr("y", 80);
+  choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + Math.floor(min5[1][1]) + "%").attr("id", "bot2").attr("x", 1050).attr("y", 100);
+  choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + Math.floor(min5[2][1]) + "%").attr("id", "bot3").attr("x", 1050).attr("y", 120);
+  choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + Math.floor(min5[3][1]) + "%").attr("id", "bot4").attr("x", 1050).attr("y", 140);
+  choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + Math.floor(min5[4][1]) + "%").attr("id", "bot5").attr("x", 1050).attr("y", 160);
 
 }
 
