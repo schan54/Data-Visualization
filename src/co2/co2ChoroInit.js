@@ -10,11 +10,11 @@ var startDate = new Date("1961"),
 var userYear = formatDateIntoYear(startDate);
 var userYear2 = formatDateIntoYear(startDate);
 
-var colorIsolatedDomain = [-25,0,5,25,50,100,200,500,1000, 2500, 5000]
-var colorCompareDomain = [-100, -50, 0, 50, 100, 200, 500, 750, 1000, 2500, 5000]
+var colorIsolatedDomain = [0,5,25,50,100,250,500,1000, 2500, 5000, 7500]
+var colorCompareDomain = [0, 5, 25, 50, 100, 200, 400, 600, 800, 1000, 1500]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]
 
-var colorDomain = colorCompareDomain;
+var colorDomain = colorIsolatedDomain;
 
 ////////// slider //////////
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
@@ -43,7 +43,7 @@ var tip = d3.tip()
 		barWidth = legendWidth/11;
 		var tempArray = [];
 		for (i = 1; i < 12; i++) {
-			tempArray.push({bars: (width-100) - (barWidth * i), colors: d3.interpolateRdYlBu(i/11), texting: colorDomain[11-i]});
+			tempArray.push({bars: (width-100) - (barWidth * i), colors: d3.interpolateRdYlGn(i/11), texting: colorDomain[11-i]});
 		}
 		console.log(tempArray);
 

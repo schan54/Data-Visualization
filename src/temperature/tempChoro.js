@@ -37,6 +37,7 @@ function ready(error, data, population) {
   var max5, min5;
 
   if(compareActive == true) {
+
     population.forEach(function(d) { populationById[d.id] = +d[userYear] - +d[userYear2]; });
 		choroSvg.append("text").html(userYear).attr("x", 410).attr("y", 65).attr("id", "choroYear1");
     choroSvg.append("text").html("vs").attr("x", 455).attr("y", 100).attr("id", "vs");
@@ -56,6 +57,7 @@ function ready(error, data, population) {
   }
 
   else {
+
     population.forEach(function(d) { populationById[d.id] = +d[userYear]; });
     choroSvg.append("text").html(userYear).attr("x", 415).attr("y", 120).attr("id", "choroYear1");
 

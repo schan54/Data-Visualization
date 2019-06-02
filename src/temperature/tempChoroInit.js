@@ -14,7 +14,7 @@ var colorIsolatedDomain = [-5, 0, 5, 10, 15, 20, 22.5, 25, 27.5, 30, 35]
 var colorCompareDomain = [-4, -2, -1, -.5, -.25, 0, .25 ,.5, 1, 2, 4]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]
 
-var colorDomain = colorCompareDomain;
+var colorDomain = colorIsolatedDomain;
 
 ////////// slider //////////
 var margin = {top: 0, right: 0, bottom: 0, left: 0},

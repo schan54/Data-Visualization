@@ -35,6 +35,7 @@ var buttonGroups= allButtons.selectAll("g.button")
         d3.select("#numberToggle").text("Filter Method: Comparative");
         compareActive = true;
 
+				colorDomain = colorCompareDomain;
 				buildLegend();
         //Reload Choro Data
         queue()
@@ -48,6 +49,7 @@ var buttonGroups= allButtons.selectAll("g.button")
         d3.select("#numberToggle").text("Filter Method: Isolated");
         compareActive = false;
 
+				colorDomain = colorIsolatedDomain;
 				buildLegend();
         //Reload Choro Data
         queue()
