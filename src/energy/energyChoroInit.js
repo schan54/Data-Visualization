@@ -9,7 +9,7 @@ var startDate = new Date("1991"),
 var userYear = formatDateIntoYear(startDate);
 var userYear2 = formatDateIntoYear(startDate);
 
-var colorIsolatedDomain = [-1000,-500,-100,-25,-5,5,25,100,500,1000, 2000]
+var colorIsolatedDomain = [-750,-250,-100,-50,-25,25,50,100,250,1000, 750]
 var colorCompareDomain = [-1000,-500,-100,-25,-5,5,25,100,500,1000, 2000]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]
 
@@ -38,11 +38,13 @@ buildLegend();
 
 function buildLegend() {
 
+	console.log("Building Legend")
+	console.log(colorDomain)
 	legendWidth = (width-200);
 	barWidth = legendWidth/11;
 	var tempArray = [];
 	for (i = 1; i < 12; i++) {
-		tempArray.push({bar: (width-100) - (barWidth * i), color: d3.interpolateRdYlBu(i/11), text: colorDomain[12-i]});
+		tempArray.push({bar: (width-100) - (barWidth * i), color: d3.interpolateRdYlGn(i/11), text: colorDomain[11-i]});
 	}
 
 	var g = choroSvg.selectAll(".rect")

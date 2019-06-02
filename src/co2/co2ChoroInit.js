@@ -1,5 +1,5 @@
 var format2 = d3.format(".2n");
-var format3 = d3.format(".2n");
+var format3 = d3.format(".3n");
 
 var formatDateIntoYear = d3.timeFormat("%Y");
 var formatDate = d3.timeFormat("%Y");
@@ -45,7 +45,6 @@ var tip = d3.tip()
 		for (i = 1; i < 12; i++) {
 			tempArray.push({bars: (width-100) - (barWidth * i), colors: d3.interpolateRdYlGn(i/11), texting: colorDomain[11-i]});
 		}
-		console.log(tempArray);
 
 		var g = choroSvg.selectAll(".rect")
 		g.remove();
