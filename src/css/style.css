@@ -237,7 +237,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	.navbar-brand {
 		margin-left:15px;
 	}
-} 
+}
 
 /*------------------------------------*\
 	Navigation
@@ -322,11 +322,11 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 		    -ms-transform: translateX(0%);
 		        transform: translateX(0%);
 	}
-	
+
 	.main-menu {
 		margin:0;
 	}
-	
+
 	.main-menu li a {
 		color: #374050 !important;
 		display: inline-block;
@@ -895,7 +895,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 .post-pagination .pages li:hover a {
 	color:#FFF;
-} 
+}
 
 .pagination-back , .pagination-next {
 	display: block;
@@ -1199,41 +1199,41 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	#why-us .feature {
 		margin-top:40px;
 	}
-	
+
 	.about-video {
 		margin-top:40px;
 	}
-	
+
 	/*-- Call to action --*/
 	#cta {
 		text-align:center;
 	}
-	
+
 	/*-- Footer --*/
 	.footer-logo {
 		text-align:center;
 	}
-	
+
 	.footer-nav {
 		text-align:center;
 	}
 	.footer-nav li {
 		margin-top: 10px;
 	}
-	
+
 	.footer-social {
 		text-align:center;
 	}
 	.footer-social li {
 		margin-top: 10px;
 	}
-	
+
 	.footer-copyright {
 		text-align:center;
 		line-height:inherit;
 		margin-top:20px;
 	}
-	
+
 	/*-- Contact page --*/
 	.contact-form  {
 		margin-bottom:40px;
@@ -1242,7 +1242,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	.contact-form button {
 		float:none !important;
 	}
-	
+
 	/*-- Blog page --*/
 	#main {
 		margin-bottom:80px;
@@ -1271,18 +1271,18 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	#courses-wrapper [class*='col-xs'] {
 		width:100%;
 	}
-	
+
 	/*-- Blog Comments --*/
 	.blog-comments .media .media {
 		margin-left:0px;
 	}
-	
+
 	/*-- Blog Reply Form --*/
 	.blog-reply-form .input.name-input , .blog-reply-form .input.email-input {
 		width: 100%;
 		float:none;
 	}
-	
+
 	.blog-reply-form .input.email-input {
 		margin-left: 0px;
 	}
@@ -1290,7 +1290,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 /*------------------------------------*\
 	Preloader
-\*------------------------------------*/ 
+\*------------------------------------*/
 #preloader {
 	position:fixed;
 	left:0;
@@ -1393,7 +1393,7 @@ body svg {
 }
 
 /* Creates a small triangle extender for the tooltip */
-.d3-tip:after {      
+.d3-tip:after {
   box-sizing: border-box;
   display: inline;
   font-size: 8px;
@@ -1575,5 +1575,3 @@ text {
       stroke-opacity: 0.5;
       stroke-width: 1.25px;
     }
-	
-	

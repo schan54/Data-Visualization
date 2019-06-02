@@ -1,4 +1,5 @@
-var format = d3.format(".3n");
+var format2 = d3.format(".2n");
+var format3 = d3.format(".3n");
 
 var formatDateIntoYear = d3.timeFormat("%Y");
 var formatDate = d3.timeFormat("%Y");
@@ -13,7 +14,7 @@ var colorIsolatedDomain = [-5, 0, 5, 10, 15, 20, 22.5, 25, 27.5, 30, 35]
 var colorCompareDomain = [-4, -2, -1, -.5, -.25, 0, .25 ,.5, 1, 2, 4]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]
 
-var colorDomain = colorIsolatedDomain;
+var colorDomain = colorCompareDomain;
 
 ////////// slider //////////
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
@@ -44,7 +45,6 @@ function buildLegend() {
 	for (i = 1; i < 12; i++) {
 		tempArray.push({bars: (width-100) - (barWidth * i), colors: d3.interpolateRdYlBu(i/11), texting: colorDomain[11-i]});
 	}
-	console.log(tempArray);
 
 	var g = choroSvg.selectAll(".rect")
 	g.remove();

@@ -87,9 +87,13 @@ function ready(error, data, population) {
       .style("fill", function (d)  {
 				if (compareActive == true) {
 					return colorCompare(populationById[d.id]);
+					colorDomain = colorCompareDomain;
+					buildLegend();
 				}
 				else {
 					return colorIsolated(populationById[d.id]);
+					colorDomain = colorIsolatedDomain;
+					buildLegend();
 				}
 			})
 

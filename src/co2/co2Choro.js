@@ -1,15 +1,15 @@
 // Set tooltips
 var colorCompare = d3.scaleThreshold()
     .domain(colorCompareDomain)
-    .range([d3.interpolateRdYlBu(1), d3.interpolateRdYlBu(0.9), d3.interpolateRdYlBu(0.8), d3.interpolateRdYlBu(0.7),
-          d3.interpolateRdYlBu(0.6), d3.interpolateRdYlBu(0.5), d3.interpolateRdYlBu(0.4), d3.interpolateRdYlBu(0.3),
-					d3.interpolateRdYlBu(0.2), d3.interpolateRdYlBu(0.1), d3.interpolateRdYlBu(0.0)]);
+		.range([d3.interpolateRdYlGn(1), d3.interpolateRdYlGn(0.9), d3.interpolateRdYlGn(0.8), d3.interpolateRdYlGn(0.7),
+          d3.interpolateRdYlGn(0.6), d3.interpolateRdYlGn(0.5), d3.interpolateRdYlGn(0.4), d3.interpolateRdYlGn(0.3),
+					d3.interpolateRdYlGn(0.2), d3.interpolateRdYlGn(0.1), d3.interpolateRdYlGn(0.0)]);
 
 var colorIsolated = d3.scaleThreshold()
     .domain(colorIsolatedDomain)
-    .range([d3.interpolateRdYlBu(1), d3.interpolateRdYlBu(0.9), d3.interpolateRdYlBu(0.8), d3.interpolateRdYlBu(0.7),
-          d3.interpolateRdYlBu(0.6), d3.interpolateRdYlBu(0.5), d3.interpolateRdYlBu(0.4), d3.interpolateRdYlBu(0.3),
-					d3.interpolateRdYlBu(0.2), d3.interpolateRdYlBu(0.1), d3.interpolateRdYlBu(0.0)]);
+    .range([d3.interpolateRdYlGn(1), d3.interpolateRdYlGn(0.9), d3.interpolateRdYlGn(0.8), d3.interpolateRdYlGn(0.7),
+          d3.interpolateRdYlGn(0.6), d3.interpolateRdYlGn(0.5), d3.interpolateRdYlGn(0.4), d3.interpolateRdYlGn(0.3),
+					d3.interpolateRdYlGn(0.2), d3.interpolateRdYlGn(0.1), d3.interpolateRdYlGn(0.0)]);
 
 var projection = d3.geoMercator()
                    .scale(200)
