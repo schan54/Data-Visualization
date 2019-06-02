@@ -162,7 +162,7 @@ div.compareTxt {
     border: black;
     top: 250px;
     left: -646px;
-    text-align: left;  
+    text-align: left;
     margin: 5px 1px;
     z-index: 1;
 }
@@ -233,17 +233,6 @@ tr:hover {background-color: #f5f5f5;}
     z-index: 1;
 }
 
-
-body {
-    margin-bottom: 10px;
-}
-
-text {
-    font: 10px sans-serif;
-    text-anchor: middle;
-}
-
-
 #displayYear, #choroYear1, #choroYear2 {
   font-family: 'Roboto', sans-serif;
   font-size: 40pt;
@@ -255,7 +244,7 @@ text {
   font-size: 25px;
 }
 
-#choroSumText, #choroSumText2, #topHeader, #botHeader {
+#choroSumText, #choroSumText2, #topHeader1, #botHeader1, #topHeader2, #botHeader2 {
   font-size: 18px;
   font-weight: bold;
 }

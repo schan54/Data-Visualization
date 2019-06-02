@@ -32,15 +32,15 @@ function ready(data) {
   d3.select("#vs").remove()
   var populationById = {};
   var max5, min5;
+	console.log(data[1]);
 
   if(compareActive == true) {
 		data[1].forEach(function(d) { populationById[d.id] = +d[userYear] - +d[userYear2]});
-    choroSvg.append("text").html(userYear).attr("x", 410).attr("y", 50).attr("id", "choroYear1");
-    choroSvg.append("text").html("vs").attr("x", 455).attr("y", 85).attr("id", "vs");
-    choroSvg.append("text").html(userYear2).attr("x", 410).attr("y", 145).attr("id", "choroYear2");
+		choroSvg.append("text").html(userYear).attr("x", 410).attr("y", 65).attr("id", "choroYear1");
+    choroSvg.append("text").html("vs").attr("x", 455).attr("y", 100).attr("id", "vs");
+    choroSvg.append("text").html(userYear2).attr("x", 410).attr("y", 160).attr("id", "choroYear2");
     var sortedHash1 = sortHash(data[1], userYear);
     var sortedHash2 = sortHash(data[1], userYear2);
-		console.log(sortedHash1);
     displaySumCompare(sortedHash1, sortedHash2);
     displayMaxCompare(sortedHash1, sortedHash2);
 
@@ -53,10 +53,8 @@ function ready(data) {
 
   else {
 		data[1].forEach(function(d) { populationById[d.id] = +d[userYear]; });
-    choroSvg.append("text").html(userYear).attr("x", 390).attr("y", 120).attr("id", "choroYear1");
-
+    choroSvg.append("text").html(userYear).attr("x", 415).attr("y", 120).attr("id", "choroYear1");
     var sortedHash = sortHash(data[1], userYear);
-		console.log(sortedHash);
 
     max5 = sortedHash.slice((sortedHash.length - 5), sortedHash.length);
     min5 = sortedHash.slice(0, 5);
