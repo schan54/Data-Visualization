@@ -1438,7 +1438,9 @@ body svg {
   left: 100%;
 }
 
-
+.details{
+  color:white;
+}
 
 
 #textSVG {
