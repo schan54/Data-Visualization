@@ -16,29 +16,29 @@ function displayMaxIso(max5, min5) {
 
   choroSvg.append("text").html("Highest Temperature").attr("id", "topHeader").attr("x", 825).attr("y", 50);
 
-  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + format3(max5[4][1]))
+  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + format(max5[4][1]))
     .attr("id", "top1")
     .attr("x", 850).attr("y", 80);
-  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + format3(max5[3][1]))
+  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + format(max5[3][1]))
     .attr("id", "top2")
     .attr("x", 850).attr("y", 100);
-  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + format3(max5[2][1]))
+  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + format(max5[2][1]))
     .attr("id", "top3")
     .attr("x", 850).attr("y", 120);
-  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + format3(max5[1][1]))
+  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + format(max5[1][1]))
     .attr("id", "top4")
     .attr("x", 850).attr("y", 140);
-  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + format3(max5[0][1]))
+  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + format(max5[0][1]))
     .attr("id", "top5")
     .attr("x", 850).attr("y", 160);
 
     choroSvg.append("text").html("Lowest Temperature").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
 
-    choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + format2(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
-    choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + format2(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
-    choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + format2(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
-    choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + format2(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
-    choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + format2(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
+    choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + format(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
+    choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + format(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
+    choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + format(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
+    choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + format(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
+    choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + format(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
 }
 
 function displaySumIso(a) {
@@ -51,8 +51,8 @@ function displaySumIso(a) {
     totalSum = totalSum + Number(a[index][1]);
   }
 	console.log(totalSum/a.length);
-  choroSvg.append("text").html("World's Avg Temperature:").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
-  choroSvg.append("text").html(format3(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 620).attr("y", 120);
+  choroSvg.append("text").html("World's Avg Temperature").attr("id", "choroSumText").attr("x", 592).attr("y", 70);
+  choroSvg.append("text").html(format(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 620).attr("y", 120);
 
 }
 
@@ -104,20 +104,20 @@ loop2:
 
   choroSvg.append("text").html("Highest Temperature").attr("id", "topHeader").attr("x", 825).attr("y", 50);
 
-  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + format2(max5[4][1])).attr("id", "top1").attr("x", 850).attr("y", 80);
-  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + format2(max5[3][1])).attr("id", "top2").attr("x", 850).attr("y", 100);
-  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + format2(max5[2][1])).attr("id", "top3").attr("x", 850).attr("y", 120);
-  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + format2(max5[1][1])).attr("id", "top4").attr("x", 850).attr("y", 140);
-  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + format2(max5[0][1])).attr("id", "top5").attr("x", 850).attr("y", 160);
+  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + format(max5[4][1])).attr("id", "top1").attr("x", 850).attr("y", 80);
+  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + format(max5[3][1])).attr("id", "top2").attr("x", 850).attr("y", 100);
+  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + format(max5[2][1])).attr("id", "top3").attr("x", 850).attr("y", 120);
+  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + format(max5[1][1])).attr("id", "top4").attr("x", 850).attr("y", 140);
+  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + format(max5[0][1])).attr("id", "top5").attr("x", 850).attr("y", 160);
 
 
   choroSvg.append("text").html("Lowest Temperature").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
 
-  choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + format2(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
-  choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + format2(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
-  choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + format2(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
-  choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + format2(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
-  choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + format2(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
+  choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + format(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
+  choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + format(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
+  choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + format(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
+  choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + format(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
+  choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + format(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
 
 }
 
@@ -136,7 +136,7 @@ function displaySumCompare(a, b) {
   choroSvg.append("text").html("World's Avg Compared").attr("id", "choroSumText").attr("x", 610).attr("y", 70);
   choroSvg.append("text").html("Temperature").attr("id", "choroSumText2").attr("x", 650).attr("y", 100);
 
-  choroSvg.append("text").html(format3(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 625).attr("y", 140);
+  choroSvg.append("text").html(format(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 625).attr("y", 140);
 }
 
 function displayPercentCompare(hash1, hash2) {
@@ -188,20 +188,20 @@ loop2:
 
   choroSvg.append("text").html("Highest Temperature").attr("id", "topHeader").attr("x", 850).attr("y", 60);
 
-  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + format3(max5[4][1]) + "%").attr("id", "top1").attr("x", 850).attr("y", 80);
-  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + format3(max5[3][1]) + "%").attr("id", "top2").attr("x", 850).attr("y", 100);
-  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + format3(max5[2][1]) + "%").attr("id", "top3").attr("x", 850).attr("y", 120);
-  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + format3(max5[1][1]) + "%").attr("id", "top4").attr("x", 850).attr("y", 140);
-  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + format3(max5[0][1]) + "%").attr("id", "top5").attr("x", 850).attr("y", 160);
+  choroSvg.append("text").html("1. " + max5[4][2].substring(0, 18) + ": " + format(max5[4][1]) + "%").attr("id", "top1").attr("x", 850).attr("y", 80);
+  choroSvg.append("text").html("2. " + max5[3][2].substring(0, 18) + ": " + format(max5[3][1]) + "%").attr("id", "top2").attr("x", 850).attr("y", 100);
+  choroSvg.append("text").html("3. " + max5[2][2].substring(0, 18) + ": " + format(max5[2][1]) + "%").attr("id", "top3").attr("x", 850).attr("y", 120);
+  choroSvg.append("text").html("4. " + max5[1][2].substring(0, 18) + ": " + format(max5[1][1]) + "%").attr("id", "top4").attr("x", 850).attr("y", 140);
+  choroSvg.append("text").html("5. " + max5[0][2].substring(0, 18) + ": " + format(max5[0][1]) + "%").attr("id", "top5").attr("x", 850).attr("y", 160);
 
 
   choroSvg.append("text").html("Lowest Temperature").attr("id", "botHeader").attr("x", 1050).attr("y", 60);
 
-  choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + format2(min5[0][1]) + "%").attr("id", "bot1").attr("x", 1050).attr("y", 80);
-  choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + format2(min5[1][1]) + "%").attr("id", "bot2").attr("x", 1050).attr("y", 100);
-  choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + format2(min5[2][1]) + "%").attr("id", "bot3").attr("x", 1050).attr("y", 120);
-  choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + format2(min5[3][1]) + "%").attr("id", "bot4").attr("x", 1050).attr("y", 140);
-  choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + format2(min5[4][1]) + "%").attr("id", "bot5").attr("x", 1050).attr("y", 160);
+  choroSvg.append("text").html("1. " + min5[0][2].substring(0, 18) + ": " + format(min5[0][1]) + "%").attr("id", "bot1").attr("x", 1050).attr("y", 80);
+  choroSvg.append("text").html("2. " + min5[1][2].substring(0, 18) + ": " + format(min5[1][1]) + "%").attr("id", "bot2").attr("x", 1050).attr("y", 100);
+  choroSvg.append("text").html("3. " + min5[2][2].substring(0, 18) + ": " + format(min5[2][1]) + "%").attr("id", "bot3").attr("x", 1050).attr("y", 120);
+  choroSvg.append("text").html("4. " + min5[3][2].substring(0, 18) + ": " + format(min5[3][1]) + "%").attr("id", "bot4").attr("x", 1050).attr("y", 140);
+  choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + format(min5[4][1]) + "%").attr("id", "bot5").attr("x", 1050).attr("y", 160);
 
 }
 

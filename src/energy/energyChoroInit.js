@@ -1,4 +1,4 @@
-var format = d3.format(".3n");
+var format = d3.format("");
 
 var formatDateIntoYear = d3.timeFormat("%Y");
 var formatDate = d3.timeFormat("%Y");
