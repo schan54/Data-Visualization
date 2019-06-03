@@ -77,10 +77,11 @@ function ready(error, data, population) {
 
   data.features.forEach(function(d) { d.value = populationById[d.id] });
 
+	d3.selectAll("path").remove();
+
   choroSvg.append("g")
-      .attr("class", "countries")
+    .attr("class", "countries")
     .selectAll("path")
-      .remove()
       .data(data.features)
     .enter().append("path")
       .attr("d", path)
@@ -121,9 +122,4 @@ function ready(error, data, population) {
             .style("stroke","white")
             .style("stroke-width",0.3);
         });
-	if(compareActive == true) {
-
-		}
-	else {}
-
 }
