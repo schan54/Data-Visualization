@@ -33,7 +33,7 @@ function select(yearValue) {
   }
   // selection.datum() returns the bound datum for the first element in the selection and
   //  doesn't join the specified array of data with the selected elements
-  var chart = bubbleChart().width(1200).height(700);
+  var chart = bubbleChart().width(1300).height(700);
   d3.select('#chart').datum(data).call(chart);
   });
 
@@ -633,6 +633,8 @@ function select(yearValue) {
       topEmissions.append("line").attr("x1", 430).attr("y1", 0).attr("x2", 430).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 640).attr("y1", 0).attr("x2", 640).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 910).attr("y1", 0).attr("x2", 910).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 600).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 1300).attr("y1", 0).attr("x2", 1200).attr("y2", 600).attr("stroke-width", 0.5).attr("stroke", "black");
 
       // Lines for legend
       topEmissions.append("line").attr("x1", 100).attr("y1", 620).attr("x2", 105.66).attr("y2", 620).attr("stroke-width", 1).attr("stroke", "black");

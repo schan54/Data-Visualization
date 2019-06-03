@@ -1365,11 +1365,7 @@ body {
 }
 
 body svg {
-  background-color: var(--light-smoke);
-  border-style: solid;
-  border-color: var(--secondary-color);
-  border-radius: 5px;
-  margin-top: 80px;
+
 }
 
 .names {
