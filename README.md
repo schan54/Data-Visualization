@@ -16,6 +16,7 @@ Authors:
   * Morgan Trotter
   * Steve Chan
   * Eric Rong
+  * Alexandra Tutino
 
 Sponser/Mentor:
   * Richard Jullig
