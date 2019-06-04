@@ -82,9 +82,7 @@ function select(yearValue) {
       // Set up color scheme
       var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
       // Set up radius scale
-      var scaleRadius = d3.scalePow().exponent(0.5).domain([d3.min(data, function(d) {
-        return +d[columnForRadius];
-      }), d3.max(data, function(d) {
+      var scaleRadius = d3.scalePow().exponent(0.5).domain([0, d3.max(data, function(d) {
         return +d[columnForRadius];
       })]).range([2, 90])
 
@@ -93,24 +91,6 @@ function select(yearValue) {
       year2017 = data.filter(function(d) { return d.year == 2017});
       netDiff = year2007;
       yearFuture = year2017;
-
-
-      if (yearTemp > 2017 && yearTemp <= 2055) {
-        // Avg change in each country between 2007 and 2017
-        for (i = 0; i < year2017.length; i++) {
-          netDiff[i].value = (year2017[i].value - year2007[i].value) / 11;
-          //console.log(netDiff[i].value + ": " + netDiff[i].country);
-        }
-
-        // Extrapolate
-        for (i = 0; i < year2017.length; i++) {
-          yearFuture[i].value = parseFloat(year2017[i].value) + parseFloat(netDiff[i].value * (yearTemp - 2017));
-          if (yearFuture[i].value < 0) {
-            netDiffNegative[i] = 1;
-            yearFuture[i].value = Math.abs(year2017[i].value);
-          }
-        }
-      }
 
       // Compute difference between two years
       yearOne = data.filter(function(d) { 
@@ -146,58 +126,9 @@ function select(yearValue) {
         }
       }
 
-      if (twoYears && yearTemp > 2017 && yearTemp <= 2055) {
-        // Simulate forces acting on each node
-        console.log(netDiff);
-        var simulation = d3.forceSimulation(netDiff)
-          .force("charge", d3.forceManyBody().strength(5))
-          .force('x', d3.forceX().x(function(d) {
-            if (!d.continent.localeCompare("Africa")) {
-              return xPosition[5];
-            } else if (!d.continent.localeCompare("Asia")) {
-              return xPosition[4];
-            } else if (!d.continent.localeCompare("Oceania")) {
-              return xPosition[3];
-            } else if (!d.continent.localeCompare("Europe")) {
-              return xPosition[2];
-            } else if (!d.continent.localeCompare("South America")) {
-              return xPosition[1];
-            } else if (!d.continent.localeCompare("North America")) {
-              return xPosition[0];
-            }
-          }))
-          .force('y', d3.forceY().y(340))
-          .force("collision", d3.forceCollide().radius(function(d) {
-            return scaleRadius(d.value)
-          }))
-          .on('tick', ticked);
-      } else if (twoYears) {
+      if (twoYears) {
         // Simulate forces acting on each node
         var simulation = d3.forceSimulation(yearDiff)
-          .force("charge", d3.forceManyBody().strength(5))
-          .force('x', d3.forceX().x(function(d) {
-            if (!d.continent.localeCompare("Africa")) {
-              return xPosition[5];
-            } else if (!d.continent.localeCompare("Asia")) {
-              return xPosition[4];
-            } else if (!d.continent.localeCompare("Oceania")) {
-              return xPosition[3];
-            } else if (!d.continent.localeCompare("Europe")) {
-              return xPosition[2];
-            } else if (!d.continent.localeCompare("South America")) {
-              return xPosition[1];
-            } else if (!d.continent.localeCompare("North America")) {
-              return xPosition[0];
-            }
-          }))
-          .force('y', d3.forceY().y(340))
-          .force("collision", d3.forceCollide().radius(function(d) {
-            return scaleRadius(d.value)
-          }))
-          .on('tick', ticked);
-      } else if (yearTemp > 2017 && yearTemp <= 2055) {
-        // Simulate forces acting on each node
-        var simulation = d3.forceSimulation(year2017)
           .force("charge", d3.forceManyBody().strength(5))
           .force('x', d3.forceX().x(function(d) {
             if (!d.continent.localeCompare("Africa")) {
@@ -247,18 +178,10 @@ function select(yearValue) {
 
       function ticked() {
 
-        if (twoYears && yearTemp > 2017 && yearTemp < 2055) {
-          var u = d3.select('svg')
-          .selectAll('circle')
-          .data(netDiff);
-        } else if (twoYears) {
+        if (twoYears) {
           var u = d3.select('svg')
           .selectAll('circle')
           .data(yearDiff);
-        } else if (yearTemp > 2017 && yearTemp <= 2055) {
-          var u = d3.select('svg')
-          .selectAll('circle')
-          .data(year2017);
         } else {
           var u = d3.select('svg')
           .selectAll('circle')
