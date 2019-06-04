@@ -74,11 +74,11 @@ d3.json('./energyusage.json').then(data => {
             .attr("class", "midText")
             .attr("dy", "0.5em")
             .text(d.name)
-            .style("font-size", "50");
+            .style("font-size", "50px");
         g.append("text")
             .attr("class", "midText")
             .text(formatNum(d.value))
-            .style("font-size", "50");
+            .style("font-size", "50px");
         g.append("text")
             .attr("class", "midText")
             .attr("dy", "1.5em")
@@ -127,14 +127,14 @@ d3.json('./energyusage.json').then(data => {
         
     });
         /* Compare years*/
-    d3.select("#compare").on("click", function(){
-        g.selectAll("g").transition().remove();
-        updateSunBurst("./energyusage.json", "compare"); 
-    });
-    d3.select("#isolate").on("click", function(){
-        g.selectAll("g").transition().remove();
-        updateSunBurst("./energyusage.json", 0); 
-    });
+    // d3.select("#compare").on("click", function(){
+    //     g.remove();
+    //     updateSunBurst("./energyusage.json", "compare"); 
+    // });
+    // d3.select("#isolate").on("click", function(){
+    //     g.remove();
+    //     updateSunBurst("./energyusage.json", 0); 
+    // });
 
     /* Search By Country Name */
     d3.select("#searchSubmit").on("click", function(){
@@ -195,7 +195,7 @@ d3.json('./energyusage.json').then(data => {
                 .attr("x", "-250px")
                 .attr("y", "-350px")
                     .text(p.data.name)
-                    .style("font-size", "50");
+                    .style("font-size", "50px");
         }
         root.each(d => d.target = {
                 x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
@@ -269,10 +269,10 @@ function parseFile(file) {
 function updateSunBurst(file, year){
     d3.json(file).then(data => {
         var datas = data[year];
-        if ( year == "compare")
-        {
-            datas = {name:"compare", children: data};
-        }
+        // if ( year == "compare")
+        // {
+        //     datas = {name:"compare", children: data};
+        // }
         const root = partition(datas);
         const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, datas.children.length + 1));
     
@@ -301,11 +301,11 @@ function updateSunBurst(file, year){
                 .attr("class", "midText")
                 .attr("dy", "0.5em")
                 .text(d.name)
-                .style("font-size", "50");
+                .style("font-size", "50px");
             g.append("text")
                 .attr("class", "midText")
                 .text(formatNum(d.value))
-                .style("font-size", "50");
+                .style("font-size", "50px");
             g.append("text")
                 .attr("class", "midText")
                 .attr("dy", "1.5em")
@@ -352,14 +352,14 @@ function updateSunBurst(file, year){
             
         });
                 /* Compare years*/
-        d3.select("#compare").on("click", function(){
-            g.remove();
-            updateSunBurst(file, "compare"); 
-        });git
-        d3.select("#isolate").on("click", function(){
-            g.remove();
-            updateSunBurst(file, 0); 
-        });
+        // d3.select("#compare").on("click", function(){
+        //     g.remove();
+        //     updateSunBurst(file, "compare"); 
+        // });
+        // d3.select("#isolate").on("click", function(){
+        //     g.remove();
+        //     updateSunBurst(file, 0); 
+        // });
         /* Search By Country Name */
         d3.select("#searchSubmit").on("click", function(){
             var name = d3.select("#searchText").node().value;
@@ -420,7 +420,7 @@ function updateSunBurst(file, year){
                     .attr("x", "-250px")
                     .attr("y", "-350px")
                         .text(p.data.name)
-                        .style("font-size", "50")
+                        .style("font-size", "50px")
                         .style("text-align", "left");
             }
             root.each(d => d.target = {
