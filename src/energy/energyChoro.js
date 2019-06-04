@@ -74,7 +74,7 @@ function ready(data) {
   }
 
 	data[0].features.forEach(function(d) { d.value = populationById[d.id] });
-	d3.selectAll("path").remove();
+	d3.select(".map").selectAll("path").remove();
 
 	choroSvg.append("g")
 			.attr("class", "countries")
