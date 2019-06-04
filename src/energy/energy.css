@@ -8,7 +8,9 @@ h1 {
     text-align: center;
     letter-spacing: 1px;
 }
-
+#paritionSVG text{
+  text-anchor:middle;
+}
 p {
     position:relative;
     top:20px;
