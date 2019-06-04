@@ -128,11 +128,11 @@ d3.json('./energyusage.json').then(data => {
     });
         /* Compare years*/
     d3.select("#compare").on("click", function(){
-        g.selectAll("g").transition().remove();
+        g.remove();
         updateSunBurst("./energyusage.json", "compare"); 
     });
     d3.select("#isolate").on("click", function(){
-        g.selectAll("g").transition().remove();
+        g.remove();
         updateSunBurst("./energyusage.json", 0); 
     });
 
@@ -355,7 +355,7 @@ function updateSunBurst(file, year){
         d3.select("#compare").on("click", function(){
             g.remove();
             updateSunBurst(file, "compare"); 
-        });git
+        });
         d3.select("#isolate").on("click", function(){
             g.remove();
             updateSunBurst(file, 0); 
