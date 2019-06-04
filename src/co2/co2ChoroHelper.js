@@ -51,7 +51,7 @@ function displaySumIso(a) {
     totalSum = totalSum + Number(a[index][1]);
   }
 
-  choroSvg.append("text").html("World's Total Emissions:").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
+  choroSvg.append("text").html("World's Emission by Year").attr("id", "choroSumText").attr("x", 590).attr("y", 70);
   choroSvg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 620).attr("y", 120);
 
 }
