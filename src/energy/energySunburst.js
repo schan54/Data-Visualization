@@ -353,11 +353,11 @@ function updateSunBurst(file, year){
         });
                 /* Compare years*/
         d3.select("#compare").on("click", function(){
-            g.selectAll("g").transition().remove();
+            g.remove();
             updateSunBurst(file, "compare"); 
-        });
+        });git
         d3.select("#isolate").on("click", function(){
-            g.selectAll("g").transition().remove();
+            g.remove();
             updateSunBurst(file, 0); 
         });
         /* Search By Country Name */
