@@ -86,12 +86,6 @@ function select(yearValue) {
         return +d[columnForRadius];
       })]).range([2, 90])
 
-      // Compute difference between 2007 and 2017
-      year2007 = data.filter(function(d) { return d.year == 2007});
-      year2017 = data.filter(function(d) { return d.year == 2017});
-      netDiff = year2007;
-      yearFuture = year2017;
-
       // Compute difference between two years
       yearOne = data.filter(function(d) { 
           if (UIFlag) {
@@ -103,20 +97,31 @@ function select(yearValue) {
           if (UIFlag) {
             return d.year == comparedValue;
           } else {
-              return d.year == yearTemp + 1;
+            return d.year == yearTemp + 1;
           }}); // selected year plus
 
-      yearDiff = yearTwo;
-
-      // Find negatives
       for (i = 0; i < yearTwo.length; i++) {
-        yearDiff[i].value = yearTwo[i].value - yearOne[i].value;
+        yearDiff[i] = {};
+        for (var prop in yearTwo[i]) {
+          yearDiff[i][prop] = yearTwo[i][prop];
+        }
+      }
+
+      //yearDiff = yearTwo;
+
+      // Compute difference and find negatives
+      for (i = 0; i < yearTwo.length; i++) {
+        for (j = 0; j < yearOne.length; j++) {
+          if (yearTwo[i].country == yearOne[j].country) {
+            yearDiff[i].value = yearTwo[i].value - yearOne[j].value;
+          }
+        }
         if (yearDiff[i].value < 0) {
           indexesNegative[i] = 1;
           yearDiff[i].value = Math.abs(yearDiff[i].value);
         }
       }
-
+      /*
       // Find negatives for 2017 < yearTemp < 2055
       for (i = 0; i < year2017.length; i++) {
         netDiff[i].value = netDiff[i].value * (comparedValue - yearTemp);
@@ -124,7 +129,7 @@ function select(yearValue) {
           indexesNegative[i] = 1;
           netDiff[i].value = Math.abs(netDiff[i].value);
         }
-      }
+      }*/
 
       if (twoYears) {
         // Simulate forces acting on each node
@@ -365,30 +370,9 @@ function select(yearValue) {
       var sumAsia = 0;
       var sumSA = 0;
 
-      if (yearTemp < 2018 && !twoYears) {
+      if (!twoYears) {
         // Parse CO2 values from string to double with 3 decimal places
         data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
-          d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
-          tempArray[index] = d.value;
-          tempStringArray[index] = d.country;
-          if (!d.continent.localeCompare("Oceania")) {
-            OceaniaArray[index] = d.value;
-          } else if (!d.continent.localeCompare("North America")) {
-            NAArray[index] = d.value;
-          } else if (!d.continent.localeCompare("South America")) {
-            SAArray[index] = d.value;
-          } else if (!d.continent.localeCompare("Asia")) {
-            AsiaArray[index] = d.value;
-          } else if (!d.continent.localeCompare("Europe")) {
-            EUArray[index] = d.value;
-          } else if (!d.continent.localeCompare("Africa")) {
-            AfricaArray[index] = d.value;
-          }
-          index++;
-        })
-      } else if (!twoYears) {
-        // Parse CO2 values from string to double with 3 decimal places
-        year2017.forEach(function(d) {
           d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
           tempArray[index] = d.value;
           tempStringArray[index] = d.country;
