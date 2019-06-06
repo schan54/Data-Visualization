@@ -793,12 +793,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	text-align: center;
 }
 
-/* -- Contact Map -- */
-#contact-map {
-	height:260px;
-	border-radius:4px;
-}
-
 /*------------------------------------*\
 	Blog Page
 \*------------------------------------*/
