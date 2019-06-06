@@ -585,17 +585,19 @@ function select(yearValue) {
       co2buttonGroups.append("text")
             .attr("class","buttonText")
             .attr("x",function(d,i) {
-              if (i < 4) {
-                return x0 + (bWidth+bSpace)*(i%4) + bWidth/2;
+              if (i < 6) {
+                return x0 + (bWidth+bSpace)*(i%3) + bWidth/2;
               } else {
-                return x0 + (b2Width+bSpace)*(i%4) + b2Width/2;
+                return x0 + (b2Width+bSpace)*(i%2) + b2Width/2;
               }
             })
             .attr("y",function(d, i) {
-                if (i < 4) {
-                  return y0+bHeight/2;
-                } else if (i >= 4) {
-                  return y1+bHeight/2;
+                if (i < 3) {
+                  return y0+bHeight/2 + 5;
+                } else if (i >= 3 && i < 6) {
+                  return y1+bHeight/2 + 10;
+                } else {
+                  return y0+y1+bHeight + 32;
                 }
             })
             .attr("text-anchor","middle")
@@ -636,15 +638,15 @@ function select(yearValue) {
       if (twoYears) {
         var tf = textfield()
           .x(20) // X Position
-          .y(90) // Y Position 
+          .y(150) // Y Position 
           .width(160) // Width 
           .height(30) // Height 
           .callback(callback) // Callback returning the current text 
           .text(currentValue + "," + comparedValue) // Default text 
-          .fill("#2C3531") // Default fill 
-          .stroke("black") // Default border 
-          .fillSelected("#116466") // Fill when activated 
-          .strokeSelected("black") // Border when activated 
+          .fill("#687864") // Default fill 
+          .stroke("none") // Default border 
+          .fillSelected("#31708E") // Fill when activated 
+          .strokeSelected("none") // Border when activated 
           .color("white") // Text color 
           .colorSelected("grey") // Text color when activated 
           .returnLowercase(false) // Auto-lowercase input text before calling back 
@@ -653,15 +655,15 @@ function select(yearValue) {
       } else {
         var tf = textfield()
           .x(20) // X Position
-          .y(90) // Y Position 
+          .y(150) // Y Position 
           .width(160) // Width 
           .height(30) // Height 
           .callback(callback) // Callback returning the current text 
           .text(currentValue) // Default text 
-          .fill("#2C3531") // Default fill 
-          .stroke("black") // Default border 
-          .fillSelected("#116466") // Fill when activated 
-          .strokeSelected("black") // Border when activated 
+          .fill("#687864") // Default fill 
+          .stroke("none") // Default border 
+          .fillSelected("#31708E") // Fill when activated 
+          .strokeSelected("none") // Border when activated 
           .color("white") // Text color 
           .colorSelected("grey") // Text color when activated 
           .returnLowercase(false) // Auto-lowercase input text before calling back 
