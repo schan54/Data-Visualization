@@ -127,14 +127,14 @@ d3.json('./energyusage.json').then(data => {
         
     });
         /* Compare years*/
-    // d3.select("#compare").on("click", function(){
-    //     g.remove();
-    //     updateSunBurst("./energyusage.json", "compare"); 
-    // });
-    // d3.select("#isolate").on("click", function(){
-    //     g.remove();
-    //     updateSunBurst("./energyusage.json", 0); 
-    // });
+    d3.select("#compare").on("click", function(){
+        g.selectAll("g").remove();
+        updateSunBurst("./energyusage.json", "compare"); 
+    });
+    d3.select("#isolate").on("click", function(){
+        g.selectAll("g").remove();
+        updateSunBurst("./energyusage.json", 0); 
+    });
 
     /* Search By Country Name */
     d3.select("#searchSubmit").on("click", function(){
@@ -269,10 +269,10 @@ function parseFile(file) {
 function updateSunBurst(file, year){
     d3.json(file).then(data => {
         var datas = data[year];
-        // if ( year == "compare")
-        // {
-        //     datas = {name:"compare", children: data};
-        // }
+        if ( year == "compare")
+        {
+            datas = {name:"compare", children: data};
+        }
         const root = partition(datas);
         const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, datas.children.length + 1));
     
@@ -352,14 +352,14 @@ function updateSunBurst(file, year){
             
         });
                 /* Compare years*/
-        // d3.select("#compare").on("click", function(){
-        //     g.remove();
-        //     updateSunBurst(file, "compare"); 
-        // });
-        // d3.select("#isolate").on("click", function(){
-        //     g.remove();
-        //     updateSunBurst(file, 0); 
-        // });
+        d3.select("#compare").on("click", function(){
+            g.selectAll("g").remove();
+            updateSunBurst(file, "compare"); 
+        });
+        d3.select("#isolate").on("click", function(){
+            g.selectAll("g").remove();
+            updateSunBurst(file, 0); 
+        });
         /* Search By Country Name */
         d3.select("#searchSubmit").on("click", function(){
             var name = d3.select("#searchText").node().value;
