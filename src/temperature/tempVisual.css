@@ -7,14 +7,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
   #searchText{
     position: absolute;
-    top: 160px;
-    left: 50px;
+    top: 220px;
+    left: 145px;
     z-index: 1;
 }
 #searchText2{
     position: absolute;
-    top: 190px;
-    left: 50px;
+    top: 290px;
+    left: 145px;
     z-index: 1;}
 #mainChart{
     position: absolute;
@@ -149,7 +149,7 @@ input[type=number]::-webkit-outer-spin-button {
 
       position: relative;
       top:-6px;
-      left:-130px;
+      left:-75px;
       z-index: 1;
   }
   #educate{
@@ -169,6 +169,15 @@ input[type=number]::-webkit-outer-spin-button {
     right:50px;
     width: 210px;
 }
+.compStyle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    left:10px;
+    position: absolute;
+    top: 320px;
+    width: 270px;
+    z-index: 1;
+  }
   .instructions {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -178,6 +187,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 270px;
     z-index: 1;
   }
+
   .instructions2 {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -192,7 +202,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     position: absolute;
-    fill: darkblue;
+    fill: black;
     z-index: 1;
   }
   .texted2 {
