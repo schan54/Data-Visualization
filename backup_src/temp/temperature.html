@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="../core/d3-v3.js"></script>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+
+  <script src="https://d3js.org/d3-color.v1.min.js"></script>
+  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../core/master.css" />
+  <link rel="stylesheet" type="text/css" href="tempVisual.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab|Montserrat" rel="stylesheet">
+  <script type="text/javascript" src="../core/master.js"></script>
+
+	<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("../navigation.html", function() {
+        $("a[href= '../temp/temperature.html']").addClass("selected");
+      });
+    });
+  </script>
+
+
+<div id="insns">
+	<!--
+    <p id="sources">
+        Source:<a href="https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_3.23/crucy.1506241137.v3.23/countries/tmp/" target="_blank">https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_3.23/crucy.1506241137.v3.23/countries/tmp/</a><br/>
+    </p>-->
+    <p id="educate1">
+        Why it matters
+    </p>
+    <p id="educate" align="left">
+        Since the 1900's, the the temperature of each country has experienced around 1°C of warming. This may not appear to be a big
+        deal since it's just 1°C, however this causes deadly problems. Hot countries will face longer and more frequent heat waves causing
+         droughts. The increase in temperature will also kill off crops, plants and animal species, and the coral reefs. The melting of
+         the polar ice caps will cause a sea level rise which affects small islands the most. The coral reefs won't be able to protect the marine
+          animals and humans that rely on the reefs for protection.
+          <br></br>
+          At 1.5°C, coral reefs have a chance at adapting and recovering, however at 2°C, the chance of recovering disappears. The Mediterranean
+           is forecasted to have 9% less water at 1.5°C and 18% less water at 2°C. Sea levels will rise due to ice sheets and glaciers being
+            heated from above and under from the increase in ocean temperatures.
+    </p>
+
+
+</div>
+<svg id="pSVG" width="1250" height="650" style ="position:relative;">
+    <foreignObject width="1250" height="650">
+
+<div class = mainButts id = chart>
+    <div>
+        <button id="leftButt">Decrement Year</button>
+    </div>
+    <br>
+    <div >
+        <button id="rightButt">Increment Year</button>
+    </div>
+</div>
+<input autocomplete="off" name="hidden" type="number"  step="0.01" id = "searchText" placeholder="Search.." name="search" > <br>
+<input autocomplete="off" name="hidden" type="number"  step="0.01" id = "searchText2" placeholder="Search.." name="search2" >
+
+<select id="inds">
+    <option value="data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv">Afghanistan</option>
+    <option value="data/crucy.v3.23.1901.2014.Albania.tmp.tsv">Albania</option>
+    <option value="data/crucy.v3.23.1901.2014.Algeria.tmp.tsv">Algeria</option>
+    <option value="data/crucy.v3.23.1901.2014.Andorra.tmp.tsv">Andorra</option>
+    <option value="data/crucy.v3.23.1901.2014.Angola.tmp.tsv">Angola</option>
+    <option value="data/crucy.v3.23.1901.2014.Anguilla.tmp.tsv">Anguilla</option>
+    <option value="data/crucy.v3.23.1901.2014.Antigua.tmp.tsv">Antigua</option>
+    <option value="data/crucy.v3.23.1901.2014.Argentina.tmp.tsv">Argentina</option>
+    <option value="data/crucy.v3.23.1901.2014.Armenia.tmp.tsv">Armenia</option>
+    <option value="data/crucy.v3.23.1901.2014.Ascension.tmp.tsv">Ascension</option>
+    <option value="data/crucy.v3.23.1901.2014.Australia.tmp.tsv">Australia</option>
+    <option value="data/crucy.v3.23.1901.2014.Austria.tmp.tsv">Austria</option>
+    <option value="data/crucy.v3.23.1901.2014.Azerbaijan.tmp.tsv">Azerbaijan</option>
+    <option value="data/crucy.v3.23.1901.2014.Bahamas.tmp.tsv">Bahamas</option>
+    <option value="data/crucy.v3.23.1901.2014.Bahrain.tmp.tsv">Bahrain</option>
+    <option value="data/crucy.v3.23.1901.2014.Bangladesh.tmp.tsv">Bangladesh</option>
+    <option value="data/crucy.v3.23.1901.2014.Barbados.tmp.tsv">Barbados</option>
+    <option value="data/crucy.v3.23.1901.2014.Barbuda.tmp.tsv">Barbuda</option>
+    <option value="data/crucy.v3.23.1901.2014.Belarus.tmp.tsv" >Belarus</option>
+    <option value="data/crucy.v3.23.1901.2014.Belgium.tmp.tsv">Belgium</option>
+    <option value="data/crucy.v3.23.1901.2014.Belize.tmp.tsv">Belize</option>
+    <option value="data/crucy.v3.23.1901.2014.Benin.tmp.tsv">Benin</option>
+    <option value="data/crucy.v3.23.1901.2014.Bermuda.tmp.tsv">Bermuda</option>
+    <option value="data/crucy.v3.23.1901.2014.Bhutan.tmp.tsv">Bhutan</option>
+    <option value="data/crucy.v3.23.1901.2014.Bolivia.tmp.tsv">Bolivia</option>
+    <option value="data/crucy.v3.23.1901.2014.Botswana.tmp.tsv">Botswana</option>
+    <option value="data/crucy.v3.23.1901.2014.Brazil.tmp.tsv">Brazil</option>
+    <option value="data/crucy.v3.23.1901.2014.Brunei.tmp.tsv">Brunei</option>
+    <option value="data/crucy.v3.23.1901.2014.Bulgaria.tmp.tsv">Bulgaria</option>
+    <option value="data/crucy.v3.23.1901.2014.Burkina_Faso.tmp.tsv">Burkina Faso</option>
+    <option value="data/crucy.v3.23.1901.2014.Burundi.tmp.tsv">Burundi</option>
+    <option value="data/crucy.v3.23.1901.2014.Cambodia.tmp.tsv">Cambodia</option>
+    <option value="data/crucy.v3.23.1901.2014.Cameroon.tmp.tsv">Cameroon</option>
+    <option value="data/crucy.v3.23.1901.2014.Canada.tmp.tsv">Canada</option>
+    <option value="data/crucy.v3.23.1901.2014.Central_African_Rep.tmp.tsv">Central African Republic</option>
+    <option value="data/crucy.v3.23.1901.2014.Chad.tmp.tsv">Chad</option>
+    <option value="data/crucy.v3.23.1901.2014.Chile.tmp.tsv">Chile</option>
+    <option value="data/crucy.v3.23.1901.2014.China.tmp.tsv">China</option>
+    <option value="data/crucy.v3.23.1901.2014.Christmas_Isl.tmp.tsv">Christmas Island</option>
+    <option value="data/crucy.v3.23.1901.2014.Colombia.tmp.tsv">Columbia</option>
+    <option value="data/crucy.v3.23.1901.2014.Comoros.tmp.tsv">Comoros</option>
+    <option value="data/crucy.v3.23.1901.2014.Congo.tmp.tsv">Congo</option>
+    <option value="data/crucy.v3.23.1901.2014.Cook_Isl.tmp.tsv">Cook Islands</option>
+    <option value="data/crucy.v3.23.1901.2014.Costa_Rica.tmp.tsv">Costa Rica</option>
+    <option value="data/crucy.v3.23.1901.2014.Croatia.tmp.tsv">Croatia</option>
+    <option value="data/crucy.v3.23.1901.2014.Cuba.tmp.tsv">Cuba</option>
+    <option value="data/crucy.v3.23.1901.2014.Cyprus.tmp.tsv">Cyprus</option>
+    <option value="data/crucy.v3.23.1901.2014.Czech_Republic.tmp.tsv">Czech Republic</option>
+    <option value="data/crucy.v3.23.1901.2014.Denmark.tmp.tsv">Denmark</option>
+    <option value="data/crucy.v3.23.1901.2014.Djibouti.tmp.tsv">Djibouti</option>
+    <option value="data/crucy.v3.23.1901.2014.Dominica.tmp.tsv">Dominica</option>
+    <option value="data/crucy.v3.23.1901.2014.Dominican_Republic.tmp.tsv">Dominican Republic</option>
+    <option value="data/crucy.v3.23.1901.2014.Ecuador.tmp.tsv">Ecuador</option>
+    <option value="data/crucy.v3.23.1901.2014.Egypt.tmp.tsv">Egypt</option>
+    <option value="data/crucy.v3.23.1901.2014.El_Salvador.tmp.tsv">El Salvador</option>
+    <option value="data/crucy.v3.23.1901.2014.Equatorial_Guinea.tmp.tsv">Equatorial Guinea</option>
+    <option value="data/crucy.v3.23.1901.2014.Eritrea.tmp.tsv">Eritrea</option>
+    <option value="data/crucy.v3.23.1901.2014.Estonia.tmp.tsv">Estonia</option>
+    <option value="data/crucy.v3.23.1901.2014.Ethiopia.tmp.tsv">Ethiopia</option>
+    <option value="data/crucy.v3.23.1901.2014.Falkland_Isl.tmp.tsv">Falkland Islands</option>
+    <option value="data/crucy.v3.23.1901.2014.Fiji.tmp.tsv">Fiji</option>
+    <option value="data/crucy.v3.23.1901.2014.Finland.tmp.tsv">Finland</option>
+    <option value="data/crucy.v3.23.1901.2014.France.tmp.tsv">France</option>
+    <option value="data/crucy.v3.23.1901.2014.Gabon.tmp.tsv">Gabon</option>
+    <option value="data/crucy.v3.23.1901.2014.Gambia.tmp.tsv">Gambia</option>
+    <option value="data/crucy.v3.23.1901.2014.Georgia.tmp.tsv">Georgia</option>
+    <option value="data/crucy.v3.23.1901.2014.Germany.tmp.tsv">Germany</option>
+    <option value="data/crucy.v3.23.1901.2014.Ghana.tmp.tsv">Ghana</option>
+    <option value="data/crucy.v3.23.1901.2014.Gibraltar.tmp.tsv">Gibraltar</option>
+    <option value="data/crucy.v3.23.1901.2014.Greece.tmp.tsv">Greece</option>
+    <option value="data/crucy.v3.23.1901.2014.Greenland.tmp.tsv">Greenland</option>
+    <option value="data/crucy.v3.23.1901.2014.Grenada.tmp.tsv">Grenada</option>
+    <option value="data/crucy.v3.23.1901.2014.Guatemala.tmp.tsv">Guatemala</option>
+    <option value="data/crucy.v3.23.1901.2014.Guinea.tmp.tsv">Guinea</option>
+    <option value="data/crucy.v3.23.1901.2014.Guyana.tmp.tsv">Guyana</option>
+    <option value="data/crucy.v3.23.1901.2014.Haiti.tmp.tsv">Haiti</option>
+    <option value="data/crucy.v3.23.1901.2014.Honduras.tmp.tsv">Honduras</option>
+    <option value="data/crucy.v3.23.1901.2014.Hong_Kong.tmp.tsv">Hong Kong</option>
+    <option value="data/crucy.v3.23.1901.2014.Hungary.tmp.tsv">Hungary</option>
+    <option value="data/crucy.v3.23.1901.2014.Iceland.tmp.tsv">Iceland</option>
+    <option value="data/crucy.v3.23.1901.2014.India.tmp.tsv">India</option>
+    <option value="data/crucy.v3.23.1901.2014.Indonesia.tmp.tsv">Indonesia</option>
+    <option value="data/crucy.v3.23.1901.2014.Iran.tmp.tsv">Iran</option>
+    <option value="data/crucy.v3.23.1901.2014.Iraq.tmp.tsv">Iraq</option>
+    <option value="data/crucy.v3.23.1901.2014.Ireland.tmp.tsv">Ireland</option>
+    <option value="data/crucy.v3.23.1901.2014.Israel.tmp.tsv">Israel</option>
+    <option value="data/crucy.v3.23.1901.2014.Italy.tmp.tsv">Italy</option>
+    <option value="data/crucy.v3.23.1901.2014.Jamaica.tmp.tsv">Jamaica</option>
+    <option value="data/crucy.v3.23.1901.2014.Japan.tmp.tsv">Japan</option>
+    <option value="data/crucy.v3.23.1901.2014.Jordan.tmp.tsv">Jordan</option>
+    <option value="data/crucy.v3.23.1901.2014.Kazakhstan.tmp.tsv">Kazakhstan</option>
+    <option value="data/crucy.v3.23.1901.2014.Kenya.tmp.tsv">Kenya</option>
+    <option value="data/crucy.v3.23.1901.2014.Kiribati.tmp.tsv">Kiribati</option>
+    <option value="data/crucy.v3.23.1901.2014.Kuwait.tmp.tsv">Kuwait</option>
+    <option value="data/crucy.v3.23.1901.2014.Kyrgyzstan.tmp.tsv">Kyrgyzstan</option>
+    <option value="data/crucy.v3.23.1901.2014.Laos.tmp.tsv">Laos</option>
+    <option value="data/crucy.v3.23.1901.2014.Latvia.tmp.tsv">Latvia</option>
+    <option value="data/crucy.v3.23.1901.2014.Lebanon.tmp.tsv">Lebanon</option>
+    <option value="data/crucy.v3.23.1901.2014.Lesotho.tmp.tsv">Lesotho</option>
+    <option value="data/crucy.v3.23.1901.2014.Liberia.tmp.tsv">Liberia</option>
+    <option value="data/crucy.v3.23.1901.2014.Liechtenstein.tmp.tsv">Liechtenstein</option>
+    <option value="data/crucy.v3.23.1901.2014.Lithuania.tmp.tsv">Lithuania</option>
+    <option value="data/crucy.v3.23.1901.2014.Luxembourg.tmp.tsv">Luxembourg</option>
+    <option value="data/crucy.v3.23.1901.2014.Macau.tmp.tsv">Macau</option>
+    <option value="data/crucy.v3.23.1901.2014.Macedonia.tmp.tsv">Macedonia</option>
+    <option value="data/crucy.v3.23.1901.2014.Madagascar.tmp.tsv">Madagascar</option>
+    <option value="data/crucy.v3.23.1901.2014.Malawi.tmp.tsv">Malawi</option>
+    <option value="data/crucy.v3.23.1901.2014.Malaysia.tmp.tsv">Indonesia</option>
+    <option value="data/crucy.v3.23.1901.2014.Maldives.tmp.tsv">Maldives</option>
+    <option value="data/crucy.v3.23.1901.2014.Mali.tmp.tsv">Mali</option>
+    <option value="data/crucy.v3.23.1901.2014.Malta.tmp.tsv">Malta</option>
+    <option value="data/crucy.v3.23.1901.2014.Marshall_Isl.tmp.tsv">Marshall Islands</option>
+    <option value="data/crucy.v3.23.1901.2014.Mauritania.tmp.tsv">Mauritania</option>
+    <option value="data/crucy.v3.23.1901.2014.Mauritius.tmp.tsv">Mauritius</option>
+    <option value="data/crucy.v3.23.1901.2014.Mexico.tmp.tsv">Mexico</option>
+    <option value="data/crucy.v3.23.1901.2014.Monaco.tmp.tsv">Monaco</option>
+    <option value="data/crucy.v3.23.1901.2014.Mongolia.tmp.tsv">Mongolia</option>
+    <option value="data/crucy.v3.23.1901.2014.Montserrat.tmp.tsv">Montserrat</option>
+    <option value="data/crucy.v3.23.1901.2014.Morocco.tmp.tsv">Morocco</option>
+    <option value="data/crucy.v3.23.1901.2014.Mozambique.tmp.tsv">Mozambique</option>
+    <option value="data/crucy.v3.23.1901.2014.Namibia.tmp.tsv">Namibia</option>
+    <option value="data/crucy.v3.23.1901.2014.Nauru.tmp.tsv">Nauru</option>
+    <option value="data/crucy.v3.23.1901.2014.Nepal.tmp.tsv">Nepal</option>
+    <option value="data/crucy.v3.23.1901.2014.Netherlands.tmp.tsv">Netherlands</option>
+    <option value="data/crucy.v3.23.1901.2014.New_Caledonia.tmp.tsv">New Caledonia</option>
+    <option value="data/crucy.v3.23.1901.2014.New_Zealand.tmp.tsv">New Zealand</option>
+    <option value="data/crucy.v3.23.1901.2014.Nicaragua.tmp.tsv">Nicaragua</option>
+    <option value="data/crucy.v3.23.1901.2014.Niger.tmp.tsv">Niger</option>
+    <option value="data/crucy.v3.23.1901.2014.Nigeria.tmp.tsv">Nigeria</option>
+    <option value="data/crucy.v3.23.1901.2014.Niue.tmp.tsv">Niue</option>
+    <option value="data/crucy.v3.23.1901.2014.Norfolk_Isl.tmp.tsv">Norfolk Island</option>
+    <option value="data/crucy.v3.23.1901.2014.Norway.tmp.tsv">Norway</option>
+    <option value="data/crucy.v3.23.1901.2014.Oman.tmp.tsv">Oman</option>
+    <option value="data/crucy.v3.23.1901.2014.Pakistan.tmp.tsv">Pakistan</option>
+    <option value="data/crucy.v3.23.1901.2014.Panama.tmp.tsv">Panama</option>
+    <option value="data/crucy.v3.23.1901.2014.Papua_New_Guinea.tmp.tsv">Papua New Guinea</option>
+    <option value="data/crucy.v3.23.1901.2014.Paraguay.tmp.tsv">Paraguay</option>
+    <option value="data/crucy.v3.23.1901.2014.Peru.tmp.tsv">Peru</option>
+    <option value="data/crucy.v3.23.1901.2014.Philippines.tmp.tsv">Philippines</option>
+    <option value="data/crucy.v3.23.1901.2014.Poland.tmp.tsv">Poland</option>
+    <option value="data/crucy.v3.23.1901.2014.Portugal.tmp.tsv">Portugal</option>
+    <option value="data/crucy.v3.23.1901.2014.Qatar.tmp.tsv">Qatar</option>
+    <option value="data/crucy.v3.23.1901.2014.Romania.tmp.tsv">Romania</option>
+    <option value="data/crucy.v3.23.1901.2014.Russia.tmp.tsv">Russia</option>
+    <option value="data/crucy.v3.23.1901.2014.Rwanda.tmp.tsv">Rwanda</option>
+    <option value="data/crucy.v3.23.1901.2014.Samoa.tmp.tsv">Samoa</option>
+    <option value="data/crucy.v3.23.1901.2014.San_Marino.tmp.tsv">San Marino</option>
+    <option value="data/crucy.v3.23.1901.2014.Saudi_Arabia.tmp.tsv">Saudi Arabia</option>
+    <option value="data/crucy.v3.23.1901.2014.Senegal.tmp.tsv">Sengal</option>
+    <option value="data/crucy.v3.23.1901.2014.Seychelles.tmp.tsv">Seychelles</option>
+    <option value="data/crucy.v3.23.1901.2014.Sierra_Leone.tmp.tsv">Sierra Leone</option>
+    <option value="data/crucy.v3.23.1901.2014.Singapore.tmp.tsv">Singapore</option>
+    <option value="data/crucy.v3.23.1901.2014.Slovakia.tmp.tsv">Slovakia</option>
+    <option value="data/crucy.v3.23.1901.2014.Slovenia.tmp.tsv">Slovenia</option>
+    <option value="data/crucy.v3.23.1901.2014.Solomon_Isl.tmp.tsv">Solomon Islands</option>
+    <option value="data/crucy.v3.23.1901.2014.Somalia.tmp.tsv">Somalia</option>
+    <option value="data/crucy.v3.23.1901.2014.South_Africa.tmp.tsv">South Africa</option>
+    <option value="data/crucy.v3.23.1901.2014.Spain.tmp.tsv">Spain</option>
+    <option value="data/crucy.v3.23.1901.2014.Sri_Lanka.tmp.tsv">Sri Lanka</option>
+    <option value="data/crucy.v3.23.1901.2014.Sudan.tmp.tsv">Sudan</option>
+    <option value="data/crucy.v3.23.1901.2014.Surinam.tmp.tsv">Surinam</option>
+    <option value="data/crucy.v3.23.1901.2014.Svalbard.tmp.tsv">Svalbard</option>
+    <option value="data/crucy.v3.23.1901.2014.Swaziland.tmp.tsv">Swaziland</option>
+    <option value="data/crucy.v3.23.1901.2014.Sweden.tmp.tsv">Sweden</option>
+    <option value="data/crucy.v3.23.1901.2014.Switzerland.tmp.tsv">Switzerland</option>
+    <option value="data/crucy.v3.23.1901.2014.Syria.tmp.tsv">Syria</option>
+    <option value="data/crucy.v3.23.1901.2014.Tajikistan.tmp.tsv">Tajikistan</option>
+    <option value="data/crucy.v3.23.1901.2014.Tanzania.tmp.tsv">Tanzania</option>
+    <option value="data/crucy.v3.23.1901.2014.Thailand.tmp.tsv">Thailand</option>
+    <option value="data/crucy.v3.23.1901.2014.Togo.tmp.tsv">Togo</option>
+    <option value="data/crucy.v3.23.1901.2014.Tonga.tmp.tsv">Tonga</option>
+    <option value="data/crucy.v3.23.1901.2014.Trinidad_and_Tobago.tmp.tsv">Trinidad and Tobago</option>
+    <option value="data/crucy.v3.23.1901.2014.Tristan_da_Cunha.tmp.tsv">Tristan da Cunha</option>
+    <option value="data/crucy.v3.23.1901.2014.Tunisia.tmp.tsv">Tunisia</option>
+    <option value="data/crucy.v3.23.1901.2014.Turkey.tmp.tsv">Turkey</option>
+    <option value="data/crucy.v3.23.1901.2014.Turkmenistan.tmp.tsv">Turkmenistan</option>
+    <option value="data/crucy.v3.23.1901.2014.Tuvalu.tmp.tsv">Tuvalu</option>
+    <option value="data/crucy.v3.23.1901.2014.Uganda.tmp.tsv">Uganda</option>
+    <option value="data/crucy.v3.23.1901.2014.Ukraine.tmp.tsv">Ukraine</option>
+    <option value="data/crucy.v3.23.1901.2014.United_Arab_Emirates.tmp.tsv">United Arab Emirates</option>
+    <option value="data/crucy.v3.23.1901.2014.United_Kingdom.tmp.tsv">United Kingdom</option>
+    <option value="data/crucy.v3.23.1901.2014.Uruguay.tmp.tsv">Uruguay</option>
+    <option value="data/crucy.v3.23.1901.2014.USA.tmp.tsv">USA</option>
+    <option value="data/crucy.v3.23.1901.2014.Uzbekistan.tmp.tsv">Uzbekistan</option>
+    <option value="data/crucy.v3.23.1901.2014.Venezuela.tmp.tsv">Venezuela</option>
+    <option value="data/crucy.v3.23.1901.2014.Vietnam.tmp.tsv">Vietnam</option>
+    <option value="data/crucy.v3.23.1901.2014.Virgin_Isl.tmp.tsv">Virgin Islands</option>
+    <option value="data/crucy.v3.23.1901.2014.Western_Sahara.tmp.tsv">Western Sahara</option>
+    <option value="data/crucy.v3.23.1901.2014.Yemen.tmp.tsv">Yemen</option>
+    <option value="data/crucy.v3.23.1901.2014.Zambia.tmp.tsv">Zambia</option>
+    <option value="data/crucy.v3.23.1901.2014.Zimbabwe.tmp.tsv">Zimbabwe</option>
+</select>
+</foreignObject>
+
+</svg>
+
+<script type="text/javascript" src="tempGraph.js"></script>
+
+<script src="../core/d3-tip.js"></script>
+
+<div id="slider"></div>
+<script type="text/javascript" src="tempChoroInit.js"></script>
+<script type="text/javascript" src="tempChoroSlider.js"></script>
+<script type="text/javascript" src="tempChoroButtons.js"></script>
+<script type="text/javascript" src="tempChoro.js"></script>
+<script type="text/javascript" src="tempChoroHelper.js"></script>
+
+</body>
+</html>

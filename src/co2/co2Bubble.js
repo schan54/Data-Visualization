@@ -1,7 +1,7 @@
 
 var moving = false;
 var currentValue = 1960;
-var targetValue = 2016;
+var targetValue = 2055;
 var twoYears = false;
 var comparedValue = 1961;
 var UIFlag = false;
@@ -33,7 +33,7 @@ function select(yearValue) {
   }
   // selection.datum() returns the bound datum for the first element in the selection and
   //  doesn't join the specified array of data with the selected elements
-  var chart = bubbleChart().width(1200).height(700);
+  var chart = bubbleChart().width(1300).height(700);
   d3.select('#chart').datum(data).call(chart);
   });
 
@@ -49,19 +49,24 @@ function select(yearValue) {
         max4 = 0;
         max5 = 0;
         xPosition = [100, 250, 450, 650, 850, 1100];
-        colorOne = d3.interpolateYlOrBr(0.4);
-        colorTwo = d3.interpolateYlOrBr(0.5);
-        colorThree = d3.interpolateYlOrBr(0.6);
-        colorFour = d3.interpolateYlOrBr(0.7);
-        colorFive = d3.interpolateYlOrBr(0.8);
-        colorSix = d3.interpolateYlOrBr(0.9);
+        colorOne = '#8FC1E3';
+        colorTwo = '#31708E';
+        colorThree = '#567488';
+        colorFour = '#1D4355';
+        colorFive = '#0A161C';
+        colorSix = '#1D272D';
         colorGreen = d3.interpolateRdYlGn(1); 
         colorRed = d3.interpolateRdYlGn(0);
-        colorGray = d3.interpolateRdYlGn(0.5);
+        colorGray = '#687864';
         yearOne = [];
         yearTwo = [];
         yearDiff = [];
         indexesNegative = [];
+        year2017 = [];
+        year2007 = [];
+        netDiff = [];
+        netDiffNegative = [];
+        yearFuture = [];
 
     function chart(selection) {
       var data = selection.datum();
@@ -77,31 +82,40 @@ function select(yearValue) {
       // Set up color scheme
       var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
       // Set up radius scale
-      var scaleRadius = d3.scalePow().exponent(0.5).domain([d3.min(data, function(d) {
-        return +d[columnForRadius];
-      }), d3.max(data, function(d) {
+      var scaleRadius = d3.scalePow().exponent(0.5).domain([0, d3.max(data, function(d) {
         return +d[columnForRadius];
       })]).range([2, 90])
-
-
 
       // Compute difference between two years
       yearOne = data.filter(function(d) { 
           if (UIFlag) {
               return d.year == currentValue;
           } else {
-              return d.year == yearTemp
+              return d.year == yearTemp;
           }}); // selected year
       yearTwo = data.filter(function(d) { 
           if (UIFlag) {
             return d.year == comparedValue;
           } else {
-              return d.year == yearTemp + 1;
+            return d.year == yearTemp + 1;
           }}); // selected year plus
-      yearDiff = yearTwo;
 
       for (i = 0; i < yearTwo.length; i++) {
-        yearDiff[i].value = yearTwo[i].value - yearOne[i].value;
+        yearDiff[i] = {};
+        for (var prop in yearTwo[i]) {
+          yearDiff[i][prop] = yearTwo[i][prop];
+        }
+      }
+
+      //yearDiff = yearTwo;
+
+      // Compute difference and find negatives
+      for (i = 0; i < yearTwo.length; i++) {
+        for (j = 0; j < yearOne.length; j++) {
+          if (yearTwo[i].country == yearOne[j].country) {
+            yearDiff[i].value = yearTwo[i].value - yearOne[j].value;
+          }
+        }
         if (yearDiff[i].value < 0) {
           indexesNegative[i] = 1;
           yearDiff[i].value = Math.abs(yearDiff[i].value);
@@ -235,7 +249,6 @@ function select(yearValue) {
             }
           });
 
-
          u.transition()
           .duration(50)
           .attr('r', function(d) {
@@ -252,18 +265,11 @@ function select(yearValue) {
         } else { // If Isolated
           u.enter()
           .append('circle')
-          .attr('r', function(d) {
+          .attr('r', function(d, i) {
             //console.log("here");
             if (isNaN(d.value)) {
               return 2;
             } else {
-              console.log(scaleRadius(1));
-              console.log(scaleRadius(50));
-              console.log(scaleRadius(100));
-              console.log(scaleRadius(500));
-              console.log(scaleRadius(1000));
-              console.log(scaleRadius(5000));
-              console.log(scaleRadius(10000));
               return scaleRadius(d.value)
             }
           })
@@ -344,6 +350,7 @@ function select(yearValue) {
       var OceaniaArray = [];
       var SAArray = [];
       var AsiaArray = [];
+      var minToBeSpliced = [];
       var index = 0;
       var stringIndex = 0;
       var sumValues = 0;
@@ -354,29 +361,59 @@ function select(yearValue) {
       var sumAsia = 0;
       var sumSA = 0;
 
-      // Parse CO2 values from string to int
-      data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
-        d.value = parseInt(d.value);
-        tempArray[index] = d.value;
-        tempStringArray[index] = d.country;
-        if (!d.continent.localeCompare("Oceania")) {
-          OceaniaArray[index] = d.value;
-        } else if (!d.continent.localeCompare("North America")) {
-          NAArray[index] = d.value;
-        } else if (!d.continent.localeCompare("South America")) {
-          SAArray[index] = d.value;
-        } else if (!d.continent.localeCompare("Asia")) {
-          AsiaArray[index] = d.value;
-        } else if (!d.continent.localeCompare("Europe")) {
-          EUArray[index] = d.value;
-        } else if (!d.continent.localeCompare("Africa")) {
-          AfricaArray[index] = d.value;
-        }
-        index++;
-      })
+      if (!twoYears) {
+        // Parse CO2 values from string to double with 3 decimal places
+        data.filter(function(d) {return d.year == yearTemp; }).forEach(function(d) {
+          d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
+          tempArray[index] = d.value;
+          tempStringArray[index] = d.country;
+          if (!d.continent.localeCompare("Oceania")) {
+            OceaniaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("North America")) {
+            NAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("South America")) {
+            SAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Asia")) {
+            AsiaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Europe")) {
+            EUArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Africa")) {
+            AfricaArray[index] = d.value;
+          }
+          index++;
+        })
+      } else {
+        yearDiff.forEach(function(d) {
+          d.value = Math.round(parseFloat(d.value) * 1000) / 1000;
+          if (indexesNegative[index] == 1) {
+            d.value = -d.value;
+          }
+          tempArray[index] = d.value;
+          tempStringArray[index] = d.country;
+          if (!d.continent.localeCompare("Oceania")) {
+            OceaniaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("North America")) {
+            NAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("South America")) {
+            SAArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Asia")) {
+            AsiaArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Europe")) {
+            EUArray[index] = d.value;
+          } else if (!d.continent.localeCompare("Africa")) {
+            AfricaArray[index] = d.value;
+          }
+          if (indexesNegative[index] == 1) {
+            d.value = -d.value;
+          }
+          index++;
+        })
+      }
 
       d3.select("#mainChart").selectAll("text").remove();
+      d3.select("#mainChart").selectAll("line").remove();
 
+      console.log(AsiaArray);
       sumValues = d3.sum(tempArray);
       sumOceania = d3.sum(OceaniaArray);
       sumSA = d3.sum(SAArray);
@@ -387,80 +424,100 @@ function select(yearValue) {
 
       var topEmissions = d3.select("#mainChart");
 
-
       if (twoYears) {
           topEmissions.append("text").html(currentValue).attr("x", 240).attr("y", 80).attr("id", "yearText");
           topEmissions.append("text").html("to").attr("x", 310).attr("y", 110).attr("id", "toText");
           topEmissions.append("text").html(comparedValue).attr("x", 240).attr("y", 180).attr("id", "yearText");
+          topEmissions.append("text").html("Net Difference in Emissions:").attr("id", "sumText").attr("x", 450).attr("y", 50);
       } else {
           topEmissions.append("text").html(currentValue).attr("x", 240).attr("y", 120).attr("id", "yearText");
+          topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 470).attr("y", 50);
       }
 
       // Find the max value in this year
-      max1 = d3.max(data.filter(function(d) {return d.year == yearTemp; }), function(d) {return d.value; });
+      max1 = d3.max(tempArray);
 
       stringIndex = tempArray.indexOf(max1);
-      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2").attr("x", 650).attr("y", 80).attr("class", "topText");
+      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + max1 + " MtCO2").attr("x", 700).attr("y", 80).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(max1), 1);
-      tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary arra
+      tempArray.splice(tempArray.indexOf(max1), 1); // Remove max from temporary array
 
       max2 = d3.max(tempArray); // Find the second max
       stringIndex = tempArray.indexOf(max2); // Get the index
-      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2").attr("x", 650).attr("y", 100).attr("class", "topText");
+      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + max2 + " MtCO2").attr("x", 700).attr("y", 100).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(max2), 1);
       tempArray.splice(tempArray.indexOf(max2), 1); // Remove second max from temporary array
 
       max3 = d3.max(tempArray); // Find the third max
       stringIndex = tempArray.indexOf(max3); // Get the index
-      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2").attr("x", 650).attr("y", 120).attr("class", "topText");
+      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + max3 + " MtCO2").attr("x", 700).attr("y", 120).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(max3), 1);
       tempArray.splice(tempArray.indexOf(max3), 1);
 
       max4 = d3.max(tempArray); // Find the fourth max
       stringIndex = tempArray.indexOf(max4); // Get the index
-      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2").attr("x", 650).attr("y", 140).attr("class", "topText");
+      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + max4 + " MtCO2").attr("x", 700).attr("y", 140).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(max4), 1);
       tempArray.splice(tempArray.indexOf(max4), 1);
 
       max5 = d3.max(tempArray); // Find the fifth max
       stringIndex = tempArray.indexOf(max5);
-      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2").attr("x", 650).attr("y", 160).attr("class", "topText");
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + max5 + " MtCO2").attr("x", 700).attr("y", 160).attr("class", "topText");
+
+      for (i = 0; i < tempArray.length; i++) {
+        if (Math.round(parseFloat(tempArray[i]) * 1000) / 1000 == 0 || isNaN(tempArray[i])) {
+          minToBeSpliced[i] = 1;
+        } else {
+          minToBeSpliced[i] = 0;
+        }
+      }
+
+      for (i = minToBeSpliced.length; i >= 0; i--) {
+        if (minToBeSpliced[i] == 1) {
+          tempArray.splice(i, 1);
+          tempStringArray.splice(i, 1);
+        }
+      }
 
       min1 = d3.min(tempArray); // Find the min
       stringIndex = tempArray.indexOf(min1); // Get the index
-      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + min1 + " MtCO2").attr("x", 920).attr("y", 80).attr("class", "topText");
+      topEmissions.append("text").html("1. " + tempStringArray[stringIndex] + ": " + min1 + " MtCO2").attr("x", 995).attr("y", 80).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(min1), 1);
       tempArray.splice(tempArray.indexOf(min1), 1);
 
       min2 = d3.min(tempArray); // Find the min
       stringIndex = tempArray.indexOf(min2); // Get the index
-      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + min2 + " MtCO2").attr("x", 920).attr("y", 100).attr("class", "topText");
+      topEmissions.append("text").html("2. " + tempStringArray[stringIndex] + ": " + min2 + " MtCO2").attr("x", 995).attr("y", 100).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(min2), 1);
       tempArray.splice(tempArray.indexOf(min2), 1);
 
       min3 = d3.min(tempArray); // Find the min
       stringIndex = tempArray.indexOf(min3); // Get the index
-      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + min3 + " MtCO2").attr("x", 920).attr("y", 120).attr("class", "topText");
+      topEmissions.append("text").html("3. " + tempStringArray[stringIndex] + ": " + min3 + " MtCO2").attr("x", 995).attr("y", 120).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(min3), 1);
       tempArray.splice(tempArray.indexOf(min3), 1);
 
       min4 = d3.min(tempArray); // Find the min
       stringIndex = tempArray.indexOf(min4); // Get the index
-      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + min4 + " MtCO2").attr("x", 920).attr("y", 140).attr("class", "topText");
+      topEmissions.append("text").html("4. " + tempStringArray[stringIndex] + ": " + min4 + " MtCO2").attr("x", 995).attr("y", 140).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(min4), 1);
       tempArray.splice(tempArray.indexOf(min4), 1);
 
       min5 = d3.min(tempArray); // Find the min
       stringIndex = tempArray.indexOf(min5); // Get the index
-      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + min5 + " MtCO2").attr("x", 920).attr("y", 160).attr("class", "topText");
+      topEmissions.append("text").html("5. " + tempStringArray[stringIndex] + ": " + min5 + " MtCO2").attr("x", 995).attr("y", 160).attr("class", "topText");
       tempStringArray.splice(tempArray.indexOf(min5), 1);
       tempArray.splice(tempArray.indexOf(min5), 1);
 
-      topEmissions.append("text").html("Countries With the Most Emissions:").attr("id", "sumText").attr("x", 650).attr("y", 50);
-      topEmissions.append("text").html("Countries With the Least Emissions:").attr("id", "sumText").attr("x", 920).attr("y", 50);
+      if (!twoYears) {
+        topEmissions.append("text").html("Countries With the Most Emissions:").attr("id", "sumText").attr("x", 700).attr("y", 50);
+        topEmissions.append("text").html("Countries With the Least Emissions:").attr("id", "sumText").attr("x", 995).attr("y", 50);
+      } else {
+        topEmissions.append("text").html("Countries With the Greatest Increase:").attr("id", "sumText").attr("x", 700).attr("y", 50);
+        topEmissions.append("text").html("Countries With the Greatest Decrease:").attr("id", "sumText").attr("x", 995).attr("y", 50);
+      }
 
-      topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 440).attr("y", 70);
-      topEmissions.append("text").html(+ sumValues + " MtCO2").attr("id", "sum").attr("x", 460).attr("y", 120);
+      topEmissions.append("text").html(+ Math.round(parseFloat(sumValues) * 1000) / 1000 + " MtCO2").attr("id", "sum").attr("x", 460).attr("y", 85);
 
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 730).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 610).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
@@ -478,9 +535,10 @@ function select(yearValue) {
       topEmissions.append("line").attr("x1", 0).attr("y1", 200).attr("x2", 1500).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 220).attr("y1", 0).attr("x2", 220).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 430).attr("y1", 0).attr("x2", 430).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 640).attr("y1", 0).attr("x2", 640).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 910).attr("y1", 0).attr("x2", 910).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 670).attr("y1", 0).attr("x2", 670).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 965).attr("y1", 0).attr("x2", 965).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
 
+      
       // Lines for legend
       topEmissions.append("line").attr("x1", 100).attr("y1", 620).attr("x2", 105.66).attr("y2", 620).attr("stroke-width", 1).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 100).attr("y1", 625).attr("x2", 116.54).attr("y2", 625).attr("stroke-width", 1).attr("stroke", "black");
@@ -490,12 +548,12 @@ function select(yearValue) {
       topEmissions.append("line").attr("x1", 100).attr("y1", 645).attr("x2", 229.4).attr("y2", 645).attr("stroke-width", 1).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 100).attr("y1", 650).attr("x2", 281.4).attr("y2", 650).attr("stroke-width", 1).attr("stroke", "black");
 
-      topEmissions.append("text").html(sumOceania + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumAsia + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumNA + " MtCO2").attr("x", 80).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumSA + " MtCO2").attr("x", 220).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumEU + " MtCO2").attr("x", 420).attr("y", 570).attr("font-weight", "bold");
-      topEmissions.append("text").html(sumAfrica + " MtCO2").attr("x", 1050).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumOceania) * 1000) / 1000 + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumAsia) * 1000) / 1000 + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumNA) * 1000) / 1000 + " MtCO2").attr("x", 80).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumSA) * 1000) / 1000 + " MtCO2").attr("x", 220).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumEU) * 1000) / 1000 + " MtCO2").attr("x", 420).attr("y", 570).attr("font-weight", "bold");
+      topEmissions.append("text").html(Math.round(parseFloat(sumAfrica) * 1000) / 1000 + " MtCO2").attr("x", 1050).attr("y", 570).attr("font-weight", "bold");
 
       topEmissions.append("text").html("Oceania").attr("x", 620).attr("y", 510);
       topEmissions.append("text").html("Asia").attr("x", 810).attr("y", 510);
@@ -504,29 +562,42 @@ function select(yearValue) {
       topEmissions.append("text").html("Europe").attr("x", 420).attr("y", 510);
       topEmissions.append("text").html("Africa").attr("x", 1050).attr("y", 510);
 
-      topEmissions.append("text").html("Total Emissions:").attr("x", 620).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 810).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 80).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 220).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 420).attr("y", 540);
-      topEmissions.append("text").html("Total Emissions:").attr("x", 1050).attr("y", 540);
+      if (!twoYears) {
+        topEmissions.append("text").html("Total Emissions:").attr("x", 620).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 810).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 80).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 220).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 420).attr("y", 540);
+        topEmissions.append("text").html("Total Emissions:").attr("x", 1050).attr("y", 540);
+      } else {
+        topEmissions.append("text").html("Net Difference:").attr("x", 620).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 810).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 80).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 220).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 420).attr("y", 540);
+        topEmissions.append("text").html("Net Difference:").attr("x", 1050).attr("y", 540);
+      }
+
+      d3.selectAll("text").style('fill', '#687864').style('font-family', 'Oswald');
 
       //adding text to each toggle button group, centered
       //within the toggle button rect
       co2buttonGroups.append("text")
             .attr("class","buttonText")
             .attr("x",function(d,i) {
-              if (i < 4) {
-                return x0 + (bWidth+bSpace)*(i%4) + bWidth/2;
+              if (i < 6) {
+                return x0 + (bWidth+bSpace)*(i%3) + bWidth/2;
               } else {
-                return x0 + (b2Width+bSpace)*(i%4) + b2Width/2;
+                return x0 + (b2Width+bSpace)*(i%2) + b2Width/2;
               }
             })
             .attr("y",function(d, i) {
-                if (i < 4) {
-                  return y0+bHeight/2;
-                } else if (i >= 4) {
-                  return y1+bHeight/2;
+                if (i < 3) {
+                  return y0+bHeight/2 + 5;
+                } else if (i >= 3 && i < 6) {
+                  return y1+bHeight/2 + 10;
+                } else {
+                  return y0+y1+bHeight + 32;
                 }
             })
             .attr("text-anchor","middle")
@@ -555,7 +626,7 @@ function select(yearValue) {
               comparedValue = parseInt(userArray[1]);
               select(currentValue);
           } else if ((parseInt(userArray[0]) > 1959)
-                && (parseInt(userArray[0]) < 2017)
+                && (parseInt(userArray[0]) <= 2055)
                 && (!twoYears)
                 && (parseInt(userArray[0]) != currentValue)) {
             currentValue = parseInt(userArray[0]);
@@ -567,15 +638,15 @@ function select(yearValue) {
       if (twoYears) {
         var tf = textfield()
           .x(20) // X Position
-          .y(90) // Y Position 
+          .y(150) // Y Position 
           .width(160) // Width 
           .height(30) // Height 
           .callback(callback) // Callback returning the current text 
           .text(currentValue + "," + comparedValue) // Default text 
-          .fill("#2C3531") // Default fill 
-          .stroke("black") // Default border 
-          .fillSelected("#116466") // Fill when activated 
-          .strokeSelected("black") // Border when activated 
+          .fill("#687864") // Default fill 
+          .stroke("none") // Default border 
+          .fillSelected("#31708E") // Fill when activated 
+          .strokeSelected("none") // Border when activated 
           .color("white") // Text color 
           .colorSelected("grey") // Text color when activated 
           .returnLowercase(false) // Auto-lowercase input text before calling back 
@@ -584,15 +655,15 @@ function select(yearValue) {
       } else {
         var tf = textfield()
           .x(20) // X Position
-          .y(90) // Y Position 
+          .y(150) // Y Position 
           .width(160) // Width 
           .height(30) // Height 
           .callback(callback) // Callback returning the current text 
           .text(currentValue) // Default text 
-          .fill("#2C3531") // Default fill 
-          .stroke("black") // Default border 
-          .fillSelected("#116466") // Fill when activated 
-          .strokeSelected("black") // Border when activated 
+          .fill("#687864") // Default fill 
+          .stroke("none") // Default border 
+          .fillSelected("#31708E") // Fill when activated 
+          .strokeSelected("none") // Border when activated 
           .color("white") // Text color 
           .colorSelected("grey") // Text color when activated 
           .returnLowercase(false) // Auto-lowercase input text before calling back 

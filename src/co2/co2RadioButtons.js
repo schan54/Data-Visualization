@@ -2,12 +2,12 @@ var co2ButtonContainer = d3.select("#mainChart").append("g")
                     .attr("id", "co2buttons");
 
 //fontawesome button labels
-var co2Labels = ['+5', '+10', '-5', '-10', 'Compare', 'Isolated']
+var co2Labels = ['+1', '+5', '+10', '-1', '-5', '-10', 'Compare', 'Isolated']
 
 //colors for different button states
-var defaultColor= "#2C3531"
-var hoverColor= "#D9B08C"
-var pressedColor= "#116466"
+var defaultColor= "#687864";
+var hoverColor= "#5085A5";
+var pressedColor= "#31708E";
 
 //groups for each button (which will hold a rect and text)
 var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
@@ -22,9 +22,20 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                             if (i == 0) {
                                 timer = setInterval(step, 6000);
                             } else if (i == 1) {
-                                clearInterval(timer);
-                            } */ if (i == 0) {
-                                if (currentValue > 2012) {
+                                clearInterval(timer);*/
+
+                            if (i == 0) {
+                                if (currentValue > 2054) {
+                                  currentValue = 1959;
+                                  comparedValue = 1961;
+                                  step();
+                                } else {
+                                  currentValue = currentValue;
+                                  comparedValue = comparedValue + 1;
+                                  step();
+                                }
+                            } else if (i == 1) {
+                                if (currentValue > 2050) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
                                   step();
@@ -33,8 +44,8 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   comparedValue = comparedValue + 5;
                                   step();
                                 }
-                            } else if (i == 1) {
-                                if (currentValue > 2007) {
+                            } else if (i == 2) {
+                                if (currentValue > 2045) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
                                   step();
@@ -43,7 +54,17 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   comparedValue = comparedValue + 10;
                                   step();
                                 }
-                            } else if (i == 2) {
+                            } else if (i == 3) {
+                                if (currentValue < 1961) {
+                                  currentValue = 1959;
+                                  comparedValue = 1961;
+                                  step();
+                                } else {
+                                  currentValue = currentValue - 2;
+                                  comparedValue = comparedValue - 1;
+                                  step();
+                                }
+                            } else if (i == 4) {
                                 if (currentValue < 1965) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
@@ -53,7 +74,7 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   comparedValue = comparedValue - 5;
                                   step();
                                 }
-                            } else if (i == 3) {
+                            } else if (i == 5) {
                                 if (currentValue < 1970) {
                                   currentValue = 1959;
                                   comparedValue = 1961;
@@ -63,10 +84,10 @@ var co2buttonGroups= co2ButtonContainer.selectAll("g.button")
                                   comparedValue = comparedValue - 10;
                                   step();
                                 }
-                            } else if (i == 4) {
+                            } else if (i == 6) {
                                 twoYears = true;
                                 select(currentValue);
-                            } else if (i == 5) {
+                            } else if (i == 7) {
                                 twoYears = false;
                                 select(currentValue);
                             }
@@ -99,7 +120,7 @@ var y1= 50;
 co2buttonGroups.append("rect")
             .attr("class","buttonRect")
             .attr("width",function(d, i) {
-                if (i >= 4) {
+                if (i >= 6) {
                     return b2Width;
                 } else {
                     return bWidth;
@@ -107,17 +128,19 @@ co2buttonGroups.append("rect")
             })
             .attr("height",bHeight)
             .attr("x",function(d,i) {
-                if (i >= 4) {
-                    return x0+(b2Width+bSpace)*(i%4);    
+                if (i >= 6) {
+                    return x0+(b2Width+bSpace)*(i%2);    
                 } else {
-                    return x0+(bWidth+bSpace)*(i%4);
+                    return x0+(bWidth+bSpace)*(i%3);
                 }
             })
             .attr("y", function(d, i) { 
-                if (i < 4) {
-                    return y0;
+                if (i < 3) {
+                    return y0 + 5;
+                } else if (i < 6) {
+                    return y1 + y0;
                 } else {
-                    return y1;
+                  return y1 + y0 * 3 + bHeight;
                 }})
             .attr("rx",5) //rx and ry give the buttons rounded corners
             .attr("ry",5)

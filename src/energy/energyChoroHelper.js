@@ -1,20 +1,23 @@
 function displayMaxIso(max5, min5) {
 
-  d3.select("#topHeader").remove();
+  d3.select("#topHeader1").remove();
+	d3.select("#topHeader2").remove();
   d3.select("#top1").remove();
   d3.select("#top2").remove();
   d3.select("#top3").remove();
   d3.select("#top4").remove();
   d3.select("#top5").remove();
 
-  d3.select("#botHeader").remove();
+  d3.select("#botHeader1").remove();
+	d3.select("#botHeader2").remove();
   d3.select("#bot1").remove();
   d3.select("#bot2").remove();
   d3.select("#bot3").remove();
   d3.select("#bot4").remove();
   d3.select("#bot5").remove();
 
-  choroSvg.append("text").html("Top5 Energy Producers").attr("id", "topHeader").attr("x", 825).attr("y", 50);
+  choroSvg.append("text").html("Highest Energy").attr("id", "topHeader1").attr("x", 850).attr("y", 25);
+	choroSvg.append("text").html("Producers").attr("id", "topHeader2").attr("x", 850).attr("y", 50);
 
   choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]))
     .attr("id", "top1")
@@ -32,7 +35,8 @@ function displayMaxIso(max5, min5) {
     .attr("id", "top5")
     .attr("x", 850).attr("y", 160);
 
-    choroSvg.append("text").html("Top5 Energy Consumers").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
+    choroSvg.append("text").html("Highest Energy").attr("id", "botHeader1").attr("x", 1050).attr("y", 25);
+		choroSvg.append("text").html("Consumers").attr("id", "botHeader2").attr("x", 1050).attr("y", 50);
 
     choroSvg.append("text").html("1. " + min5[0][2] + ": " + format(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
     choroSvg.append("text").html("2. " + min5[1][2] + ": " + format(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
@@ -51,15 +55,19 @@ function displaySumIso(a) {
     totalSum = totalSum + Number(a[index][1]);
   }
 
-  choroSvg.append("text").html("World's Total Energy Production:").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
-  choroSvg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 620).attr("y", 120);
+  choroSvg.append("text").html("World's Net Energy").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
+	choroSvg.append("text").html("Production:").attr("id", "choroSumText2").attr("x", 625).attr("y", 100);
+
+  choroSvg.append("text").html(Math.floor(totalSum) + " Mtoe").attr("id", "choroSum").attr("x", 620).attr("y", 150);
 
 }
 
 function displayMaxCompare(hash1, hash2) {
 
-  d3.select("#topHeader").remove();
-  d3.select("#botHeader").remove();
+  d3.select("#topHeader1").remove();
+	d3.select("#topHeader2").remove();
+	d3.select("#botHeader1").remove();
+	d3.select("#botHeader2").remove();
 
   d3.select("#top1").remove();
   d3.select("#top2").remove();
@@ -102,7 +110,8 @@ loop2:
   max5 = sortedCompare.slice((sortedCompare.length - 5), sortedCompare.length);
   min5 = sortedCompare.slice(0, 5);
 
-  choroSvg.append("text").html("Top5 Energy Production").attr("id", "topHeader").attr("x", 825).attr("y", 50);
+	choroSvg.append("text").html("Highest Energy").attr("id", "topHeader1").attr("x", 850).attr("y", 25);
+	choroSvg.append("text").html("Producers").attr("id", "topHeader2").attr("x", 850).attr("y", 50);
 
   choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1])).attr("id", "top1").attr("x", 850).attr("y", 80);
   choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1])).attr("id", "top2").attr("x", 850).attr("y", 100);
@@ -110,14 +119,16 @@ loop2:
   choroSvg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1])).attr("id", "top4").attr("x", 850).attr("y", 140);
   choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1])).attr("id", "top5").attr("x", 850).attr("y", 160);
 
-
-  choroSvg.append("text").html("Top5 Energy Consumers").attr("id", "botHeader").attr("x", 1025).attr("y", 50);
+	choroSvg.append("text").html("Highest Energy").attr("id", "botHeader1").attr("x", 1050).attr("y", 25);
+	choroSvg.append("text").html("Consumers").attr("id", "botHeader2").attr("x", 1050).attr("y", 50);
 
   choroSvg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1])).attr("id", "bot1").attr("x", 1050).attr("y", 80);
   choroSvg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1])).attr("id", "bot2").attr("x", 1050).attr("y", 100);
   choroSvg.append("text").html("3. " + min5[2][2] + ": " + Math.floor(min5[2][1])).attr("id", "bot3").attr("x", 1050).attr("y", 120);
   choroSvg.append("text").html("4. " + min5[3][2] + ": " + Math.floor(min5[3][1])).attr("id", "bot4").attr("x", 1050).attr("y", 140);
   choroSvg.append("text").html("5. " + min5[4][2] + ": " + Math.floor(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
+
+
 
 }
 
@@ -133,16 +144,18 @@ function displaySumCompare(a, b) {
   for (index in b) {
     totalSum = totalSum - Number(b[index][1]);
   }
-  choroSvg.append("text").html("World's Compared").attr("id", "choroSumText").attr("x", 625).attr("y", 70);
-  choroSvg.append("text").html("Energy").attr("id", "choroSumText2").attr("x", 650).attr("y", 100);
+  choroSvg.append("text").html("World's Compared Net").attr("id", "choroSumText").attr("x", 610).attr("y", 70);
+  choroSvg.append("text").html("Energy Production").attr("id", "choroSumText2").attr("x", 620).attr("y", 100);
 
-  choroSvg.append("text").html(Math.floor(totalSum) + " MtCO2").attr("id", "choroSum").attr("x", 625).attr("y", 140);
+  choroSvg.append("text").html(Math.floor(totalSum) + " Mtoe").attr("id", "choroSum").attr("x", 650).attr("y", 140);
 }
 
 function displayPercentCompare(hash1, hash2) {
 
-  d3.select("#topHeader").remove();
-  d3.select("#botHeader").remove();
+	d3.select("#topHeader1").remove();
+	d3.select("#topHeader2").remove();
+	d3.select("#botHeader1").remove();
+	d3.select("#botHeader2").remove();
 
   d3.select("#top1").remove();
   d3.select("#top2").remove();
@@ -186,7 +199,8 @@ loop2:
   max5 = sortedCompare.slice((sortedCompare.length - 5), sortedCompare.length);
   min5 = sortedCompare.slice(0, 5);
 
-  choroSvg.append("text").html("Top5 Energy Producers").attr("id", "topHeader").attr("x", 850).attr("y", 60);
+	choroSvg.append("text").html("Highest Energy").attr("id", "topHeader1").attr("x", 850).attr("y", 25);
+	choroSvg.append("text").html("Producers").attr("id", "topHeader2").attr("x", 850).attr("y", 50);
 
   choroSvg.append("text").html("1. " + max5[4][2] + ": " + Math.floor(max5[4][1]) + "%").attr("id", "top1").attr("x", 850).attr("y", 80);
   choroSvg.append("text").html("2. " + max5[3][2] + ": " + Math.floor(max5[3][1]) + "%").attr("id", "top2").attr("x", 850).attr("y", 100);
@@ -194,9 +208,8 @@ loop2:
   choroSvg.append("text").html("4. " + max5[1][2] + ": " + Math.floor(max5[1][1]) + "%").attr("id", "top4").attr("x", 850).attr("y", 140);
   choroSvg.append("text").html("5. " + max5[0][2] + ": " + Math.floor(max5[0][1]) + "%").attr("id", "top5").attr("x", 850).attr("y", 160);
 
-
-  choroSvg.append("text").html("Top5 Energy Consumers").attr("id", "botHeader").attr("x", 1050).attr("y", 60);
-
+	choroSvg.append("text").html("Highest Energy").attr("id", "botHeader1").attr("x", 1050).attr("y", 25);
+	choroSvg.append("text").html("Consumers").attr("id", "botHeader2").attr("x", 1050).attr("y", 50);
   choroSvg.append("text").html("1. " + min5[0][2] + ": " + Math.floor(min5[0][1]) + "%").attr("id", "bot1").attr("x", 1050).attr("y", 80);
   choroSvg.append("text").html("2. " + min5[1][2] + ": " + Math.floor(min5[1][1]) + "%").attr("id", "bot2").attr("x", 1050).attr("y", 100);
   choroSvg.append("text").html("3. " + min5[2][2] + ": " + Math.floor(min5[2][1]) + "%").attr("id", "bot3").attr("x", 1050).attr("y", 120);
@@ -233,7 +246,6 @@ function sortHash(hashmap, year) {
 
   //console.log(Object.values(tea[1]))
 
-	console.log(hashmap);
   var yearIndex = year - 1990
   for (var index in tea) {
     //console.log(Object.keys(tea[index]));
@@ -244,7 +256,6 @@ function sortHash(hashmap, year) {
     countryArray.push(countryKeys[yearIndex]);
     countryArray.push(countryValues[yearIndex]);
     countryArray.push(countryValues[countryKeys.length-1]);
-		console.log(countryArray);
     if (isNaN(countryArray[1]) || countryArray[1] == "" || !(isNaN(countryArray[2]))) {
     }
     else {

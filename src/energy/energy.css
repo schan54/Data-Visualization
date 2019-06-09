@@ -1,60 +1,200 @@
 
 h1 {
     position:relative;
-    top:50px;
+    top:20px;
+    color: crimson;
     font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
+    font-size: 50px;
+    text-align: center;
     letter-spacing: 1px;
+}
+#partitionSVG text{
+  text-anchor:middle;
 }
 p {
     position:relative;
-    top:50px;
+    top:20px;
+    left: 10px;
+    font-size: 20px;
+    color: black;
     font-family: 'Nunito', sans-serif;
 }
-
+/* Story Text */
+div.storytxt {
+    position: relative;
+    top: 820px;
+    left: 210px;
+}
+div.storytxt p{
+    font-size: 18px;
+    text-align: left;
+    width: 850px;
+}
+/* CSS for Slider */
 #yeartxt {
     position: relative;
-    top:160px;
+    top:190px;
     left: -400px;
     z-index: 1;
 }
 #yearslider{
     width:60%;
     position:relative;
-    top:-20px;
-    left: 150px;
+    top:50px;
+    left: 250px;
     z-index: 1;
     background: "black";
 }
-#searchText, #searchSubmit{
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 13.8px 0;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #367ebd;
+  }
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    height: 8.4px;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: #3071a9;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #367ebd;
+  }
+/* CSS for Commparison */
+#compare, #isolate {
+    display: inline-block;
     position: relative;
-    top: 200px;
-    left: -1060px;
+    top: 330px;
+    left: -685px;
+    height: 25;
+    width: 50;
+    font-size: 16px;
+}
+div.compareTxt {
+    position: absolute;
+    display:inline-block;
+    top:650px;
+    left:000px;
+    width: 75px;
+}
+/* CSS for Search Bar */
+#searchSubmit{
+    position: relative;
+    width: 70px;
+    height: 30px;
+    top: 255px;
+    left: -600px;
+    z-index: 1;
+}
+#searchText{
+    position: relative;
+    width: 150px;
+    height: 40px;
+    background-color: lightcyan;
+    border: black;
+    top: 250px;
+    left: -646px;
+    text-align: left;
+    margin: 5px 1px;
     z-index: 1;
 }
 #searchErr{
     position: relative;
-    top: 200px;
+    top: 160px;
     left: -600px;
     font-size: 11px;
     z-index: 1;
 }
+/* CSS for Drop Down to Select File */
 #selectTxt{
     position: relative;
-    top: 50px;
+    top: 70px;
     left: -600px;
     z-index: 1;
 }
 #selectFile{
     position: relative;;
-    top:50px;
+    top:70px;
+    width: 200px;
     left:-600px;
     z-index: 1;
 }
+/* CSS for Table next to visual */
 #burstTable{
     position: absolute;
-    top:400px;
-    left: 1200px;
+    top:250px;
+    left: 1130px;
+    font-size: 15px;
     z-index: 1;
 }
 
@@ -70,9 +210,11 @@ thead {
 tbody {
   display:block;
   max-height: 800px;
+  text-align: left;
   overflow: auto;
 }
 tr:hover {background-color: #f5f5f5;}
+
 #toolTip {
     position: absolute;
     text-align: center;
@@ -93,17 +235,6 @@ tr:hover {background-color: #f5f5f5;}
     z-index: 1;
 }
 
-
-body {
-    margin-bottom: 10px;
-}
-
-text {
-    font: 10px sans-serif;
-    text-anchor: middle;
-}
-
-
 #displayYear, #choroYear1, #choroYear2 {
   font-family: 'Roboto', sans-serif;
   font-size: 40pt;
@@ -115,7 +246,7 @@ text {
   font-size: 25px;
 }
 
-#choroSumText, #choroSumText2, #topHeader, #botHeader {
+#choroSumText, #choroSumText2, #topHeader1, #botHeader1, #topHeader2, #botHeader2 {
   font-size: 18px;
   font-weight: bold;
 }
