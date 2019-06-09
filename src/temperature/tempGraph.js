@@ -465,7 +465,7 @@ birthyear1.selectAll(".rect1")
   birthyear1.append("text")
   .attr("class", "texted2")
 
-  .attr("y", height1 + margin1.bottom -38 )
+  .attr("y", height1 + margin1.bottom -45 )
   .text(function(birthyear) { return data[yeart][birthyear]; });
 }
 d3.select("#searchText").on("input", compare )
@@ -992,7 +992,7 @@ tsavg.selectAll(".month")
       birthyear1.append("text")
       .attr("class", "texted2")
     
-      .attr("y", height1 + margin1.bottom -38 )
+      .attr("y", height1 + margin1.bottom -44 )
       .text(function(birthyear) { return data[yeart][birthyear]; });
     }
     
