@@ -57,11 +57,12 @@ var label2 = slider.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .text(userYear2)
-        .attr("transform", "translate(0," + (-25) + ")");
-
+        .attr("transform", "translate(0," + (-25) + ")")
+				.on("click",function(d) {
+					getTextInput()
+				});
 function getTextInput() {
-  userYear2 = 1970;
-  return userYear2;
+	console.log("clicked!")
 }
 
 function update(h) {

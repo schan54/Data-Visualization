@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>VICC</title>
+		<title>HTML Education Template</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
@@ -31,15 +31,14 @@
 	<body>
 
 		<!-- Header -->
-		<header id="header" class="transparent-nav">
+		<header id="header">
 			<div class="container">
 
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo" href="index.html">
-						<!--<img src="./img/logo.png" alt="logo">-->
-
+							<img src="./img/logo.png" alt="logo">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -55,7 +54,7 @@
 				<nav id="nav">
 					<ul class="main-menu nav navbar-nav navbar-right">
 						<li><a href="index.html">Home</a></li>
-						<li><a href="./debate/debate.html">The Debate</a></li>
+						<li><a href="debate/debate.html">The Debate</a></li>
 						<li><a href="co2/co2.html">Carbon Dioxide</a></li>
 						<li><a href="temperature/temperature.html">Temperature</a></li>
 						<li><a href="energy/energy.html">Energy</a></li>
@@ -69,27 +68,74 @@
 		</header>
 		<!-- /Header -->
 
-		<!-- Home -->
-		<div id="home" class="hero-area">
+		<!-- Hero-area -->
+		<div class="hero-area">
 
 			<!-- Backgound Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url(./img/home-background.jpg)"></div>
+			<div class="bg-image bg-parallax overlay" style="background-image:url(./img/contact-hero.png)"></div>
 			<!-- /Backgound Image -->
 
-			<div class="home-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-8">
-							<h1 class="white-text">Visualizing Climate Change</h1>
-							<p class="lead white-text">Explore the past, present, and future of climate change using interactive data visualizations</p>
-							<a class="main-button icon-button" href="debate/debate.html">Is climate change real?</a>
-						</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 text-center">
+						<h1 class="white-text">Tell Us What You Think</h1>
+
 					</div>
 				</div>
 			</div>
 
 		</div>
-		<!-- /Home -->
+		<!-- /Hero-area -->
+
+		<!-- Contact -->
+		<div id="contact" class="section">
+
+			<!-- container -->
+			<div class="container">
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- contact form -->
+					<div class="col-md-6">
+						<div class="contact-form">
+							<h4>Send A Message!</h4>
+							<form action="mailto:data.vizualsucsc@gmail.com" method="post" enctype="text/plain">
+								<input class="input" type="text" name="name" placeholder="Name">
+								<input class="input" type="email" name="email" placeholder="Your Email">
+								<input class="input" type="text" name="subject" placeholder="Subject">
+								<textarea class="input" name="message" placeholder="Enter your Message"></textarea>
+								<button class="main-button icon-button pull-right">Send Message</button>
+							</form>
+						</div>
+					</div>
+					<!-- /contact form -->
+
+					<!-- contact information -->
+					<div class="col-md-5 col-md-offset-1">
+						<h4>Personal Contact Information</h4>
+						<div align="left" class="contact-details">
+				      <p class="white-text">If you would like to get intouch with the developer of a specific a visualization, please contact us via personal email:</p>
+				      </br>
+							<ul  class="Individual Contacts">
+								<li><i class="fa fa-envelope"></i>All Choropleths: dakriege@ucsc.edu</li>
+								<li><i class="fa fa-envelope"></i>CO2 Bubble: dakriege@ucsc.edu</li>
+								<li><i class="fa fa-envelope"></i>Temperature Bar: dakriege@ucsc.edu</li>
+								<li><i class="fa fa-envelope"></i>Energy Sunburst: dakriege@ucsc.edu</li>
+							</ul>
+				    </div>
+						<p
+					</div>
+					<!-- contact information -->
+
+				</div>
+				<!-- /row -->
+
+			</div>
+			<!-- /container -->
+
+		</div>
+		<!-- /Contact -->
 
 		<!-- Footer -->
 		<footer id="footer" class="section">
@@ -100,11 +146,13 @@
 				<!-- row -->
 				<div class="row">
 
+
 				</div>
 				<!-- /row -->
 
 				<!-- row -->
 				<div id="bottom-footer" class="row">
+
 
 					<!-- copyright -->
 					<div class="col-md-8 col-md-pull-4">

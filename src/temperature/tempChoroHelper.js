@@ -50,7 +50,6 @@ function displaySumIso(a) {
   for (index in a) {
     totalSum = totalSum + Number(a[index][1]);
   }
-	console.log(totalSum/a.length);
   choroSvg.append("text").html("World's Avg Temperature").attr("id", "choroSumText").attr("x", 592).attr("y", 70);
   choroSvg.append("text").html(format(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 620).attr("y", 120);
 
@@ -231,11 +230,8 @@ function sortHash(hashmap, year) {
   var allCountries = [];
   tea = Object.values(hashmap);
 
-  //console.log(Object.values(tea[1]))
-
   var yearIndex = year - 1901
   for (var index in tea) {
-    //console.log(Object.keys(tea[index]));
     var countryKeys = (Object.keys(tea[index]));
     var countryValues = (Object.values(tea[index]));
     var countryArray = [];
@@ -246,10 +242,8 @@ function sortHash(hashmap, year) {
     if (isNaN(countryArray[1]) || countryArray[1] == "" || !(isNaN(countryArray[2]))) {
     }
     else {
-      //console.log(countryArray);
       allCountries.push(countryArray);
     }
   }
-  //console.log(allCountries);
   return(bubbleSort(allCountries));
 }

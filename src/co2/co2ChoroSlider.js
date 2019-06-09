@@ -39,28 +39,36 @@ slider.insert("g", ".track-overlay")
 var handle = slider.insert("circle", ".track-overlay")
     .attr("class", "handle")
     .attr("r", 10)
-    .style("fill", "black");
+    .style("fill", "black")
+		.attr("id", "handle1");
 
 var label = slider.append("text")
     .attr("class", "label")
     .attr("text-anchor", "middle")
     .text(formatDateIntoYear(startDate))
-    .attr("transform", "translate(0," + (-25) + ")");
+    .attr("transform", "translate(0," + (-25) + ")")
+		.attr("id", "label1");
 
 
 var handle2 = slider.insert("circle", ".track-overlay")
         .attr("class", "handle2")
         .attr("r", 10)
-        .style("fill", "grey");
+        .style("fill", "grey")
+				.attr("id", "handle2");
 
 var label2 = slider.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .text(userYear2)
-        .attr("transform", "translate(0," + (-25) + ")");
+        .attr("transform", "translate(0," + (-25) + ")")
+				.attr("id", "label2")
+				.on("click",function(d) {
+					textInputBox()
+				});
 
 function getTextInput() {
-  userYear2 = 1970;
+	console.log("clicked!")
+  userYear2 = "2000";
   return userYear2;
 }
 
@@ -70,6 +78,11 @@ function update(h) {
   label
     .attr("x", x(h))
     .text(formatDateIntoYear(h));
+
+	handle2.attr("cx", x(new Date(userYear2)));
+	label2
+		.attr("x", x(new Date(userYear2)))
+		.text(userYear2);
 
   if (userYear != (formatDateIntoYear(h))) {
     userYear = formatDateIntoYear(h);
