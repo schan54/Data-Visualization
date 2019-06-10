@@ -31,12 +31,13 @@ input[type=number]::-webkit-outer-spin-button {
   .y.axis line {
     stroke: rgb(26, 22, 22);
     stroke-opacity: 1;
-    shape-rendering: crispEdges;
-  }
+    stroke-width: 1px;
+}
 
   .y.axis .zero line {
     stroke: #000;
     stroke-opacity: 1;
+    stroke-width: 1.5px;
   }
 
   .title {

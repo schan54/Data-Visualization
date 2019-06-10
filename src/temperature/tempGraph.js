@@ -404,6 +404,8 @@ tsavg.append("text")
 
 function compare() {
 if(this.value>1903 && this.value<2015){
+    birthyear.select("text").remove();
+
     year =this.value;
     title.text(year);
     birthyears.transition()
@@ -734,8 +736,13 @@ d3.select("#searchText2").on("input", compare2 )
 
                 var dotzz = tsavg.select('.birthyears1').data(data);
                 dotzz.exit().remove();
+                var dotzz = tsavg.select('.birthyears1').data(data);
+                dotzz.exit().remove();
+                var dotzz = tsavg.select('.birthyears1').data(data);
+                dotzz.exit().remove();
 
-
+                birthyear.select("text").remove();
+                birthyear.select("text").remove();
 
                 birthyear.select("text").remove();
 
@@ -762,6 +769,9 @@ d3.select("#searchText2").on("input", compare2 )
                 var dotzz = tsavg.select('.birthyears1').data(data);
                 dotzz.exit().remove();
                 birthyear.select("text").remove();
+                birthyear.select("text").remove();
+                birthyear.select("text").remove();
+
 
                 break;
     }
@@ -1158,6 +1168,7 @@ tsavg.selectAll(".month")
 
 
     function compare() {
+        birthyear.select("text").remove();
 
         year =this.value;
         title.text(year);
@@ -1485,6 +1496,8 @@ d3v3.select(window).on("keydown", function() {
     dotzz.exit().remove();
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
+    birthyear.select("text").remove();
+    birthyear.select("text").remove();
 
     birthyear.select("text").remove();
 
@@ -1512,6 +1525,8 @@ case 39:  year = Math.min(year1, year + 1);
     dotzz.exit().remove();
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
+    birthyear.select("text").remove();
+    birthyear.select("text").remove();
 
     birthyear.select("text").remove();
 
