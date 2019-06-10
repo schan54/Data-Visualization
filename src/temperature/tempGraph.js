@@ -403,7 +403,7 @@ tsavg.append("text")
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 function compare() {
-
+if(this.value>1903 && this.value<2015){
     year =this.value;
     title.text(year);
     birthyears.transition()
@@ -435,10 +435,10 @@ update();
         var difference=0;
         difference = (sum-sum2)/2;
     
-    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
 }
 function compare2() {
-
+    if(this.value>1903 && this.value<2015){
 
     yeart =this.value;
     title.text(yeart);
@@ -539,7 +539,7 @@ update();
   var difference=0;
   difference = (sum-sum2)/2;
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
-
+    }
 
 }
 
@@ -552,12 +552,8 @@ d3.select("#searchText2").on("input", compare2 )
 
  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-      var leftButt = d3.select("#leftButt");
-      var rightButt = d3.select("#rightButt");
-  
-      // Event Handler for clicking play button
-      leftButt.on("click", function() {
-        var button = d3v3.select(this);
+    d3.select("#leftButt").on("click", function() {
+       // var button = d3v3.select(this);
         year = Math.max(year0, year - 1);
         track++;    
         if(track%2 == 1)
@@ -583,14 +579,13 @@ d3.select("#searchText2").on("input", compare2 )
         var difference=0;
         difference = (sum-sum2)/2;
     
-    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
-     rightButt.on("click", function() {
-        var button = d3v3.select(this);
-        if(year!=2014){
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          });
+    d3.select("#rightButt").on("click", function() {
+   //     var button = d3v3.select(this);
+//        if(year!=2014){
         year = Math.max(year0, year + 1);
-        }
-        track++;
-
+  //      }
+        track++;    
         if(track%2 == 1)
         {
         update();
@@ -600,22 +595,21 @@ d3.select("#searchText2").on("input", compare2 )
             update2();
         }
         if (track ==1){update2();}
-    
+
         const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
         function add(accumulator, a) {
             return accumulator + a;
         }
-    
-    
+
+
         const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
         function add1(accumulator1, a1) {
             return accumulator1 + a1;
         }
         var difference=0;
         difference = (sum-sum2)/2;
-    
-    
-    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          })
+
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          });
 
   // Allow the arrow keys to change the displayed year.
   window.focus();
@@ -653,6 +647,14 @@ d3.select("#searchText2").on("input", compare2 )
                 
       case 39:  year = Math.min(year1, year + 1);
                 track++;
+                var dotzz = tsavg.select('.birthyears1').data(data);
+                dotzz.exit().remove();
+                var dotzz = tsavg.select('.birthyears1').data(data);
+                dotzz.exit().remove();
+                var dotzz = tsavg.select('.birthyears1').data(data);
+                dotzz.exit().remove();
+                var dotzz = tsavg.select('.birthyears1').data(data);
+                dotzz.exit().remove();
                 var dotzz = tsavg.select('.birthyears1').data(data);
                 dotzz.exit().remove();
                 var dotzz = tsavg.select('.birthyears1').data(data);
@@ -1208,11 +1210,7 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
     var value3=[];
     var track = 0;
     
-    var leftButt = d3.select("#leftButt");
-    var rightButt = d3.select("#rightButt");
-
-    // Event Handler for clicking play button
-    leftButt.on("click", function() {
+    d3.select("#leftButt").on("click", function() {
       var button = d3v3.select(this);
       year = Math.max(year0, year - 1);
       track++;    
@@ -1240,8 +1238,8 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
       difference = (sum-sum2)/2;
   
   globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
-   rightButt.on("click", function() {
-      var button = d3v3.select(this);
+    d3.select("#rightButt").on("click", function() {
+    //  var button = d3v3.select(this);
       if( year !=2014)
       {
       year = Math.max(year0, year + 1);
@@ -1289,6 +1287,15 @@ d3v3.select(window).on("keydown", function() {
     dotzz.exit().remove();
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+
     birthyear.select("text").remove();
 
 
@@ -1307,6 +1314,15 @@ case 39:  year = Math.min(year1, year + 1);
     dotzz.exit().remove();
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+    var dotzz = tsavg.select('.birthyears1').data(data);
+    dotzz.exit().remove();
+
     birthyear.select("text").remove();
 
     break;
