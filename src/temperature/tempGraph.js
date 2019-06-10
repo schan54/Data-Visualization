@@ -430,9 +430,14 @@ update();
         function add1(accumulator1, a1) {
             return accumulator1 + a1;
         }
+        var sumt = sum/12;
+        var sumt2=sum2/12;
+        console.log(sumt);
+        console.log(sumt2);
+
         var difference=0;
-        difference = (sum-sum2)/2;
-    
+        difference = (sumt2-sumt)/2;
+    console.log(difference);
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
 }
@@ -540,8 +545,13 @@ update();
   function add1(accumulator1, a1) {
       return accumulator1 + a1;
   }
+  var sumt = sum/12;
+  var sumt2=sum2/12;
+console.log(sumt);
+console.log(sumt2);
   var difference=0;
-  difference = (sum-sum2)/2;
+  difference = (sumt2-sumt)/2;
+  console.log(difference);
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
     }
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
@@ -600,9 +610,13 @@ d3.select("#searchText2").on("input", compare2 )
         function add1(accumulator1, a1) {
             return accumulator1 + a1;
         }
+        var sumt = sum/12;
+        var sumt2=sum2/12;
+      console.log(sumt);
+      console.log(sumt2);
         var difference=0;
-        difference = (sum-sum2)/2;
-    
+        difference = (sumt2-sumt)/2;
+        console.log(difference);
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          });
     d3.select("#rightButt").on("click", function() {
    //     var button = d3v3.select(this);
@@ -648,9 +662,13 @@ d3.select("#searchText2").on("input", compare2 )
         function add1(accumulator1, a1) {
             return accumulator1 + a1;
         }
+        var sumt = sum/12;
+        var sumt2=sum2/12;
+      console.log(sumt);
+      console.log(sumt2);
         var difference=0;
-        difference = (sum-sum2)/2;
-
+        difference = (sumt2-sumt)/2;
+        console.log(difference);
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          });
 
   // Allow the arrow keys to change the displayed year.
@@ -703,9 +721,13 @@ d3.select("#searchText2").on("input", compare2 )
     function add1(accumulator1, a1) {
         return accumulator1 + a1;
     }
+    var sumt = sum/12;
+    var sumt2=sum2/12;
+  console.log(sumt);
+  console.log(sumt2);
     var difference=0;
-    difference = (sum-sum2)/2;
-
+    difference = (sumt2-sumt)/2;
+    console.log(difference);
 
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
 
@@ -1061,9 +1083,13 @@ tsavg.selectAll(".month")
         function add1(accumulator1, a1) {
             return accumulator1 + a1;
         }
+        var sumt = sum/12;
+        var sumt2=sum2/12;
+      console.log(sumt);
+      console.log(sumt2);
         var difference=0;
-        difference = (sum-sum2)/2;
-    
+        difference = (sumt2-sumt)/2;
+        console.log(difference);
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
 
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
@@ -1168,8 +1194,13 @@ const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array
 function add1(accumulator1, a1) {
     return accumulator1 + a1;
 }
+var sumt = sum/12;
+var sumt2=sum2/12;
+console.log(sumt);
+console.log(sumt2);
 var difference=0;
-difference = (sum-sum2)/2;
+difference = (sumt2-sumt)/2;
+console.log(difference);
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
 else{ globTit.text("Enter a valid year from 1901 to 2014");}
 
@@ -1224,8 +1255,13 @@ else{ globTit.text("Enter a valid year from 1901 to 2014");}
       function add1(accumulator1, a1) {
           return accumulator1 + a1;
       }
+      var sumt = sum/12;
+      var sumt2=sum2/12;
+    console.log(sumt);
+    console.log(sumt2);
       var difference=0;
-      difference = (sum-sum2)/2;
+      difference = (sumt2-sumt)/2;
+      console.log(difference);
   
   globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
     d3.select("#rightButt").on("click", function() {
@@ -1271,9 +1307,13 @@ else{ globTit.text("Enter a valid year from 1901 to 2014");}
       function add1(accumulator1, a1) {
           return accumulator1 + a1;
       }
+      var sumt = sum/12;
+      var sumt2=sum2/12;
+    console.log(sumt);
+    console.log(sumt2);
       var difference=0;
-      difference = (sum-sum2)/2;
-  
+      difference = (sumt2-sumt)/2;
+      console.log(difference);
   globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
 // Allow the arrow keys to change the displayed year.
 window.focus();
@@ -1324,8 +1364,13 @@ function add1(accumulator1, a1) {
 return accumulator1 + a1;
 }
 if (track ==1){update2();}
+var sumt = sum/12;
+var sumt2=sum2/12;
+console.log(sumt);
+console.log(sumt2);
 var difference=0;
-difference = (sum-sum2)/2;
+difference = (sumt2-sumt)/2;
+console.log(difference);
 
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
 });
