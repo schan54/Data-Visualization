@@ -9,7 +9,6 @@ var value2=[];//stores temperature values
 var value3=[]; //stores temperature values
 var track = 0;//tracks alternating years for short compare
 
-
 //rename to prevent issues with other code/svgs
 var height1 = height;
 var width1 = width;
@@ -684,9 +683,7 @@ d3.select("#searchText2").on("input", compare2 )
 
                 birthyear.select("text").remove();
                 birthyear.select("text").remove();
-
                 birthyear.select("text").remove();
-
                 break;
                 
       case 39:  year = Math.min(year1, year + 1);//increment/right arrow
@@ -697,8 +694,6 @@ d3.select("#searchText2").on("input", compare2 )
                 birthyear.select("text").remove();
                 birthyear.select("text").remove();
                 birthyear.select("text").remove();
-
-
                 break;
     }
     if(track%2 == 1)//alternates to compare years briefly
@@ -726,7 +721,9 @@ d3.select("#searchText2").on("input", compare2 )
   console.log(sumt);
   console.log(sumt2);
     var difference=0;
+
     difference = (sumt2-sumt)/2;
+
     console.log(difference);
 
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
@@ -1329,7 +1326,6 @@ d3v3.select(window).on("keydown", function() {
 
     birthyear.select("text").remove();
 
-
     break;
 case 39:  year = Math.min(year1, year + 1);
     track++;
@@ -1340,7 +1336,6 @@ case 39:  year = Math.min(year1, year + 1);
     birthyear.select("text").remove();
 
     birthyear.select("text").remove();
-
     break;
 }
 if(track%2 == 1)
