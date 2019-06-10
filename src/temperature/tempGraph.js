@@ -403,7 +403,7 @@ tsavg.append("text")
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 function compare() {
-if(this.value>1903 && this.value<2015){
+if(this.value>=1901 && this.value<=2014){
     birthyear.select("text").remove();
 
     year =this.value;
@@ -441,7 +441,7 @@ update();
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
 }
 function compare2() {
-    if(this.value>1903 && this.value<2015){
+    if(this.value>=1901 && this.value<=2014){
 
     yeart =this.value;
     title.text(yeart);
@@ -831,65 +831,12 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
     return n;
 }
 
-function update1() {
-//    title.text(year);
-//    var value3=[];
-yeart=2000;
-    birthyears1.transition()
-        .duration(750)
-        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(yeart)) + ",0)");
-
-    birthyear1.selectAll("rect")
-        .data(function(birthyeart) { return data[yeart][birthyeart] || [-800, -800]; })
-      .transition()
-        .duration(750)
-        .attr("y", tGraphy)
-    
-        .attr("year",function(d){return glob2=yeart;})
-
-        .attr("sum", function(value) {value3.push(value);})//new
-
-        .attr("height", function(value) { return height1 - tGraphy(value); });
-    var tem= 2014-glob2;
-    var tempor=value3.length;
-    var newtem= 2014-glob2;
-    if(tem >12){newtem=tem*2-tem;}
-    
-    if(tem<=12){
-    while(value3.length!=12)
-        {
-            while(value3.length>tempor-newtem)
-            {
-                value3.pop();
-
-            }
-            value3.shift();
-
-        }
-    }
-
-    if(tem>12){
-        while(value3.length!=12)
-            {
-                while(value3.length>tempor-newtem+(12-tem))
-                {
-                    value3.pop();
-    
-                }
-                value3.shift();
-    
-            }
-        }
-    
-    
- }
-
-
   function update() {
     if (!(year in data)) return;
     title.text(year);
 //    var value2=[];
 //var dataAr = [];
+
     birthyears.transition()
         .duration(750)
         .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
@@ -911,8 +858,10 @@ yeart=2000;
         var tem= 2014-glob;
         var tempor=value2.length;
         var newtem= 2014-glob;
+
         if(tem >12){newtem=tem*2-tem;}
        // console.log(y);
+
         if(tem<12){
         while(value2.length!=12)
             {
@@ -925,7 +874,11 @@ yeart=2000;
     
             }
         }
-    
+        if(tem==113){
+            while (value2.length!=12){
+                value2.pop();
+            }
+        }
         if(tem>12){
             while(value2.length!=12)
                 {
@@ -1172,7 +1125,7 @@ tsavg.selectAll(".month")
 
 
     function compare() {
-        if(this.value>1903 && this.value<2015){
+        if(this.value<=2014 && this.value>=1901 ){
 
         birthyear.select("text").remove();
 
@@ -1213,7 +1166,7 @@ tsavg.selectAll(".month")
 
     }
     function compare2() {
-        if(this.value>1903 && this.value<2015){
+        if(this.value>=1901 && this.value<=2014){
 
         yeart =this.value;
         title.text(yeart);
@@ -1622,7 +1575,12 @@ function update() {
     
             }
         }
-    
+        if(tem==113){
+            while (value2.length!=12){
+                value2.pop();
+            }
+        
+        }
         if(tem>12){
             while(value2.length!=12)
                 {
