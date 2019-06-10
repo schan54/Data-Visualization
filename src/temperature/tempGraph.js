@@ -438,6 +438,7 @@ update();
         difference = (sum-sum2)/2;
     
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
+    else{ globTit.text("Enter a valid year from 1901 to 2014");}
 }
 function compare2() {
     if(this.value>1903 && this.value<2015){
@@ -542,6 +543,9 @@ update();
   difference = (sum-sum2)/2;
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
     }
+    else{ globTit.text("Enter a valid year from 1901 to 2014");}
+
+
 
 }
 
@@ -1168,6 +1172,8 @@ tsavg.selectAll(".month")
 
 
     function compare() {
+        if(this.value>1903 && this.value<2015){
+
         birthyear.select("text").remove();
 
         year =this.value;
@@ -1201,10 +1207,14 @@ tsavg.selectAll(".month")
         var difference=0;
         difference = (sum-sum2)/2;
     
-    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
+
+    else{ globTit.text("Enter a valid year from 1901 to 2014");}
+
     }
     function compare2() {
-    
+        if(this.value>1903 && this.value<2015){
+
         yeart =this.value;
         title.text(yeart);
 
@@ -1303,7 +1313,8 @@ function add1(accumulator1, a1) {
 }
 var difference=0;
 difference = (sum-sum2)/2;
-globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
+globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
+else{ globTit.text("Enter a valid year from 1901 to 2014");}
 
     }
     
