@@ -3,13 +3,14 @@ var margin1 = {top: 150, right: 40, bottom: 40, left: 300},
     height = 650 - margin1.top - margin1.bottom,
     barWidth1 = Math.floor(width / 19) - 1;
 
-var glob=0;//GLOBAL VARIABLE
-var glob2=0;
-var value2=[];
-var value3=[];
-var track = 0;
-var boolz = false;
+var glob=0;//GLOBAL VARIABLE for years
+var glob2=0; //global variable for years
+var value2=[];//stores temperature values
+var value3=[]; //stores temperature values
+var track = 0;//tracks alternating years for short compare
 
+
+//rename to prevent issues with other code/svgs
 var height1 = height;
 var width1 = width;
     var tGraphx = d3v3.scale.linear()
@@ -55,7 +56,7 @@ var title = tsavg.append("text") //default title
     .attr("dy", "-1em")
     .text(2014);
 
-
+//Text explanations below
     var comp1 = tsavg.append("text")
     .attr("class", "compStyle")
     .attr("dx","-16em")
@@ -151,7 +152,7 @@ var dataInfo2 = tsavg.append("text")
     .attr("dy", "-1em")
 d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data) {
 
-  // Convert strings to numbers.
+  // Convert strings to numbers. for tsv
   data.forEach(function(d) {
     d.temp = +d.temp;
 
@@ -168,7 +169,7 @@ d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data)
       tests = d3v3.max(data,function(d){ return d.temp})
       tests2 = d3v3.min(data,function(d){ return d.temp})
 
-      dataInfo.text("Max Temp: "  + tests+"°C");
+      dataInfo.text("Max Temp: "  + tests+"°C"); 
       dataInfo2.text("Min Temp: "  + tests2+"°C");
 
 
@@ -215,14 +216,14 @@ for (var i = 0; i < selects.length; i++){
     tGraphy.domain([ -40,40]);
 
 
-  // Produce a map from year and birthyear to [male, female].
+  // Produce a map from year/months to temperature.
   data = d3v3.nest()
       .key(function(d) { return d.year; })
       .key(function(d) { return d.year - d.month; })
       .rollup(function(v) { return v.map(function(d) { return d.temp; }); })
       .map(data);
 
-  // Add an axis to show the population values.
+  // Add an axis to show the temperature values.
   tsavg.append("g")
       .attr("class", "y axis")
       .attr("transform", "translate(" + width1 + ",0)")
@@ -234,6 +235,7 @@ for (var i = 0; i < selects.length; i++){
   var value1 = [];//array of temps for this year 
   var i=0;
   var tyear=0;
+  //styling lines
   tsavg.append("line").attr("x1", 200).attr("y1", -150).attr("x2", 200).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
   tsavg.append("line").attr("x1", 400).attr("y1", -150).attr("x2", 400).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
   tsavg.append("line").attr("x1", -25).attr("y1", -150).attr("x2", -25).attr("y2", 500).attr("stroke-width", 1).attr("stroke", "black");
@@ -242,6 +244,8 @@ for (var i = 0; i < selects.length; i++){
   tsavg.append("line").attr("x1", 950).attr("y1", -15).attr("x2", -25).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
   tsavg.append("line").attr("x1", 630).attr("y1", -70).attr("x2", 630).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
 
+
+  //birthyear=temperature bars
   var birthyear = birthyears.selectAll(".birthyear")
       .data(d3v3.range(year0 - month1, year1 + 1, 1))
     .enter().append("g")
@@ -275,25 +279,15 @@ for (var i = 0; i < selects.length; i++){
                 .duration(500)
                 .style("opacity", 0);
         });
-    /*    birthyear.append("text")
-        .attr("y", height1 + margin1.bottom -38 )
-        .text(function(birthyear) { return data[year][birthyear]; });*/
 
-var yeart=2014;   
 
+var yeart=2014;   //temporary year storage
+//new birthyear/ temperature bars for 2nd compare. pink
         var birthyear1 = birthyears1.selectAll(".birthyear1")
         .data(d3v3.range(year0 - month1, year1 + 1, 1))
         .enter().append("g")
         .attr("class", "birthyear1")
         .attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1+(2014-yeart)) + ",0)"; });
-
-        console.log(tyear);
- /*   tsavg.append("text")
-      .attr("transform",
-            "translate(" + (width1/2) + " ," +
-                           (height1 + margin1.bottom -2 ) + ")")
-      .style("text-anchor", "middle")
-      .text("Month");*/
 
     tsavg.append("text")
       .attr("transform", "rotate(-90)")
@@ -302,7 +296,7 @@ var yeart=2014;
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .text("Temperature °C");
-var monthz = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+var monthz = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']; //labels for months
 
 tsavg.append("text")
 .attr("transform", "rotate(-90)")
@@ -389,7 +383,7 @@ tsavg.append("text")
 .text(monthz[11]);
 
 
-  // Add labels to show age (separate; not animated).
+  // Add labels to show months (separate; not animated).
   tsavg.selectAll(".month")
       .data(d3v3.range(1, month1 + 2, 1))
     .enter().append("text")
@@ -402,6 +396,8 @@ tsavg.append("text")
         globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+
+//compare function for searchbox 1
 function compare() {
 if(this.value>=1901 && this.value<=2014){
     birthyear.select("text").remove();
@@ -440,6 +436,10 @@ update();
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
 }
+
+
+
+//compare for searchbox 2. pink
 function compare2() {
     if(this.value>=1901 && this.value<=2014){
 
@@ -496,6 +496,7 @@ birthyear1.selectAll("rect")
   .text(function(birthyear) { return data[yeart][birthyear]; });
 
 update();
+//manipulates array to get temperature for that year
   var tem= 2014-glob2;
   var tempor=value3.length;
   var newtem= 2014-glob2;
@@ -528,7 +529,7 @@ update();
   
           }
       }
-
+//math to find difference between years
   const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
   function add(accumulator, a) {
       return accumulator + a;
@@ -545,8 +546,6 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
     }
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
 
-
-
 }
 
 
@@ -558,6 +557,8 @@ d3.select("#searchText2").on("input", compare2 )
 
  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+
+ //buttons for decrement increment years
     d3.select("#leftButt").on("click", function() {
        // var button = d3v3.select(this);
         year = Math.max(year0, year - 1);
@@ -566,56 +567,25 @@ d3.select("#searchText2").on("input", compare2 )
 
         if(track%2 == 1)
         {
+            //removes text when changing year
             var dotzz = tsavg.select('.birthyears1').data(data);
             dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-        
+
             birthyear.select("text").remove();
-        
+            birthyear.select("text").remove();
+            birthyear.select("text").remove();
+
         update();
         }
         else if (track%2 == 0)
         {
             var dotzz = tsavg.select('.birthyears1').data(data);
             dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
         
             birthyear.select("text").remove();
-        
+            birthyear.select("text").remove();
+            birthyear.select("text").remove();
+
             update2();
         }
         if (track ==1){update2();}
@@ -643,56 +613,26 @@ d3.select("#searchText2").on("input", compare2 )
         track++;    
         if(track%2 == 1)
         {
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
+            //removes text when changing years
             var dotzz = tsavg.select('.birthyears1').data(data);
             dotzz.exit().remove();
         
+            birthyear.select("text").remove();
+            birthyear.select("text").remove();
             birthyear.select("text").remove();
         
         update();
         }
         else if (track%2 == 0)
         {
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
+
             var dotzz = tsavg.select('.birthyears1').data(data);
             dotzz.exit().remove();
         
             birthyear.select("text").remove();
-        
+            birthyear.select("text").remove();
+            birthyear.select("text").remove();
+
             update2();
         }
 
@@ -715,33 +655,12 @@ d3.select("#searchText2").on("input", compare2 )
 
   // Allow the arrow keys to change the displayed year.
   window.focus();
-
+//listens to left and right arrow keys
   d3v3.select(window).on("keydown", function() {
     switch (d3v3.event.keyCode) {
-      case 37:  year = Math.max(year0, year - 1);//decrement
+      case 37:  year = Math.max(year0, year - 1);//decrement/left arrow
                 track++;
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
 
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
                 var dotzz = tsavg.select('.birthyears1').data(data);
                 dotzz.exit().remove();
 
@@ -752,24 +671,9 @@ d3.select("#searchText2").on("input", compare2 )
 
                 break;
                 
-      case 39:  year = Math.min(year1, year + 1);
+      case 39:  year = Math.min(year1, year + 1);//increment/right arrow
                 track++;
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
+
                 var dotzz = tsavg.select('.birthyears1').data(data);
                 dotzz.exit().remove();
                 birthyear.select("text").remove();
@@ -779,7 +683,7 @@ d3.select("#searchText2").on("input", compare2 )
 
                 break;
     }
-    if(track%2 == 1)
+    if(track%2 == 1)//alternates to compare years briefly
     {
     update();
     }
@@ -831,11 +735,11 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
     return n;
 }
 
+
+//update function changing years
   function update() {
     if (!(year in data)) return;
     title.text(year);
-//    var value2=[];
-//var dataAr = [];
 
     birthyears.transition()
         .duration(750)
@@ -843,7 +747,6 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
 
     birthyear.selectAll("rect")
         .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
-   //     .data(function(birthyear) { return dataAr.push(data[year][birthyear]); })
 
     .transition()
         .duration(750)
@@ -854,13 +757,12 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
         .attr("sum", function(value) {value2.push(value);})//new
 
         .attr("height", function(value) { return height1 - tGraphy(value); })
-
+//manipulating array for temps
         var tem= 2014-glob;
         var tempor=value2.length;
         var newtem= 2014-glob;
 
         if(tem >12){newtem=tem*2-tem;}
-       // console.log(y);
 
         if(tem<12){
         while(value2.length!=12)
@@ -877,7 +779,7 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
         if(tem==113){
             while (value2.length!=12){
                 value2.pop();
-            }
+            }                             
         }
         if(tem>12){
             while(value2.length!=12)
@@ -893,7 +795,7 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
             }
         
  }
-
+//same thing as update(). needed to compare alternatingn years
  function update2() {
     if (!(year in data)) return;
     title.text(year);
@@ -957,7 +859,7 @@ Data Update for different countries
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
-d3v3.select('#inds')
+d3v3.select('#inds')//drop down menu
             .on("change", function () {
                 var sect = document.getElementById("inds");
                 var section = sect.options[sect.selectedIndex].value;
@@ -966,6 +868,8 @@ d3v3.select('#inds')
 
             });
 
+            
+//gets rid of parts of file names to get country name
 function updateTitle(source){
     var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
     var ret2 = ret.replace(/.tmp.tsv/g,'');
@@ -1289,52 +1193,21 @@ else{ globTit.text("Enter a valid year from 1901 to 2014");}
       {
         var dotzz = tsavg.select('.birthyears1').data(data);
         dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
+
     
         birthyear.select("text").remove();
-    
+        birthyear.select("text").remove();
+        birthyear.select("text").remove();
+   
       update();
       }
       else if (track%2 == 0)
       {
         var dotzz = tsavg.select('.birthyears1').data(data);
         dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-    
+
+        birthyear.select("text").remove();
+        birthyear.select("text").remove();
         birthyear.select("text").remove();
     
           update2();
@@ -1368,25 +1241,9 @@ else{ globTit.text("Enter a valid year from 1901 to 2014");}
       {
         var dotzz = tsavg.select('.birthyears1').data(data);
         dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-    
+
+        birthyear.select("text").remove();
+        birthyear.select("text").remove();    
         birthyear.select("text").remove();
     
       update();
@@ -1395,25 +1252,9 @@ else{ globTit.text("Enter a valid year from 1901 to 2014");}
       {
         var dotzz = tsavg.select('.birthyears1').data(data);
         dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-    
+
+        birthyear.select("text").remove();
+        birthyear.select("text").remove();
         birthyear.select("text").remove();
     
           update2();
@@ -1442,24 +1283,7 @@ d3v3.select(window).on("keydown", function() {
     track++;
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
+
     birthyear.select("text").remove();
     birthyear.select("text").remove();
 
@@ -1471,24 +1295,7 @@ case 39:  year = Math.min(year1, year + 1);
     track++;
     var dotzz = tsavg.select('.birthyears1').data(data);
     dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
-    var dotzz = tsavg.select('.birthyears1').data(data);
-    dotzz.exit().remove();
+
     birthyear.select("text").remove();
     birthyear.select("text").remove();
 
