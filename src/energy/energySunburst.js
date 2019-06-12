@@ -316,11 +316,14 @@ function updateSunBurst(file, year){
                 .attr("class", "midText")
                 .text(formatNum(d.value))
                 .style("font-size", "50px");
-            g.append("text")
-                .attr("class", "midText")
-                .attr("dy", "1.5em")
-                .text(percentage.toFixed(2)+"%")
-                .style("font-size", "35px");
+            if (!isNaN(percentage)){
+                g.append("text")
+                    .attr("class", "midText")
+                    .attr("dy", "1.5em")
+                    .text(percentage.toFixed(2)+"%")
+                    .style("font-size", "35px");
+            }    
+
         })
             .on("mouseout", function(d){
             g.selectAll(".midText").remove();

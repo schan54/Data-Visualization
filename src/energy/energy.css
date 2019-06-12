@@ -146,6 +146,8 @@ div.compareTxt {
 table, th, td {
     border-collapse: collapse;
     border-bottom: 1px solid #ddd;
+    table-layout: fixed;
+    width: 250px;
 }
 thead {
     display:table;
