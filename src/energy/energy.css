@@ -89,8 +89,8 @@ div.compareTxt {
     position: absolute;
     display:inline-block;
     top:650px;
-    left:50px;
-    width: 75px;
+    left:20px;
+    width: 150px;
 }
 /* CSS for Search Bar */
 #searchSubmit{
