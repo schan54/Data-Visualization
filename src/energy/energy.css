@@ -141,10 +141,11 @@ input[type=range] {
     font-size: 16px;
 }
 div.compareTxt {
+    background-color: lightcyan;
     position: absolute;
     display:inline-block;
     top:650px;
-    left:000px;
+    left:50px;
     width: 75px;
 }
 /* CSS for Search Bar */

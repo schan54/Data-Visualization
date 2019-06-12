@@ -128,8 +128,16 @@ d3.json('./energyusage.json').then(data => {
     });
         /* Compare years*/
     d3.select("#compare").on("click", function(){
-        g.selectAll("g").remove();
-        updateSunBurst("./energyusage.json", "compare"); 
+        var year1 = d3.select("#year1").node().value;
+        var year2 = d3.select("#year2").node().value;
+        if (year1 < 1990 || year1 > 2017 || year2 < 1990 || year2 > 2017){
+            alert("Invalid Input");
+        }
+        else{
+            g.selectAll("g").remove();
+            updateSunBurst("./energyusage.json", [year1 -1990, year2 - 1990]); 
+        }
+        
     });
     d3.select("#isolate").on("click", function(){
         g.selectAll("g").remove();
@@ -269,10 +277,12 @@ function parseFile(file) {
 function updateSunBurst(file, year){
     d3.json(file).then(data => {
         var datas = data[year];
-        if ( year == "compare")
+        if ( Array.isArray(year))
         {
-            datas = {name:"compare", children: data};
+            datas = {name:"compare", children: [data[year[0]], data[year[1]]] };
+            
         }
+
         const root = partition(datas);
         const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, datas.children.length + 1));
     
@@ -353,8 +363,15 @@ function updateSunBurst(file, year){
         });
                 /* Compare years*/
         d3.select("#compare").on("click", function(){
-            g.selectAll("g").remove();
-            updateSunBurst(file, "compare"); 
+            var year1 = d3.select("#year1").node().value;
+            var year2 = d3.select("#year2").node().value;
+            if (year1 < 1990 || year1 > 2017 || year2 < 1990 || year2 > 2017){
+                alert("Invalid Input");
+            }
+            else{
+                g.selectAll("g").remove();
+                updateSunBurst("./energyusage.json", [year1 -1990, year2 - 1990]); 
+            }
         });
         d3.select("#isolate").on("click", function(){
             g.selectAll("g").remove();
