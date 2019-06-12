@@ -9,7 +9,7 @@
 		<title>Energy Visualization</title>
 
 		<!-- Google font -->
-		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat|Raleway|Roboto:400,600" rel="stylesheet">
 
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
@@ -81,6 +81,24 @@
 			</div>
 		</header>
 		<!-- /Header -->
+
+    <div class="duoImage" id="energyImage">
+    	<div class="container">
+    		<div class="row">
+	    		<div class="col-md-pull-4">
+	    			<div class="imageText">
+	    				<h2 class="header">Energy</h2>
+				        <p class="initialText">It is important to know how the use of energy can impact climate change. As we can see in this sunburst, more and more energy is being
+    used every year. These energy include coals, natuarl gas, and oil. However, there are energy and resources that a non-renewable. Meaning
+    if we keep producing and consuming resources and energy, the world will eventually run out. We need to know how to minimize our energy usage
+    not only for the world, but for the climate as well. Fossil fuels for example generate a lot of CO2 that is a factor to global warming. This
+    visualization tells us story of how if we keep using energy like this. Climate change will accelerate.</p>
+			      	</div>
+	    		</div>
+	    	</div>
+    	</div>
+    </div>
+
 	<!-- Drop Down Menu -->
   <h3 id = "selectTxt">Select a File</h3>
   <select id = "selectFile" onchange="parseFile(this.value);">
@@ -145,23 +163,6 @@
 
   <script src="../core/d3-tip.js"></script>
 
-	<div class="Look-At-This-Shit">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-20">
-				<h1 class="black-text">Visualizing Climate Change</h1>
-				<p class="white-text">
-					<!-- What can we learn about all of this? You can change the width section by adjusting the col-MD value above. This fixes our stupid ass implementations. Words words words words words words words words words words words words words words words words words words words words  -->
-					It is important to know how the use of energy can impact climate change. As we can see in this sunburst, more and more energy is being
-    used every year. These energy include coals, natuarl gas, and oil. However, there are energy and resources that a non-renewable. Meaning
-    if we keep producing and consuming resources and energy, the world will eventually run out. We need to know how to minimize our energy usage
-    not only for the world, but for the climate as well. Fossil fuels for example generate a lot of CO2 that is a factor to global warming. This
-    visualization tells us story of how if we keep using energy like this. Climate change will accelerate.
-				</p>
-			</div>
-		</div>
-	</div>
-	</div>
 
 	<div id="slider"></div>
 	<script type="text/javascript" src="energyChoroInit.js"></script>
