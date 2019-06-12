@@ -1,7 +1,7 @@
 //text that the radio button will toggle
 var buttonHeader= choroSvg.append("text")
                 .attr("id","numberToggle")
-                .attr("x",90)
+                .attr("x",50)
                 .attr("y",30)
                 .attr("fill","green")
                 .attr("font-size",24)
@@ -12,7 +12,7 @@ var choroButtonContainer= choroSvg.append("g")
                     .attr("id","Filter Method: Isolated")
 
 //fontawesome button labels
-var labels= ["Isolated",'Comparative', 'InputYear'];
+var labels= ["Isolated",'Comparative'];
 
 //colors for different button states
 var defaultColorChoro= "#687864"
@@ -28,7 +28,12 @@ var buttonGroups= choroButtonContainer.selectAll("g.button")
   .append("g")
   .attr("class","button")
   .style("cursor","pointer")
+	.on("load", function(d,i) {
+		updateChoroButtonColors(d3.select(this), d3.select(this.parentNode));
+	})
   .on("click",function(d,i) {
+		console.log(this)
+		console.log(this.parentNode)
       updateChoroButtonColors(d3.select(this), d3.select(this.parentNode));
 
 			//First Button = Isolated
@@ -48,16 +53,6 @@ var buttonGroups= choroButtonContainer.selectAll("g.button")
         d3.select("#numberToggle").text("Filter Method: Comparative");
         compareActive = true;
 				colorDomain = colorCompareDomain;
-				buildLegend();
-        //Reload Choro Data
-        queue()
-          .defer(d3.json, "../core/world_countries.json")
-          .defer(d3.tsv, "worldTemp.tsv")
-          .await(ready);
-      }
-
-			// Third Button  = Year Input
-      if (i == 2) {
 				buildLegend();
         //Reload Choro Data
         queue()
@@ -110,40 +105,29 @@ buttonGroups.append("text")
 
 
 var foreign1 = choroSvg.append("svg:foreignObject")
-	.attr("width", bWidthChoro* 2 + bSpaceChoro)
-	.attr("height", bHeightChoro)
-	.attr("x", (x0Choro))
+	.attr("width", bWidthChoro* 2.5 + bSpaceChoro)
+	.attr("height", bHeightChoro+10)
+	.attr("x", (x0Choro-bWidthChoro/4))
 	.attr("y", y0Choro + bHeightChoro*2)
 	.attr("rx", 5)
 	.attr("ry", 5)
-	.attr("fill",defaultColorChoro)
+	.attr("fill",pressedColorChoro)
 	.style("resize", 'none')
 	.append("xhtml:body")
-	.html("<input oninput='return inputRecv()' id='inputbox' class='foo' rows='13' cols='40' type='text'> </input>")
 
-
-
+	.html("<input oninput='return inputRecv()' id='inputbox' class='foo' rows='13' cols='40' style='text-align:center; color: white;' type='text' placeholder='Input Date Or Use Slider'> </input>")
 //	.html("<input oninput='return inputRecv()' style='font: Times; resize: none; font-size: 15pt; border 1px solid lightgray; outline: none; border-radius: 10px;' id='inputbox' class='foo' rows='13' cols='40' type='text'> </input>")
 
 function inputRecv() {
-	console.log(document.getElementById("inputbox").value)
-	var inputString = document.getElementById("inputbox").value
+	var inputString = document.getElementById("inputbox").value;
+	inputString = inputString.replace(/ /g,'')
 	var splitString = inputString.split(',')
 	if (compareActive) {
-		if (isNaN(parseInt(splitString[0]))
-		|| isNaN(parseInt(splitString[1]))) {}
-		else if ((1901 <= parseInt(splitString[0]) <= 2014)
-		&& (1901 <= parseInt(splitString[1]) <= 2014)) {
-			console.log(parseInt(splitString[0]))
-			console.log(parseInt(splitString[1]))
-			if (parseInt(splitString[0]) < parseInt(splitString[1])) {
-				userYear = splitString[1]
-				userYear2 = splitString[0]
-			}
-			else {
-				userYear = splitString[0]
-				userYear2 = splitString[1]
-			}
+		if (((1901 <= parseInt(splitString[0])) && (parseInt(splitString[0])<= 2014))
+		&& ((1901 <= parseInt(splitString[1])) && (parseInt(splitString[1])<= 2014))) {
+			userYear = splitString[1]
+			userYear2 = splitString[0]
+
 
 			handle.attr("cx", x(new Date(userYear)));
 			label
@@ -158,7 +142,6 @@ function inputRecv() {
 				.defer(d3.json, "../core/world_countries.json")
 				.defer(d3.tsv, "worldTemp.tsv")
 				.await(ready);
-			console.log("Compare Success")
 		}
 	}
 	else {
@@ -175,10 +158,10 @@ function inputRecv() {
 				.defer(d3.json, "../core/world_countries.json")
 				.defer(d3.tsv, "worldTemp.tsv")
 				.await(ready);
-			console.log("Isolated Success")
 		}
 	}
 }
+
 
 function updateChoroButtonColors(button, parent) {
     parent.selectAll("rect")

@@ -51,7 +51,7 @@ function displaySumIso(a) {
     totalSum = totalSum + Number(a[index][1]);
   }
   choroSvg.append("text").html("World's Avg Temperature").attr("id", "choroSumText").attr("x", 592).attr("y", 70);
-  choroSvg.append("text").html(format(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 620).attr("y", 120);
+  choroSvg.append("text").html(format(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 640).attr("y", 120);
 
 }
 
@@ -132,10 +132,10 @@ function displaySumCompare(a, b) {
   for (index in b) {
     totalSum = totalSum - Number(b[index][1]);
   }
-  choroSvg.append("text").html("World's Avg Compared").attr("id", "choroSumText").attr("x", 610).attr("y", 70);
+  choroSvg.append("text").html("World's Avg Compared").attr("id", "choroSumText").attr("x", 600).attr("y", 70);
   choroSvg.append("text").html("Temperature").attr("id", "choroSumText2").attr("x", 650).attr("y", 100);
 
-  choroSvg.append("text").html(format(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 625).attr("y", 140);
+  choroSvg.append("text").html(format(totalSum/a.length) + " Celcius").attr("id", "choroSum").attr("x", 640).attr("y", 140);
 }
 
 function displayPercentCompare(hash1, hash2) {
