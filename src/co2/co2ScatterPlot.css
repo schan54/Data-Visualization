@@ -46,7 +46,7 @@ h3 {
   font-family: 'Roboto Slab', sans-serif;
 }
 
-.buttonText, .topText, {
+.buttonText, .topText {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
 }
@@ -132,4 +132,8 @@ a {
 
 a:hover {
   color: white;
+}
+
+#cumulativeSum {
+  font-size: 30px;
 }

@@ -51,7 +51,7 @@
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a class="logo" href="index.html">
+						<a class="logo" href="../index.html">
 							<img id="energyLogo" src=".././img/logo.png" alt="logo">
 						</a>
 					</div>
@@ -123,7 +123,7 @@
   </select>
 
   <h2 id = "yeartxt">Year: 1990</h2>
-
+  <!-- SUNBURST -->
   <svg xmlns="http://www.w3.org/2000/svg" id="partitionSVG" width="1400" height="1400" style ="position:relative; left:0%;">
     <foreignObject width="1400" height="1400">
 			<h1>Global Energy Consumption</h1>
@@ -131,12 +131,18 @@
 			<p id = "units">Units in Million Tonnes of Oil Equivalent(Mtoe)</p>
 			<!-- Slider -->
 			<input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"> Slide to change year</input>
-			<a href = "#slider" style="position:absolute;top:275px;left:30px;font-size:15px;text-decoration:underline"> Jump to Map >></a>
+			<!-- Link to Map -->
+			<div id = "jumpMap">
+				<p> <b>Look at the Energy Map!</b> </p>
+				<a href = "#slider" >Jump to Map >></a>
+			</div>
+			
 			<!-- Search Bar -->
       <input autocomplete="off" type="text" id = "searchText" placeholder="Look up a country" name="search" ><br/></input>
       <button type="submit" id = "searchSubmit">Zoom In     <i class="fa fa-search"></i></button>
 			<p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
 			<!-- Compare -->
+			<p id="compareInstruct">Enter two years between 1970 and 2017 <br/> and click Compare</p>
 			<text style="position:relative;top:300px;left:-510px;font-size:25px">COMPARISON</text>
       <button id = "compare">COMPARE</button>
 			<button id = "isolate">ISOLATE</button>
@@ -170,10 +176,30 @@
 
   <script type="text/javascript" src="energySunburst.js"></script>
   <!-- Code Reference from https://observablehq.com/@d3/zoomable-sunburst -->
+  <div class="duoImage" id="energyImage">
+    	<div class="container">
+    		<div class="row">
+	    		<div class="col-md-20">
+	    			<div class="imageText">
+	    				<h2 class="header">What does this Tell Us?</h2>
+				        <p class="initialText">
+
+						</p>
+			      	</div>
+	    		</div>
+	    	</div>
+    	</div>
+    </div>
+
+
+
+
+
 
   <script src="../core/d3-tip.js"></script>
 
-
+	  <!-- ENERGY CHORPLETH MAP -->
+	  <!-- 						 -->
 	<div id="slider"></div>
 	<script type="text/javascript" src="energyChoroInit.js"></script>
 	<script type="text/javascript" src="energyChoroSlider.js"></script>

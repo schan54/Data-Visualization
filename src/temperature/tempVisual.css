@@ -16,6 +16,27 @@ input[type=number]::-webkit-outer-spin-button {
     top: 290px;
     left: 145px;
     z-index: 1;}
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 1; /* Firefox */
+      }
+      
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: black;
+      }
+      
+      ::-ms-input-placeholder { /* Microsoft Edge */
+        color: black;
+      }
+#pSVG,#Tchart {
+    background-color: #F7F9FB;
+    border-width: 1px;
+    border-radius: 1px;
+    border-color: #687864;
+    padding-bottom: 0px;
+  }
+
+
 #mainChart{
     position: absolute;
     top:0px;
@@ -49,15 +70,10 @@ input[type=number]::-webkit-outer-spin-button {
   .globTit {
     font-family: 'Roboto', sans-serif;
 
-    font: 300 23px 'Roboto';
+    font: 300 26px 'Roboto';
     fill: #666;
   }
-  .globTit2 {
-    font-family: 'Roboto', sans-serif;
 
-    font: 300 23px 'Roboto';
-    fill: #666;
-  }
   .title2 {
     position:absolute;
     font-family: 'Roboto', sans-serif;
@@ -335,7 +351,7 @@ background-color: var(--secondary-color);
   font-size: 18px;
   font-weight: bold;
 }
-
+  
 .duoImage {
   height: 700px;
   background-repeat: no-repeat;
@@ -346,7 +362,7 @@ background-color: var(--secondary-color);
 }
 
 #tempImage {
-  background-image: url(/../img/sunBG.jpg);
+  background-image: url(../img/sunBG.jpg);
 }
 
 .imageText {
@@ -378,7 +394,7 @@ background-color: var(--secondary-color);
 
 #tempImageTwo {
   padding-top: 50px;
-  background-image: url(/../img/moreDuotone.jpg);
+  background-image: url(../img/MoreDuotone.jpg);
 }
 
 .header, .headerBar {
