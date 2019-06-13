@@ -64,14 +64,14 @@ input[type=number]::-webkit-outer-spin-button {
     font: 300 58px 'Roboto';
     fill: #666;
   }
-  .birthyear,.birthyear1,
+  .tempYear,.tempYear1,
   .month {
     font-family: 'Roboto', sans-serif;
 
     text-anchor: middle;
   }
 
-  .birthyear {
+  .tempYear {
     fill: #fff;
   }
   .dataInfo  {
