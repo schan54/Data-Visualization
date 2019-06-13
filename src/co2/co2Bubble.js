@@ -57,7 +57,7 @@ function select(yearValue) {
         colorSix = '#1D272D';
         colorGreen = d3.interpolateRdYlGn(1); 
         colorRed = d3.interpolateRdYlGn(0);
-        colorGray = '#687864';
+        colorGray = '#3B444C';
         yearOne = [];
         yearTwo = [];
         yearDiff = [];
@@ -578,7 +578,7 @@ function select(yearValue) {
         topEmissions.append("text").html("Net Difference:").attr("x", 1050).attr("y", 540);
       }
 
-      d3.selectAll("text").style('fill', '#687864').style('font-family', 'Oswald');
+      d3.selectAll("text").style('fill', '#3B444C').style('font-family', 'Oswald');
 
       //adding text to each toggle button group, centered
       //within the toggle button rect
@@ -643,7 +643,7 @@ function select(yearValue) {
           .height(30) // Height 
           .callback(callback) // Callback returning the current text 
           .text(currentValue + "," + comparedValue) // Default text 
-          .fill("#687864") // Default fill 
+          .fill("#3B444C") // Default fill 
           .stroke("none") // Default border 
           .fillSelected("#31708E") // Fill when activated 
           .strokeSelected("none") // Border when activated 
@@ -660,7 +660,7 @@ function select(yearValue) {
           .height(30) // Height 
           .callback(callback) // Callback returning the current text 
           .text(currentValue) // Default text 
-          .fill("#687864") // Default fill 
+          .fill("#3B444C") // Default fill 
           .stroke("none") // Default border 
           .fillSelected("#31708E") // Fill when activated 
           .strokeSelected("none") // Border when activated 

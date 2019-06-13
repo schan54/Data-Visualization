@@ -9,7 +9,7 @@
 		<title>Temperature Visualization</title>
 
 		<!-- Google font -->
-		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat|Raleway|Roboto|Oswald:400,600" rel="stylesheet">
 
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
@@ -54,7 +54,7 @@
 					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo" href="index.html">
-							<img src=".././img/logo.png" alt="logo">
+							<img id="tempLogo" src=".././img/logo.png" alt="logo">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -83,6 +83,37 @@
 			</div>
 		</header>
 		<!-- /Header -->
+
+<div class="duoImage" id="tempImage">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-pull-4">
+                <div class="imageText">
+                    <h2 class="header">The Effect of a Warming Planet</h2>
+                    <p class="initialText">Since the 1900's, the the temperature of each country has experienced around 1°C of warming. This may not appear to be a big
+                deal since it's just 1°C, however this causes deadly problems. Hot countries will face longer and more frequent heat waves causing
+                 droughts.</p>
+                    </br>
+                    <p class="initialText"> The increase in temperature will also kill off crops, plants and animal species, and the coral reefs. The melting of
+                 the polar ice caps will cause a sea level rise which affects small islands the most. The coral reefs won't be able to protect the marine
+                  animals and humans that rely on the reefs for protection.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="colorBar" id="barTwo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-20">
+                <h2 class="headerBar">Vizualizing Anomalies</h2>
+                <p class="white-text">For example you can see a dramatic spike in temperature from the years 1960 to 1964. The temperature kept drastically increasing each year
+              with an increase of 9°C from 1963 to 1964.</p>
+            </div>
+        </div>
+      </div>
+    </div>
 
 <svg id="pSVG" width="1250" height="650" style ="position:relative">
     <foreignObject width="1250" height="650">
@@ -298,57 +329,56 @@
 
 </svg>
 
-<script type="text/javascript" src="tempGraph.js"></script>
-
-<script src="../core/d3-tip.js"></script>
-
-<div class="Look-At-This-Shit">
-<div class="container">
-	<div class="row">
-		<div class="col-md-20">
-			<h1 class="black-text">Visualizing Climate Change</h1>
-			<p class="white-text" align="left" >&emsp;&emsp; Since the 1900's, the the temperature of each country has experienced around 1°C of warming. This may not appear to be a big
-                deal since it's just 1°C, however this causes deadly problems. Hot countries will face longer and more frequent heat waves causing
-                 droughts. The increase in temperature will also kill off crops, plants and animal species, and the coral reefs. The melting of
-                 the polar ice caps will cause a sea level rise which affects small islands the most. The coral reefs won't be able to protect the marine
-                  animals and humans that rely on the reefs for protection.
-                  <br></br>
-                                </p>
-        <div id="imageText">
-          <p class="initialText"> For example you can see a dramatic spike in temperature from the years 1960 to 1964. The temperature kept drastically increasing each year
-              with an increase of 9°C from 1963 to 1964.
-          </p>
-
-        </div>
-       <br>
-       <p class="white-text" align="left" >
-                  &emsp;&emsp; At 1.5°C, coral reefs have a chance at adapting and recovering, however at 2°C, the chance of recovering disappears. The Mediterranean
+<div class="colorBar" id="barTwo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-20">
+                <h2 class="headerBar">The Impact On Our Oceans</h2>
+                <p class="white-text">At 1.5°C, coral reefs have a chance at adapting and recovering, however at 2°C, the chance of recovering disappears. The Mediterranean
                    is forecasted to have 9% less water at 1.5°C and 18% less water at 2°C. Since the ocean holds so much heat, sea levels will rise due to ice sheets and glaciers being
-                    heated from above and under from the increase in ocean temperatures. <br> <br>
+                    heated from above and under from the increase in ocean temperatures.</p>
+            </div>
+        </div>
+      </div>
+    </div>
 
-                    &emsp;&emsp; At 1.5°C, the production of wheat goes down 9% and corn production goes down 3%. At 2°C, the production of wheat goes down 16% and corn production goes down
+<div class="duoImage" id="tempImageTwo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-pull-4">
+                <div class="imageText">
+                    <h2 class="header">What Does This Mean For Us?</h2>
+                    <p class="initialText">At 1.5°C, the production of wheat goes down 9% and corn production goes down 3%. At 2°C, the production of wheat goes down 16% and corn production goes down
                 6%. Although the production of soy and rice goes up 6% at 1.5°C and 2°C, if you get high temperatures or very dry conditions during the development of crops, it produces essentially
                 no grain. At certain temperature thresholds, corn doesn't die but it also doesn't grow any seeds which defeats the purpose of growing corn. The benefits of
                  fertilization with more carbon dioxide is offsetted by the fact that plant will still die from the temperature and dry conditions. A plant growing
-                 really fast when it died is still a dead plant. There is no benefits for crops with an increase in temperature. <br> <br>
-
-                 &emsp; &emsp;Faced with this reality, we must understand where to go from this. We should try our best to limit this half degree growth, however we must be very
+                 really fast when it died is still a dead plant. There is no benefits for crops with an increase in temperature.</p>
+                    </br>
+                    <p class="initialText">Faced with this reality, we must understand where to go from this. We should try our best to limit this half degree growth, however we must be very
                  careful since we have little experience with limiting glboal warming with precision. If we try to limit growth to 1.5°C, it may end up being 2°C or 2°C may
                  end up being 3°C. If we were to exceed this 1.5°C limit and then brought the temperature back down, there is no guarantee that the consequences of crossing
-                 this limit would be reversed.
-
-                </p>
-                <div id="imageText">
-                        <p class="initialText">
-                            If you compare the temperature of 1904 Afghanistan with 2014 Afghanistan, you will notice how far we have pushed our limits. With each month consistently
-                        exceeding an increase of 1°C to 2°C.
-                        </p>
-
-                      </div>
-		</div>
-	</div>
+                 this limit would be reversed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
+
+<div class="colorBar" id="barTwo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-20">
+                <h2 class="headerBar">Is It Too Late?</h2>
+                <p class="white-text">If you compare the temperature of 1904 Afghanistan with 2014 Afghanistan, you will notice how far we have pushed our limits. With each month consistently
+                        exceeding an increase of 1°C to 2°C.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<script type="text/javascript" src="tempGraph.js"></script>
+
+<script src="../core/d3-tip.js"></script>
 
 <div id="slider"></div>
 <script type="text/javascript" src="tempChoroInit.js"></script>
