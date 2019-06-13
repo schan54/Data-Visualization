@@ -49,6 +49,22 @@ function select(yearValue) {
         max4 = 0;
         max5 = 0;
         xPosition = [100, 250, 450, 650, 850, 1100];
+        cumulatives = [9104.144, 18205.332, 27629.031, 37589.212, 48055.297, 59011.837,
+                        70466.715, 82274.629, 94726.192, 108014.726, 122413.034, 137385.719,
+                        153038.825, 169524.161, 185973.702, 202442.217, 219813.069, 237665.198,
+                        256185.474, 275209.387, 294158.26, 312617.11, 330976.201, 349523.883,
+                        368593.561, 388377.065, 408426.586, 429178.76, 450727.295, 472604.529,
+                        494813.439, 517018.792, 538982.918, 561178.246, 583508.236, 606311.05,
+                        629763.474, 653305.551, 676735.021, 700453.217, 724848.843, 749473.101,
+                        774634.207, 801025.324, 828627.405, 857145.197, 886594.732, 916903.251,
+                        947905.546, 978494.489, 1010631.756, 1043923.854, 1077725.696, 1111637.673,
+                        1145849.545, 1180023.526, 1214314.957, 1249055.465, 1284142.902, 1319588.015,
+                        1355390.804, 1391551.28, 1428069.449, 1464945.295, 1502178.818, 1539770.022,
+                        1577718.913, 1616025.487, 1654689.751, 1693711.696, 1733097.306, 1772828.599,
+                        1812923.579, 1853376.246, 1894186.594, 1935354.623, 1976880.338, 2018763.729,
+                        2061004.795, 2103603.545, 2146559.976, 2189874.089, 2233545.883, 2277575.356,
+                        2321962.513, 2366707.364, 2411809.881, 2457270.081, 2503087.969, 2549263.527,
+                        2595796.774, 2642687.699, 2689936.312, 2737542.608, 2785506.583, 2833828.241]
         colorOne = '#8FC1E3';
         colorTwo = '#31708E';
         colorThree = '#567488';
@@ -74,11 +90,14 @@ function select(yearValue) {
           svg = div.select('svg');
       svg.attr('width', width).attr('height', height);
 
+        d3.selectAll(".rectIso").remove();
+
         var rectangleAfrica = svg.append("rect")
                            .attr("x", 300)
                            .attr("y", 640 + 30)
                            .attr("width", 40)
                            .attr("height", 40)
+                           .attr("class", "rectIso")
                            .style("fill", colorSix)
                            .style("visibility", "hidden");
 
@@ -87,6 +106,7 @@ function select(yearValue) {
                            .attr("y", 640 + 30)
                            .attr("width", 40)
                            .attr("height", 40)
+                           .attr("class", "rectIso")
                            .style("fill", colorFive)
                            .style("visibility", "visible");
 
@@ -95,6 +115,7 @@ function select(yearValue) {
                            .attr("y", 640 + 30)
                            .attr("width", 40)
                            .attr("height", 40)
+                           .attr("class", "rectIso")
                            .style("fill", colorFour)
                            .style("visibility", "visible");
 
@@ -103,6 +124,7 @@ function select(yearValue) {
                            .attr("y", 640 + 30)
                            .attr("width", 40)
                            .attr("height", 40)
+                           .attr("class", "rectIso")
                            .style("fill", colorThree)
                            .style("visibility", "visible");
 
@@ -111,6 +133,7 @@ function select(yearValue) {
                            .attr("y", 640 + 30)
                            .attr("width", 40)
                            .attr("height", 40)
+                           .attr("class", "rectIso")
                            .style("fill", colorTwo)
                            .style("visibility", "visible");
 
@@ -119,22 +142,25 @@ function select(yearValue) {
                            .attr("y", 640 + 30)
                            .attr("width", 40)
                            .attr("height", 40)
+                           .attr("class", "rectIso")
                            .style("fill", colorOne)
-                           .style("visibility", "hidden");
+                           .style("visibility", "visible");
 
         var rectangleGray = svg.append("rect")
-           .attr("x", 620)
+           .attr("x", 300)
            .attr("y", 640 + 30)
            .attr("width", 40)
            .attr("height", 40)
+           .attr("class", "rectIso")
            .style("fill", colorGray)
            .style("visibility", "hidden");
 
         var rectangleRed = svg.append("rect")
-                           .attr("x", 780)
+                           .attr("x", 620)
                            .attr("y", 640 + 30)
                            .attr("width", 40)
                            .attr("height", 40)
+                           .attr("class", "rectIso")
                            .style("fill", colorRed)
                            .style("visibility", "hidden");
 
@@ -143,6 +169,7 @@ function select(yearValue) {
                            .attr("y", 640 + 30)
                            .attr("width", 40)
                            .attr("height", 40)
+                           .attr("class", "rectIso")
                            .style("fill", colorGreen)
                            .style("visibility", "hidden");
 
@@ -150,7 +177,6 @@ function select(yearValue) {
       if (!twoYears) {
         rectangleRed.style("visibility", "hidden");
         rectangleGreen.style("visibility", "hidden");
-        rectangleGray.style("visibility", "hidden");
         rectangleNA.style("visibility", "visible");
         rectangleSA.style("visibility", "visible");
         rectangleEurope.style("visibility", "visible");
@@ -161,8 +187,8 @@ function select(yearValue) {
         rectangleRed.style("visibility", "visible");
         rectangleGreen.style("visibility", "visible");
         rectangleGray.style("visibility", "visible");
-        rectangleNA.style("fill", "none");
         rectangleSA.style("visibility", "hidden");
+        rectangleNA.style("visibility", "hidden");
         rectangleEurope.style("visibility", "hidden");
         rectangleOceania.style("visibility", "hidden");
         rectangleAfrica.style("visibility", "hidden");
@@ -278,6 +304,14 @@ function select(yearValue) {
           .selectAll('circle')
           .data(data.filter(function(d) { return d.year == yearTemp }));
         }
+
+        console.log(0 + ": " + scaleRadius(0));
+        console.log(10 + ": " + scaleRadius(10));
+        console.log(100 + ": " + scaleRadius(100));
+        console.log(500 + ": " + scaleRadius(500));
+        console.log(1000 + ": " + scaleRadius(1000));
+        console.log(5000 + ": " + scaleRadius(5000));
+        console.log(10000 + ": " + scaleRadius(10000));
 
         if (twoYears) {
           u.enter()
@@ -529,6 +563,10 @@ function select(yearValue) {
           topEmissions.append("text").html("World's Total Emissions:").attr("id", "sumText").attr("x", 470).attr("y", 50);
       }
 
+      topEmissions.append("text").html("% Toward 1 Trillion Ton Threshold:").attr("id", "sumText").attr("x", 450).attr("y", 120);
+      // 3329367 is 1 Trillion tons of carbon in Metric tonnes of CO2
+      topEmissions.append("text").html(Math.round(cumulatives[currentValue - 1960] / 3329367 * 10000) / 100 + "%").attr("id", "cumulativeSum").attr("x", 490).attr("y", 160);
+
       // Find the max value in this year
       max1 = d3.max(tempArray);
 
@@ -634,18 +672,17 @@ function select(yearValue) {
       topEmissions.append("line").attr("x1", 965).attr("y1", 0).attr("x2", 965).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
 
       // Lines for legend
-      // TODO:  Update Legend to bubble instead of lines, these lines are not scaled correctly
       topEmissions.append("line").attr("x1", 0).attr("y1", 590).attr("x2", 1300).attr("y2", 590).attr("stroke-width", 0.5).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 605 + 30).attr("x2", 105.66).attr("y2", 605 + 30).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 620 + 30).attr("x2", 116.54).attr("y2", 620 + 30).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 635 + 30).attr("x2", 120.64).attr("y2", 635 + 30).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 650 + 30).attr("x2", 143.68).attr("y2", 650 + 30).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 665 + 30).attr("x2", 160.1).attr("y2", 665 + 30).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 680 + 30).attr("x2", 229.4).attr("y2", 680 + 30).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 695 + 30).attr("x2", 281.4).attr("y2", 695 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 605 + 30).attr("x2", 102).attr("y2", 605 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 620 + 30).attr("x2", 104.16).attr("y2", 620 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 635 + 30).attr("x2", 108.82).attr("y2", 635 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 650 + 30).attr("x2", 117.26).attr("y2", 650 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 665 + 30).attr("x2", 123.57).attr("y2", 665 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 680 + 30).attr("x2", 150.25).attr("y2", 680 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 695 + 30).attr("x2", 170.24).attr("y2", 695 + 30).attr("stroke-width", 1).attr("stroke", "black");
       // Legend Text
       topEmissions.append("text").html("Emissions").attr("x", 40).attr("y", 585 + 30).style("font-size", 12);
-      topEmissions.append("text").html("Circle Diameter").attr("x", 100).attr("y", 585 + 30).style("font-size", 12);
+      topEmissions.append("text").html("Circle Radius").attr("x", 100).attr("y", 585 + 30).style("font-size", 12);
 
       topEmissions.append("text").html("0 or NaN").attr("x", 40).attr("y", 610 + 30).style("font-size", 12);
       topEmissions.append("text").html("10").attr("x", 40).attr("y", 625 + 30).style("font-size", 12);
@@ -654,12 +691,19 @@ function select(yearValue) {
       topEmissions.append("text").html("1000").attr("x", 40).attr("y", 670 + 30).style("font-size", 12);
       topEmissions.append("text").html("5000").attr("x", 40).attr("y", 685 + 30).style("font-size", 12);
       topEmissions.append("text").html("10000").attr("x", 40).attr("y", 700 + 30).style("font-size", 12);
-      topEmissions.append("text").html("= Africa").attr("x", 1150).attr("y", 665 + 30);
-      topEmissions.append("text").html("= Asia").attr("x", 990).attr("y", 665 + 30);
-      topEmissions.append("text").html("= Oceania").attr("x", 830).attr("y", 665 + 30);
-      topEmissions.append("text").html("= Europe").attr("x", 670).attr("y", 665 + 30);
-      topEmissions.append("text").html("= South America").attr("x", 510).attr("y", 665 + 30);
-      topEmissions.append("text").html("= North America").attr("x", 350).attr("y", 665 + 30);
+
+      if (!twoYears) {
+        topEmissions.append("text").html("= Africa").attr("x", 1150).attr("y", 665 + 30);
+        topEmissions.append("text").html("= Asia").attr("x", 990).attr("y", 665 + 30);
+        topEmissions.append("text").html("= Oceania").attr("x", 830).attr("y", 665 + 30);
+        topEmissions.append("text").html("= Europe").attr("x", 670).attr("y", 665 + 30);
+        topEmissions.append("text").html("= South America").attr("x", 510).attr("y", 665 + 30);
+        topEmissions.append("text").html("= North America").attr("x", 350).attr("y", 665 + 30);
+      } else {
+        topEmissions.append("text").html("= Decrease in Emissions").attr("x", 990).attr("y", 665 + 30);
+        topEmissions.append("text").html("= Increase in Emissions").attr("x", 670).attr("y", 665 + 30);
+        topEmissions.append("text").html("= No Change in Emissions").attr("x", 350).attr("y", 665 + 30);
+      }
 
       topEmissions.append("text").html(Math.round(parseFloat(sumOceania) * 1000) / 1000 + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
       topEmissions.append("text").html(Math.round(parseFloat(sumAsia) * 1000) / 1000 + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
