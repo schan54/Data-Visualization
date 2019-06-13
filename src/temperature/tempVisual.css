@@ -16,6 +16,18 @@ input[type=number]::-webkit-outer-spin-button {
     top: 290px;
     left: 145px;
     z-index: 1;}
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 1; /* Firefox */
+      }
+      
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: black;
+      }
+      
+      ::-ms-input-placeholder { /* Microsoft Edge */
+        color: black;
+      }
 #mainChart{
     position: absolute;
     top:0px;
@@ -64,14 +76,14 @@ input[type=number]::-webkit-outer-spin-button {
     font: 300 58px 'Roboto';
     fill: #666;
   }
-  .birthyear,.birthyear1,
+  .tempYear,.tempYear1,
   .month {
     font-family: 'Roboto', sans-serif;
 
     text-anchor: middle;
   }
 
-  .birthyear {
+  .tempYear {
     fill: #fff;
   }
   .dataInfo  {
