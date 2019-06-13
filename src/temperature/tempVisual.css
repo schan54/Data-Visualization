@@ -347,7 +347,7 @@ background-color: var(--secondary-color);
   font-size: 18px;
   font-weight: bold;
 }
-
+  
 .duoImage {
   height: 700px;
   background-repeat: no-repeat;
@@ -358,7 +358,7 @@ background-color: var(--secondary-color);
 }
 
 #tempImage {
-  background-image: url(/../img/sunBG.jpg);
+  background-image: url(../img/sunBG.jpg);
 }
 
 .imageText {
@@ -390,7 +390,7 @@ background-color: var(--secondary-color);
 
 #tempImageTwo {
   padding-top: 50px;
-  background-image: url(/../img/moreDuotone.jpg);
+  background-image: url(../img/MoreDuotone.jpg);
 }
 
 .header, .headerBar {
