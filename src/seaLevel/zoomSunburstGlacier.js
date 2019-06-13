@@ -1,4 +1,4 @@
-
+// visual for sunburst for glacial melting
 
          const width = window.innerWidth,
             height = window.innerHeight,
@@ -29,7 +29,7 @@
             const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
 
             const middleAngle = (angles[1] + angles[0]) / 2;
-            const invertDirection = middleAngle > 0 && middleAngle < Math.PI; // On lower quadrants write text ccw
+            const invertDirection = middleAngle > 0 && middleAngle < Math.PI; // places text on the lower quadrent of each arc
             if (invertDirection) { angles.reverse(); }
 
             const path = d3.path();
@@ -47,20 +47,20 @@
             return d.data.name.length * CHAR_SPACE < perimeter;
         };
 
-        const svgGlac = d3.select('body').append('#svgGlac')
+        const svg = d3.select('body').append('svg') // svg file, changed to #svg (declared in seaLevel.html) so that both visuals are able to fit on the page
             .attr("id", "graph-1")
             .style('width', width)
             .style('height', height)
             .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
             .on('click', () => focusOn()); // Reset zoom on canvas click
 
-        d3.json('glacialSunburst.json', (error, root) => {
+        d3.json('glacialSunburst.json', (error, root) => { // json file used
             if (error) throw error;
 
             root = d3.hierarchy(root);
             root.sum(d => d.size);
 
-            const slice = svgGlac.selectAll('g.slice')
+            const slice = svg.selectAll('g.slice')
                 .data(partition(root).descendants());
 
             slice.exit().remove();
@@ -107,7 +107,7 @@
         function focusOn(d = { x0: 0, x1: 1, y0: 0, y1: 1 }) {
             // Reset to top-level if no data point specified
 
-            const transition = svgGlac.transition()
+            const transition = svg.transition()
                 .duration(750)
                 .tween('scale', () => {
                     const xd = d3.interpolate(x.domain(), [d.x0, d.x1]),
@@ -129,7 +129,7 @@
             //
 
             function moveStackToFront(elD) {
-                svgGlac.selectAll('.slice').filter(d => d === elD)
+                svg.selectAll('.slice').filter(d => d === elD)
                     .each(function(d) {
                         this.parentNode.appendChild(this);
                         if (d.parent) { moveStackToFront(d.parent); }
