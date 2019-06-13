@@ -9,7 +9,7 @@
 		<title>Sea Level Visualization</title>
 
 		<!-- Google font -->
-		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat|Raleway|Roboto|Oswald:400,600" rel="stylesheet">
 
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
@@ -19,8 +19,6 @@
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="../css/style.css"/>
-		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="SeaLevelSunburst.css"/>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,6 +30,7 @@
 
 
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="../core/d3-v3.js"></script>
 
 		<script src="https://d3js.org/d3.v4.min.js"></script>
 		<script src="https://d3js.org/queue.v1.min.js"></script>
@@ -40,8 +39,12 @@
 		<script src="https://d3js.org/d3-color.v1.min.js"></script>
 		<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
 		<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-		<script type="text/javascript" src="textfield.js"></script>
-		  <link rel="stylesheet" type="text/css" href="co2ScatterPlot.css" />
+		 
+
+		 <link rel="stylesheet" type="text/css" href="bsg.css"/>
+		 <link rel="stylesheet" type="text/css" href="zsb.css"/>
+
+
 
 
     </head>
@@ -55,8 +58,8 @@
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a class="logo" href="../index.html">
-							<img id="seaLogo" src=".././img/logo.png" alt="logo">
+						<a class="logo" href="index.html">
+							<img id="tempLogo" src=".././img/logo.png" alt="logo">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -86,10 +89,31 @@
 		</header>
 		<!-- /Header -->
 
-	<h1>Annual Sea Level Rise (mm/year)</h1>
- 	<p class="white-text">As temperature increase and heat up Earth's atmosphere, sea levels also increase. - </p>
+		<div class="duoImage" id="tempImage">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-pull-4">
+                <div class="imageText">
+                    <h2 class="header">Rising Seas</h2>
+                    <p class="initialText">As temperature increases and glaciers melt, sea levels also increase. Since the 1880's, sea levels have risen 16-21 cm, with 7.5 cm being within the last 25 years. These higher sea levels have been causing increasingly dangerous hurricanes and typhoons, flooding, soil erosion, and damage to city infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
- 	<!-- <script src="seaLevelSunburst.js"></script> -->
+
+ 	<div class="colorBar" id="barTwo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-20">
+                <h2 class="headerBar">How is sea level rise affecting the infrastructure of cities?</h2>
+                <p class="white-text">About 40% of the United States' population, and 10% of the world's population, lives in coastal cities. As sea levels continue to rise, coastal urban life has been affected. Approximately 30% of the city of Manhattan, New York is expected to be fully submerged in water by 2050. Currently, the city of Venice, Italy is experiencing some of its worst flooding. In 2018, approximately 75% of the city was flooded. With the current rates of sea level rise, it is predicted that the Maldives would be inhabitable by 2100 due to flooding caused by rising sea levels.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+
 
 
 		<script src="d3-tip.js"></script>
@@ -98,31 +122,63 @@
 
 	  <!-- @Alex -->
 	  <!-- Change the .js file and it should display on the website! -->
-	  <script type="text/javascript" src="SeaLevelSunburst.js"></script>
+	  
+	  
+	  <svg id="svgBee" width="1250" height="650" style ="position:relative"></svg>
+	  <script type="text/javascript" src="beeSwarmSeaLevel.js"></script>
 
-  <div class="Look-At-This-Shit">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-20">
-				<h1 class="black-text">Glacial Melting</h1>
-				<p class="white-text">The melting of land glaciers is one of the two main causes of sea level rise. As the glaciers melt, their water drips off into the ocean, adding more volume. Areas with the biggest concern of glacial melting include Antarctica and Greenland, as they host many of the worlds land glaciers. The figure below includes records of how glaciers on Antarctica have changed since 1979.</p>
-			</div>
-		</div>
-	</div>
-	</div>
+	  <!-- paragraph explaining visual-->
+	  <p class="white-text">Here we see recorded data of how many millimeters the sea level has risen since 1970. Along with this data, the figure also contains predictive data for 2025 and 2050. As you click different buttons for different years, we can see the recorded sea level in millimeters for each year. We also can see the high and low estimated predictions for 2025 and 2050.</p>
+
+	<!-- start of glacier part of visual-->
+	<div class="duoImage" id="tempImage">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-pull-4">
+                <div class="imageText">
+                    <h2 class="header">Glacial Melting</h2>
+                    <p class="initialText">The melting of land glaciers is one of the two main causes of sea level rise. As the glaciers melt, their water drips off into the ocean, adding more volume. Areas with the biggest concern of glacial melting include Antarctica and Greenland, as they host many of the world's land glaciers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 	 <div id="slider"></div>
-	 <script type="text/javascript" src="beeSwarmGlaciers.js"></script>
 
-	 <div class="Look-At-This-Shit">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-20">
-				<p class="white-text">The melting of land glaciers is one of the two main causes of sea level rise. As the glaciers melt, their water drips off into the ocean, adding more volume. Areas with the biggest concern of glacial melting include Antarctica and Greenland, as they host many of the worlds land glaciers. The figure below includes records of how glaciers on Antarctica have changed since 1979.</p>
-			</div>
-		</div>
-	</div>
-	</div>
+	 <svg id="svgGlac" width="1250" height="650" style ="position:relative"></svg>
+	 <script type="text/javascript" src="zoomSunburstGlacier.js"></script>
+
+	 <!-- paragraph explaining visual-->
+	 <p class="white-text">Here we see recorded data of the mass of different glaciers from 1979 to 2017, measured in gigatons. The middle circle shows each glacier that data was recorded for. Each color represents a different glacier. Some of the glaciers do not show their names, however hover the mouse over each glacier will allow for you to view the name of the glacier. The outer circle shows the data recorded for each glacier. Some of the larger data is viewable in the main portion of the visual, however if you select a glacier with smaller masses, the graph will zoom in and show the data for glaciers with smaller masses. If you hover over any of the data points, the graph will show you the year the mass was taken and the mass of the glacier in gigatons.</p>
+
+	 <div class="duoImage" id="tempImageTwo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-pull-4">
+                <div class="imageText">
+                    <h2 class="header">How do these "small" changes affect us?</h2>
+                    <!-- paragraph explaining how large the data changes are-->
+                    <p class="initialText">The changes may seem small, but they are much larger than expected. The units the mass is measured in is gigatons, which to put into perspective is about the same weight as 6 million blue whales, or about 400,000 olympic pools filled with water. Between 1990 and 2015, the Totten glacier lost about 5 gigatons of ice, or about the same mass as 30 million blue whales. These changes can be seen in both individual glaciers and entire regions of Antarctica.</p>
+                    </br>
+                    <!-- paragraph pertaining to Thwaities Glacier ice loss/importance/predictions-->
+                    <p class="initialText">An important glacier scientists are currently worried about is the Thwaities Glacier in West Antarctica. Currently there is a 300 meter tall cavity forming at the base of the glacier, which could cause sea levels to significantly rise if it grows larger and causes ice to break off from the glacier. The glacier itself is currently responsible for 4% of sea level rise. The glacier also acts as a baracade, preventing ice more inland from melting and running into the ocean. Overall, the loss of the Thwaities Glacier could raise sea levels to approximately 2400 mm.</p>
+                    <!-- source : https://climate.nasa.gov/news/2838/huge-cavity-in-antarctic-glacier-signals-rapid-decay/ -->
+                 </br>
+                 <!-- paragraph pertaining to East Antarctica, and how it is losing its stability, Totten Glacier is losing ice -->
+                 <p class="initialText">East Antarctica, on the opposite side of the Thwaities Glacier, used to be considered a more stable area of Antarctica pertaining to ice loss but has scientists now concerned. The Totten Glacier area, along with other glaciers that make up approximately one-eigth of Antarctica, have been significantly losing ice within the last decade. Totten, the largest glacier in East Antarctica, has lost about 3 meters of surface height due to ice melting between 2008 and 2013. The changes to East Antarctica are small in comparison to the changes in West Antarctica, but they show how changes to Earth's climate</p>
+                 <!-- source : https://climate.nasa.gov/news/2832/more-glaciers-in-east-antarctica-are-waking-up/ -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	 
+
+	<!-- conclusion -->
+	<!-- <p class = "white-text">As we can see, nothing is guaranteed. Our planet gets worse and worse every day. Sea level rise continues to surpass it's predictions each year and new areas of glaciers begin to melt. Sea level rise poses an imminent threat to our way of life, considering how it is on a path to slowly destroy all our coastal cities. </p> -->
 
 		<!-- Footer -->
 		<footer id="footer" class="section">
