@@ -387,3 +387,19 @@ background-color: var(--secondary-color);
   letter-spacing: 1px;
   font-weight: lighter;
 }
+
+#tempLogo {
+  max-width: 30%;
+}
+
+#header {
+  background-color: #3B444C;
+}
+
+a {
+  color: lightgrey;
+}
+
+a:hover {
+  color: white;
+}

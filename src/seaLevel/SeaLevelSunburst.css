@@ -21,3 +21,19 @@ body {
             dominant-baseline: middle;
             text-anchor: middle;
         }
+
+#seaLogo {
+  max-width: 30%;
+}
+
+#header {
+  background-color: #3B444C;
+}
+
+a {
+  color: lightgrey;
+}
+
+a:hover {
+  color: white;
+}

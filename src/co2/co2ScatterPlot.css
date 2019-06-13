@@ -90,7 +90,7 @@ h3 {
 .colorBar {
   height: 260px;
   padding-top: 50px;
-  background-color: #687864;
+  background-color: #3B444C;
 }
 
 .white-text {
@@ -116,4 +116,20 @@ h3 {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1px;
   font-weight: lighter;
+}
+
+#co2Logo {
+  max-width: 30%;
+}
+
+#header {
+  background-color: #3B444C;
+}
+
+a {
+  color: lightgrey;
+}
+
+a:hover {
+  color: white;
 }
