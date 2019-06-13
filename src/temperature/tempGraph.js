@@ -47,8 +47,6 @@ var tsavg = d3v3.select("#pSVG") //svg
 var tempYears = tsavg.append("g") //main bar chart
     .attr("class", "tempYears");
 
-
- 
 // A label for the current year.
 var title = tsavg.append("text") //default title
     .attr("class", "title")
@@ -437,7 +435,7 @@ update();
 
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
-}
+} //end of compare()
 
 
 
@@ -548,12 +546,11 @@ update();
     }
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
 
-}
+} //end of compare2()
 
 
 //listeners to listen to search boxes
 d3.select("#searchText").on("input", compare )
-
 d3.select("#searchText2").on("input", compare2 )
 
  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -611,7 +608,10 @@ d3.select("#searchText2").on("input", compare2 )
                 difference = (sumt-sumt2)/2;
             }
 
-    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          });
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          
+    }); //end of leftButt 
+
+
     d3.select("#rightButt").on("click", function() {
    //     var button = d3v3.select(this);
         if(year!=2014){
@@ -667,7 +667,8 @@ d3.select("#searchText2").on("input", compare2 )
                 difference = (sumt-sumt2)/2;
                 }
 
-    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          });
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          
+    });//end of rightButt
 
   // Allow the arrow keys to change the displayed year.
   window.focus();
@@ -725,9 +726,9 @@ d3.select("#searchText2").on("input", compare2 )
         difference = (sumt-sumt2)/2;
         }
 
-globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
 
-  });
+  });//end of window listener
 
 
 function roundTo(n, digits) { //round up
@@ -746,7 +747,7 @@ function roundTo(n, digits) { //round up
         n = (n * -1).toFixed(2);
     }
     return n;
-}
+} //end of roundTo
 
 
 //update function changing years
@@ -804,7 +805,9 @@ function roundTo(n, digits) { //round up
                 }
             }
         
- }
+  }//end of update()
+
+
 //same thing as update(). needed to compare alternatingn years
  function update2() {
     if (!(year in data)) return;
@@ -858,9 +861,9 @@ function roundTo(n, digits) { //round up
     
     
 
- }
+ } //end of update2()
  
-});
+}); //end of default, afghanistan, code
 
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -884,12 +887,11 @@ function updateTitle(source){
     var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
     var ret2 = ret.replace(/.tmp.tsv/g,'');
     var ret3 = ret2.replace(/_/g,'');
-//      title2.text(ret3);
-var ret4 = ret3.replace(/data/g,' ');
-var ret5 = ret4.replace(/\//g,' ');
-
-title2.text(ret5)
+    var ret4 = ret3.replace(/data/g,' ');
+    var ret5 = ret4.replace(/\//g,' ');
+    title2.text(ret5)
     }
+
         // update function:
 function updateTest(source) {
         d3v3.tsv(source, function(error,data) {
@@ -899,7 +901,7 @@ var ret3 = ret2.replace(/_/g,' ');
 var ret4 = ret3.replace(/data/g,' ');
 var ret5 = ret4.replace(/\//g,' ');
 
-globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
+globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C");  //default text
 
 title.text(2014)
 var titSource = updateTitle(source);
@@ -928,11 +930,11 @@ var tempYears = tsavg.append("g")
 // Convert strings to numbers.
 data.forEach(function(d) {
   d.temp = +d.temp;
-
   d.year = +d.year;
   d.month = +d.month;
 });
-var dot = tsavg.select('.tempYear').data(data);
+
+var dot = tsavg.select('.tempYear').data(data); //removing any left over data
 dot.exit().remove();
 var tempz=[];
 // Compute the extent of the data set in age and years.
@@ -1038,6 +1040,9 @@ tsavg.selectAll(".month")
     .text(function(month) { return month; });
 
 
+
+
+
     function compare() {
         if(this.value<=2014 && this.value>=1901 ){
 
@@ -1077,7 +1082,9 @@ tsavg.selectAll(".month")
 
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
 
-    }
+    } //end of compare()
+
+
 
     function compare2() {
         if(this.value>=1901 && this.value<=2014){
@@ -1184,10 +1191,9 @@ tsavg.selectAll(".month")
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
 
-    }
+    }// end of compare2()
     
     d3.select("#searchText").on("input", compare )
-    
     d3.select("#searchText2").on("input", compare2 )
 
     var glob    =0;//GLOBAL VARIABLE
@@ -1246,7 +1252,10 @@ tsavg.selectAll(".month")
             difference = (sumt-sumt2)/2;
             }    
   
-  globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
+  globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       
+    })//end of leftButt
+
+
     d3.select("#rightButt").on("click", function() {
     //  var button = d3v3.select(this);
       if( year !=2014)
@@ -1301,7 +1310,8 @@ tsavg.selectAll(".month")
             difference = (sumt-sumt2)/2;
             }     
 
-  globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
+  globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       
+    })//end of rightButt
 
 
   // Allow the arrow keys to change the displayed year.
@@ -1362,7 +1372,10 @@ if(glob<glob2){
         }
 
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
-});
+}); //end of window listener
+
+
+
 function roundTo(n, digits) {
   var negative = false;
   if (digits === undefined) {
@@ -1379,7 +1392,7 @@ function roundTo(n, digits) {
       n = (n * -1).toFixed(2);
   }
   return n;
-}
+}//end of roundTo
 
 //update graph on change of year
 function update() {
@@ -1435,7 +1448,10 @@ function update() {
                 }
             }
             
- }
+ }//end of update()
+
+
+
 //same as update(). needed for alternating/comparisons
  function update2() {
     if (!(year in data)) return;
@@ -1488,6 +1504,6 @@ function update() {
 
  } //end of update()2
  
-});
+}); //end of tsv files being read
 
-        }
+        }//end of updateTest()
