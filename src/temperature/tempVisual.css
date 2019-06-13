@@ -28,6 +28,7 @@ input[type=number]::-webkit-outer-spin-button {
       ::-ms-input-placeholder { /* Microsoft Edge */
         color: black;
       }
+<<<<<<< HEAD
 #pSVG,#Tchart {
     background-color: #F7F9FB;
     border-width: 1px;
@@ -45,6 +46,17 @@ input[type=number]::-webkit-outer-spin-button {
     height: 650px;
     z-index: -1;
 }
+=======
+      #pSVG, #Tchart {
+        background-color: #F7F9FB;
+        border-width: 1px;
+        border-radius: 1px;
+        border-color: #687864;
+        padding-bottom: 0px;
+      }
+
+
+>>>>>>> 9a8b25856b3e6fc39ace44f997e3587e5b4a6265
   .y.axis path {
     display: none;
   }
