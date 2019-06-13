@@ -25,7 +25,6 @@ const partition = data => {
 
 /* SVG Container */
 const svgBurst = d3.select('#partitionSVG')
-        .style("top", "-150px")
         .style("width", "auto")
         .style("height", "auto")
         .style("font", "10px sans-serif");
