@@ -31,12 +31,13 @@ input[type=number]::-webkit-outer-spin-button {
   .y.axis line {
     stroke: rgb(26, 22, 22);
     stroke-opacity: 1;
-    shape-rendering: crispEdges;
-  }
+    stroke-width: 1px;
+}
 
   .y.axis .zero line {
     stroke: #000;
     stroke-opacity: 1;
+    stroke-width: 1.5px;
   }
 
   .title {
@@ -333,4 +334,72 @@ background-color: var(--secondary-color);
 #choroSumText, #choroSumText2, #topHeader, #botHeader {
   font-size: 18px;
   font-weight: bold;
+}
+
+.duoImage {
+  height: 700px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  padding-top: 180px;
+  background-size: cover;
+}
+
+#tempImage {
+  background-image: url(/../img/sunBG.jpg);
+}
+
+.imageText {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(17, 17, 17, 0.5);
+  border-radius: 5px;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.white-text {
+  line-height: 30px;
+  font-family: 'Raleway', sans-serif;
+  color: #F7F9FB;
+}
+
+.initialText {
+  color: #F7F9FB;
+  line-height: 30px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.colorBar {
+  height: 260px;
+  padding-top: 50px;
+  background-color: #3B444C;
+}
+
+#tempImageTwo {
+  padding-top: 50px;
+  background-image: url(/../img/moreDuotone.jpg);
+}
+
+.header, .headerBar {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  font-weight: lighter;
+}
+
+#tempLogo {
+  max-width: 30%;
+}
+
+#header {
+  background-color: #3B444C;
+}
+
+a {
+  color: lightgrey;
+}
+
+a:hover {
+  color: white;
 }

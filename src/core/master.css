@@ -109,7 +109,7 @@ body svg {
 }
 
 .menubar {
-  background-color: var(--primary-color);
+  background-color: #000000;
   overflow: hidden;
   position: fixed;
   top: 0px;
@@ -312,3 +312,6 @@ text {
       stroke-width: 1.25px;
     }
 
+#header {
+  background-color: #000000;
+}

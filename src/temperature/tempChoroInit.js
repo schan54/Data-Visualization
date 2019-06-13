@@ -1,14 +1,21 @@
+//Define many global variables to use throughout the choropleth
+
+//format number to display 1 float, used alot during choroHelper functions
 var format = d3.format(".1f");
 
+//Time format vars
 var formatDateIntoYear = d3.timeFormat("%Y");
 var formatDate = d3.timeFormat("%Y");
 
+//Create Dates
 var startDate = new Date("1902"),
     endDate = new Date("2015");
 
+//Define the two years
 var userYear = formatDateIntoYear(startDate);
 var userYear2 = formatDateIntoYear(startDate);
 
+//Create an array of 11 numbers to map to the color scale found in tempChoro
 var colorIsolatedDomain = [-5, 0, 5, 10, 15, 20, 22.5, 25, 27.5, 30, 35]
 var colorCompareDomain = [-4, -2, -1, -.5, -.25, 0, .25 ,.5, 1, 2, 4]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]

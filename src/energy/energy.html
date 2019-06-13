@@ -9,7 +9,7 @@
 		<title>Energy Visualization</title>
 
 		<!-- Google font -->
-		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat|Raleway|Roboto:400,600" rel="stylesheet">
 
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
@@ -52,7 +52,7 @@
 					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo" href="index.html">
-							<img src=".././img/logo.png" alt="logo">
+							<img id="energyLogo" src=".././img/logo.png" alt="logo">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -81,6 +81,37 @@
 			</div>
 		</header>
 		<!-- /Header -->
+
+    <div class="duoImage" id="energyImage">
+    	<div class="container">
+    		<div class="row">
+	    		<div class="col-md-pull-4">
+	    			<div class="imageText">
+	    				<h2 class="header">Energy</h2>
+				        <p class="initialText">It is important to know how the use of energy can impact climate change. As we can see in this sunburst, more and more energy is being
+    used every year. These energy include coals, natuarl gas, and oil. However, there are energy and resources that a non-renewable. Meaning
+    if we keep producing and consuming resources and energy, the world will eventually run out. We need to know how to minimize our energy usage
+    not only for the world, but for the climate as well. Fossil fuels for example generate a lot of CO2 that is a factor to global warming. This
+    visualization tells us story of how if we keep using energy like this. Climate change will accelerate.</p>
+			      	</div>
+	    		</div>
+	    	</div>
+    	</div>
+    </div>
+	<div class="colorBar" id="barTwo">
+    	<div class="container">
+      	<div class="row">
+      		<div class="col-md-20">
+      			<h2 class="headerBar">What is a Sunburst? (The Visual Below)</h2>
+      			<p class="white-text">
+					<span>It is a hierarchy of data displayed with each ring of the circle as a level of the hierarchy. The innermost ring is the top of the hierarchy while the outermost is at the bottom. </span>
+					<span> In this case, the inner ring represents each country while the outer ring represents the resource consumption in that country</span>
+				</p>
+			    </br>
+      		</div>
+      	</div>
+      </div>
+    </div>
 	<!-- Drop Down Menu -->
   <h3 id = "selectTxt">Select a File</h3>
   <select id = "selectFile" onchange="parseFile(this.value);">
@@ -95,8 +126,9 @@
 
   <svg xmlns="http://www.w3.org/2000/svg" id="partitionSVG" width="1400" height="1400" style ="position:relative; left:0%;">
     <foreignObject width="1400" height="1400">
-			<h1>Global Energy Consumption(Mtoe)</h1>
+			<h1>Global Energy Consumption</h1>
 			<p><b>HOW TO USE :</b> Hover over the visualization to view stats in the middle. CLICK a section to zoom and view more	</p>
+			<p id = "units">Units in Million Tonnes of Oil Equivalent(Mtoe)</p>
 			<!-- Slider -->
 			<input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"> Slide to change year</input>
 			<a href = "#slider" style="position:absolute;top:275px;left:30px;font-size:15px;text-decoration:underline"> Jump to Map >></a>
@@ -109,8 +141,8 @@
       <button id = "compare">COMPARE</button>
 			<button id = "isolate">ISOLATE</button>
 			<div class = "compareTxt">
-				<input autocomplete="off" type="number" placeholder="Year 1" name="search" > TO </input>
-				<input autocomplete="off" type="number" placeholder="Year 2" name="search" ></input>
+				<input id = "year1" autocomplete="off" type="number" placeholder="Year 1" name="search" > TO </input>
+				<input id = "year2" autocomplete="off" type="number" placeholder="Year 2" name="search" ></input>
 			</div>
 			<!-- Table -->
       <table id = "burstTable">
@@ -123,15 +155,16 @@
         <tbody></tbody>
 			</table>
 			<!-- Text -->
-			<div class = "storytxt">
-				<p> This Sunburst is a unique way to display different types of energy usage (consumption, natural gas, etc.).</p>
-				<p> To begin, you can see energy usages of different countries/continents/groups.</p>
-				<p> Click on a section you are interested in (United States) or look it up to zoom in for more info about its energy usage.</p>
-				<p> As you slide through the years, you can see that certain parts (Asia) are increasingly moving up in energy usage</p>
-				<p> The table on the right shows an overview of the data presented and can help understand that energy usage is climbing for certain countries and over the years</p>
-				<p>To view other energy statistics, select a new file</p>
-				<p> Click on Jump to Map to view map representation</p>
-			</div>
+		<div class = "storytxt">
+			<p> This Sunburst is a unique way to display different types of energy usage (consumption, natural gas, etc.).</p>
+			<p> To begin, you can see energy usages of different countries/continents/groups.</p>
+			<p> Click on a section you are interested in (United States) or look it up to zoom in for more info about its energy usage.</p>
+			<p> As you slide through the years, you can see that certain parts (Asia) are increasingly moving up in energy usage</p>
+			<p> The table on the right shows an overview of the data presented and can help understand that energy usage is climbing for certain countries and over the years</p>
+			<p>To view other energy statistics, select a new file</p>
+			<p> Click on Jump to Map to view map representation</p>
+		</div>
+
     </foreignObject>
   </svg>
 
@@ -140,23 +173,6 @@
 
   <script src="../core/d3-tip.js"></script>
 
-	<div class="Look-At-This-Shit">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-20">
-				<h1 class="black-text">Visualizing Climate Change</h1>
-				<p class="white-text">
-					<!-- What can we learn about all of this? You can change the width section by adjusting the col-MD value above. This fixes our stupid ass implementations. Words words words words words words words words words words words words words words words words words words words words  -->
-					It is important to know how the use of energy can impact climate change. As we can see in this sunburst, more and more energy is being
-    used every year. These energy include coals, natuarl gas, and oil. However, there are energy and resources that a non-renewable. Meaning
-    if we keep producing and consuming resources and energy, the world will eventually run out. We need to know how to minimize our energy usage
-    not only for the world, but for the climate as well. Fossil fuels for example generate a lot of CO2 that is a factor to global warming. This
-    visualization tells us story of how if we keep using energy like this. Climate change will accelerate.
-				</p>
-			</div>
-		</div>
-	</div>
-	</div>
 
 	<div id="slider"></div>
 	<script type="text/javascript" src="energyChoroInit.js"></script>

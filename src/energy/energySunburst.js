@@ -127,14 +127,22 @@ d3.json('./energyusage.json').then(data => {
         
     });
         /* Compare years*/
-    // d3.select("#compare").on("click", function(){
-    //     g.remove();
-    //     updateSunBurst("./energyusage.json", "compare"); 
-    // });
-    // d3.select("#isolate").on("click", function(){
-    //     g.remove();
-    //     updateSunBurst("./energyusage.json", 0); 
-    // });
+    d3.select("#compare").on("click", function(){
+        var year1 = d3.select("#year1").node().value;
+        var year2 = d3.select("#year2").node().value;
+        if (year1 < 1990 || year1 > 2017 || year2 < 1990 || year2 > 2017){
+            alert("Invalid Input");
+        }
+        else{
+            g.selectAll("g").remove();
+            updateSunBurst("./energyusage.json", [year1 -1990, year2 - 1990]); 
+        }
+        
+    });
+    d3.select("#isolate").on("click", function(){
+        g.selectAll("g").remove();
+        updateSunBurst("./energyusage.json", 0); 
+    });
 
     /* Search By Country Name */
     d3.select("#searchSubmit").on("click", function(){
@@ -233,33 +241,39 @@ d3.json('./energyusage.json').then(data => {
 function parseFile(file) {
     switch(file){
       case "consumption":
-        d3.select("h1").text("Global Energy Consumption(Mtoe)");
+        d3.select("h1").text("Global Energy Consumption");
+        d3.select("units").text("Units in Million Tonnes of Oil Equivalent(Mtoe)");
         g.selectAll("g").transition().remove();
         d3.select("#yearslider").attr("value", 1990);
         updateSunBurst("./energyusage.json", 0);
         break;
       case "production":
         d3.select("h1").text("Energy Production");
+        d3.select("units").text("Units in Million Tonnes of Oil Equivalent(Mtoe)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Total energy production.json", 0);
         break;
       case "crudeoil":
         d3.select("h1").text("Crude Oil Consumption");
+        d3.select("units").text("Units in Megatonne(Mt)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Crude oil input to refineries.json", 0);
         break;
       case "oilproducts":
         d3.select("h1").text("Oil Products Consumption");
+        d3.select("units").text("Units in Megatonne(Mt)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Oil products domestic consumpt.json", 0);
         break;
       case "naturalgas":
         d3.select("h1").text("Natural Gas Production");
+        d3.select("units").text("Units in Billion Cubic Meters(bcm)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Natural gas production.json", 0);
         break;
       default:
-        d3.select("h1").text("Global Energy Consumption(Mtoe)");
+        d3.select("h1").text("Global Energy Consumption");
+        d3.select("units").text("Units in Million Tonnes of Oil Equivalent(Mtoe)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyusage.json", 0);
         break;
@@ -269,10 +283,12 @@ function parseFile(file) {
 function updateSunBurst(file, year){
     d3.json(file).then(data => {
         var datas = data[year];
-        // if ( year == "compare")
-        // {
-        //     datas = {name:"compare", children: data};
-        // }
+        if ( Array.isArray(year))
+        {
+            datas = {name:"compare", children: [data[year[0]], data[year[1]]] };
+            
+        }
+
         const root = partition(datas);
         const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, datas.children.length + 1));
     
@@ -306,11 +322,14 @@ function updateSunBurst(file, year){
                 .attr("class", "midText")
                 .text(formatNum(d.value))
                 .style("font-size", "50px");
-            g.append("text")
-                .attr("class", "midText")
-                .attr("dy", "1.5em")
-                .text(percentage.toFixed(2)+"%")
-                .style("font-size", "35px");
+            if (!isNaN(percentage)){
+                g.append("text")
+                    .attr("class", "midText")
+                    .attr("dy", "1.5em")
+                    .text(percentage.toFixed(2)+"%")
+                    .style("font-size", "35px");
+            }    
+
         })
             .on("mouseout", function(d){
             g.selectAll(".midText").remove();
@@ -352,14 +371,21 @@ function updateSunBurst(file, year){
             
         });
                 /* Compare years*/
-        // d3.select("#compare").on("click", function(){
-        //     g.remove();
-        //     updateSunBurst(file, "compare"); 
-        // });
-        // d3.select("#isolate").on("click", function(){
-        //     g.remove();
-        //     updateSunBurst(file, 0); 
-        // });
+        d3.select("#compare").on("click", function(){
+            var year1 = d3.select("#year1").node().value;
+            var year2 = d3.select("#year2").node().value;
+            if (year1 < 1990 || year1 > 2017 || year2 < 1990 || year2 > 2017){
+                alert("Invalid Input");
+            }
+            else{
+                g.selectAll("g").remove();
+                updateSunBurst("./energyusage.json", [year1 -1990, year2 - 1990]); 
+            }
+        });
+        d3.select("#isolate").on("click", function(){
+            g.selectAll("g").remove();
+            updateSunBurst(file, 0); 
+        });
         /* Search By Country Name */
         d3.select("#searchSubmit").on("click", function(){
             var name = d3.select("#searchText").node().value;

@@ -61,16 +61,8 @@ var label2 = slider.append("text")
         .attr("text-anchor", "middle")
         .text(userYear2)
         .attr("transform", "translate(0," + (-25) + ")")
-				.attr("id", "label2")
-				.on("click",function(d) {
-					textInputBox()
-				});
+				.attr("id", "label2");
 
-function getTextInput() {
-	console.log("clicked!")
-  userYear2 = "2000";
-  return userYear2;
-}
 
 function update(h) {
   // update position and text of label according to slider scale
