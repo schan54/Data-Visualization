@@ -1,3 +1,4 @@
+//Function for displaying top5 of isolated
 function displayMaxIso(max5, min5) {
 
   d3.select("#topHeader").remove();
@@ -41,6 +42,8 @@ function displayMaxIso(max5, min5) {
     choroSvg.append("text").html("5. " + min5[4][2].substring(0, 18) + ": " + format(min5[4][1])).attr("id", "bot5").attr("x", 1050).attr("y", 160);
 }
 
+
+//Function for displaying sum data for isolated
 function displaySumIso(a) {
   d3.select("#choroSum").remove();
   d3.select("#choroSumText").remove();
@@ -55,6 +58,7 @@ function displaySumIso(a) {
 
 }
 
+//Function for displaying top5 for compare
 function displayMaxCompare(hash1, hash2) {
 
   d3.select("#topHeader").remove();
@@ -120,6 +124,7 @@ loop2:
 
 }
 
+//function for sum display for compare
 function displaySumCompare(a, b) {
   d3.select("#choroSum").remove();
   d3.select("#choroSumText").remove();
@@ -204,6 +209,7 @@ loop2:
 
 }
 
+//simple bubblesort to sort hash --> LAZY
 function bubbleSort(a){
   var swapp;
   var n = a.length-1;
@@ -225,6 +231,7 @@ function bubbleSort(a){
   return x;
 }
 
+//First call of sort hash which will call bubble sort once multidimensional array is created
 function sortHash(hashmap, year) {
 
   var allCountries = [];
