@@ -1,18 +1,18 @@
 var margin1 = {top: 150, right: 40, bottom: 40, left: 300},
-    width = 1250 - margin1.left - margin1.right,
-    height = 650 - margin1.top - margin1.bottom,
+    width   = 1250 - margin1.left - margin1.right,
+    height  = 650 - margin1.top - margin1.bottom,
     barWidth1 = Math.floor(width / 19) - 1;
 
-var glob=0;//GLOBAL VARIABLE for years
-var glob2=0; //global variable for years
-var value2=[];//stores temperature values
-var value3=[]; //stores temperature values
-var track = 0;//tracks alternating years for short compare
+var glob    = 0;//GLOBAL VARIABLE for years
+var glob2   = 0; //global variable for years
+var value2  = [];//stores temperature values
+var value3  = []; //stores temperature values
+var track   = 0;//tracks alternating years for short compare
 
 //rename to prevent issues with other code/svgs
 var height1 = height;
 var width1 = width;
-    var tGraphx = d3v3.scale.linear()
+var tGraphx = d3v3.scale.linear()
     .range([barWidth1 / 2, width1 - barWidth1 / 2]);
 
 var tGraphy = d3v3.scale.linear()
@@ -41,14 +41,12 @@ var tsavg = d3v3.select("#pSVG") //svg
   .append("g")
     .attr("transform", "translate(" + margin1.left + "," + margin1.top + ")");
 
-    var birthyears1 = tsavg.append("g") //bar chart for compare 
-        .attr("class", "birthyears1");
-// A sliding container to hold the bars by birthyear.
-var birthyears = tsavg.append("g") //main bar chart
-    .attr("class", "birthyears");
+    var tempYears1 = tsavg.append("g") //bar chart for compare
+        .attr("class", "tempYears1");
+// A sliding container to hold the bars by tempYear.
+var tempYears = tsavg.append("g") //main bar chart
+    .attr("class", "tempYears");
 
-
- 
 // A label for the current year.
 var title = tsavg.append("text") //default title
     .attr("class", "title")
@@ -56,26 +54,26 @@ var title = tsavg.append("text") //default title
     .text(2014);
 
 //Text explanations below
-    var comp1 = tsavg.append("text")
+var comp1 = tsavg.append("text")
     .attr("class", "compStyle")
     .attr("dx","-16em")
     .attr("dy", "5em")
     .text("Compare two years");   
 
-    var comp2 = tsavg.append("text")
+var comp2 = tsavg.append("text")
     .attr("class", "compStyle")
     .attr("dx","-16em")
     .attr("dy", "7em")
     .text("Early year")   
     .style("fill",'#44475a  ');
-    var comp4 = tsavg.append("text")
+var comp4 = tsavg.append("text")
     .attr("class", "compStyle")
     .attr("dx","-10.4em")
     .attr("dy", "7em")
     .text(" █")   
     .style("fill",'#44475a  ');
 
-    var comp3 = tsavg.append("text")
+var comp3 = tsavg.append("text")
     .attr("class", "compStyle")
     .attr("dx","-16em")
     .attr("dy", "12.3em")
@@ -132,10 +130,9 @@ var insn4 = tsavg.append("text")
     .text(" temperatures");    
 var globTit = tsavg.append("text")
     .attr("class", "globTit")
-    .attr("dy", "-1.5em");
-var globTit2 = tsavg.append("text")
-    .attr("class", "globTit2")
-    .attr("dy", "2em");    
+    .attr("dy", "-1em")
+    .attr("dx", "-.5em");
+    
 var title2 = tsavg.append("text")
     .attr("class", "title2")
     .attr("dx","7.2em")
@@ -149,30 +146,31 @@ var dataInfo2 = tsavg.append("text")
     .attr("class", "dataInfo")
     .attr("dx","30em")
     .attr("dy", "-1em")
+
+//reads the first tsv. Default of afghanistan    
 d3v3.tsv("data/crucy.v3.23.1901.2014.Afghanistan.tmp.tsv", function(error, data) {
 
   // Convert strings to numbers. for tsv
   data.forEach(function(d) {
     d.temp = +d.temp;
-
     d.year = +d.year;
     d.month = +d.month;
     
   });
 
   // Compute the extent of the data set in age and years.
-  var month1 = d3v3.max(data, function(d) { return d.month; }),
-      year0 = d3v3.min(data, function(d) { return d.year; }),
-      year1 = d3v3.max(data, function(d) { return d.year; }),
-      year = year1,
-      tests = d3v3.max(data,function(d){ return d.temp})
-      tests2 = d3v3.min(data,function(d){ return d.temp})
+  var month1    = d3v3.max(data, function(d) { return d.month; }),
+      year0     = d3v3.min(data, function(d) { return d.year; }),
+      year1     = d3v3.max(data, function(d) { return d.year; }),
+      year      = year1,
+      tests     = d3v3.max(data,function(d){ return d.temp})
+      tests2    = d3v3.min(data,function(d){ return d.temp})
 
       dataInfo.text("Max Temp: "  + tests+"°C"); 
       dataInfo2.text("Min Temp: "  + tests2+"°C");
 
 
-var selects = document.getElementsByTagName('select'); //deselects dropdown so left right arrows dont change countries
+var selects = document.getElementsByTagName('inds'); //deselects dropdown so left right arrows dont change countries
 for (var i = 0; i < selects.length; i++){
     selects[i].addEventListener('keydown',function(e){
         var key = e.which || e.keyCode;
@@ -209,50 +207,49 @@ for (var i = 0; i < selects.length; i++){
         }
     })
 }
-  // Update the scale domains.
-    tGraphx.domain([ year1,year1 - month1]);
-
-    tGraphy.domain([ -40,40]);
+// Update the scale domains.
+tGraphx.domain([ year1,year1 - month1]);
+tGraphy.domain([ -40,40]);
 
 
   // Produce a map from year/months to temperature.
-  data = d3v3.nest()
-      .key(function(d) { return d.year; })
-      .key(function(d) { return d.year - d.month; })
-      .rollup(function(v) { return v.map(function(d) { return d.temp; }); })
-      .map(data);
+data = d3v3.nest()
+    .key(function(d) { return d.year; })
+    .key(function(d) { return d.year - d.month; })
+    .rollup(function(v) { return v.map(function(d) { return d.temp; }); })
+    .map(data);
 
   // Add an axis to show the temperature values.
-  tsavg.append("g")
-      .attr("class", "y axis")
-      .attr("transform", "translate(" + width1 + ",0)")
-      .call(yAxis)
+tsavg.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(" + width1 + ",0)")
+    .call(yAxis)
     .selectAll("g")
     .filter(function(value) { return !value; })
       .classed("zero", true);
-  // Add labeled rects for each birthyear (so that no enter or exit is required).
+  // Add labeled rects for each tempYear (so that no enter or exit is required).
   var value1 = [];//array of temps for this year 
-  var i=0;
-  var tyear=0;
+  var i      = 0;
+  var tyear  = 0; //declarations for tempyear1
+
   //styling lines
   tsavg.append("line").attr("x1", 200).attr("y1", -150).attr("x2", 200).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
   tsavg.append("line").attr("x1", 400).attr("y1", -150).attr("x2", 400).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
   tsavg.append("line").attr("x1", -25).attr("y1", -150).attr("x2", -25).attr("y2", 500).attr("stroke-width", 1).attr("stroke", "black");
-
   tsavg.append("line").attr("x1", 950).attr("y1", -70).attr("x2", -25).attr("y2", -70).attr("stroke-width", 1).attr("stroke", "black");
   tsavg.append("line").attr("x1", 950).attr("y1", -15).attr("x2", -25).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
   tsavg.append("line").attr("x1", 630).attr("y1", -70).attr("x2", 630).attr("y2", -15).attr("stroke-width", 1).attr("stroke", "black");
 
 
-  //birthyear=temperature bars
-  var birthyear = birthyears.selectAll(".birthyear")
+  //tempYear=temperature bars
+  var tempYear = tempYears.selectAll(".tempYear")
       .data(d3v3.range(year0 - month1, year1 + 1, 1))
     .enter().append("g")
-      .attr("class", "birthyear")
-      .attr("transform", function(birthyear) { return "translate(" + tGraphx(birthyear) + ",0)"; });
+      .attr("class", "tempYear")
+      .attr("transform", function(tempYear) { return "translate(" + tGraphx(tempYear) + ",0)"; });
 
-  birthyear.selectAll("rect")
-      .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+  tempYear.selectAll("rect") //creates the bars of temperature
+      .data(function(tempYear) { return data[year][tempYear] || [-800, -800]; }) //-800 needed to hide bars when not viewing that year
     .enter().append("rect")
       .attr("fill-opacity",".6")
       .attr("fill","#44475a")
@@ -260,10 +257,10 @@ for (var i = 0; i < selects.length; i++){
       .attr("x", -barWidth1 / 2)
       .attr("width", barWidth1)
       .attr("y", tGraphy)
-      .attr("sum", function(value) {value1.push(value);})
-      .attr("year",function(d){return tyear=year})
-      .attr("height", function(value) {return (height1 - tGraphy(value))})
-       .on("mouseover", function(d) {
+      .attr("sum", function(value) {value1.push(value);})   //value is a month's temperature
+      .attr("year",function(d){return tyear=year})          //tyear for manipulation
+      .attr("height", function(value) {return (height1 - tGraphy(value))}) //height of the bars
+       .on("mouseover", function(d) {                       //mouse overs to display more info
             divs.transition()
                 .duration(200)
                 .style("opacity", .9);
@@ -281,20 +278,21 @@ for (var i = 0; i < selects.length; i++){
 
 
 var yeart=2014;   //temporary year storage
-//new birthyear/ temperature bars for 2nd compare. pink
-        var birthyear1 = birthyears1.selectAll(".birthyear1")
-        .data(d3v3.range(year0 - month1, year1 + 1, 1))
-        .enter().append("g")
-        .attr("class", "birthyear1")
-        .attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1+(2014-yeart)) + ",0)"; });
+//new tempYear/ temperature bars for 2nd compare. pink
+var tempYear1 = tempYears1.selectAll(".tempYear1")
+    .data(d3v3.range(year0 - month1, year1 + 1, 1))
+    .enter().append("g")
+    .attr("class", "tempYear1")
+    .attr("transform", function(tempYear1) { return "translate(" + tGraphx(tempYear1+(2014-yeart)) + ",0)"; });
 
-    tsavg.append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 280 - margin1.left)
-      .attr("x",0 - (height1 / 2))
-      .attr("dy", "1em")
-      .style("text-anchor", "middle")
-      .text("Temperature °C");
+tsavg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 280 - margin1.left)
+    .attr("x",0 - (height1 / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Temperature °C");
+
 var monthz = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']; //labels for months
 
 tsavg.append("text")
@@ -383,8 +381,8 @@ tsavg.append("text")
 
 
   // Add labels to show months (separate; not animated).
-  tsavg.selectAll(".month")
-      .data(d3v3.range(1, month1 + 2, 1))
+tsavg.selectAll(".month")
+    .data(d3v3.range(1, month1 + 2, 1))
     .enter().append("text")
       .attr("class", "month")
   //    .attr("x", function(month) { return tGraphx(year - month+1); })
@@ -392,33 +390,33 @@ tsavg.append("text")
       .attr("dy", ".71em")
     //  .text(function(month) { return month; }); 
 
-        globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
+globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
 //compare function for searchbox 1
 function compare() {
 if(this.value>=1901 && this.value<=2014){
-    birthyear.select("text").remove();
+    tempYear.select("text").remove(); //removes any data left from previous search
 
     year =this.value;
     title.text(year);
-    birthyears.transition()
+    tempYears.transition()
         .duration(750)
         .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
-    birthyear.selectAll("rect")
-        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+    tempYear.selectAll("rect") //create bars for entered year
+        .data(function(tempYear) { return data[year][tempYear] || [-800, -800]; })
       .transition()
         .duration(750)
         .attr("y", tGraphy)
 
         .attr("height", function(value) { return height1 - tGraphy(value); });
-update();
-        birthyear.append("text")
+    update();
+        tempYear.append("text")
         .attr("class", "texted")
         .attr("y", height1 + margin1.bottom -65 )
-        .text(function(birthyear) { return data[year][birthyear]; });
+        .text(function(tempYear) { return data[year][tempYear]; });
         const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
         function add(accumulator, a) {
             return accumulator + a;
@@ -429,279 +427,162 @@ update();
         function add1(accumulator1, a1) {
             return accumulator1 + a1;
         }
-        var sumt = sum/12;
-        var sumt2=sum2/12;
-        console.log(sumt);
-        console.log(sumt2);
+        var sumt    = sum/12;   //12 months
+        var sumt2   = sum2/12;
 
         var difference=0;
         difference = (sumt2-sumt)/2;
-    console.log(difference);
+
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
-}
+} //end of compare()
 
 
 
 //compare for searchbox 2. pink
 function compare2() {
-    if(this.value>=1901 && this.value<=2014){
+    if(this.value>=1901 && this.value<=2014){ //only accept years in this range
 
     yeart =this.value;
     title.text(yeart);
 
-    var dotzz = tsavg.select('.birthyears1').data(data);
+    var dotzz = tsavg.select('.tempYears1').data(data); //remove left over data from prev search
     dotzz.exit().remove();     
-    var dotzz = tsavg.select('.birthyears1').data(data);
+    var dotzz = tsavg.select('.tempYears1').data(data);
     dotzz.exit().remove();
-var birthyears1 = tsavg.append("g")
-.attr("class", "birthyears1");
-var birthyear1 = birthyears1.selectAll(".birthyear1")
-.data(d3v3.range(year0 - month1, year1 + 1, 1))
-.enter().append("g")
-.attr("class", "birthyear1")
-.attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1+(2014-yeart)) + ",0)"; });
 
-birthyear1.selectAll("rect")
-.data(function(birthyear1) { return data[yeart][birthyear1] || [-800, -800]; })
-.enter().append("rect")
-.attr('class', 'rect1')
-.attr("x", -barWidth1 / 2)
-.attr("width", barWidth1)
-.attr("y", tGraphy)
-.attr("z",-1)
-.attr("sum", function(value) {value1.push(value);})
-.attr("year",function(d){return tyear=yeart})
-.attr("year",function(d){return glob2=yeart;})//NEW
+    var tempYears1 = tsavg.append("g") //create new graph for this second search
+    .attr("class", "tempYears1");
+    var tempYear1 = tempYears1.selectAll(".tempYear1")
+    .data(d3v3.range(year0 - month1, year1 + 1, 1))
+    .enter().append("g")
+    .attr("class", "tempYear1")
+    .attr("transform", function(tempYear1) { return "translate(" + tGraphx(tempYear1+(2014-yeart)) + ",0)"; });
 
-.attr("sum", function(value) {value3.push(value);})//new
-.attr("height", function(value) {return (height1 - tGraphy(value))})
-.attr("fill-opacity",".6")
-.attr("fill","#e75480 ")
-  .on("mouseover", function(d) {
-      divs.transition()
-          .duration(200)
-          .style("opacity", .9);
-        //  divs.html(d)
-        divs.html("<strong>Temperature: </strong>" + "<span class=\"details\">"
-        + d+ "</span><br>" )
-          .style("left", (d3v3.event.pageX) + "px")
-          .style("top", (d3v3.event.pageY) + "px");                
-      })
-  .on("mouseout", function(d) {
-      divs.transition()
-          .duration(500)
-          .style("opacity", 0);
-  });
-  birthyear1.append("text")
-  .attr("class", "texted2")
+    tempYear1.selectAll("rect")
+    .data(function(tempYear1) { return data[yeart][tempYear1] || [-800, -800]; })
+    .enter().append("rect")
+    .attr('class', 'rect1')
+    .attr("x", -barWidth1 / 2)
+    .attr("width", barWidth1)
+    .attr("y", tGraphy)
+    .attr("z",-1)
+    .attr("sum", function(value) {value1.push(value);})
+    .attr("year",function(d){return tyear=yeart})
+    .attr("year",function(d){return glob2=yeart;})//NEW
 
-  .attr("y", height1 + margin1.bottom -45 )
-  .text(function(birthyear) { return data[yeart][birthyear]; });
+    .attr("sum", function(value) {value3.push(value);})//new
+    .attr("height", function(value) {return (height1 - tGraphy(value))})
+    .attr("fill-opacity",".6")
+    .attr("fill","#e75480 ")
+    .on("mouseover", function(d) {
+        divs.transition()
+            .duration(200)
+            .style("opacity", .9);
+            //  divs.html(d)
+            divs.html("<strong>Temperature: </strong>" + "<span class=\"details\">"
+            + d+ "</span><br>" )
+            .style("left", (d3v3.event.pageX) + "px")
+            .style("top", (d3v3.event.pageY) + "px");                
+        })
+    .on("mouseout", function(d) {
+        divs.transition()
+            .duration(500)
+            .style("opacity", 0);
+    });
+    tempYear1.append("text")
+    .attr("class", "texted2")
 
-update();
-//manipulates array to get temperature for that year
-  var tem= 2014-glob2;
-  var tempor=value3.length;
-  var newtem= 2014-glob2;
-  if(tem >12){newtem=tem*2-tem;}
-  
-  if(tem<=12){
+    .attr("y", height1 + margin1.bottom -45 )
+    .text(function(tempYear) { return data[yeart][tempYear]; });
 
-  while(value3.length!=12)
-      {
+    update();
+    //manipulates array to get temperature for that year
+    var tem= 2014-glob2;
+    var tempor=value3.length;
+    var newtem= 2014-glob2;
+    if(tem >12){newtem=tem*2-tem;}
+    
+    if(tem<=12){
 
-          while(value3.length>=tempor-newtem*2+1)
-          {
-              value3.pop();
-
-          }
-          value3.shift();
-
-      }
-  }
-
-  if(tem>12){
-      while(value3.length!=12)
-          {
-              while(value3.length>tempor-newtem*2)
-              {
-                  value3.pop();
-  
-              }
-              value3.shift();
-  
-          }
-      }
-//math to find difference between years
-  const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
-  function add(accumulator, a) {
-      return accumulator + a;
-  }
-
-
-  const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
-  function add1(accumulator1, a1) {
-      return accumulator1 + a1;
-  }
-  var sumt = sum/12;
-  var sumt2=sum2/12;
-console.log(sumt);
-console.log(sumt2);
-  var difference=0;
-  difference = (sumt2-sumt)/2;
-  console.log(difference);
-globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
+    while(value3.length!=12)
+        {
+            while(value3.length>=tempor-newtem*2+1)
+            {
+                value3.pop();
+            }
+            value3.shift();
+        }
     }
-    else{ globTit.text("Enter a valid year from 1901 to 2014");}
 
-}
+    if(tem>12){
+        while(value3.length!=12)
+            {
+                while(value3.length>tempor-newtem*2)
+                {
+                    value3.pop();
+                }
+                value3.shift();
+            }
+        }
+    //math to find difference between years
+    const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+    function add(accumulator, a) {
+        return accumulator + a;
+    }
 
 
+    const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+    function add1(accumulator1, a1) {
+        return accumulator1 + a1;
+    }
+    var sumt = sum/12;
+    var sumt2=sum2/12;
 
+    var difference=0;
+    difference = (sumt2-sumt)/2;
+
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
+        }
+        else{ globTit.text("Enter a valid year from 1901 to 2014");}
+
+} //end of compare2()
+
+
+//listeners to listen to search boxes
 d3.select("#searchText").on("input", compare )
-
-
 d3.select("#searchText2").on("input", compare2 )
 
  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
  //buttons for decrement increment years
-    d3.select("#leftButt").on("click", function() {
-       // var button = d3v3.select(this);
-        year = Math.max(year0, year - 1);
-        track++;    
-        console.log(year);
+d3.select("#leftButt").on("click", function() {
+    // var button = d3v3.select(this);
+    year = Math.max(year0, year - 1);
+    track++;    
 
-        if(track%2 == 1)
-        {
-            //removes text when changing year
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-
-            birthyear.select("text").remove();
-            birthyear.select("text").remove();
-            birthyear.select("text").remove();
-
-        update();
-        }
-        else if (track%2 == 0)
-        {
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-        
-            birthyear.select("text").remove();
-            birthyear.select("text").remove();
-            birthyear.select("text").remove();
-
-            update2();
-        }
-        if (track ==1){update2();}
-    
-        const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
-        function add(accumulator, a) {
-            return accumulator + a;
-        }
-    
-    
-        const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
-        function add1(accumulator1, a1) {
-            return accumulator1 + a1;
-        }
-        var sumt = sum/12;
-        var sumt2=sum2/12;
-      console.log(sumt);
-      console.log(sumt2);
-        var difference=0;
-        difference = (sumt2-sumt)/2;
-        console.log(difference);
-    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          });
-    d3.select("#rightButt").on("click", function() {
-   //     var button = d3v3.select(this);
-        if(year!=2014){
-        year = Math.max(year0, year);
-        year++;
-        }
-        track++;    
-        if(track%2 == 1)
-        {
-            //removes text when changing years
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-        
-            birthyear.select("text").remove();
-            birthyear.select("text").remove();
-            birthyear.select("text").remove();
-        
-        update();
-        }
-        else if (track%2 == 0)
-        {
-
-            var dotzz = tsavg.select('.birthyears1').data(data);
-            dotzz.exit().remove();
-        
-            birthyear.select("text").remove();
-            birthyear.select("text").remove();
-            birthyear.select("text").remove();
-
-            update2();
-        }
-
-        if (track ==1){update2();}
-
-        const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
-        function add(accumulator, a) {
-            return accumulator + a;
-        }
-
-
-        const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
-        function add1(accumulator1, a1) {
-            return accumulator1 + a1;
-        }
-        var sumt = sum/12;
-        var sumt2=sum2/12;
-      console.log(sumt);
-      console.log(sumt2);
-        var difference=0;
-        difference = (sumt2-sumt)/2;
-        console.log(difference);
-    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          });
-
-  // Allow the arrow keys to change the displayed year.
-  window.focus();
-//listens to left and right arrow keys
-  d3v3.select(window).on("keydown", function() {
-    switch (d3v3.event.keyCode) {
-      case 37:  year = Math.max(year0, year - 1);//decrement/left arrow
-                track++;
-
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-
-                birthyear.select("text").remove();
-                birthyear.select("text").remove();
-                birthyear.select("text").remove();
-                break;
-                
-      case 39:  year = Math.min(year1, year + 1);//increment/right arrow
-                track++;
-
-                var dotzz = tsavg.select('.birthyears1').data(data);
-                dotzz.exit().remove();
-                birthyear.select("text").remove();
-                birthyear.select("text").remove();
-                birthyear.select("text").remove();
-                break;
-    }
-    if(track%2 == 1)//alternates to compare years briefly
+    if(track%2 == 1)
     {
+        //removes text when changing year
+        var dotzz = tsavg.select('.tempYears1').data(data);
+        dotzz.exit().remove(); //remove any left over data
+
+        tempYear.select("text").remove();
+        tempYear.select("text").remove();
+        tempYear.select("text").remove();
+
     update();
     }
     else if (track%2 == 0)
     {
+        var dotzz = tsavg.select('.tempYears1').data(data);
+        dotzz.exit().remove();
+    
+        tempYear.select("text").remove();
+        tempYear.select("text").remove();
+        tempYear.select("text").remove();
+
         update2();
     }
     if (track ==1){update2();}
@@ -718,25 +599,149 @@ d3.select("#searchText2").on("input", compare2 )
     }
     var sumt = sum/12;
     var sumt2=sum2/12;
-  console.log(sumt);
-  console.log(sumt2);
+
     var difference=0;
+    if(glob<glob2){
+        difference = (sumt2-sumt)/2;
+        }
+        if(glob>glob2){
+            difference = (sumt-sumt2)/2;
+        }
 
+globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          
+}); //end of leftButt 
+
+
+d3.select("#rightButt").on("click", function() {
+//     var button = d3v3.select(this);
+    if(year!=2014){
+    year = Math.max(year0, year);
+    year++;
+    }
+    track++;    
+    if(track%2 == 1)
+    {
+        //removes text when changing years
+        var dotzz = tsavg.select('.tempYears1').data(data);
+        dotzz.exit().remove();
+    
+        tempYear.select("text").remove();
+        tempYear.select("text").remove();
+        tempYear.select("text").remove();
+    
+    update();
+    }
+    else if (track%2 == 0)
+    {
+
+        var dotzz = tsavg.select('.tempYears1').data(data);
+        dotzz.exit().remove();
+    
+        tempYear.select("text").remove();
+        tempYear.select("text").remove();
+        tempYear.select("text").remove();
+
+        update2();
+    }
+
+    if (track ==1){update2();}
+
+    const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+    function add(accumulator, a) {
+        return accumulator + a;
+    }
+
+
+    const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+    function add1(accumulator1, a1) {
+        return accumulator1 + a1;
+    }
+    var sumt = sum/12;
+    var sumt2=sum2/12;
+
+    var difference=0;
+    if(glob<glob2){
+        difference = (sumt2-sumt)/2;
+        }
+        if(glob>glob2){
+            difference = (sumt-sumt2)/2;
+            }
+
+globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");          
+});//end of rightButt
+
+
+
+// Allow the arrow keys to change the displayed year.
+window.focus();
+//listens to left and right arrow keys
+d3v3.select(window).on("keydown", function() {
+switch (d3v3.event.keyCode) {
+    case 37:  year = Math.max(year0, year - 1);//decrement/left arrow
+            track++;
+
+            var dotzz = tsavg.select('.tempYears1').data(data);
+            dotzz.exit().remove();
+
+            tempYear.select("text").remove(); //removing any leftover data
+            tempYear.select("text").remove();
+            tempYear.select("text").remove();
+            break;
+            
+    case 39:  year = Math.min(year1, year + 1);//increment/right arrow
+            track++;
+
+            var dotzz = tsavg.select('.tempYears1').data(data);
+            dotzz.exit().remove();
+            tempYear.select("text").remove();
+            tempYear.select("text").remove();
+            tempYear.select("text").remove();
+            break;
+}
+
+if(track%2 == 1)//alternates to compare years briefly
+{
+    update();
+}
+else if (track%2 == 0)
+{
+    update2();
+}
+
+if (track ==1)
+{
+    update2();
+}
+
+const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+function add(accumulator, a) {
+    return accumulator + a;
+}
+
+const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+function add1(accumulator1, a1) {
+    return accumulator1 + a1;
+}
+var sumt = sum/12;
+var sumt2=sum2/12;
+
+var difference=0;
+
+if(glob<glob2)
+{                 //prevent incorrect subtraction due to alternating
     difference = (sumt2-sumt)/2;
-
-    console.log(difference);
+}
+if(glob>glob2)
+{
+    difference = (sumt-sumt2)/2;
+}
 
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");    
 
-//console.log(sum); // 6
+});//end of window listener
 
-//console.log(sum2); // 6
-  //  console.log(value2);
-  //  console.log(value3);
-//console.log(glob2);
-//console.log(glob);
-  });
-  function roundTo(n, digits) {
+
+function roundTo(n, digits) { //round up
     var negative = false;
     if (digits === undefined) {
         digits = 0;
@@ -752,86 +757,88 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
         n = (n * -1).toFixed(2);
     }
     return n;
-}
+} //end of roundTo
 
 
 //update function changing years
-  function update() {
-    if (!(year in data)) return;
-    title.text(year);
+function update() {
+if (!(year in data)) return;
+title.text(year);
 
-    birthyears.transition()
-        .duration(750)
-        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
+tempYears.transition()
+    .duration(750)
+    .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
-    birthyear.selectAll("rect")
-        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+tempYear.selectAll("rect")
+    .data(function(tempYear) { return data[year][tempYear] || [-800, -800]; })
 
-    .transition()
-        .duration(750)
-        .attr("y", tGraphy)
-    
-        .attr("year",function(d){return glob=year;})
+.transition()
+    .duration(750)
+    .attr("y", tGraphy)
 
-        .attr("sum", function(value) {value2.push(value);})//new
+    .attr("year",function(d){return glob=year;})
 
-        .attr("height", function(value) { return height1 - tGraphy(value); })
+    .attr("sum", function(value) {value2.push(value);})//new temps stored here
+
+    .attr("height", function(value) { return height1 - tGraphy(value); })
+
+
 //manipulating array for temps
-        var tem= 2014-glob;
-        var tempor=value2.length;
-        var newtem= 2014-glob;
+var tem= 2014-glob; //distance away from ends of arrays
+var tempor=value2.length;
+var newtem= 2014-glob;
 
-        if(tem >12){newtem=tem*2-tem;}
+if(tem >12){newtem=tem*2-tem;}
 
-        if(tem<12){
-        while(value2.length!=12)
-            {
-                while(value2.length>tempor-newtem)
-                {
-                    value2.pop();
-    
-                }
-                value2.shift();
-    
-            }
+if(tem<=12){
+while(value2.length!=12)
+    {
+        while(value2.length>tempor-newtem)
+        {
+            value2.pop();
         }
-        if(tem==113){
-            while (value2.length!=12){
-                value2.pop();
-            }                             
+        value2.shift();
+
+    }
+}
+if(tem==113){
+    while (value2.length!=12)
+    {
+        value2.pop();
+    }                             
+}
+if(tem>12){
+    while(value2.length!=12)
+    {
+        while(value2.length>tempor-newtem+(12-tem))
+        {
+            value2.pop();
         }
-        if(tem>12){
-            while(value2.length!=12)
-                {
-                    while(value2.length>tempor-newtem+(12-tem))
-                    {
-                        value2.pop();
-        
-                    }
-                    value2.shift();
-        
-                }
-            }
-        
- }
+        value2.shift();
+    }
+}
+
+}//end of update()
+
+
 //same thing as update(). needed to compare alternatingn years
- function update2() {
+function update2() {
     if (!(year in data)) return;
     title.text(year);
 //    var value3=[];
-    birthyears.transition()
+    tempYears.transition()
         .duration(750)
         .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
-    birthyear.selectAll("rect")
-        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+    tempYear.selectAll("rect")
+        .data(function(tempYear) { return data[year][tempYear] || [-800, -800]; })
       .transition()
         .duration(750)
         .attr("y", tGraphy)
     
         .attr("year",function(d){return glob2=year;})
 
-        .attr("sum", function(value) {value3.push(value);})//new
+        .attr("sum", function(value) {value3.push(value);})//new where temps are stored
 
         .attr("height", function(value) { return height1 - tGraphy(value); });
     var tem= 2014-glob2;
@@ -841,35 +848,30 @@ globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(dif
     
     if(tem<=12){
     while(value3.length!=12)
+    {
+        while(value3.length>tempor-newtem)
         {
-            while(value3.length>tempor-newtem)
-            {
-                value3.pop();
-
-            }
-            value3.shift();
-
+            value3.pop();
+        }
+        value3.shift();
         }
     }
 
-    if(tem>12){
-        while(value3.length!=12)
+    if(tem>12)
+    {
+    while(value3.length!=12)
+        {
+            while(value3.length>tempor-newtem+(12-tem))
             {
-                while(value3.length>tempor-newtem+(12-tem))
-                {
-                    value3.pop();
-    
-                }
-                value3.shift();
-    
+                value3.pop();
             }
+            value3.shift();
         }
-    
-    
+    }
 
- }
+ } //end of update2()
  
-});
+}); //end of default, afghanistan, code
 
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -879,36 +881,38 @@ Data Update for different countries
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 d3v3.select('#inds')//drop down menu
-            .on("change", function () {
-                var sect = document.getElementById("inds");
-                var section = sect.options[sect.selectedIndex].value;
+    .on("change", function () {
+        var sect = document.getElementById("inds");
+        var section = sect.options[sect.selectedIndex].value;
 
-                updateTest(section);
+        updateTest(section);
 
-            });
+    });
 
             
 //gets rid of parts of file names to get country name
 function updateTitle(source){
-    var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
-    var ret2 = ret.replace(/.tmp.tsv/g,'');
-    var ret3 = ret2.replace(/_/g,'');
-//      title2.text(ret3);
+var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
+var ret2 = ret.replace(/.tmp.tsv/g,'');
+var ret3 = ret2.replace(/_/g,'');
 var ret4 = ret3.replace(/data/g,' ');
 var ret5 = ret4.replace(/\//g,' ');
-
 title2.text(ret5)
-    }
+}
+
         // update function:
 function updateTest(source) {
-        d3v3.tsv(source, function(error,data) {
-var ret = source.replace(/crucy.v3.23.1901.2014./g,'');
+
+
+    d3v3.tsv(source, function(error,data) {
+
+var ret = source.replace(/crucy.v3.23.1901.2014./g,'');         //renames files
 var ret2 = ret.replace(/.tmp.tsv/g,'');
 var ret3 = ret2.replace(/_/g,' ');
 var ret4 = ret3.replace(/data/g,' ');
 var ret5 = ret4.replace(/\//g,' ');
 
-globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C"); 
+globTit.text("Avg difference between years "+"2014"+" and "+"2014"+": "+"0.00°C");  //default text
 
 title.text(2014)
 var titSource = updateTitle(source);
@@ -928,42 +932,41 @@ var yAxis = d3v3.svg.axis()
     .tickSize(-width1)
     .tickFormat(function(d) { return Math.round(d / 1) ; });
 
-    var birthyears1 = tsavg.append("g")
-    .attr("class", "birthyears1");
-// A sliding container to hold the bars by birthyear.
-var birthyears = tsavg.append("g")
-    .attr("class", "birthyears");
+var tempYears1 = tsavg.append("g")
+    .attr("class", "tempYears1");
+// A sliding container to hold the bars by tempYear.
+var tempYears = tsavg.append("g")
+    .attr("class", "tempYears");
 
 // Convert strings to numbers.
 data.forEach(function(d) {
-  d.temp = +d.temp;
-
-  d.year = +d.year;
-  d.month = +d.month;
+    d.temp = +d.temp;
+    d.year = +d.year;
+    d.month = +d.month;
 });
-var dot = tsavg.select('.birthyear').data(data);
+
+var dot = tsavg.select('.tempYear').data(data); //removing any left over data
 dot.exit().remove();
 var tempz=[];
 // Compute the extent of the data set in age and years.
-var month1 = d3v3.max(data, function(d) { return d.month; }),
-    year0 = d3v3.min(data, function(d) { return d.year; }),
-    year1 = d3v3.max(data, function(d) { return d.year; }),
-    year = year1,
-    tests = d3v3.max(data,function(d){ return d.temp;}),
-    tests2 = d3v3.min(data,function(d){ return d.temp;})
+var month1  = d3v3.max(data, function(d) { return d.month; }),
+    year0   = d3v3.min(data, function(d) { return d.year; }),
+    year1   = d3v3.max(data, function(d) { return d.year; }),
+    year    = year1,
+    tests   = d3v3.max(data,function(d){ return d.temp;}),
+    tests2  = d3v3.min(data,function(d){ return d.temp;})
 
    // tempz = (data,function(d){ return d.temp;})
 
-    dataInfo.text("Max Temp: "  + tests+"°C");
-    dataInfo2.text("Min Temp: "  + tests2+"°C");
-console.log(tempz);
-// Update the scale domains.
+dataInfo.text("Max Temp: "  + tests+"°C");
+dataInfo2.text("Min Temp: "  + tests2+"°C");
+
+    // Update the scale domains.
 tGraphx.domain([ year1,year1 - month1]);
 tGraphy.domain([ -40,40]);
-//y.domain([d3v3.min(data, function(d) { return d.temp}) , d3v3.max(data, function(d) { return d.temp; })]);
 
 
-// Produce a map from year and birthyear to [male, female].
+// Produce a map from year and tempYear .
 data = d3v3.nest()
     .key(function(d) { return d.year; })
     .key(function(d) { return d.year - d.month; })
@@ -981,29 +984,30 @@ tsavg.append("g")
   .filter(function(value) { return !value; })
     .classed("zero", true);
 
-    var dot3 = tsavg.select('g').data(data)
+    var dot3 = tsavg.select('g').data(data)                 //removing any leftover data
 dot3.exit().remove()
 var dot3 = tsavg.select('g').data(data)
 dot3.exit().remove()
-var dotzz = tsavg.select('.birthyears1').data(data)
+var dotzz = tsavg.select('.tempYears1').data(data)
 dotzz.exit().remove()
-var dotzz = tsavg.select('.birthyears1').data(data)
+var dotzz = tsavg.select('.tempYears1').data(data)
 dotzz.exit().remove()
-var dotzz = tsavg.select('.birthyears1').data(data)
+var dotzz = tsavg.select('.tempYears1').data(data)
 dotzz.exit().remove()
-var dotzz = tsavg.select('.birthyears1').data(data)
+var dotzz = tsavg.select('.tempYears1').data(data)
 dotzz.exit().remove()
-// Add labeled rects for each birthyear (so that no enter or exit is required).
-var birthyear = birthyears.selectAll(".birthyear")
+
+// Add labeled rects for each tempYear (so that no enter or exit is required).
+
+var tempYear = tempYears.selectAll(".tempYear")
     .data(d3v3.range(year0 - month1, year1 + 1, 1))
 
   .enter().append("g")
-    .attr("class", "birthyear")
-    .attr("transform", function(birthyear) { return "translate(" + tGraphx(birthyear) + ",0)"; });
+    .attr("class", "tempYear")
+    .attr("transform", function(tempYear) { return "translate(" + tGraphx(tempYear) + ",0)"; });
 
-birthyear.selectAll("rect")
-
-    .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+tempYear.selectAll("rect")
+    .data(function(tempYear) { return data[year][tempYear] || [-800, -800]; }) //-800 to hide bars below
   .enter().append("rect")
   .attr("fill-opacity",".6")
   .attr("fill","#44475a")
@@ -1030,11 +1034,11 @@ birthyear.selectAll("rect")
       });
       var yeart=2014;   
 
-      var birthyear1 = birthyears1.selectAll(".birthyear1")
+      var tempYear1 = tempYears1.selectAll(".tempYear1")
       .data(d3v3.range(year0 - month1, year1 + 1, 1))
       .enter().append("g")
-      .attr("class", "birthyear1")
-      .attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1+(2014-yeart)) + ",0)"; });
+      .attr("class", "tempYear1")
+      .attr("transform", function(tempYear1) { return "translate(" + tGraphx(tempYear1+(2014-yeart)) + ",0)"; });
 // Add labels to show age (separate; not animated).
 tsavg.selectAll(".month")
     .data(d3v3.range(1, month1 + 1, 1))
@@ -1047,71 +1051,71 @@ tsavg.selectAll(".month")
     .text(function(month) { return month; });
 
 
-    function compare() {
-        if(this.value<=2014 && this.value>=1901 ){
 
-        birthyear.select("text").remove();
 
-        year =this.value;
-        title.text(year);
-    //    var value2=[];
-        birthyears.transition()
-            .duration(750)
-            .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
+
+function compare() {
+    if(this.value<=2014 && this.value>=1901 ){
+
+    tempYear.select("text").remove();
+
+    year =this.value;
+    title.text(year);
+    tempYears.transition()
+        .duration(750)
+        .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
     update();
-        birthyear.selectAll("rect")
-            .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
-          .transition()
-            .duration(750)
-            .attr("y", tGraphy)
-    
-            .attr("height", function(value) { return height1 - tGraphy(value); });
-            birthyear.append("text")
-        .attr("class", "texted")
-        .attr("y", height1 + margin1.bottom -65 )
-        .text(function(birthyear) { return data[year][birthyear]; });
-        const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
-        function add(accumulator, a) {
-            return accumulator + a;
-        }
-    
-    
-        const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
-        function add1(accumulator1, a1) {
-            return accumulator1 + a1;
-        }
-        var sumt = sum/12;
-        var sumt2=sum2/12;
-      console.log(sumt);
-      console.log(sumt2);
-        var difference=0;
-        difference = (sumt2-sumt)/2;
-        console.log(difference);
+    tempYear.selectAll("rect")
+        .data(function(tempYear) { return data[year][tempYear] || [-800, -800]; })
+        .transition()
+        .duration(750)
+        .attr("y", tGraphy)
+
+        .attr("height", function(value) { return height1 - tGraphy(value); });
+        tempYear.append("text")
+    .attr("class", "texted")
+    .attr("y", height1 + margin1.bottom -65 )
+    .text(function(tempYear) { return data[year][tempYear]; });
+    const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+    function add(accumulator, a) {
+        return accumulator + a;
+    }
+
+    const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+    function add1(accumulator1, a1) {
+        return accumulator1 + a1;
+    }
+    var sumt = sum/12;
+    var sumt2=sum2/12;
+    var difference=0;
+    difference = (sumt2-sumt)/2;
     globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
 
     else{ globTit.text("Enter a valid year from 1901 to 2014");}
+} //end of compare()
 
-    }
-    function compare2() {
-        if(this.value>=1901 && this.value<=2014){
 
-        yeart =this.value;
-        title.text(yeart);
 
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();     
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
-    var birthyears1 = tsavg.append("g")
-    .attr("class", "birthyears1");
-    var birthyear1 = birthyears1.selectAll(".birthyear1")
+function compare2() {
+    if(this.value>=1901 && this.value<=2014){
+
+    yeart =this.value;
+    title.text(yeart);
+
+    var dotzz = tsavg.select('.tempYears1').data(data);
+    dotzz.exit().remove();     
+    var dotzz = tsavg.select('.tempYears1').data(data);
+    dotzz.exit().remove();
+    var tempYears1 = tsavg.append("g")
+    .attr("class", "tempYears1");
+    var tempYear1 = tempYears1.selectAll(".tempYear1")
     .data(d3v3.range(year0 - month1, year1 + 1, 1))
     .enter().append("g")
-    .attr("class", "birthyear1")
-    .attr("transform", function(birthyear1) { return "translate(" + tGraphx(birthyear1+(2014-yeart)) + ",0)"; });
+    .attr("class", "tempYear1")
+    .attr("transform", function(tempYear1) { return "translate(" + tGraphx(tempYear1+(2014-yeart)) + ",0)"; });
     
-    birthyear1.selectAll(".rect1")
-    .data(function(birthyear1) { return data[yeart][birthyear1] || [-800, -800]; })
+    tempYear1.selectAll(".rect1")
+    .data(function(tempYear1) { return data[yeart][tempYear1] || [-800, -800]; })
     .enter().append("rect")
     .attr('class', 'rect1')
     .attr("x", -barWidth1 / 2)
@@ -1121,232 +1125,240 @@ tsavg.selectAll(".month")
     .attr("year",function(d){return tyear=yeart})
     .attr("year",function(d){return glob2=yeart;})//NEW
 
-.attr("sum", function(value) {value3.push(value);})//new
+    .attr("sum", function(value) {value3.push(value);})//new
     .attr("height", function(value) {return (height1 - tGraphy(value))})
     .attr("fill-opacity",".6")
     .attr("fill","#e75480 ")
-      .on("mouseover", function(d) {
-          divs.transition()
-              .duration(200)
-              .style("opacity", .9);
+    .on("mouseover", function(d) {
+        divs.transition()
+            .duration(200)
+            .style("opacity", .9);
             //  divs.html(d)
             divs.html("<strong>Temperature: </strong>" + "<span class=\"details\">"
             + d+ "</span><br>" )
-              .style("left", (d3v3.event.pageX) + "px")
-              .style("top", (d3v3.event.pageY) + "px");                
-          })
-      .on("mouseout", function(d) {
-          divs.transition()
-              .duration(500)
-              .style("opacity", 0);
-      });
-      birthyear1.append("text")
-      .attr("class", "texted2")
+            .style("left", (d3v3.event.pageX) + "px")
+            .style("top", (d3v3.event.pageY) + "px");                
+        })
+    .on("mouseout", function(d) {
+        divs.transition()
+            .duration(500)
+            .style("opacity", 0);
+    });
+    tempYear1.append("text")
+    .attr("class", "texted2")
     
-      .attr("y", height1 + margin1.bottom -44 )
-      .text(function(birthyear) { return data[yeart][birthyear]; });
+    .attr("y", height1 + margin1.bottom -44 )
+    .text(function(tempYear) { return data[yeart][tempYear]; });
+        
+    update();
+    var tem= 2014-glob2; //distance from ends of array
+    var tempor=value3.length;
+    var newtem= 2014-glob2;
+    if(tem >12){newtem=tem*2-tem;}
 
-      
-update();
-var tem= 2014-glob2;
-var tempor=value3.length;
-var newtem= 2014-glob2;
-if(tem >12){newtem=tem*2-tem;}
+    if(tem<=12){ //manipulate arrays until just the temps for the year
 
-if(tem<=12){
-
-while(value3.length!=12)
-    {
-
-        while(value3.length>=tempor-newtem*2+1)
-        {
-            value3.pop();
-
-        }
-        value3.shift();
-
-    }
-}
-
-if(tem>12){
     while(value3.length!=12)
         {
-            while(value3.length>tempor-newtem*2)
+            while(value3.length>=tempor-newtem*2+1)
             {
                 value3.pop();
-
             }
             value3.shift();
-
         }
     }
 
-const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
-function add(accumulator, a) {
-    return accumulator + a;
-}
+    if(tem>12){
+        while(value3.length!=12)
+            {
+                while(value3.length>tempor-newtem*2)
+                {
+                    value3.pop();
+                }
+                value3.shift();
+            }
+        }
+
+    const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+    function add(accumulator, a) {
+        return accumulator + a;
+    }
 
 
-const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
-function add1(accumulator1, a1) {
-    return accumulator1 + a1;
-}
-var sumt = sum/12;
-var sumt2=sum2/12;
-console.log(sumt);
-console.log(sumt2);
-var difference=0;
-difference = (sumt2-sumt)/2;
-console.log(difference);
-globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
-else{ globTit.text("Enter a valid year from 1901 to 2014");}
+    const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+    function add1(accumulator1, a1) {
+        return accumulator1 + a1;
+    }
+    var sumt = sum/12;
+    var sumt2=sum2/12;
+
+    var difference=0;
+    difference = (sumt2-sumt)/2;
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); }
+    else{ globTit.text("Enter a valid year from 1901 to 2014");}
+
+}// end of compare2()
+
+
+
+d3.select("#searchText").on("input", compare )
+d3.select("#searchText2").on("input", compare2 )
+
+var glob    =0;//GLOBAL VARIABLE
+var glob2   =0;
+var value2  =[];
+var value3  =[];
+var track   = 0;
+
+d3.select("#leftButt").on("click", function() {
+//   var button = d3v3.select(this);
+    year = Math.max(year0, year - 1);
+    track++;    
+    if(track%2 == 1)
+    {
+    var dotzz = tsavg.select('.tempYears1').data(data); //removing left over data
+    dotzz.exit().remove();
+
+
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
+
+    update();
+    }
+    else if (track%2 == 0)
+    {
+    var dotzz = tsavg.select('.tempYears1').data(data);
+    dotzz.exit().remove();
+
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
+
+        update2();
+    }
+    if (track ==1){update2();}
+
+    const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+    function add(accumulator, a) {
+        return accumulator + a;
+    }
+
+
+    const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+    function add1(accumulator1, a1) {
+        return accumulator1 + a1;
+    }
+    var sumt = sum/12;
+    var sumt2=sum2/12;
+
+    var difference=0;
+    if(glob<glob2){
+    difference = (sumt2-sumt)/2;
+    }
+    if(glob>glob2){
+        difference = (sumt-sumt2)/2;
+        }    
+
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       
+})//end of leftButt
+
+
+d3.select("#rightButt").on("click", function() {
+//  var button = d3v3.select(this);
+    if( year !=2014)
+    {
+    year = Math.max(year0, year);
+    year++;
 
     }
-    
-    d3.select("#searchText").on("input", compare )
-    
-    d3.select("#searchText2").on("input", compare2 )
+    track++;              //track keeps track of alternator. 
+    if(track%2 == 1)
+    {
+    var dotzz = tsavg.select('.tempYears1').data(data);
+    dotzz.exit().remove();
 
-    var glob=0;//GLOBAL VARIABLE
-    var glob2=0;
-    var value2=[];
-    var value3=[];
-    var track = 0;
-    
-    d3.select("#leftButt").on("click", function() {
-   //   var button = d3v3.select(this);
-      year = Math.max(year0, year - 1);
-      track++;    
-      if(track%2 == 1)
-      {
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();    
+    tempYear.select("text").remove();
 
-    
-        birthyear.select("text").remove();
-        birthyear.select("text").remove();
-        birthyear.select("text").remove();
-   
-      update();
-      }
-      else if (track%2 == 0)
-      {
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
+    update();
+    }
+    else if (track%2 == 0)
+    {
+    var dotzz = tsavg.select('.tempYears1').data(data);
+    dotzz.exit().remove();
 
-        birthyear.select("text").remove();
-        birthyear.select("text").remove();
-        birthyear.select("text").remove();
-    
-          update2();
-      }
-      if (track ==1){update2();}
-  
-      const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
-      function add(accumulator, a) {
-          return accumulator + a;
-      }
-  
-  
-      const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
-      function add1(accumulator1, a1) {
-          return accumulator1 + a1;
-      }
-      var sumt = sum/12;
-      var sumt2=sum2/12;
-    console.log(sumt);
-    console.log(sumt2);
-      var difference=0;
-      difference = (sumt2-sumt)/2;
-      console.log(difference);
-  
-  globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
-    d3.select("#rightButt").on("click", function() {
-    //  var button = d3v3.select(this);
-      if( year !=2014)
-      {
-      year = Math.max(year0, year);
-      year++;
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
 
-      }
-      track++;    
-      if(track%2 == 1)
-      {
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
+        update2();
+    }
+    if (track ==1){update2();}
 
-        birthyear.select("text").remove();
-        birthyear.select("text").remove();    
-        birthyear.select("text").remove();
-    
-      update();
-      }
-      else if (track%2 == 0)
-      {
-        var dotzz = tsavg.select('.birthyears1').data(data);
-        dotzz.exit().remove();
+    const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
+    function add(accumulator, a) {
+        return accumulator + a;
+    }
 
-        birthyear.select("text").remove();
-        birthyear.select("text").remove();
-        birthyear.select("text").remove();
-    
-          update2();
-      }
-      if (track ==1){update2();}
-  
-      const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
-      function add(accumulator, a) {
-          return accumulator + a;
-      }
-  
-  
-      const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
-      function add1(accumulator1, a1) {
-          return accumulator1 + a1;
-      }
-      var sumt = sum/12;
-      var sumt2=sum2/12;
-    console.log(sumt);
-    console.log(sumt2);
-      var difference=0;
-      difference = (sumt2-sumt)/2;
-      console.log(difference);
-  globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       })
-// Allow the arrow keys to change the displayed year.
+
+    const sum2 =value3.reduce(add1,0); // with initial value to avoid when the array is empty
+    function add1(accumulator1, a1) {
+        return accumulator1 + a1;
+    }
+    var sumt = sum/12;
+    var sumt2=sum2/12;
+
+    var difference=0;
+    if(glob<glob2){
+    difference = (sumt2-sumt)/2;
+    }
+    if(glob>glob2){
+        difference = (sumt-sumt2)/2;
+        }     
+
+    globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C");       
+})//end of rightButt
+
+
+  // Allow the arrow keys to change the displayed year.
 window.focus();
 d3v3.select(window).on("keydown", function() {
   switch (d3v3.event.keyCode) {
     case 37:  year = Math.max(year0, year - 1);//decrement
     track++;
-    var dotzz = tsavg.select('.birthyears1').data(data);
+    var dotzz = tsavg.select('.tempYears1').data(data); //removes left over data
     dotzz.exit().remove();
 
-    birthyear.select("text").remove();
-    birthyear.select("text").remove();
-
-    birthyear.select("text").remove();
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
 
     break;
+
 case 39:  year = Math.min(year1, year + 1);
     track++;
-    var dotzz = tsavg.select('.birthyears1').data(data);
+    var dotzz = tsavg.select('.tempYears1').data(data);
     dotzz.exit().remove();
 
-    birthyear.select("text").remove();
-    birthyear.select("text").remove();
-
-    birthyear.select("text").remove();
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
+    tempYear.select("text").remove();
     break;
 }
-if(track%2 == 1)
+if(track%2 == 1) //alternates for year by year compare
 {
-update();
+    update();
 }
 else if (track%2 == 0)
 {
-update2();
+    update2();
 }
-if (track ==1){update2();}
+if (track ==1)
+{
+    update2();
+}
 
 const sum =value2.reduce(add,0); // with initial value to avoid when the array is empty
 function add(accumulator, a) {
@@ -1361,14 +1373,22 @@ return accumulator1 + a1;
 if (track ==1){update2();}
 var sumt = sum/12;
 var sumt2=sum2/12;
-console.log(sumt);
-console.log(sumt2);
+
 var difference=0;
-difference = (sumt2-sumt)/2;
-console.log(difference);
+if(glob<glob2)
+    {
+    difference = (sumt2-sumt)/2;
+    }
+if(glob>glob2)
+    {
+        difference = (sumt-sumt2)/2;
+    }
 
 globTit.text("Avg difference between years "+glob+" and "+glob2+": "+roundTo(difference,2)+"°C"); 
-});
+}); //end of window listener
+
+
+
 function roundTo(n, digits) {
   var negative = false;
   if (digits === undefined) {
@@ -1385,17 +1405,18 @@ function roundTo(n, digits) {
       n = (n * -1).toFixed(2);
   }
   return n;
-}
+}//end of roundTo
+
+//update graph on change of year
 function update() {
     if (!(year in data)) return;
     title.text(year);
-//    var value2=[];
-    birthyears.transition()
+    tempYears.transition()
         .duration(750)
         .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
-    birthyear.selectAll("rect")
-        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+    tempYear.selectAll("rect")
+        .data(function(tempYear) { return data[year][tempYear] || [-800, -800]; })
       .transition()
         .duration(750)
         .attr("y", tGraphy)
@@ -1405,54 +1426,59 @@ function update() {
         .attr("sum", function(value) {value2.push(value);})//new
 
         .attr("height", function(value) { return height1 - tGraphy(value); });
-        var tem= 2014-glob;
-        var tempor=value2.length;
-        var newtem= 2014-glob;
-        if(tem >12){newtem=tem*2-tem;}
-        
-        if(tem<=12){
-        while(value2.length!=12)
+    var tem= 2014-glob; //find distance from ends of arrays
+    var tempor=value2.length;
+    var newtem= 2014-glob;
+
+    //manipulate arrays to end up with temps
+    if(tem >12){newtem=tem*2-tem;}
+    
+    if(tem<=12)
+    {
+    while(value2.length!=12)
+        {
+        while(value2.length>tempor-newtem)
             {
-                while(value2.length>tempor-newtem)
-                {
-                    value2.pop();
-    
-                }
-                value2.shift();
-    
-            }
-        }
-        if(tem==113){
-            while (value2.length!=12){
                 value2.pop();
             }
-        
-        }
-        if(tem>12){
-            while(value2.length!=12)
-                {
-                    while(value2.length>tempor-newtem+(12-tem))
-                    {
-                        value2.pop();
-        
-                    }
-                    value2.shift();
-        
-                }
-            }
-            
- }
+        value2.shift();
 
+        }
+    }
+    if(tem==113)
+    {
+    while (value2.length!=12)
+    {
+        value2.pop();
+    }
+
+    }
+    if(tem>12)
+    {
+        while(value2.length!=12)
+        {
+            while(value2.length>tempor-newtem+(12-tem))
+            {
+                value2.pop();
+            }
+            value2.shift();
+        }
+    }
+        
+ }//end of update()
+
+
+
+//same as update(). needed for alternating/comparisons
  function update2() {
     if (!(year in data)) return;
     title.text(year);
-//    var value3=[];
-    birthyears.transition()
+    tempYears.transition()
         .duration(750)
         .attr("transform", "translate(" + (tGraphx(year1) - tGraphx(year)) + ",0)");
 
-    birthyear.selectAll("rect")
-        .data(function(birthyear) { return data[year][birthyear] || [-800, -800]; })
+    tempYear.selectAll("rect")
+        .data(function(tempYear) { return data[year][tempYear] || [-800, -800]; })
       .transition()
         .duration(750)
         .attr("y", tGraphy)
@@ -1473,10 +1499,8 @@ function update() {
             while(value3.length>tempor-newtem)
             {
                 value3.pop();
-
             }
             value3.shift();
-
         }
     }
 
@@ -1486,19 +1510,13 @@ function update() {
                 while(value3.length>tempor-newtem+(12-tem))
                 {
                     value3.pop();
-    
                 }
                 value3.shift();
-    
             }
         }
-    
-    
 
- }
+ } //end of update()2
  
-});
+}); //end of tsv files being read
 
-
-
-        }
+}//end of updateTest()

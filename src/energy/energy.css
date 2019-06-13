@@ -19,6 +19,21 @@ p {
     color: black;
     font-family: 'Nunito', sans-serif;
 }
+#jumpMap {
+  position:absolute;
+  top:275px;
+  left:0px;
+  
+}
+#jumpMap p{
+  font-size:16px;
+}
+#jumpMap a {
+  position: relative;
+  top: 20px;
+  text-decoration:underline;
+  font-size:15px;
+}
 /* Story Text */
 div.storytxt {
     position: relative;
@@ -30,18 +45,23 @@ div.storytxt p{
     text-align: left;
     width: 850px;
 }
-/* CSS for Slider */
+/* CSS for Year Text */
 #yeartxt {
     position: relative;
     top:190px;
     left: -400px;
     z-index: 1;
 }
+/* Units */
 #units {
   position: absolute;
   top:210px;
   left:870px;
   font-size: 10px;
+}
+/* YEAR Slider CSS */
+#partitionSVG input::placeholder{
+  color:black;
 }
 #yearslider{
     width:60%;
@@ -81,6 +101,12 @@ input[type=range] {
   }
 
 /* CSS for Commparison */
+#compareInstruct {
+  position: absolute;
+  top: 610px;
+  left:10px;
+  font-size: 10px;
+}
 #compare, #isolate {
     display: inline-block;
     position: relative;
@@ -167,7 +193,7 @@ tbody {
   overflow: auto;
 }
 tr:hover {background-color: #f5f5f5;}
-
+/* Tooltip(NOT USED) */
 #toolTip {
     position: absolute;
     text-align: center;
@@ -228,16 +254,16 @@ tr:hover {background-color: #f5f5f5;}
 }
 
 .duoImage {
-  height: 700px;
+  height: 900px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  padding-top: 180px;
+  padding-top: 100px;
   background-size: cover;
 }
 
 #energyImage {
-    background-image: url(/../img/energyDuo.jpg);
+    background-image: url(../img/energyDuo.jpg);
 }
 
 #energyLogo {
@@ -248,10 +274,10 @@ tr:hover {background-color: #f5f5f5;}
   background-color: #3B444C;
 }
 
-a {
+#header a{
   color: lightgrey;
 }
 
-a:hover {
+#header a:hover {
   color: white;
 }

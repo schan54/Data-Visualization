@@ -51,7 +51,7 @@
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a class="logo" href="index.html">
+						<a class="logo" href="../index.html">
 							<img id="energyLogo" src=".././img/logo.png" alt="logo">
 						</a>
 					</div>
@@ -87,11 +87,13 @@
 	    		<div class="col-md-pull-4">
 	    			<div class="imageText">
 	    				<h2 class="header">Energy</h2>
-				        <p class="initialText">It is important to know how the use of energy can impact climate change. As we can see in this sunburst, more and more energy is being
-    used every year. These energy include coals, natuarl gas, and oil. However, there are energy and resources that a non-renewable. Meaning
-    if we keep producing and consuming resources and energy, the world will eventually run out. We need to know how to minimize our energy usage
-    not only for the world, but for the climate as well. Fossil fuels for example generate a lot of CO2 that is a factor to global warming. This
-    visualization tells us story of how if we keep using energy like this. Climate change will accelerate.</p>
+				        <p class="initialText">It is important to know how the use of energy can impact climate change. As we can see in this sunburst and choropleth map, more and more energy are being
+	used every year. The type of energy that are harmful include coals, natural gas, and oil, but not clean energy because it generally does not contribute to climate change since no fuel is combusted. 
+	In addition, there are energy and resources that are non-renewable. Meaning
+	if we keep producing and consuming non-renewable resources and energy, the world will eventually run dry. According to EPA 2017, energy production and usage contributes to more than 84% of greenhouse gas emissions.  Fossil fuels for example generate a lot of CO2 that is a factor to global warming. 
+	We need to know how to minimize our energy usage
+    in fossil fuels and switch to more cleaner energy. This will greatly reduce the impact energy will have on the environment. This
+    visualization serves to tell us story of the current rate of energy usage and how it impacts the environment.</p>
 			      	</div>
 	    		</div>
 	    	</div>
@@ -122,7 +124,7 @@
   </select>
 
   <h2 id = "yeartxt">Year: 1990</h2>
-
+  <!-- SUNBURST -->
   <svg xmlns="http://www.w3.org/2000/svg" id="partitionSVG" width="1400" height="1400" style ="position:relative; left:0%;">
     <foreignObject width="1400" height="1400">
 			<h1>Global Energy Consumption</h1>
@@ -130,12 +132,18 @@
 			<p id = "units">Units in Million Tonnes of Oil Equivalent(Mtoe)</p>
 			<!-- Slider -->
 			<input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"> Slide to change year</input>
-			<a href = "#slider" style="position:absolute;top:275px;left:30px;font-size:15px;text-decoration:underline"> Jump to Map >></a>
+			<!-- Link to Map -->
+			<div id = "jumpMap">
+				<p> <b>Look at the Energy Map!</b> </p>
+				<a href = "#slider" >Jump to Map >></a>
+			</div>
+			
 			<!-- Search Bar -->
       <input autocomplete="off" type="text" id = "searchText" placeholder="Look up a country" name="search" ><br/></input>
       <button type="submit" id = "searchSubmit">Zoom In     <i class="fa fa-search"></i></button>
 			<p id="searchErr" style="visibility: hidden">Country not available or does not exist</p>
 			<!-- Compare -->
+			<p id="compareInstruct">Enter two years between 1970 and 2017 <br/> and click Compare</p>
 			<text style="position:relative;top:300px;left:-510px;font-size:25px">COMPARISON</text>
       <button id = "compare">COMPARE</button>
 			<button id = "isolate">ISOLATE</button>
@@ -144,15 +152,15 @@
 				<input id = "year2" autocomplete="off" type="number" placeholder="Year 2" name="search" ></input>
 			</div>
 			<!-- Table -->
-      <table id = "burstTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Size</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-			</table>
+      	<table id = "burstTable">
+			<thead>
+			<tr>
+				<th>Name</th>
+				<th>Size</th>
+			</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
 			<!-- Text -->
 		<div class = "storytxt">
 			<p> This Sunburst is a unique way to display different types of energy usage (consumption, natural gas, etc.).</p>
@@ -169,10 +177,43 @@
 
   <script type="text/javascript" src="energySunburst.js"></script>
   <!-- Code Reference from https://observablehq.com/@d3/zoomable-sunburst -->
+  <div class="duoImage" id="energyImage">
+    	<div class="container">
+    		<div class="row">
+	    		<div class="col-md-pull-4">
+	    			<div class="imageText">
+	    				<h2 class="header">What does this Tell Us?</h2>
+				        <p class="initialText">
+							To look at an overview on energy consumption, we must first look at the map below. The red represents energy produced while the green is the energy consumed.
+							It is also important to mention that the type of energy we are talking are fossil fuels, coals, etc. You can clearly see which countries produce the most energy (Russia) and which consumed the most energy. As you scroll through the years, you can see
+							China getting greener, meaning that it consumes more and more energy. This shows that at each year, more and more energy is being consumed than produce. As we consume 
+							more energy, we are beginning to run out of energy and resources. This is why we should switch to an alternative cleaner energy source. To see how much actually changed, we look at the comparison function of the map.
+						</p>
+						<p class="initialText">
+							However, the map does not show the entirety of the situation, so we must look at it in a different perspective using a Sunburst.
+							The visual above compares each countries energy output and what they consumed and produced. And as you scroll through the years, the slice of the chart
+							containing Asia is slowly getting bigger and moving the right. This way you can see which countries/groups are consuming more and more energy and which
+							resource they are using. You can also look at more specifics by selecting a different subject in the drop-down menu. You can look at Natural Gas to see
+							who consumed the most and how it changed over time. Moreover, you can compare two years to see how much of a difference the two years are.
+							What we get out of this is that companies should make a quick and faster investment to clean energy, so that fossil fuels and natural gas production rates are reduced.
+							Currently, there are efforts to reduce fossil fuels in the United States and have clean energy such as solar energy, but there are other countries that have not done so yet
+							, which is why there is a sense of urgency to do so.
+						</p>
+			      	</div>
+	    		</div>
+	    	</div>
+    	</div>
+    </div>
+
+
+
+
+
 
   <script src="../core/d3-tip.js"></script>
 
-
+	  <!-- ENERGY CHORPLETH MAP -->
+	  <!-- 						 -->
 	<div id="slider"></div>
 	<script type="text/javascript" src="energyChoroInit.js"></script>
 	<script type="text/javascript" src="energyChoroSlider.js"></script>
@@ -193,27 +234,27 @@
 		<!-- https://www.e-education.psu.edu/earth104/node/1347 -->
 		<img src="./energyImg/altEnergy2.jpg"width=613px>
 		<!-- https://seekingalpha.com/article/4083393-world-energy-2017minus-2050-annual-report -->
-		<p>Source: <a href="https://www.e-education.psu.edu/earth104/node/1347" target="_blank">https://www.e-education.psu.edu/earth104/node/1347</a></p>
-		<p>Source: <a href="https://seekingalpha.com/article/4083393-world-energy-2017minus-2050-annual-report" target="_blank">https://seekingalpha.com/article/4083393-world-energy-2017minus-2050-annual-report</a></p>
+		
 	</div>
 		<!-- Footer -->
 		<footer id="footer" class="section">
-
+			
 			<!-- container -->
 			<div class="container">
-
 				<!-- row -->
 				<div class="row">
-
+					
 				</div>
 				<!-- /row -->
-
+				
 				<!-- row -->
 				<div id="bottom-footer" class="row">
-
+						<p style="text-align:left;font-size:10px;position:relative;top:90px;">Source: <a href="https://www.e-education.psu.edu/earth104/node/1347" target="_blank">https://www.e-education.psu.edu/earth104/node/1347</a></p>
+						<p style="text-align:left;font-size:10px;position:relative;top:90px;">Source: <a href="https://seekingalpha.com/article/4083393-world-energy-2017minus-2050-annual-report" target="_blank">https://seekingalpha.com/article/4083393-world-energy-2017minus-2050-annual-report</a></p>
 					<!-- copyright -->
 					<div class="col-md-8 col-md-pull-4">
 						<div class="footer-copyright">
+							
 							<span>&copy; Copyright 2018. All Rights Reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com">Colorlib</a></span>
 						</div>
 					</div>

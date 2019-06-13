@@ -1575,3 +1575,18 @@ text {
 ::placeholder {
 	color: white;
 }
+#contactLogo {
+    max-width: 30%;
+  }
+  
+  #header {
+    background-color: #3B444C;
+  }
+  
+  a {
+    color: lightgrey;
+  }
+  
+  a:hover {
+    color: white;
+  }
