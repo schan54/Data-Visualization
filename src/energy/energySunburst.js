@@ -241,33 +241,39 @@ d3.json('./energyusage.json').then(data => {
 function parseFile(file) {
     switch(file){
       case "consumption":
-        d3.select("h1").text("Global Energy Consumption(Mtoe)");
+        d3.select("h1").text("Global Energy Consumption");
+        d3.select("units").text("Units in Million Tonnes of Oil Equivalent(Mtoe)");
         g.selectAll("g").transition().remove();
         d3.select("#yearslider").attr("value", 1990);
         updateSunBurst("./energyusage.json", 0);
         break;
       case "production":
         d3.select("h1").text("Energy Production");
+        d3.select("units").text("Units in Million Tonnes of Oil Equivalent(Mtoe)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Total energy production.json", 0);
         break;
       case "crudeoil":
         d3.select("h1").text("Crude Oil Consumption");
+        d3.select("units").text("Units in Megatonne(Mt)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Crude oil input to refineries.json", 0);
         break;
       case "oilproducts":
         d3.select("h1").text("Oil Products Consumption");
+        d3.select("units").text("Units in Megatonne(Mt)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Oil products domestic consumpt.json", 0);
         break;
       case "naturalgas":
         d3.select("h1").text("Natural Gas Production");
+        d3.select("units").text("Units in Billion Cubic Meters(bcm)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyData/individualCreate/Natural gas production.json", 0);
         break;
       default:
-        d3.select("h1").text("Global Energy Consumption(Mtoe)");
+        d3.select("h1").text("Global Energy Consumption");
+        d3.select("units").text("Units in Million Tonnes of Oil Equivalent(Mtoe)");
         g.selectAll("g").transition().remove();
         updateSunBurst("./energyusage.json", 0);
         break;

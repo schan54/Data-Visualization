@@ -37,6 +37,12 @@ div.storytxt p{
     left: -400px;
     z-index: 1;
 }
+#units {
+  position: absolute;
+  top:210px;
+  left:870px;
+  font-size: 10px;
+}
 #yearslider{
     width:60%;
     position:relative;

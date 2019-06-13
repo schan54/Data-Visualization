@@ -33,7 +33,7 @@ function select(yearValue) {
   }
   // selection.datum() returns the bound datum for the first element in the selection and
   //  doesn't join the specified array of data with the selected elements
-  var chart = bubbleChart().width(1300).height(700);
+  var chart = bubbleChart().width(1300).height(800);
   d3.select('#chart').datum(data).call(chart);
   });
 
@@ -73,6 +73,101 @@ function select(yearValue) {
       var div = selection,
           svg = div.select('svg');
       svg.attr('width', width).attr('height', height);
+
+        var rectangleAfrica = svg.append("rect")
+                           .attr("x", 300)
+                           .attr("y", 640 + 30)
+                           .attr("width", 40)
+                           .attr("height", 40)
+                           .style("fill", colorSix)
+                           .style("visibility", "hidden");
+
+        var rectangleAsia = svg.append("rect")
+                           .attr("x", 460)
+                           .attr("y", 640 + 30)
+                           .attr("width", 40)
+                           .attr("height", 40)
+                           .style("fill", colorFive)
+                           .style("visibility", "visible");
+
+        var rectangleEurope = svg.append("rect")
+                           .attr("x", 620)
+                           .attr("y", 640 + 30)
+                           .attr("width", 40)
+                           .attr("height", 40)
+                           .style("fill", colorFour)
+                           .style("visibility", "visible");
+
+        var rectangleOceania = svg.append("rect")
+                           .attr("x", 780)
+                           .attr("y", 640 + 30)
+                           .attr("width", 40)
+                           .attr("height", 40)
+                           .style("fill", colorThree)
+                           .style("visibility", "visible");
+
+        var rectangleSA = svg.append("rect")
+                           .attr("x", 940)
+                           .attr("y", 640 + 30)
+                           .attr("width", 40)
+                           .attr("height", 40)
+                           .style("fill", colorTwo)
+                           .style("visibility", "visible");
+
+        var rectangleNA = svg.append("rect")
+                           .attr("x", 1100)
+                           .attr("y", 640 + 30)
+                           .attr("width", 40)
+                           .attr("height", 40)
+                           .style("fill", colorOne)
+                           .style("visibility", "hidden");
+
+        var rectangleGray = svg.append("rect")
+           .attr("x", 620)
+           .attr("y", 640 + 30)
+           .attr("width", 40)
+           .attr("height", 40)
+           .style("fill", colorGray)
+           .style("visibility", "hidden");
+
+        var rectangleRed = svg.append("rect")
+                           .attr("x", 780)
+                           .attr("y", 640 + 30)
+                           .attr("width", 40)
+                           .attr("height", 40)
+                           .style("fill", colorRed)
+                           .style("visibility", "hidden");
+
+        var rectangleGreen = svg.append("rect")
+                           .attr("x", 940)
+                           .attr("y", 640 + 30)
+                           .attr("width", 40)
+                           .attr("height", 40)
+                           .style("fill", colorGreen)
+                           .style("visibility", "hidden");
+
+      // Legend
+      if (!twoYears) {
+        rectangleRed.style("visibility", "hidden");
+        rectangleGreen.style("visibility", "hidden");
+        rectangleGray.style("visibility", "hidden");
+        rectangleNA.style("visibility", "visible");
+        rectangleSA.style("visibility", "visible");
+        rectangleEurope.style("visibility", "visible");
+        rectangleOceania.style("visibility", "visible");
+        rectangleAfrica.style("visibility", "visible");
+        rectangleAsia.style("visibility", "visible");
+      } else {
+        rectangleRed.style("visibility", "visible");
+        rectangleGreen.style("visibility", "visible");
+        rectangleGray.style("visibility", "visible");
+        rectangleNA.style("fill", "none");
+        rectangleSA.style("visibility", "hidden");
+        rectangleEurope.style("visibility", "hidden");
+        rectangleOceania.style("visibility", "hidden");
+        rectangleAfrica.style("visibility", "hidden");
+        rectangleAsia.style("visibility", "hidden");
+      }
 
       // Tooltip for Bubble Chart
       var tooltip = selection
@@ -538,15 +633,33 @@ function select(yearValue) {
       topEmissions.append("line").attr("x1", 670).attr("y1", 0).attr("x2", 670).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 965).attr("y1", 0).attr("x2", 965).attr("y2", 200).attr("stroke-width", 0.5).attr("stroke", "black");
 
-      
       // Lines for legend
-      topEmissions.append("line").attr("x1", 100).attr("y1", 620).attr("x2", 105.66).attr("y2", 620).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 625).attr("x2", 116.54).attr("y2", 625).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 630).attr("x2", 120.64).attr("y2", 630).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 635).attr("x2", 143.68).attr("y2", 635).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 640).attr("x2", 160.1).attr("y2", 640).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 645).attr("x2", 229.4).attr("y2", 645).attr("stroke-width", 1).attr("stroke", "black");
-      topEmissions.append("line").attr("x1", 100).attr("y1", 650).attr("x2", 281.4).attr("y2", 650).attr("stroke-width", 1).attr("stroke", "black");
+      // TODO:  Update Legend to bubble instead of lines, these lines are not scaled correctly
+      topEmissions.append("line").attr("x1", 0).attr("y1", 590).attr("x2", 1300).attr("y2", 590).attr("stroke-width", 0.5).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 605 + 30).attr("x2", 105.66).attr("y2", 605 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 620 + 30).attr("x2", 116.54).attr("y2", 620 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 635 + 30).attr("x2", 120.64).attr("y2", 635 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 650 + 30).attr("x2", 143.68).attr("y2", 650 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 665 + 30).attr("x2", 160.1).attr("y2", 665 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 680 + 30).attr("x2", 229.4).attr("y2", 680 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      topEmissions.append("line").attr("x1", 100).attr("y1", 695 + 30).attr("x2", 281.4).attr("y2", 695 + 30).attr("stroke-width", 1).attr("stroke", "black");
+      // Legend Text
+      topEmissions.append("text").html("Emissions").attr("x", 40).attr("y", 585 + 30).style("font-size", 12);
+      topEmissions.append("text").html("Circle Diameter").attr("x", 100).attr("y", 585 + 30).style("font-size", 12);
+
+      topEmissions.append("text").html("0 or NaN").attr("x", 40).attr("y", 610 + 30).style("font-size", 12);
+      topEmissions.append("text").html("10").attr("x", 40).attr("y", 625 + 30).style("font-size", 12);
+      topEmissions.append("text").html("100").attr("x", 40).attr("y", 640 + 30).style("font-size", 12);
+      topEmissions.append("text").html("500").attr("x", 40).attr("y", 655 + 30).style("font-size", 12);
+      topEmissions.append("text").html("1000").attr("x", 40).attr("y", 670 + 30).style("font-size", 12);
+      topEmissions.append("text").html("5000").attr("x", 40).attr("y", 685 + 30).style("font-size", 12);
+      topEmissions.append("text").html("10000").attr("x", 40).attr("y", 700 + 30).style("font-size", 12);
+      topEmissions.append("text").html("= Africa").attr("x", 1150).attr("y", 665 + 30);
+      topEmissions.append("text").html("= Asia").attr("x", 990).attr("y", 665 + 30);
+      topEmissions.append("text").html("= Oceania").attr("x", 830).attr("y", 665 + 30);
+      topEmissions.append("text").html("= Europe").attr("x", 670).attr("y", 665 + 30);
+      topEmissions.append("text").html("= South America").attr("x", 510).attr("y", 665 + 30);
+      topEmissions.append("text").html("= North America").attr("x", 350).attr("y", 665 + 30);
 
       topEmissions.append("text").html(Math.round(parseFloat(sumOceania) * 1000) / 1000 + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
       topEmissions.append("text").html(Math.round(parseFloat(sumAsia) * 1000) / 1000 + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");

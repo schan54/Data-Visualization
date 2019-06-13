@@ -98,7 +98,20 @@
 	    	</div>
     	</div>
     </div>
-
+	<div class="colorBar" id="barTwo">
+    	<div class="container">
+      	<div class="row">
+      		<div class="col-md-20">
+      			<h2 class="headerBar">What is a Sunburst? (The Visual Below)</h2>
+      			<p class="white-text">
+					<span>It is a hierarchy of data displayed with each ring of the circle as a level of the hierarchy. The innermost ring is the top of the hierarchy while the outermost is at the bottom. </span>
+					<span> In this case, the inner ring represents each country while the outer ring represents the resource consumption in that country</span>
+				</p>
+			    </br>
+      		</div>
+      	</div>
+      </div>
+    </div>
 	<!-- Drop Down Menu -->
   <h3 id = "selectTxt">Select a File</h3>
   <select id = "selectFile" onchange="parseFile(this.value);">
@@ -113,8 +126,9 @@
 
   <svg xmlns="http://www.w3.org/2000/svg" id="partitionSVG" width="1400" height="1400" style ="position:relative; left:0%;">
     <foreignObject width="1400" height="1400">
-			<h1>Global Energy Consumption(Mtoe)</h1>
+			<h1>Global Energy Consumption</h1>
 			<p><b>HOW TO USE :</b> Hover over the visualization to view stats in the middle. CLICK a section to zoom and view more	</p>
+			<p id = "units">Units in Million Tonnes of Oil Equivalent(Mtoe)</p>
 			<!-- Slider -->
 			<input id="yearslider" type="range" min="1990" max="2017" step="1" value = "1990"> Slide to change year</input>
 			<a href = "#slider" style="position:absolute;top:275px;left:30px;font-size:15px;text-decoration:underline"> Jump to Map >></a>
@@ -150,11 +164,7 @@
 			<p>To view other energy statistics, select a new file</p>
 			<p> Click on Jump to Map to view map representation</p>
 		</div>
-		<!-- <div>
-			<span>What is a Sunburst?</span>
-			<span>It is a hierarchy of data displayed with each ring of the circle as a level of the hierarchy. The innermost ring is the top of the hierarchy while the outermost is at the bottom </span>
-			<span> In this case, the inner ring represents each country while the outer ring represents the resources consumption in that country</span>
-		</div> -->
+
     </foreignObject>
   </svg>
 
