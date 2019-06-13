@@ -2,7 +2,7 @@
 
 Github Repo for our group, "*Data Visualization*". We are a four computer science undergraduates studying at UCSC. This repo features the our work done over the past quarter and is broken via branches as well as various directories.
 
-https://data-vizuals.herokuapp.com/
+https://climate-visuals.herokuapp.com/
 
 Individual branches feature initial programming works attempted at the begining of the quarter. After sprint 1, we then merged our individual work into the master branch
 
