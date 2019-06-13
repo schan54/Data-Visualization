@@ -41,7 +41,7 @@ var tsavg = d3v3.select("#pSVG") //svg
   .append("g")
     .attr("transform", "translate(" + margin1.left + "," + margin1.top + ")");
 
-    var tempYears1 = tsavg.append("g") //bar chart for compare 
+    var tempYears1 = tsavg.append("g") //bar chart for compare
         .attr("class", "tempYears1");
 // A sliding container to hold the bars by tempYear.
 var tempYears = tsavg.append("g") //main bar chart
@@ -132,10 +132,9 @@ var insn4 = tsavg.append("text")
     .text(" temperatures");    
 var globTit = tsavg.append("text")
     .attr("class", "globTit")
-    .attr("dy", "-1.5em");
-var globTit2 = tsavg.append("text")
-    .attr("class", "globTit2")
-    .attr("dy", "2em");    
+    .attr("dy", "-1em")
+    .attr("dx", "-.5em");
+    
 var title2 = tsavg.append("text")
     .attr("class", "title2")
     .attr("dx","7.2em")

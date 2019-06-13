@@ -61,15 +61,10 @@ input[type=number]::-webkit-outer-spin-button {
   .globTit {
     font-family: 'Roboto', sans-serif;
 
-    font: 300 23px 'Roboto';
+    font: 300 26px 'Roboto';
     fill: #666;
   }
-  .globTit2 {
-    font-family: 'Roboto', sans-serif;
 
-    font: 300 23px 'Roboto';
-    fill: #666;
-  }
   .title2 {
     position:absolute;
     font-family: 'Roboto', sans-serif;
