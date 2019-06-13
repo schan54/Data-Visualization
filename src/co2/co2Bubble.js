@@ -1,10 +1,10 @@
-
+// Global Variables
 var moving = false;
-var currentValue = 1960;
+var currentValue = 1960; // Year you are vizualizing
 var targetValue = 2055;
-var twoYears = false;
-var comparedValue = 1961;
-var UIFlag = false;
+var twoYears = false; // True if using comparison function, false otherwise
+var comparedValue = 1961; // Year to compare to
+var UIFlag = false; // True if user inputs data
 
 // Increase year by one and render
 function step() {
@@ -22,7 +22,9 @@ function step() {
 // Render default state
 select(currentValue);
 
-
+// Render function with all vizualization code inside it
+// TODO: Factor out code so it is not all inside one function, and only load the data once.
+// Right now it reloads the data everytime you render a new state.
 function select(yearValue) {
   // Load data
   // Better structure to not load data each time you call select
@@ -49,6 +51,7 @@ function select(yearValue) {
         max4 = 0;
         max5 = 0;
         xPosition = [100, 250, 450, 650, 850, 1100];
+        // TODO: Write function that sums up cumulative emissions instead of using this array
         cumulatives = [9104.144, 18205.332, 27629.031, 37589.212, 48055.297, 59011.837,
                         70466.715, 82274.629, 94726.192, 108014.726, 122413.034, 137385.719,
                         153038.825, 169524.161, 185973.702, 202442.217, 219813.069, 237665.198,
@@ -87,9 +90,11 @@ function select(yearValue) {
     function chart(selection) {
       var data = selection.datum();
       var div = selection,
-          svg = div.select('svg');
+          svg = div.select('svg'); // Main svg container for visual
       svg.attr('width', width).attr('height', height);
 
+
+        // Make rectangles for legend
         d3.selectAll(".rectIso").remove();
 
         var rectangleAfrica = svg.append("rect")
@@ -173,7 +178,7 @@ function select(yearValue) {
                            .style("fill", colorGreen)
                            .style("visibility", "hidden");
 
-      // Legend
+      // Legend case handling
       if (!twoYears) {
         rectangleRed.style("visibility", "hidden");
         rectangleGreen.style("visibility", "hidden");
@@ -207,7 +212,7 @@ function select(yearValue) {
         return +d[columnForRadius];
       })]).range([2, 90])
 
-      // Compute difference between two years
+      // Load two years for difference between two years
       yearOne = data.filter(function(d) { 
           if (UIFlag) {
               return d.year == currentValue;
@@ -221,14 +226,13 @@ function select(yearValue) {
             return d.year == yearTemp + 1;
           }}); // selected year plus
 
+      // Copy later year into new array
       for (i = 0; i < yearTwo.length; i++) {
         yearDiff[i] = {};
         for (var prop in yearTwo[i]) {
           yearDiff[i][prop] = yearTwo[i][prop];
         }
       }
-
-      //yearDiff = yearTwo;
 
       // Compute difference and find negatives
       for (i = 0; i < yearTwo.length; i++) {
@@ -295,29 +299,20 @@ function select(yearValue) {
 
       function ticked() {
 
-        if (twoYears) {
+        if (twoYears) { // Compare two years
           var u = d3.select('svg')
           .selectAll('circle')
           .data(yearDiff);
-        } else {
+        } else { // Single year
           var u = d3.select('svg')
           .selectAll('circle')
           .data(data.filter(function(d) { return d.year == yearTemp }));
         }
 
-        console.log(0 + ": " + scaleRadius(0));
-        console.log(10 + ": " + scaleRadius(10));
-        console.log(100 + ": " + scaleRadius(100));
-        console.log(500 + ": " + scaleRadius(500));
-        console.log(1000 + ": " + scaleRadius(1000));
-        console.log(5000 + ": " + scaleRadius(5000));
-        console.log(10000 + ": " + scaleRadius(10000));
-
-        if (twoYears) {
+        if (twoYears) { // enter circles in comparitve mode
           u.enter()
           .append('circle')
           .attr('r', function(d) {
-            //console.log("here");
             if (isNaN(d.value)) {
               return 2;
             } else {
@@ -381,7 +376,6 @@ function select(yearValue) {
          u.transition()
           .duration(50)
           .attr('r', function(d) {
-            //console.log("here");
             if (isNaN(d.value)) {
               return 2;
             } else {
@@ -391,11 +385,10 @@ function select(yearValue) {
 
         u.exit().remove();
 
-        } else { // If Isolated
+        } else { // enter circles in isolated mode
           u.enter()
           .append('circle')
           .attr('r', function(d, i) {
-            //console.log("here");
             if (isNaN(d.value)) {
               return 2;
             } else {
@@ -458,7 +451,6 @@ function select(yearValue) {
          u.transition()
           .duration(50)
           .attr('r', function(d) {
-            //console.log("here");
             if (isNaN(d.value)) {
               return 2;
             } else {
@@ -471,6 +463,7 @@ function select(yearValue) {
         
       }
 
+      // Variables and arrays for statistics
       var tempArray = [];
       var tempStringArray = [];
       var NAArray = [];
@@ -539,10 +532,11 @@ function select(yearValue) {
         })
       }
 
+      // Remove elements so they don't overlay eachother
       d3.select("#mainChart").selectAll("text").remove();
       d3.select("#mainChart").selectAll("line").remove();
 
-      console.log(AsiaArray);
+      // Get summations for each continent
       sumValues = d3.sum(tempArray);
       sumOceania = d3.sum(OceaniaArray);
       sumSA = d3.sum(SAArray);
@@ -565,7 +559,7 @@ function select(yearValue) {
 
       topEmissions.append("text").html("% Toward 1 Trillion Ton Threshold:").attr("id", "sumText").attr("x", 450).attr("y", 120);
       // 3329367 is 1 Trillion tons of carbon in Metric tonnes of CO2
-      topEmissions.append("text").html(Math.round(cumulatives[currentValue - 1960] / 3329367 * 10000) / 100 + "%").attr("id", "cumulativeSum").attr("x", 490).attr("y", 160);
+      topEmissions.append("text").html(Math.round(cumulatives[currentValue - 1960] / 3329367 * 10000) / 100 + "%").attr("id", "cumulativeSum").attr("x", 500).attr("y", 160);
 
       // Find the max value in this year
       max1 = d3.max(tempArray);
@@ -652,6 +646,7 @@ function select(yearValue) {
 
       topEmissions.append("text").html(+ Math.round(parseFloat(sumValues) * 1000) / 1000 + " MtCO2").attr("id", "sum").attr("x", 460).attr("y", 85);
 
+      // Lines to separate parts of visual
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 730).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 610).attr("y1", 480).attr("x2", 610).attr("y2", 580).attr("stroke-width", 0.5).attr("stroke", "black");
       topEmissions.append("line").attr("x1", 800).attr("y1", 480).attr("x2", 920).attr("y2", 480).attr("stroke-width", 0.5).attr("stroke", "black");
@@ -692,6 +687,7 @@ function select(yearValue) {
       topEmissions.append("text").html("5000").attr("x", 40).attr("y", 685 + 30).style("font-size", 12);
       topEmissions.append("text").html("10000").attr("x", 40).attr("y", 700 + 30).style("font-size", 12);
 
+      // Legend Text Continued
       if (!twoYears) {
         topEmissions.append("text").html("= Africa").attr("x", 1150).attr("y", 665 + 30);
         topEmissions.append("text").html("= Asia").attr("x", 990).attr("y", 665 + 30);
@@ -705,6 +701,7 @@ function select(yearValue) {
         topEmissions.append("text").html("= No Change in Emissions").attr("x", 350).attr("y", 665 + 30);
       }
 
+      // Parse and write sums
       topEmissions.append("text").html(Math.round(parseFloat(sumOceania) * 1000) / 1000 + " MtCO2").attr("x", 620).attr("y", 570).attr("font-weight", "bold");
       topEmissions.append("text").html(Math.round(parseFloat(sumAsia) * 1000) / 1000 + " MtCO2").attr("x", 810).attr("y", 570).attr("font-weight", "bold");
       topEmissions.append("text").html(Math.round(parseFloat(sumNA) * 1000) / 1000 + " MtCO2").attr("x", 80).attr("y", 570).attr("font-weight", "bold");
@@ -770,10 +767,10 @@ function select(yearValue) {
           .style("font-size", "120%")
           .style("fill", "grey")
 
-      // Callback function for user input box
+      // Callback function for user input box, updates after each char is entered
       var callback = function(content) {
           var yearUserText = content;
-          var userArray = yearUserText.split(',');
+          var userArray = yearUserText.split(','); // Get data from user
           if ((parseInt(userArray[0]) < parseInt(userArray[1])) 
                 && (1960 <= parseInt(userArray[0]) <= 2016) 
                 && (1961 <= parseInt(userArray[1]) <= 2017)
@@ -794,35 +791,35 @@ function select(yearValue) {
 
       if (twoYears) {
         var tf = textfield()
-          .x(20) // X Position
-          .y(150) // Y Position 
-          .width(160) // Width 
-          .height(30) // Height 
+          .x(20)
+          .y(150)
+          .width(160)
+          .height(30)
           .callback(callback) // Callback returning the current text 
           .text(currentValue + "," + comparedValue) // Default text 
           .fill("#3B444C") // Default fill 
           .stroke("none") // Default border 
           .fillSelected("#31708E") // Fill when activated 
           .strokeSelected("none") // Border when activated 
-          .color("white") // Text color 
-          .colorSelected("grey") // Text color when activated 
+          .color("white")
+          .colorSelected("grey")
           .returnLowercase(false) // Auto-lowercase input text before calling back 
           .returnEmpty(false) // Shall textfield call back if input text is empty
         d3.select("#mainChart").call(tf)
       } else {
         var tf = textfield()
-          .x(20) // X Position
-          .y(150) // Y Position 
-          .width(160) // Width 
-          .height(30) // Height 
+          .x(20)
+          .y(150) 
+          .width(160)
+          .height(30)
           .callback(callback) // Callback returning the current text 
           .text(currentValue) // Default text 
           .fill("#3B444C") // Default fill 
           .stroke("none") // Default border 
           .fillSelected("#31708E") // Fill when activated 
           .strokeSelected("none") // Border when activated 
-          .color("white") // Text color 
-          .colorSelected("grey") // Text color when activated 
+          .color("white")
+          .colorSelected("grey")
           .returnLowercase(false) // Auto-lowercase input text before calling back 
           .returnEmpty(false) // Shall textfield call back if input text is empty
         d3.select("#mainChart").call(tf)
