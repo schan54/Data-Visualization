@@ -125,13 +125,14 @@ function inputRecv() {
 	if (compareActive) {
 		if (((1960 <= parseInt(splitString[0])) && (parseInt(splitString[0])<= 2017))
 		&& ((1960 <= parseInt(splitString[1])) && (parseInt(splitString[1])<= 2017))) {
+
 			if (userYear2 < userYear) {
-				userYear = splitString[1]
-				userYear2 = splitString[0]
-			}
-			else {
 				userYear = splitString[0]
 				userYear2 = splitString[1]
+			}
+			else {
+				userYear = splitString[1]
+				userYear2 = splitString[0]
 			}
 
 
