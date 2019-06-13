@@ -28,6 +28,14 @@ input[type=number]::-webkit-outer-spin-button {
       ::-ms-input-placeholder { /* Microsoft Edge */
         color: black;
       }
+      #pSVG, #Tchart {
+        background-color: #F7F9FB;
+        border-width: 1px;
+        border-radius: 1px;
+        border-color: #687864;
+        padding-bottom: 0px;
+      }
+
 #mainChart{
     position: absolute;
     top:0px;
