@@ -10,7 +10,7 @@ var userYear = formatDateIntoYear(startDate);
 var userYear2 = formatDateIntoYear(startDate);
 
 var colorIsolatedDomain = [0,5,25,50,100,250,500,1000, 2500, 5000, 7500]
-var colorCompareDomain = [0, 5, 25, 50, 100, 200, 400, 600, 800, 1000, 1500]
+var colorCompareDomain = [-1000,-500,-100,-25,0, 25, 50, 100, 500, 1000, 1500]
 var colorDomainPercent = [-50, -25, -10, -5, 0, 5, 10, 25, 50, 75, 100]
 
 var colorDomain = colorIsolatedDomain;
