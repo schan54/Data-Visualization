@@ -283,10 +283,10 @@ function parseFile(file) {
 function updateSunBurst(file, year){
     d3.json(file).then(data => {
         var datas = data[year];
+        /* If user wants a compare, then theres a list of two years to compare */
         if ( Array.isArray(year))
         {
             datas = {name:"compare", children: [data[year[0]], data[year[1]]] };
-            
         }
 
         const root = partition(datas);
