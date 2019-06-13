@@ -383,7 +383,7 @@ function updateSunBurst(file, year){
             else{
                 g.selectAll("g").remove();
                 g.select('#clickText').remove();
-                updateSunBurst("./energyusage.json", [year1 -1990, year2 - 1990]); 
+                updateSunBurst(file, [year1 -1990, year2 - 1990]); 
             }
         });
         d3.select("#isolate").on("click", function(){
