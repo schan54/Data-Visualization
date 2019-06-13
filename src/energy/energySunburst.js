@@ -123,6 +123,7 @@ d3.json('./energyusage.json').then(data => {
     d3.select("#yearslider").on("change", function(){
         year = this.value - 1990;
         g.selectAll("g").transition().remove();
+        g.select('#clickText').remove();
         updateSunBurst("./energyusage.json", year);
         
     });
@@ -135,12 +136,14 @@ d3.json('./energyusage.json').then(data => {
         }
         else{
             g.selectAll("g").remove();
+            g.select('#clickText').remove();
             updateSunBurst("./energyusage.json", [year1 -1990, year2 - 1990]); 
         }
         
     });
     d3.select("#isolate").on("click", function(){
         g.selectAll("g").remove();
+        g.select('#clickText').remove();
         updateSunBurst("./energyusage.json", 0); 
     });
 
@@ -367,6 +370,7 @@ function updateSunBurst(file, year){
         d3.select("#yearslider").on("change", function(){
             year = this.value - 1990;
             g.selectAll("g").transition().remove();
+            g.select('#clickText').remove();
             updateSunBurst(file, year);
             
         });
@@ -379,11 +383,13 @@ function updateSunBurst(file, year){
             }
             else{
                 g.selectAll("g").remove();
+                g.select('#clickText').remove();
                 updateSunBurst("./energyusage.json", [year1 -1990, year2 - 1990]); 
             }
         });
         d3.select("#isolate").on("click", function(){
             g.selectAll("g").remove();
+            g.select('#clickText').remove();
             updateSunBurst(file, 0); 
         });
         /* Search By Country Name */
