@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Sea Level Visualization</title>
+		<title>Glacial Melting Visualization</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat|Raleway|Roboto|Oswald:400,600" rel="stylesheet">
@@ -44,8 +44,6 @@
 		 <link rel="stylesheet" type="text/css" href="bsg.css"/> <!-- bee swarm css file -->
 		 <link rel="stylesheet" type="text/css" href="zsb.css"/> <!-- sunburst css file -->
 		 <link rel="stylesheet" type="text/css" href="SeaLevelRise.css"/> <!-- UI css file -->
-
-
 
 
 
@@ -91,64 +89,16 @@
 		</header>
 		<!-- /Header -->
 
-		<!-- top paragraph, main info  -->
-		<div class="duoImage" id="tempImage">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-pull-4">
-                <div class="imageText">
-                    <h2 class="header">Rising Seas</h2>
-                    <p class="initialText">As temperature increases and glaciers melt, sea levels also increase. Since the 1880's, sea levels have risen 16-21 cm, with 7.5 cm being within the last 25 years. These higher sea levels have been causing increasingly dangerous hurricanes and typhoons, flooding, soil erosion, and damage to city infrastructure.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-
- 	<div class="colorBar" id="barTwo">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-20">
-                <h2 class="headerBar">How is sea level rise affecting the infrastructure of cities?</h2>
-                <p class="white-text">About 40% of the United States' population, and 10% of the world's population, lives in coastal cities. As sea levels continue to rise, coastal urban life has been affected. Approximately 30% of the city of Manhattan, New York is expected to be fully submerged in water by 2050. Currently, the city of Venice, Italy is experiencing some of its worst flooding. In 2018, approximately 75% of the city was flooded. With the current rates of sea level rise, it is predicted that the Maldives would be inhabitable by 2100 due to flooding caused by rising sea levels.</p>
-            </div>
-        </div>
-      </div>
-    </div>
-
-
-
-		<script src="d3-tip.js"></script>
-
-	  <div id="slider"></div>
-
-	  <!-- @Alex -->
-	  <!-- Change the .js file and it should display on the website! -->
-	  
-	  
-	
-	 
-	  	
-	  <script type="text/javascript" src="beeSwarmSeaLevel.js"></script>
-	  <script type="text/javascript" src="buttons.js"></script>
-	  <!-- source displayed on website for data at bottom in footer-->
-
-	  <!-- paragraph explaining visual-->
-	  <p class="white-text">Here we see recorded data of how many millimeters the sea level has risen since 1970. Along with this data, the figure also contains predictive data for 2025 and 2050. As you click different buttons for different years, we can see the recorded sea level in millimeters for each year. We also can see the high and low estimated predictions for 2025 and 2050.</p>
 
 	<!-- start of glacier part of visual-->
-	<div class="duoImage" id="tempImageTwo">
+	<div class="duoImage" id="tempImage">
     <div class="container">
         <div class="row">
             <div class="col-md-pull-4">
                 <div class="imageText">
-                    <h2 class="header">What causes sea levels to rise?</h2>
-                    <a href="../temperature/temperature.html">Temperature</a>
-                    <p class="initialText">Rising temperatures are warming ocean waters, which expand as the temperature increases. As the ocean waters expand, they take up more space, causing the sea levels to rise.</p>
-                    </br>
-                    <a href="../seaLevel/glacialMelting.html">Glacial Melting</a>
-                    <p class="initialText">The melting of land glaciers is one of the two main causes of sea level rise. As the glaciers melt, their water drips off into the ocean, adding more volume. Areas with the biggest concern of glacial melting include Antarctica and Greenland, as they host many of the world's land glaciers.</p>
+                    <h2 class="header">Glacial Melting</h2>
+                    <p class="initialText">Glaciers help keep the Earth cool. Without glaciers, temperatures can rise to be much higher. They can be as old as several thousand years old, which allows them to provide a scientific record of how climate has changed over time. By studying them, scientists are able to learn just how fast the climate is changing. By losing these glaciers, we are also losing these pieces of history. About 95% of the oldest and thickest ice in the Arctic is already gone.</p>
                 </div>
             </div>
         </div>
@@ -157,7 +107,35 @@
 
 
 
+	 <div id="slider"></div>
+
 	 
+	 <script type="text/javascript" src="zoomSunburstGlacier.js"></script>
+
+	 <!-- paragraph explaining visual-->
+	 <p class="white-text">Here we see recorded data of the mass of different glaciers from 1979 to 2017, measured in gigatons. The middle circle shows each glacier that data was recorded for. Each color represents a different glacier. Some of the glaciers do not show their names, however hover the mouse over each glacier will allow for you to view the name of the glacier. The outer circle shows the data recorded for each glacier. Some of the larger data is viewable in the main portion of the visual, however if you select a glacier with smaller masses, the graph will zoom in and show the data for glaciers with smaller masses. If you hover over any of the data points, the graph will show you the year the mass was taken and the mass of the glacier in gigatons.</p>
+
+	 <div class="duoImage" id="tempImageTwo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-pull-4">
+                <div class="imageText">
+                    <h2 class="header">How do these "small" changes affect us?</h2>
+                    <!-- paragraph explaining how large the data changes are-->
+                    <p class="initialText">The changes may seem small, but they are much larger than expected. The units the mass is measured in is gigatons, which to put into perspective is about the same weight as 6 million blue whales, or about 400,000 olympic pools filled with water. Between 1990 and 2015, the Totten glacier lost about 5 gigatons of ice, or about the same mass as 30 million blue whales. These changes can be seen in both individual glaciers and entire regions of Antarctica.</p>
+                    </br>
+                    <!-- paragraph pertaining to Thwaities Glacier ice loss/importance/predictions-->
+                    <p class="initialText">An important glacier scientists are currently worried about is the Thwaities Glacier in West Antarctica. Currently there is a 300 meter tall cavity forming at the base of the glacier, which could cause sea levels to significantly rise if it grows larger and causes ice to break off from the glacier. The glacier itself is currently responsible for 4% of sea level rise. The glacier also acts as a baracade, preventing ice more inland from melting and running into the ocean. Overall, the loss of the Thwaities Glacier could raise sea levels to approximately 2400 mm.</p>
+                    <!-- source : https://climate.nasa.gov/news/2838/huge-cavity-in-antarctic-glacier-signals-rapid-decay/ -->
+                 </br>
+                 <!-- paragraph pertaining to East Antarctica, and how it is losing its stability, Totten Glacier is losing ice -->
+                 <p class="initialText">East Antarctica, on the opposite side of the Thwaities Glacier, used to be considered a more stable area of Antarctica pertaining to ice loss but has scientists now concerned. The Totten Glacier area, along with other glaciers that make up approximately one-eigth of Antarctica, have been significantly losing ice within the last decade. Totten, the largest glacier in East Antarctica, has lost about 3 meters of surface height due to ice melting between 2008 and 2013. The changes to East Antarctica are small in comparison to the changes in West Antarctica, but they show how changes to Earth's climate</p>
+                 <!-- source : https://climate.nasa.gov/news/2832/more-glaciers-in-east-antarctica-are-waking-up/ -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 	 
 
 	<!-- conclusion -->
